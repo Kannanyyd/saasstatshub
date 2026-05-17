@@ -67,7 +67,18 @@ export const onRequestPost: PagesFunction<Env> = async ({ request, env }) => {
 
   if (!apiKey || !groupId) {
     console.error('[subscribe] Missing MAILERLITE_API_KEY or MAILERLITE_GROUP_ID');
-    return json(500, { ok: false, error: 'Newsletter is temporarily unavailable. Please try again later.' });
+    // Diagnostic-friendly response: tell the client which key is missing
+    // (without leaking values) so we can see this from the browser/curl.
+    const seen = Object.keys(env || {}).sort();
+    return json(500, {
+      ok: false,
+      error: 'Newsletter is temporarily unavailable. Please try again later.',
+      diag: {
+        hasApiKey: Boolean(apiKey),
+        hasGroupId: Boolean(groupId),
+        envKeys: seen,
+      },
+    });
   }
 
   try {
