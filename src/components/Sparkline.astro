@@ -1,0 +1,149 @@
+---
+/**
+ * Inline-SVG sparkline. Build-time generation, no client JS required.
+ *
+ * Usage on a Hero_Stat_Card:
+ *   <Sparkline series={card.sparklineData ?? defaults[card.id]} trend={card.trend} />
+ *
+ * Usage on an Article_Stat_Card:
+ *   <Sparkline trend="up" />            (decorative curve only)
+ *   <Sparkline series={[10,12,11,...]} />
+ *
+ * Behavior (per Phase 1 design §3.4 + Reqs 2.1–2.17):
+ *   - Data resolution chain: validated `series` → decorative curve from `trend`.
+ *   - Slope is computed via normalized linear regression; line color is the
+ *     finance-positive / -negative / -neutral token at ±0.01 threshold.
+ *   - aria-label format per Req 2.14:
+ *       "Trend: <direction> X.X% over period"   (when a series is available)
+ *       "Trend: <direction>"                    (decorative-only)
+ *   - Reduced motion: handled via the scoped CSS @media query below — no JS.
+ */
+import {
+  validateSeries,
+  computeSlope,
+  classifyTrend,
+  trendClassToDirection,
+  pointsToPath,
+  decorativeCurve,
+  formatAriaLabel,
+  percentChange,
+  type TrendDirection,
+} from '../lib/sparkline';
+
+interface Props {
+  /** 8–16 finite numbers. Anything else falls through to the decorative curve. */
+  series?: number[];
+  /** Drives decorative curve direction when no series; default 'flat'. */
+  trend?: TrendDirection;
+  /** Optional override; otherwise auto-formatted per Req 2.14. */
+  ariaLabel?: string;
+  /** SVG viewBox width. Render scales fluidly to 100% of parent. */
+  width?: number;
+  /** SVG viewBox height. */
+  height?: number;
+  /** Toggle the line-draw animation (still respects prefers-reduced-motion). */
+  animate?: boolean;
+}
+
+const {
+  series,
+  trend = 'flat',
+  ariaLabel,
+  width = 140,
+  height = 32,
+  animate = true,
+} = Astro.props;
+
+// Step 1: resolve data per Req 2.4 fallback chain.
+const validated = validateSeries(series);
+const isDecorative = !validated;
+const values = validated ?? decorativeCurve(trend);
+
+// Step 2: classify and pick color.
+const slope = computeSlope(values);
+const trendClass = classifyTrend(slope);
+
+// In decorative-only mode, the requested `trend` wins for both color
+// and the aria-label so cards never accidentally announce "flat" when
+// the editor explicitly asked for "up".
+const direction: TrendDirection = isDecorative ? trend : trendClassToDirection(trendClass);
+
+// Step 3: compute SVG paths.
+const { line, fill, lastX, lastY } = pointsToPath(values, width, height);
+
+// Step 4: aria-label per Req 2.14.
+const labelText =
+  ariaLabel ??
+  formatAriaLabel(direction, isDecorative ? null : percentChange(values));
+
+// Step 5: color → CSS variable. Decorative mode uses the explicit direction.
+const colorVar =
+  (isDecorative ? direction === 'up' : trendClass === 'positive')
+    ? 'var(--color-positive)'
+    : (isDecorative ? direction === 'down' : trendClass === 'negative')
+      ? 'var(--color-negative)'
+      : 'var(--color-neutral)';
+
+// Stable gradient ID per render — avoids collisions when many sparklines
+// share a page (e.g. 8 Hero_Stat_Cards).
+const gradientId = `spark-grad-${Math.random().toString(36).slice(2, 9)}`;
+---
+
+<svg
+  class:list={['sparkline', { 'sparkline--animate': animate }]}
+  viewBox={`0 0 ${width} ${height}`}
+  preserveAspectRatio="none"
+  width="100%"
+  height={height}
+  role="img"
+  aria-label={labelText}
+  style={`color: ${colorVar};`}
+>
+  <defs>
+    <linearGradient id={gradientId} x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="currentColor" stop-opacity="0.18" />
+      <stop offset="100%" stop-color="currentColor" stop-opacity="0.00" />
+    </linearGradient>
+  </defs>
+  <path d={fill} fill={`url(#${gradientId})`} />
+  <path
+    class="sparkline__line"
+    d={line}
+    fill="none"
+    stroke="currentColor"
+    stroke-width="1.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <circle cx={lastX} cy={lastY} r="2.5" fill="currentColor" />
+</svg>
+
+<style>
+  .sparkline {
+    display: block;
+    min-width: 100px;
+    min-height: 28px;
+    width: 100%;
+  }
+
+  /* Draw-in animation per Req 2.16 (≤ 800ms total). */
+  .sparkline__line {
+    stroke-dasharray: 600;
+    stroke-dashoffset: 600;
+  }
+  .sparkline--animate .sparkline__line {
+    animation: sparkline-draw 800ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  @keyframes sparkline-draw {
+    to { stroke-dashoffset: 0; }
+  }
+
+  /* Static fallback for users who prefer reduced motion (Req 2.15). */
+  @media (prefers-reduced-motion: reduce) {
+    .sparkline__line {
+      stroke-dasharray: none;
+      stroke-dashoffset: 0;
+      animation: none !important;
+    }
+  }
+</style>

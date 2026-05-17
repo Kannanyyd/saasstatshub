@@ -61,13 +61,37 @@ export interface HeroSection extends BaseSection {
 
 export interface HotStat {
   id: string;
-  icon: string;            // emoji or icon key
+  /**
+   * Emoji icon. **Decorative-only legacy field** as of Phase 1.
+   * When `iconName` is set, the Lucide icon is rendered and `icon` is ignored.
+   * Retained for ACF backward compatibility (Req 4.10, 4.11, 4.12).
+   */
+  icon: string;
+  /**
+   * Lucide icon name (kebab-case). When set, the Hot Stat card renders this
+   * icon instead of the emoji `icon`. Resolved via `src/lib/icon-registry.ts`.
+   * Unknown values fail the build (Req 4.14).
+   */
+  iconName?: string;
   number: string;          // raw label, e.g. "$232B" / "14.2%" / "30,000+"
   label: string;           // descriptor
   source: string;          // source name, e.g. "Gartner"
   /** CSS gradient string. If empty, falls back to a palette by index. */
   gradient?: string;
   enabled: boolean;
+  /**
+   * Decorative trend direction (Req 2.4). Used when `sparklineData` is absent
+   * to drive the deterministic decorative curve fallback. Also drives line
+   * color when no real series is available.
+   */
+  trend?: 'up' | 'down' | 'flat';
+  /**
+   * Numeric series for the card's sparkline (Req 2.10/2.11).
+   * If absent, the renderer falls back to a hardcoded series in
+   * `src/data/sparkline-defaults.ts` keyed by `id`, then to a decorative
+   * curve from `trend`. 8–16 finite numbers per Req 2.3.
+   */
+  sparklineData?: number[];
 }
 
 export interface HotStatsSection extends BaseSection {
@@ -169,14 +193,14 @@ export const defaultSiteConfig: SiteConfig = {
       enabled: true,
       maxCards: 8,
       cards: [
-        { id: 's1', icon: '📊', number: '$232B',   label: 'Global SaaS Market (2026)', source: 'Gartner',    enabled: true },
-        { id: 's2', icon: '📈', number: '14.2%',   label: 'CAGR 2024–2030',             source: 'Statista',   enabled: true },
-        { id: 's3', icon: '🏢', number: '30,000+', label: 'SaaS Companies Worldwide',   source: 'Crunchbase', enabled: true },
-        { id: 's4', icon: '🚀', number: '78%',     label: 'Enterprise Adoption Rate',   source: 'McKinsey',   enabled: true },
-        { id: 's5', icon: '☁️', number: '94%',     label: 'Cloud Adoption (Enterprise)',source: 'Flexera',    enabled: true },
-        { id: 's6', icon: '📱', number: '68%',     label: 'Mobile SaaS Usage',          source: 'Okta',       enabled: true },
-        { id: 's7', icon: '🔐', number: '$188B',   label: 'Cybersecurity Spend',        source: 'Gartner',    enabled: true },
-        { id: 's8', icon: '🤖', number: '12,400',  label: 'AI-powered SaaS Tools',      source: 'G2',         enabled: true },
+        { id: 's1', icon: '📊', iconName: 'trending-up', trend: 'up', number: '$232B',   label: 'Global SaaS Market (2026)', source: 'Gartner',    enabled: true },
+        { id: 's2', icon: '📈', iconName: 'bar-chart-3', trend: 'up', number: '14.2%',   label: 'CAGR 2024–2030',             source: 'Statista',   enabled: true },
+        { id: 's3', icon: '🏢', iconName: 'building-2',  trend: 'up', number: '30,000+', label: 'SaaS Companies Worldwide',   source: 'Crunchbase', enabled: true },
+        { id: 's4', icon: '🚀', iconName: 'rocket',      trend: 'up', number: '78%',     label: 'Enterprise Adoption Rate',   source: 'McKinsey',   enabled: true },
+        { id: 's5', icon: '☁️', iconName: 'cloud',       trend: 'up', number: '94%',     label: 'Cloud Adoption (Enterprise)',source: 'Flexera',    enabled: true },
+        { id: 's6', icon: '📱', iconName: 'smartphone',  trend: 'up', number: '68%',     label: 'Mobile SaaS Usage',          source: 'Okta',       enabled: true },
+        { id: 's7', icon: '🔐', iconName: 'lock',        trend: 'up', number: '$188B',   label: 'Cybersecurity Spend',        source: 'Gartner',    enabled: true },
+        { id: 's8', icon: '🤖', iconName: 'bot',         trend: 'up', number: '12,400',  label: 'AI-powered SaaS Tools',      source: 'G2',         enabled: true },
       ],
     },
     {

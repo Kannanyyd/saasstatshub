@@ -1,6 +1,9 @@
 ---
 import type { HotStatsSection } from '../../lib/site-config';
 import { gradientFor } from '../../lib/site-config';
+import Icon from '../Icon.astro';
+import Sparkline from '../Sparkline.astro';
+import { SPARKLINE_DEFAULTS } from '../../data/sparkline-defaults';
 
 interface Props {
   section: HotStatsSection;
@@ -15,6 +18,21 @@ const cards = (section.cards || [])
   .slice(0, section.maxCards || 8);
 
 const overlapClass = overlapHero ? '-mt-14 md:-mt-20 z-10' : 'mt-12 md:mt-16';
+
+/**
+ * Resolve a card's sparkline series via the Phase 1 fallback chain
+ * (Reqs 2.4 / 2.10 / 2.11):
+ *   1. WP-supplied `sparklineData` if present and valid
+ *   2. Hardcoded default for the card's `id` (s1..s8)
+ *   3. Sparkline.astro itself falls back to a decorative curve from `trend`
+ */
+function resolveSeries(card: typeof cards[number]): number[] | undefined {
+  if (Array.isArray(card.sparklineData) && card.sparklineData.length >= 8) {
+    return card.sparklineData;
+  }
+  const def = SPARKLINE_DEFAULTS[card.id];
+  return def ? [...def] : undefined;
+}
 ---
 
 <section class={`relative ${overlapClass} px-6`}>
@@ -22,17 +40,31 @@ const overlapClass = overlapHero ? '-mt-14 md:-mt-20 z-10' : 'mt-12 md:mt-16';
     {(section.heading || section.eyebrow) && (
       <div class="text-center mb-8">
         {section.eyebrow && <div class="text-xs font-bold uppercase tracking-widest text-primary mb-1">{section.eyebrow}</div>}
-        {section.heading && <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight">{section.heading}</h2>}
+        {section.heading && <h2 class="font-section-heading text-2xl md:text-3xl font-extrabold">{section.heading}</h2>}
       </div>
     )}
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5 stagger-children">
       {cards.map((stat, i) => {
         const grad = stat.gradient || gradientFor(i);
+        const series = resolveSeries(stat);
         return (
           <div class="hero-stat-card animate-fade-in-up" style={`background: ${grad}; --scan-delay: ${i * 0.7}s;`}>
-            <div class="stat-icon-emoji">{stat.icon}</div>
+            <div class="stat-icon-emoji">
+              {stat.iconName
+                ? <Icon name={stat.iconName} aria-hidden="true" class="w-5 h-5" />
+                : <span>{stat.icon}</span>
+              }
+            </div>
             <div class="stat-number" data-count-up>{stat.number}</div>
             <div class="stat-label">{stat.label}</div>
+            <div class="stat-spark">
+              <Sparkline
+                series={series}
+                trend={stat.trend ?? 'flat'}
+                width={140}
+                height={28}
+              />
+            </div>
             <div class="stat-source">{stat.source}</div>
           </div>
         );

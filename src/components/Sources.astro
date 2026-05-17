@@ -1,4 +1,6 @@
 ---
+import Icon from './Icon.astro';
+
 interface Source {
   name: string;
   title: string;
@@ -18,8 +20,15 @@ const { sources } = Astro.props;
   <ol class="sources-list list-decimal pl-5">
     {sources.map((s) => (
       <li>
-        {s.url ? <a href={s.url} target="_blank" rel="noopener noreferrer">{s.name}</a> : s.name},
-        &ldquo;{s.title}&rdquo;{s.date ? `, ${s.date}` : ''}
+        {s.url ? (
+          <a href={s.url} target="_blank" rel="noopener noreferrer">
+            {s.name}
+            <Icon name="external-link" aria-hidden="true" class="inline-block w-3 h-3 ml-1 align-baseline" />
+          </a>
+        ) : (
+          s.name
+        )}
+        , &ldquo;{s.title}&rdquo;{s.date ? `, ${s.date}` : ''}
       </li>
     ))}
   </ol>

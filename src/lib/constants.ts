@@ -15,8 +15,19 @@ export interface CategoryMeta {
   name: string;
   /** Short label for compact UI (nav, pills) */
   shortName?: string;
-  /** Emoji icon */
+  /**
+   * Emoji icon. **Decorative-only** as of Phase 1 visual uplift (Req 4.2).
+   * Primary UI surfaces (header, footer, breadcrumb, browse-categories,
+   * hero pills, etc.) render the Lucide icon resolved from `iconName`
+   * instead. The emoji is retained for ACF backward compatibility and
+   * for any future ornamental usage.
+   */
   emoji: string;
+  /**
+   * Lucide icon name (kebab-case). MUST resolve through
+   * `src/lib/icon-registry.ts:resolveIcon()` — unknown values fail the build.
+   */
+  iconName: string;
   /** Primary color */
   color: string;
   /** Gradient end color */
@@ -28,14 +39,14 @@ export interface CategoryMeta {
 }
 
 export const CATEGORIES: CategoryMeta[] = [
-  { slug: 'crm',                name: 'CRM',                shortName: 'CRM',         emoji: '👥', color: '#2563EB', colorEnd: '#7C3AED', bg: '#DBEAFE', desc: 'Customer relationship management stats' },
-  { slug: 'marketing',          name: 'Marketing',          shortName: 'Marketing',   emoji: '📣', color: '#7C3AED', colorEnd: '#EC4899', bg: '#EDE9FE', desc: 'Digital marketing platform data' },
-  { slug: 'ecommerce',          name: 'E-commerce',         shortName: 'E-commerce',  emoji: '🛒', color: '#059669', colorEnd: '#10B981', bg: '#D1FAE5', desc: 'Online retail & marketplace insights' },
-  { slug: 'project-management', name: 'Project Management', shortName: 'Project Mgmt', emoji: '📋', color: '#D97706', colorEnd: '#F59E0B', bg: '#FEF3C7', desc: 'PM tool adoption & productivity' },
-  { slug: 'hr',                 name: 'HR & Payroll',       shortName: 'HR',          emoji: '🧑‍💼', color: '#DC2626', colorEnd: '#F87171', bg: '#FEE2E2', desc: 'Human resources & workforce data' },
-  { slug: 'analytics',          name: 'Analytics',          shortName: 'Analytics',   emoji: '📊', color: '#0891B2', colorEnd: '#06B6D4', bg: '#CFFAFE', desc: 'Business intelligence & data tools' },
-  { slug: 'security',           name: 'Security',           shortName: 'Security',    emoji: '🔒', color: '#4338CA', colorEnd: '#6366F1', bg: '#E0E7FF', desc: 'Cybersecurity & compliance' },
-  { slug: 'communication',      name: 'Communication',      shortName: 'Comms',       emoji: '💬', color: '#0D9488', colorEnd: '#14B8A6', bg: '#CCFBF1', desc: 'Messaging & collaboration platforms' },
+  { slug: 'crm',                name: 'CRM',                shortName: 'CRM',         emoji: '👥', iconName: 'users',           color: '#3B82F6', colorEnd: '#A78BFA', bg: '#1E3A8A', desc: 'Customer relationship management stats' },
+  { slug: 'marketing',          name: 'Marketing',          shortName: 'Marketing',   emoji: '📣', iconName: 'megaphone',       color: '#A78BFA', colorEnd: '#F472B6', bg: '#3730A3', desc: 'Digital marketing platform data' },
+  { slug: 'ecommerce',          name: 'E-commerce',         shortName: 'E-commerce',  emoji: '🛒', iconName: 'shopping-cart',   color: '#34D399', colorEnd: '#10B981', bg: '#064E3B', desc: 'Online retail & marketplace insights' },
+  { slug: 'project-management', name: 'Project Management', shortName: 'Project Mgmt', emoji: '📋', iconName: 'clipboard-list', color: '#FBBF24', colorEnd: '#F59E0B', bg: '#78350F', desc: 'PM tool adoption & productivity' },
+  { slug: 'hr',                 name: 'HR & Payroll',       shortName: 'HR',          emoji: '🧑‍💼', iconName: 'user-cog',        color: '#F87171', colorEnd: '#EF4444', bg: '#7F1D1D', desc: 'Human resources & workforce data' },
+  { slug: 'analytics',          name: 'Analytics',          shortName: 'Analytics',   emoji: '📊', iconName: 'bar-chart-3',     color: '#22D3EE', colorEnd: '#06B6D4', bg: '#164E63', desc: 'Business intelligence & data tools' },
+  { slug: 'security',           name: 'Security',           shortName: 'Security',    emoji: '🔒', iconName: 'shield',          color: '#818CF8', colorEnd: '#6366F1', bg: '#312E81', desc: 'Cybersecurity & compliance' },
+  { slug: 'communication',      name: 'Communication',      shortName: 'Comms',       emoji: '💬', iconName: 'message-square',  color: '#2DD4BF', colorEnd: '#14B8A6', bg: '#134E4A', desc: 'Messaging & collaboration platforms' },
 ];
 
 /** Lookup map: name -> meta (WP returns name; we look up by name). */
@@ -51,9 +62,10 @@ export const FALLBACK_META: CategoryMeta = {
   slug: 'uncategorized',
   name: 'Uncategorized',
   emoji: '📊',
-  color: '#2563EB',
-  colorEnd: '#7C3AED',
-  bg: '#DBEAFE',
+  iconName: 'bar-chart-3',
+  color: '#3B82F6',
+  colorEnd: '#A78BFA',
+  bg: '#1E3A8A',
   desc: '',
 };
 

@@ -4,6 +4,7 @@ import '../../styles/global.css';
 import { getArticleData, getAllArticleSlugs, type ArticleDetail } from '../../lib/wp-api';
 import { mockArticleDetail } from '../../data/mock-data';
 import { CATEGORIES } from '../../lib/constants';
+import { withDropCap } from '../../lib/dropcap';
 
 function parseSources(dataSource: string) {
   if (!dataSource) return [];
@@ -82,5 +83,5 @@ const tocItems = buildTocItems(article.content, takeaways.length > 0, sources);
   tocItems={tocItems}
   ogImage={article.image}
 >
-  <Fragment set:html={article.content} />
+  <Fragment set:html={withDropCap(article.content)} />
 </ArticleLayout>

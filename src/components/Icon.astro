@@ -1,0 +1,68 @@
+---
+/**
+ * Lucide icon → inline SVG at build time.
+ *
+ * Usage:
+ *   <Icon name="search" aria-label="Search" />          // standalone control
+ *   <Icon name="users" aria-hidden="true" />            // decorative next to text
+ *   <Icon name="bar-chart-3" size={28} class="text-primary" />
+ *
+ * Behavior (per Phase 1 design §3.2):
+ * - `name` resolves through ICON_REGISTRY; unknown names FAIL THE BUILD (Req 4.13/4.14).
+ * - When `aria-hidden="true"` is set: drops `role` attribute (Req 4.8).
+ * - Otherwise: sets `role="img"` and uses `aria-label` (falling back to the icon name).
+ * - Defaults: 18px size, 1.75 stroke-width (Req 4.9, mid-range of 1.5–2.0).
+ * - Inherits `currentColor` so the wrapping element controls color via Tailwind / tokens.
+ */
+import { resolveIcon } from '../lib/icon-registry';
+
+interface Props {
+  name: string;
+  size?: number;
+  class?: string;
+  'aria-label'?: string;
+  'aria-hidden'?: 'true' | 'false';
+  strokeWidth?: number;
+}
+
+const {
+  name,
+  size = 18,
+  class: className,
+  'aria-label': ariaLabel,
+  'aria-hidden': ariaHidden,
+  strokeWidth = 1.75,
+} = Astro.props;
+
+// Throws synchronously on unknown name — fails the build (Req 4.14).
+const body = resolveIcon(name);
+
+const isHidden = ariaHidden === 'true';
+---
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width={size}
+  height={size}
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width={strokeWidth}
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  class={className}
+  role={isHidden ? undefined : 'img'}
+  aria-label={isHidden ? undefined : (ariaLabel ?? name)}
+  aria-hidden={isHidden ? 'true' : undefined}
+>
+  {body.map(([childTag, childAttrs]) => {
+    if (childTag === 'circle')   return <circle   {...childAttrs} />;
+    if (childTag === 'rect')     return <rect     {...childAttrs} />;
+    if (childTag === 'line')     return <line     {...childAttrs} />;
+    if (childTag === 'path')     return <path     {...childAttrs} />;
+    if (childTag === 'polyline') return <polyline {...childAttrs} />;
+    if (childTag === 'polygon')  return <polygon  {...childAttrs} />;
+    if (childTag === 'ellipse')  return <ellipse  {...childAttrs} />;
+    return null;
+  })}
+</svg>

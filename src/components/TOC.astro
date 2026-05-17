@@ -1,13 +1,23 @@
 ---
+import Icon from './Icon.astro';
+
+interface TOCItem {
+  id: string;
+  text: string;
+}
+
 interface Props {
-  items: { id: string; text: string }[];
+  items: TOCItem[];
 }
 
 const { items } = Astro.props;
 ---
 
 <details class="toc-mobile md:hidden">
-  <summary>📋 Table of Contents</summary>
+  <summary class="flex items-center gap-2">
+    <Icon name="list" aria-hidden="true" class="w-4 h-4" />
+    Table of Contents
+  </summary>
   <div class="toc-list">
     {items.map((item) => (
       <a href={`#${item.id}`}>{item.text}</a>
@@ -16,7 +26,10 @@ const { items } = Astro.props;
 </details>
 
 <nav class="toc hidden md:block" aria-label="Table of contents">
-  <h3 class="text-sm font-bold mb-3">📋 Table of Contents</h3>
+  <h3 class="text-sm font-bold mb-3 flex items-center gap-2">
+    <Icon name="list" aria-hidden="true" class="w-4 h-4" />
+    Table of Contents
+  </h3>
   {items.map((item) => (
     <a href={`#${item.id}`}>{item.text}</a>
   ))}

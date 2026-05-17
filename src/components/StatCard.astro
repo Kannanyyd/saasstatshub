@@ -1,17 +1,39 @@
 ---
+/**
+ * In-article stat callout.
+ *
+ * Phase 1 Task 14 added optional `series` and `trend` props (Req 2.12).
+ * When EITHER is provided, the card renders an inline Sparkline below the
+ * number. When NEITHER is provided, the card renders identically to the
+ * pre-Phase-1 layout, preserving backward compatibility for any existing
+ * usage in articles (Req 2.13).
+ */
+import Sparkline from './Sparkline.astro';
+import type { TrendDirection } from '../lib/sparkline';
+
 interface Props {
   number: string;
   label: string;
   source?: string;
   variant?: 'default' | 'growth' | 'decline';
+  /** Optional sparkline data (8–16 finite numbers). */
+  series?: number[];
+  /** Optional decorative trend; renders a non-data sparkline when no series. */
+  trend?: TrendDirection;
 }
 
-const { number, label, source, variant = 'default' } = Astro.props;
+const { number, label, source, variant = 'default', series, trend } = Astro.props;
 const borderClass = variant === 'growth' ? 'growth' : variant === 'decline' ? 'decline' : '';
+const showSparkline = (Array.isArray(series) && series.length > 0) || !!trend;
 ---
 
 <div class:list={['stat-card', borderClass]}>
   <div class="stat-number">{number}</div>
   <div class="stat-label">{label}</div>
+  {showSparkline && (
+    <div class="stat-card-spark">
+      <Sparkline series={series} trend={trend ?? 'flat'} width={140} height={28} />
+    </div>
+  )}
   {source && <div class="stat-source">Source: {source}</div>}
 </div>

@@ -13,14 +13,14 @@ const { section } = Astro.props;
     <div class="absolute top-0 right-0 w-64 h-64 rounded-full bg-primary/5 blur-[80px]"></div>
     <div class="absolute bottom-0 left-0 w-48 h-48 rounded-full bg-accent/5 blur-[60px]"></div>
     <div class="absolute top-4 right-8 opacity-[0.04]">
-      <svg width="120" height="120" viewBox="0 0 120 120" fill="none"><rect x="10" y="60" width="16" height="50" rx="4" fill="#2563EB"/><rect x="34" y="35" width="16" height="75" rx="4" fill="#7C3AED"/><rect x="58" y="50" width="16" height="60" rx="4" fill="#10B981"/><rect x="82" y="20" width="16" height="90" rx="4" fill="#F59E0B"/></svg>
+      <svg width="120" height="120" viewBox="0 0 120 120" fill="none" aria-hidden="true"><rect x="10" y="60" width="16" height="50" rx="4" fill="#2563EB"/><rect x="34" y="35" width="16" height="75" rx="4" fill="#7C3AED"/><rect x="58" y="50" width="16" height="60" rx="4" fill="#10B981"/><rect x="82" y="20" width="16" height="90" rx="4" fill="#F59E0B"/></svg>
     </div>
 
     <div class="relative text-center max-w-lg mx-auto">
       <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-lighter text-xs font-bold text-primary mb-5">
         {section.pillText}
       </div>
-      <h2 class="text-2xl md:text-3xl font-extrabold text-text mb-3">{section.heading || 'Stay Ahead of the Curve'}</h2>
+      <h2 class="font-section-heading text-2xl md:text-3xl font-extrabold text-text mb-3">{section.heading || 'Stay Ahead of the Curve'}</h2>
       <p class="text-text-secondary mb-8">{section.description}</p>
       <form
         class="newsletter-form flex gap-2 max-w-md mx-auto"
@@ -35,7 +35,7 @@ const { section } = Astro.props;
           placeholder={section.emailPlaceholder}
           required
           autocomplete="email"
-          class="newsletter-input flex-1 px-4 py-3 rounded-xl bg-white border border-border text-text placeholder-text-muted text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition"
+          class="newsletter-input flex-1 px-4 py-3 rounded-xl bg-surface-elevated border border-border-strong text-text placeholder-text-muted text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition"
         />
         <!-- Honeypot: real users won't see / fill this -->
         <input type="text" name="hp" tabindex="-1" autocomplete="off" aria-hidden="true" class="hidden" />

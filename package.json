@@ -7,14 +7,18 @@
   },
   "scripts": {
     "dev": "astro dev",
+    "prebuild": "node scripts/copy-fonts.mjs",
     "build": "astro build && pagefind --site dist",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "test:phase1": "node --test --experimental-strip-types \"src/lib/sparkline.test.mjs\" \"src/lib/dropcap.test.mjs\""
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.2",
+    "@fontsource-variable/fraunces": "^5.2.9",
     "@tailwindcss/vite": "^4.3.0",
     "astro": "^6.3.3",
+    "lucide": "^1.16.0",
     "tailwindcss": "^4.3.0"
   },
   "devDependencies": {
