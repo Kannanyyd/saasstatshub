@@ -241,6 +241,31 @@ Stored under `baseline/`:
 
 ---
 
+## Lighthouse regression — production (Reqs 3.11, 5.11)
+
+Captured against the deployed `https://saasstatshub.com/` after Phase 1 + the home-mobile font-subset fix (commit `33c22c4`). All four runs pass the regression budget.
+
+| Page / Profile     | Performance        | Accessibility      | LCP (mobile homepage) |
+|--------------------|--------------------|--------------------|-----------------------|
+| Home / Desktop     | 93 → 91 (Δ −2 ✅) | 92 → 92 (✅)      | 1569 → 1633 ms (info)  |
+| Home / Mobile      | 87 → 86 (Δ −1 ✅) | 92 → 96 (Δ +4 ✅)| **3773 → 3717 ms (Δ −56 ms ✅, budget ≤ +200 ms)** |
+| Article / Desktop  | 98 → 96 (Δ −2 ✅) | 95 → 98 (Δ +3 ✅)| 818 → 938 ms (info)    |
+| Article / Mobile   | 86 → 97 (Δ +11 ✅)| 95 → 98 (Δ +3 ✅)| 3198 → 2026 ms (info)  |
+
+**12/12 budget assertions passed**, no regressions. Accessibility score went **up** on three of four pages thanks to the dark-theme contrast work.
+
+### Note on the home-mobile font fix
+
+The first deploy (commit `d22cd01`) shipped the 67 KB `fraunces-latin-opsz-normal.woff2` (wght + opsz axes). Lighthouse home-mobile measured **LCP 4120 ms** (Δ +347 ms vs baseline), exceeding the +200 ms ceiling.
+
+Root cause: the preloaded woff2 was on the LCP path (Hero H1 uses Fraunces) and added ~150 ms of network on simulated 4G mobile.
+
+Fix (commit `33c22c4`): switched `scripts/copy-fonts.mjs` to source `fraunces-latin-wght-normal.woff2` (36.6 KB, wght-only). Drop-cap and headlines remain visually identical; the opsz fine-tuning was a nicety, not a visual requirement at our display sizes.
+
+Re-run home-mobile Lighthouse: LCP **3717 ms** (Δ −56 ms vs baseline; faster than baseline). Performance score 86 (vs baseline 87), Δ −1 within the −5 budget.
+
+---
+
 ## Open follow-ups
 
 These are intentionally out of scope for Phase 1 but worth tracking for next phases:
@@ -248,7 +273,6 @@ These are intentionally out of scope for Phase 1 but worth tracking for next pha
 1. **Light theme toggle UI**: tokens are authored to permit a `[data-theme="light"]` override layer in a future phase, but no toggle ships today.
 2. **Real article content**: production WP currently has empty `content` fields on articles, so the drop-cap helper is wired but invisible. Once real article bodies are published, drop-cap will render automatically.
 3. **Real WP `sparklineData`**: current 8 default cards use the hardcoded series in `src/data/sparkline-defaults.ts`. If editors later supply per-card `sparklineData` via ACF, the resolver in `HotStatsSection.astro` already prefers it (Req 2.10/2.11).
-4. **Lighthouse production regression check**: deferred to post-deploy (this changelog), since pre-deploy preview server lacks the Cloudflare CDN that affects LCP.
 
 ---
 

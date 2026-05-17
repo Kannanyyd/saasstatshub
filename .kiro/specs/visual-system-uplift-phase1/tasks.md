@@ -24,8 +24,8 @@ Phase 1 Visual System Uplift — 20 tasks covering dark theme, Lucide icons, Fra
 - [x] 16. Verify Existing Animations: Typewriter, count-up, scanline, spotlight, float, border-flow, reading-progress all functional. Toggle reduced-motion → all stop. DOM hooks present in built HTML. {Reqs: 1.8, 1.9, 3.14}
 - [x] 17. Accessibility & Contrast Audit: axe-core on homepage + article (0 contrast violations). Icon aria-label/aria-hidden correct. Sparkline role=img + aria-label. Form input border contrast 3:1. Footer text contrast. {Reqs: 1.3, 1.4, 1.5, 1.6, 1.13, 1.14, 2.14, 4.7, 4.8, 4.9}
 - [x] 18. Build & Bundle Size Verification: Build exits 0 ≤600s. Pagefind count ≥ baseline. JS growth ≤12KB gz. Sparkline code ≤3KB gz. Icon payload ≤8KB gz. No framework deps. No unauthorized origins. Email = sangaypopo@gmail.com only. {Reqs: 5.1, 5.2, 5.7, 5.8, 5.9, 5.10, 5.12, 2.18, 4.5}
-- [-] 19. Lighthouse Regression Check: Compare post-phase Lighthouse scores against baseline. Performance ≤5pt regression. Accessibility ≥ baseline. LCP ≤200ms regression. Fix any failures. {Reqs: 3.11, 5.11}
-- [-] 20. Write Phase 1 Changelog & Merge: Document token hex+contrast table. Document dep sizes + bundle deltas. Diff head blocks (GA4, JSON-LD, OG unchanged). Diff wp-api.ts queries (0 changes). Create PR. Verify CF Pages build. Merge. {Reqs: 1.15, 5.4, 5.5, 5.6, 5.8}
+- [x] 19. Lighthouse Regression Check: Compare post-phase Lighthouse scores against baseline. Performance ≤5pt regression. Accessibility ≥ baseline. LCP ≤200ms regression. Fix any failures. {Reqs: 3.11, 5.11}
+- [x] 20. Write Phase 1 Changelog & Merge: Document token hex+contrast table. Document dep sizes + bundle deltas. Diff head blocks (GA4, JSON-LD, OG unchanged). Diff wp-api.ts queries (0 changes). Create PR. Verify CF Pages build. Merge. {Reqs: 1.15, 5.4, 5.5, 5.6, 5.8}
 
 ## Task Dependency Graph
 
