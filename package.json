@@ -18,6 +18,7 @@
     "tailwindcss": "^4.3.0"
   },
   "devDependencies": {
+    "@cloudflare/workers-types": "^4.20260517.1",
     "pagefind": "^1.5.2"
   }
 }

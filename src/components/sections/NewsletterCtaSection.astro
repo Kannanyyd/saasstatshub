@@ -22,11 +22,32 @@ const { section } = Astro.props;
       </div>
       <h2 class="text-2xl md:text-3xl font-extrabold text-text mb-3">{section.heading || 'Stay Ahead of the Curve'}</h2>
       <p class="text-text-secondary mb-8">{section.description}</p>
-      <form class="flex gap-2 max-w-md mx-auto" action="#" method="post">
-        <input type="email" placeholder={section.emailPlaceholder} required class="flex-1 px-4 py-3 rounded-xl bg-white border border-border text-text placeholder-text-muted text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition" />
-        <button type="submit" class="shrink-0 px-6 py-3 rounded-xl font-bold text-sm text-white gradient-primary hover:shadow-glow transition-all">{section.buttonLabel}</button>
+      <form
+        class="newsletter-form flex gap-2 max-w-md mx-auto"
+        data-newsletter-source="homepage-cta"
+        novalidate
+      >
+        <label class="sr-only" for="newsletter-cta-email">Email address</label>
+        <input
+          id="newsletter-cta-email"
+          type="email"
+          name="email"
+          placeholder={section.emailPlaceholder}
+          required
+          autocomplete="email"
+          class="newsletter-input flex-1 px-4 py-3 rounded-xl bg-white border border-border text-text placeholder-text-muted text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/10 transition"
+        />
+        <!-- Honeypot: real users won't see / fill this -->
+        <input type="text" name="hp" tabindex="-1" autocomplete="off" aria-hidden="true" class="hidden" />
+        <button
+          type="submit"
+          class="newsletter-submit shrink-0 px-6 py-3 rounded-xl font-bold text-sm text-white gradient-primary hover:shadow-glow transition-all disabled:opacity-60 disabled:cursor-not-allowed"
+        >
+          <span class="newsletter-submit-label">{section.buttonLabel}</span>
+        </button>
       </form>
-      <p class="text-xs text-text-muted mt-3">{section.socialProof}</p>
+      <p class="newsletter-message text-xs mt-3 min-h-[1rem]" role="status" aria-live="polite"></p>
+      <p class="text-xs text-text-muted mt-1">{section.socialProof}</p>
     </div>
   </div>
 </section>

@@ -2,16 +2,33 @@
 interface Props {
   title?: string;
   subtitle?: string;
+  source?: string;
 }
 
-const { title = 'Stay Updated', subtitle = 'Get the latest SaaS stats delivered to your inbox.' } = Astro.props;
+const {
+  title = 'Stay Updated',
+  subtitle = 'Get the latest SaaS stats delivered to your inbox.',
+  source = 'sidebar',
+} = Astro.props;
 ---
 
 <div class="newsletter-box">
   <h3 class="text-base font-bold mb-1">📬 {title}</h3>
   <p class="text-sm text-text-secondary mb-4">{subtitle}</p>
-  <form class="flex flex-col gap-2" action="#" method="post">
-    <input type="email" placeholder="email@domain.com" required aria-label="Email address" />
-    <button type="submit">Subscribe →</button>
+  <form class="newsletter-form flex flex-col gap-2" data-newsletter-source={source} novalidate>
+    <input
+      type="email"
+      name="email"
+      placeholder="email@domain.com"
+      required
+      autocomplete="email"
+      aria-label="Email address"
+      class="newsletter-input"
+    />
+    <input type="text" name="hp" tabindex="-1" autocomplete="off" aria-hidden="true" class="hidden" />
+    <button type="submit" class="newsletter-submit disabled:opacity-60 disabled:cursor-not-allowed">
+      <span class="newsletter-submit-label">Subscribe →</span>
+    </button>
   </form>
+  <p class="newsletter-message text-xs mt-2 min-h-[1rem]" role="status" aria-live="polite"></p>
 </div>

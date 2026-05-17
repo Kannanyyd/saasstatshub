@@ -252,6 +252,90 @@ const organizationSchema = {
 
       // Search toggle is wired up by SearchModal.astro (data-search-trigger)
 
+      // ===== Newsletter form submission =====
+      // Hooks every <form class="newsletter-form"> on the page.
+      // Submits to /api/subscribe and shows inline success/error feedback.
+      const newsletterForms = document.querySelectorAll<HTMLFormElement>('.newsletter-form');
+      newsletterForms.forEach((form) => {
+        const input = form.querySelector<HTMLInputElement>('input[type="email"]');
+        const honeypot = form.querySelector<HTMLInputElement>('input[name="hp"]');
+        const submit = form.querySelector<HTMLButtonElement>('.newsletter-submit');
+        const label = form.querySelector<HTMLElement>('.newsletter-submit-label');
+        // Message element may live inside or just outside the form (sidebar vs CTA layout)
+        const message =
+          form.querySelector<HTMLElement>('.newsletter-message') ||
+          form.parentElement?.querySelector<HTMLElement>('.newsletter-message') ||
+          null;
+        const source = form.dataset.newsletterSource || 'unknown';
+
+        if (!input || !submit) return;
+
+        const originalLabel = label?.textContent ?? 'Subscribe';
+
+        function setMessage(text: string, kind: 'success' | 'error' | '') {
+          if (!message) return;
+          message.textContent = text;
+          message.classList.remove('text-emerald-400', 'text-emerald-500', 'text-red-500', 'text-rose-400');
+          if (kind === 'success') {
+            // Pick contrast-appropriate color based on background tone
+            const onDark = form.closest('.bg-gradient-to-br, [style*="linear-gradient"]') !== null;
+            message.classList.add(onDark ? 'text-emerald-400' : 'text-emerald-500');
+          } else if (kind === 'error') {
+            const onDark = form.closest('.bg-gradient-to-br, [style*="linear-gradient"]') !== null;
+            message.classList.add(onDark ? 'text-rose-400' : 'text-red-500');
+          }
+        }
+
+        function setBusy(busy: boolean) {
+          if (!submit) return;
+          submit.disabled = busy;
+          if (label) label.textContent = busy ? 'Subscribing…' : originalLabel;
+        }
+
+        form.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          if (!input || !submit) return;
+
+          const email = input.value.trim();
+          if (!email) {
+            setMessage('Please enter your email.', 'error');
+            input.focus();
+            return;
+          }
+
+          setMessage('', '');
+          setBusy(true);
+
+          try {
+            const res = await fetch('/api/subscribe', {
+              method: 'POST',
+              headers: { 'content-type': 'application/json' },
+              body: JSON.stringify({
+                email,
+                source,
+                hp: honeypot?.value ?? '',
+              }),
+            });
+            const data: { ok?: boolean; error?: string; status?: string } = await res.json().catch(() => ({}));
+
+            if (res.ok && data.ok) {
+              if (data.status === 'already_subscribed') {
+                setMessage("You're already on the list — thanks!", 'success');
+              } else {
+                setMessage('Thanks! Check your inbox to confirm.', 'success');
+              }
+              input.value = '';
+            } else {
+              setMessage(data.error || 'Subscription failed. Please try again.', 'error');
+            }
+          } catch {
+            setMessage('Network error. Please try again.', 'error');
+          } finally {
+            setBusy(false);
+          }
+        });
+      });
+
       const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
       // ===== Spotlight follow on cards =====

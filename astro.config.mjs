@@ -6,6 +6,11 @@ import sitemap from '@astrojs/sitemap';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://saasstatshub.com',
+  // Pure static output. Server-side endpoints (e.g. /api/subscribe) are
+  // implemented as Cloudflare Pages Functions in `functions/` instead of
+  // Astro endpoints — this keeps the deploy model identical to before
+  // (no adapter, no _worker.js, just static files + edge functions).
+  output: 'static',
   integrations: [
     sitemap({
       // Sensible defaults for a content site. These get added to every URL
