@@ -1,0 +1,142 @@
+---
+/**
+ * SVG cover placeholder, themed by category.
+ * Used wherever we don't yet have a real featured image.
+ */
+interface Props {
+  title: string;
+  category?: string;
+  variant?: 'card' | 'hero' | 'wide';
+  className?: string;
+}
+
+const { title, category = 'Analytics', variant = 'card', className = '' } = Astro.props;
+
+const palette: Record<string, { from: string; via: string; to: string; chart: string; chart2: string }> = {
+  CRM:               { from: '#1E40AF', via: '#2563EB', to: '#7C3AED', chart: '#FFFFFF', chart2: '#A5B4FC' },
+  Marketing:         { from: '#7C3AED', via: '#A855F7', to: '#EC4899', chart: '#FFFFFF', chart2: '#FBCFE8' },
+  'E-commerce':      { from: '#047857', via: '#10B981', to: '#34D399', chart: '#FFFFFF', chart2: '#A7F3D0' },
+  'Project Mgmt':    { from: '#B45309', via: '#D97706', to: '#F59E0B', chart: '#FFFFFF', chart2: '#FDE68A' },
+  'Project Management': { from: '#B45309', via: '#D97706', to: '#F59E0B', chart: '#FFFFFF', chart2: '#FDE68A' },
+  HR:                { from: '#BE185D', via: '#DB2777', to: '#F472B6', chart: '#FFFFFF', chart2: '#FBCFE8' },
+  'HR & Payroll':    { from: '#BE185D', via: '#DB2777', to: '#F472B6', chart: '#FFFFFF', chart2: '#FBCFE8' },
+  Analytics:         { from: '#0E7490', via: '#0891B2', to: '#06B6D4', chart: '#FFFFFF', chart2: '#A5F3FC' },
+  Security:          { from: '#3730A3', via: '#4338CA', to: '#6366F1', chart: '#FFFFFF', chart2: '#C7D2FE' },
+  Communication:     { from: '#0F766E', via: '#0D9488', to: '#14B8A6', chart: '#FFFFFF', chart2: '#99F6E4' },
+};
+
+const c = palette[category] || palette.Analytics;
+const id = Math.random().toString(36).slice(2, 8);
+
+// Bar heights (semi-random but stable per-title, so SSR is deterministic-ish)
+function barHeights(seed: string, count: number) {
+  let h = 0;
+  for (let i = 0; i < seed.length; i++) h = (h * 31 + seed.charCodeAt(i)) >>> 0;
+  const out: number[] = [];
+  for (let i = 0; i < count; i++) {
+    h = (h * 1664525 + 1013904223) >>> 0;
+    const v = 30 + (h % 60); // 30 - 89
+    out.push(v);
+  }
+  return out;
+}
+const bars = barHeights(title, 6);
+
+// Truncate title for in-image label
+const shortTitle = title.length > 48 ? title.slice(0, 45).trim() + '…' : title;
+---
+
+<div class={`cover-image ${className}`} aria-hidden="true">
+  <svg
+    viewBox="0 0 600 338"
+    preserveAspectRatio="xMidYMid slice"
+    xmlns="http://www.w3.org/2000/svg"
+    class="w-full h-full block"
+  >
+    <defs>
+      <linearGradient id={`bg-${id}`} x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0%" stop-color={c.from} />
+        <stop offset="55%" stop-color={c.via} />
+        <stop offset="100%" stop-color={c.to} />
+      </linearGradient>
+      <linearGradient id={`bar-${id}`} x1="0" y1="1" x2="0" y2="0">
+        <stop offset="0%" stop-color={c.chart} stop-opacity="0.55" />
+        <stop offset="100%" stop-color={c.chart} stop-opacity="0.95" />
+      </linearGradient>
+      <pattern id={`dots-${id}`} x="0" y="0" width="22" height="22" patternUnits="userSpaceOnUse">
+        <circle cx="2" cy="2" r="1" fill="white" fill-opacity="0.10" />
+      </pattern>
+      <filter id={`blur-${id}`} x="-20%" y="-20%" width="140%" height="140%">
+        <feGaussianBlur stdDeviation="40" />
+      </filter>
+    </defs>
+
+    <!-- Base gradient -->
+    <rect width="600" height="338" fill={`url(#bg-${id})`} />
+    <!-- Dot grid overlay -->
+    <rect width="600" height="338" fill={`url(#dots-${id})`} />
+
+    <!-- Soft glow blobs -->
+    <circle cx="120" cy="80" r="100" fill="white" fill-opacity="0.10" filter={`url(#blur-${id})`} />
+    <circle cx="500" cy="280" r="120" fill={c.chart2} fill-opacity="0.20" filter={`url(#blur-${id})`} />
+
+    <!-- Bar chart (lower right) -->
+    <g transform="translate(330, 80)">
+      {bars.map((h, i) => (
+        <rect
+          x={i * 32}
+          y={180 - h * 1.8}
+          width={20}
+          height={h * 1.8}
+          rx={4}
+          fill={`url(#bar-${id})`}
+        />
+      ))}
+      <!-- baseline -->
+      <line x1="-4" y1="180" x2={bars.length * 32} y2="180" stroke="white" stroke-opacity="0.35" stroke-width="1.5" />
+    </g>
+
+    <!-- Up-trend line (upper area) -->
+    <polyline
+      points="40,200 100,170 160,180 220,140 280,150 340,110"
+      fill="none"
+      stroke="white"
+      stroke-opacity="0.5"
+      stroke-width="2.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <circle cx="340" cy="110" r="5" fill="white" />
+
+    <!-- Category badge (top-left) -->
+    <g transform="translate(40, 40)">
+      <rect width={category.length * 8 + 24} height="26" rx="13" fill="white" fill-opacity="0.18" />
+      <text x="12" y="17" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="700" fill="white" letter-spacing="1.4">
+        {category.toUpperCase()}
+      </text>
+    </g>
+
+    <!-- Title (bottom-left) -->
+    <foreignObject x="36" y="220" width="540" height="100">
+      <div xmlns="http://www.w3.org/1999/xhtml" style="font-family: Inter, system-ui, sans-serif; color: white; font-weight: 700; font-size: 22px; line-height: 1.25; text-shadow: 0 1px 8px rgba(0,0,0,0.25);">
+        {shortTitle}
+      </div>
+    </foreignObject>
+
+    <!-- Brand watermark (bottom-right) -->
+    <g transform="translate(500, 304)" opacity="0.7">
+      <text x="0" y="0" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="600" fill="white">
+        SaaSStatsHub
+      </text>
+    </g>
+  </svg>
+</div>
+
+<style>
+  .cover-image {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: inherit;
+  }
+</style>

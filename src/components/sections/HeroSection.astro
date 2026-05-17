@@ -1,0 +1,133 @@
+---
+import type { HeroSection } from '../../lib/site-config';
+import { metaFor } from '../../lib/constants';
+import type { Category } from '../../lib/wp-api';
+
+interface Props {
+  section: HeroSection;
+  categories: Category[];
+}
+
+const { section, categories } = Astro.props;
+const heroCategories = categories.slice(0, section.pillCount ?? 6);
+
+// Pass typewriter phrases as JSON to the global script
+const phrasesJson = JSON.stringify(section.taglinePhrases || []);
+---
+
+<section class="gradient-hero relative overflow-hidden">
+  <!-- Animated tech grid -->
+  <div class="absolute inset-0 bg-tech-grid-animated opacity-40"></div>
+
+  <!-- Soft glow blobs -->
+  <div class="absolute top-20 right-[10%] w-72 h-72 rounded-full bg-primary/15 blur-[100px]"></div>
+  <div class="absolute bottom-10 left-[5%] w-96 h-96 rounded-full bg-violet/12 blur-[120px]"></div>
+
+  <!-- Corner brackets -->
+  <svg class="absolute top-6 left-6 w-12 h-12 text-cyan-300/40" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+    <path d="M2 14V4a2 2 0 0 1 2-2h10" stroke-linecap="round"/>
+    <path d="M46 14V4a2 2 0 0 0-2-2H34" stroke-linecap="round"/>
+  </svg>
+  <svg class="absolute bottom-6 right-6 w-12 h-12 text-cyan-300/40" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+    <path d="M2 34v10a2 2 0 0 0 2 2h10" stroke-linecap="round"/>
+    <path d="M46 34v10a2 2 0 0 1-2 2H34" stroke-linecap="round"/>
+  </svg>
+
+  <!-- Floating mini-chart cards -->
+  <div class="hidden lg:block absolute top-[18%] right-[6%] animate-float" style="animation-delay: 0s;">
+    <div class="tech-border p-3 w-[160px]">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-[10px] font-mono uppercase tracking-widest text-cyan-300/70">SAAS · Live</span>
+        <span class="live-dot"></span>
+      </div>
+      <svg viewBox="0 0 140 50" class="w-full h-10" aria-hidden="true">
+        <defs>
+          <linearGradient id="hero-line-1" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#34D399"/>
+            <stop offset="100%" stop-color="#60A5FA"/>
+          </linearGradient>
+        </defs>
+        <polyline points="2,40 20,32 38,36 56,22 74,28 92,14 110,18 138,6"
+          fill="none" stroke="url(#hero-line-1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="138" cy="6" r="3" fill="#34D399"/>
+      </svg>
+      <div class="flex items-baseline justify-between mt-1">
+        <span class="text-base font-semibold text-white mono">$232B</span>
+        <span class="text-[10px] mono text-emerald-300">▲ 14.2%</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hidden lg:block absolute bottom-[22%] left-[5%] animate-float" style="animation-delay: 1.5s;">
+    <div class="tech-border p-3 w-[150px]">
+      <div class="flex items-center justify-between mb-2">
+        <span class="text-[10px] font-mono uppercase tracking-widest text-cyan-300/70">CRM</span>
+        <span class="live-dot"></span>
+      </div>
+      <div class="flex items-end gap-1 h-10">
+        <div class="flex-1 rounded-t bg-cyan-400/40" style="height: 35%;"></div>
+        <div class="flex-1 rounded-t bg-cyan-400/55" style="height: 55%;"></div>
+        <div class="flex-1 rounded-t bg-cyan-400/70" style="height: 70%;"></div>
+        <div class="flex-1 rounded-t bg-emerald-400/85" style="height: 90%;"></div>
+      </div>
+      <div class="flex items-baseline justify-between mt-1">
+        <span class="text-base font-semibold text-white mono">35.2%</span>
+        <span class="text-[10px] mono text-emerald-300">share</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="relative max-w-[1200px] mx-auto px-6 pt-20 pb-28 md:pt-24 md:pb-32 text-center">
+    <div class="animate-fade-in-up">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/[0.06] border border-cyan-300/15 text-xs text-cyan-200 mb-6 backdrop-blur-sm font-mono uppercase tracking-widest">
+        <span class="live-dot"></span>
+        {section.trustBadge}
+      </div>
+      <h1 class="text-white text-4xl md:text-6xl lg:text-7xl font-extrabold leading-[1.05] mb-5 tracking-tight">
+        <span class="block text-white">{section.headlineLine1}</span>
+        <span class="relative inline-block">
+          <span style="background: linear-gradient(135deg, #60A5FA, #A78BFA, #34D399); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">{section.headlineHighlight}</span>
+          <span class="absolute -inset-x-2 -inset-y-1 bg-gradient-to-r from-blue-500/0 via-blue-500/15 to-blue-500/0 blur-2xl -z-10"></span>
+        </span>
+        <span class="block text-white/90">{section.headlineLine2}</span>
+      </h1>
+      <p id="hero-tagline" class="text-base md:text-lg text-blue-200/80 max-w-2xl mx-auto mb-10 leading-relaxed font-mono min-h-[3.5rem] md:min-h-[2rem]">
+        <span data-typewriter data-phrases={phrasesJson}></span>
+      </p>
+    </div>
+
+    <!-- Search Bar -->
+    <div class="max-w-xl mx-auto relative animate-fade-in-up" style="animation-delay: 200ms;">
+      <div class="relative rounded-2xl overflow-hidden bg-white/10 backdrop-blur-md border border-white/10 p-1.5">
+        <div class="flex items-center">
+          <svg class="w-5 h-5 ml-4 text-blue-300/60 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          <input
+            type="text"
+            placeholder={section.searchPlaceholder}
+            class="w-full px-4 py-3.5 bg-transparent text-white placeholder-blue-300/50 text-base focus:outline-none"
+            aria-label="Search statistics"
+          />
+          <button class="shrink-0 px-5 py-2.5 rounded-xl font-semibold text-sm text-white gradient-primary hover:shadow-glow transition-all">
+            Search
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick category pills -->
+    {heroCategories.length > 0 && (
+      <div class="mt-8 flex flex-wrap justify-center gap-2.5 animate-fade-in" style="animation-delay: 400ms;">
+        {heroCategories.map((cat) => {
+          const meta = metaFor(cat.name, cat.slug);
+          return (
+            <a href={`/categories/${cat.slug}/`} class="group flex items-center gap-1.5 px-4 py-2 text-sm font-medium text-blue-200/70 bg-white/5 border border-white/10 rounded-full hover:bg-white/10 hover:text-white hover:border-white/20 transition-all backdrop-blur-sm">
+              <span>{meta.emoji}</span>
+              {cat.name}
+              <svg class="w-3 h-3 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"/></svg>
+            </a>
+          );
+        })}
+      </div>
+    )}
+  </div>
+</section>

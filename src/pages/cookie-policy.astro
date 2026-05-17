@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/global.css';
+const lastUpdated = 'May 16, 2026';
+---
+
+<BaseLayout title="Cookie Policy" description="What cookies SaaSStatsHub uses and why.">
+  <article class="max-w-[740px] mx-auto px-6 py-12 article-body">
+    <h1 class="text-3xl md:text-4xl font-bold mb-2">Cookie Policy</h1>
+    <p class="text-sm text-text-muted mb-8 font-mono">Last updated: {lastUpdated}</p>
+
+    <p>This policy explains the cookies and similar technologies SaaSStatsHub uses.</p>
+
+    <h2 id="what-are-cookies">What Are Cookies</h2>
+    <p>Cookies are small text files stored in your browser. They allow sites to remember preferences and gather aggregate analytics.</p>
+
+    <h2 id="cookies-we-use">Cookies We Use</h2>
+    <ul>
+      <li><strong>Essential</strong> — none. The site works without cookies.</li>
+      <li><strong>Analytics</strong> — Google Analytics 4 (anonymized IP, no cross-site tracking). Used to measure page views and improve content.</li>
+      <li><strong>Newsletter</strong> — if you subscribe, our newsletter provider may set a cookie to track unsubscribes.</li>
+    </ul>
+
+    <h2 id="manage-cookies">Managing Cookies</h2>
+    <p>You can disable cookies in your browser settings. Doing so won't break the site.</p>
+
+    <h2 id="contact">Contact</h2>
+    <p>Questions: <a href="mailto:hello@saasstatshub.com">hello@saasstatshub.com</a></p>
+  </article>
+</BaseLayout>

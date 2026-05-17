@@ -1,0 +1,76 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroSection from '../components/sections/HeroSection.astro';
+import HotStatsSection from '../components/sections/HotStatsSection.astro';
+import LatestArticlesSection from '../components/sections/LatestArticlesSection.astro';
+import BrowseCategoriesSection from '../components/sections/BrowseCategoriesSection.astro';
+import NewsletterCtaSection from '../components/sections/NewsletterCtaSection.astro';
+import '../styles/global.css';
+import { getHomePageData, getSiteConfig, getPostsBySlugs, type HomePageData, type ArticleCard } from '../lib/wp-api';
+import { mockHomePageData } from '../data/mock-data';
+import type { LatestArticlesSection as LatestArticlesSectionType } from '../lib/site-config';
+
+// 1) Posts/categories from WP (or mock fallback)
+let data: HomePageData;
+try {
+  data = await getHomePageData();
+} catch {
+  data = mockHomePageData;
+}
+const { categories, latestArticles } = data;
+
+// 2) Site/CMS config (homepage layout). Falls back to defaults if WP not wired up.
+const siteConfig = await getSiteConfig();
+
+// 3) Resolve articles for each LatestArticles section based on its mode
+async function resolveLatestArticles(section: LatestArticlesSectionType): Promise<ArticleCard[]> {
+  const count = section.count ?? 6;
+  if (section.mode === 'manual-pinned' && section.pinnedSlugs && section.pinnedSlugs.length > 0) {
+    const posts = await getPostsBySlugs(section.pinnedSlugs);
+    return posts.slice(0, count);
+  }
+  if (section.mode === 'category' && section.categorySlug) {
+    return latestArticles
+      .filter((a) => a.category.slug === section.categorySlug)
+      .slice(0, count);
+  }
+  // auto-latest (default)
+  return latestArticles.slice(0, count);
+}
+
+// Pre-resolve all latest-articles sections in parallel.
+const latestSectionsResolved = await Promise.all(
+  siteConfig.homepageSections
+    .filter((s) => s.type === 'latest-articles' && s.enabled)
+    .map(async (s) => [s.id, await resolveLatestArticles(s as LatestArticlesSectionType)] as const)
+);
+const latestById = new Map(latestSectionsResolved);
+
+// Track whether the previous rendered section was the hero, so HotStats can overlap.
+const enabledSections = siteConfig.homepageSections.filter((s) => s.enabled);
+---
+
+<BaseLayout title="Home" description="The #1 source for SaaS statistics & data. Comprehensive, up-to-date, and always cited.">
+  {enabledSections.map((section, i) => {
+    const prev = enabledSections[i - 1];
+    const overlapHero = prev?.type === 'hero';
+
+    if (section.type === 'hero') {
+      return <HeroSection section={section} categories={categories} />;
+    }
+    if (section.type === 'hot-stats') {
+      return <HotStatsSection section={section} overlapHero={overlapHero} />;
+    }
+    if (section.type === 'latest-articles') {
+      const articles = latestById.get(section.id) || [];
+      return <LatestArticlesSection section={section} articles={articles} />;
+    }
+    if (section.type === 'browse-categories') {
+      return <BrowseCategoriesSection section={section} categories={categories} />;
+    }
+    if (section.type === 'newsletter-cta') {
+      return <NewsletterCtaSection section={section} />;
+    }
+    return null;
+  })}
+</BaseLayout>

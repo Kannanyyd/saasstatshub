@@ -1,0 +1,86 @@
+---
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import '../../styles/global.css';
+import { getArticleData, getAllArticleSlugs, type ArticleDetail } from '../../lib/wp-api';
+import { mockArticleDetail } from '../../data/mock-data';
+import { CATEGORIES } from '../../lib/constants';
+
+function parseSources(dataSource: string) {
+  if (!dataSource) return [];
+  return dataSource.split(';').map((s, i) => {
+    const parts = s.trim().split(',');
+    return {
+      name: parts[0]?.trim() || `Source ${i + 1}`,
+      title: parts.slice(1).join(',').trim() || '',
+      date: '',
+      url: '#',
+    };
+  });
+}
+
+function buildTocItems(html: string, hasTakeaways: boolean, sourceList: Array<any>): Array<{ id: string; text: string }> {
+  const items: Array<{ id: string; text: string }> = [];
+  const regex = /<h2\s+id="([^"]*)"[^>]*>([^<]*)<\/h2>/g;
+  let match;
+  while ((match = regex.exec(html)) !== null) {
+    items.push({ id: match[1], text: match[2] });
+  }
+  if (hasTakeaways) items.push({ id: 'key-takeaways', text: 'Key Takeaways' });
+  if (sourceList.length > 0) items.push({ id: 'sources', text: 'Sources' });
+  return items;
+}
+
+export async function getStaticPaths() {
+  let slugs: Array<{ slug: string; categorySlug: string }>;
+  try {
+    slugs = await getAllArticleSlugs();
+  } catch {
+    // Mock fallback so dev/preview always renders one article.
+    slugs = [{ slug: 'saas-market-size-statistics', categorySlug: 'analytics' }];
+  }
+
+  // Filter out posts whose category is not in our known list, so we don't
+  // create routes that conflict with /categories/[slug]/, /about/, etc.
+  const knownSlugs = new Set(CATEGORIES.map((c) => c.slug));
+
+  return slugs
+    .filter((s) => knownSlugs.has(s.categorySlug))
+    .map((s) => ({
+      params: { category: s.categorySlug, slug: s.slug },
+    }));
+}
+
+const { slug } = Astro.params;
+let article: ArticleDetail;
+try {
+  article = await getArticleData(slug!);
+} catch {
+  article = mockArticleDetail;
+}
+
+const overviewItems = article.quickOverview.map((item) => ({
+  label: item.statLabel,
+  value: item.statValue,
+}));
+
+const takeaways = article.keyTakeaways.map((item) => item.takeawayText);
+const sources = parseSources(article.dataSource);
+const tocItems = buildTocItems(article.content, takeaways.length > 0, sources);
+---
+
+<ArticleLayout
+  title={article.title}
+  description={article.excerpt}
+  datePublished={article.date}
+  dateModified={article.modified}
+  readTime={`${article.readTime} min`}
+  category={article.category.name}
+  categorySlug={article.category.slug}
+  overviewItems={overviewItems}
+  takeaways={takeaways}
+  sources={sources}
+  tocItems={tocItems}
+  ogImage={article.image}
+>
+  <Fragment set:html={article.content} />
+</ArticleLayout>

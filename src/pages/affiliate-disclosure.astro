@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/global.css';
+const lastUpdated = 'May 16, 2026';
+---
+
+<BaseLayout title="Affiliate Disclosure" description="How SaaSStatsHub uses affiliate links and what that means for you.">
+  <article class="max-w-[740px] mx-auto px-6 py-12 article-body">
+    <h1 class="text-3xl md:text-4xl font-bold mb-2">Affiliate Disclosure</h1>
+    <p class="text-sm text-text-muted mb-8 font-mono">Last updated: {lastUpdated}</p>
+
+    <p>SaaSStatsHub participates in various affiliate programs. When you click certain outbound links and make a purchase, we may receive a commission at <strong>no additional cost to you</strong>.</p>
+
+    <h2 id="how-it-works">How It Works</h2>
+    <ul>
+      <li>We only link to SaaS products we believe are genuinely useful.</li>
+      <li>Affiliate relationships do not influence our statistics or analysis. Numbers come from cited sources independent of any commercial arrangement.</li>
+      <li>Outbound affiliate links are tagged <code>rel="sponsored"</code> per Google's guidelines.</li>
+    </ul>
+
+    <h2 id="transparency">Transparency</h2>
+    <p>If a piece of content includes affiliate links we will say so at the top. If you prefer not to use them, you can always navigate directly to the vendor's website.</p>
+
+    <h2 id="ftc">FTC Compliance</h2>
+    <p>This disclosure complies with the FTC's <em>16 CFR, Part 255: "Guides Concerning the Use of Endorsements and Testimonials in Advertising"</em>.</p>
+
+    <h2 id="contact">Contact</h2>
+    <p>Questions: <a href="mailto:hello@saasstatshub.com">hello@saasstatshub.com</a></p>
+  </article>
+</BaseLayout>

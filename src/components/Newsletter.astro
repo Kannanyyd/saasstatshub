@@ -1,0 +1,17 @@
+---
+interface Props {
+  title?: string;
+  subtitle?: string;
+}
+
+const { title = 'Stay Updated', subtitle = 'Get the latest SaaS stats delivered to your inbox.' } = Astro.props;
+---
+
+<div class="newsletter-box">
+  <h3 class="text-base font-bold mb-1">📬 {title}</h3>
+  <p class="text-sm text-text-secondary mb-4">{subtitle}</p>
+  <form class="flex flex-col gap-2" action="#" method="post">
+    <input type="email" placeholder="email@domain.com" required aria-label="Email address" />
+    <button type="submit">Subscribe →</button>
+  </form>
+</div>

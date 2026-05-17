@@ -1,0 +1,26 @@
+---
+interface Source {
+  name: string;
+  title: string;
+  date?: string;
+  url?: string;
+}
+
+interface Props {
+  sources: Source[];
+}
+
+const { sources } = Astro.props;
+---
+
+<div class="mt-8">
+  <h2 class="text-lg font-bold mb-3">Sources</h2>
+  <ol class="sources-list list-decimal pl-5">
+    {sources.map((s) => (
+      <li>
+        {s.url ? <a href={s.url} target="_blank" rel="noopener noreferrer">{s.name}</a> : s.name},
+        &ldquo;{s.title}&rdquo;{s.date ? `, ${s.date}` : ''}
+      </li>
+    ))}
+  </ol>
+</div>

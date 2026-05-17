@@ -1,0 +1,38 @@
+# Build output
+dist/
+# Astro generated types and cache
+.astro/
+
+# Dependencies
+node_modules/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
+
+# Environment variables
+.env
+.env.local
+.env.production
+.env.*.local
+
+# Editor / OS
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+Thumbs.db
+
+# Cloudflare Wrangler local state
+.wrangler/
+
+# Temporary files used for ad-hoc GraphQL probing
+.tmp-*
+*.tmp.json
+
+# Test coverage
+coverage/

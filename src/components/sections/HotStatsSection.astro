@@ -1,0 +1,55 @@
+---
+import type { HotStatsSection } from '../../lib/site-config';
+import { gradientFor } from '../../lib/site-config';
+
+interface Props {
+  section: HotStatsSection;
+  /** Whether the previous section was the hero. If yes, overlap upward; else add normal margin. */
+  overlapHero?: boolean;
+}
+
+const { section, overlapHero = false } = Astro.props;
+
+const cards = (section.cards || [])
+  .filter((c) => c.enabled !== false)
+  .slice(0, section.maxCards || 8);
+
+const overlapClass = overlapHero ? '-mt-14 md:-mt-20 z-10' : 'mt-12 md:mt-16';
+---
+
+<section class={`relative ${overlapClass} px-6`}>
+  <div class="max-w-[1200px] mx-auto">
+    {(section.heading || section.eyebrow) && (
+      <div class="text-center mb-8">
+        {section.eyebrow && <div class="text-xs font-bold uppercase tracking-widest text-primary mb-1">{section.eyebrow}</div>}
+        {section.heading && <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight">{section.heading}</h2>}
+      </div>
+    )}
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5 stagger-children">
+      {cards.map((stat, i) => {
+        const grad = stat.gradient || gradientFor(i);
+        return (
+          <div class="hero-stat-card animate-fade-in-up" style={`background: ${grad}; --scan-delay: ${i * 0.7}s;`}>
+            <div class="stat-icon-emoji">{stat.icon}</div>
+            <div class="stat-number" data-count-up>{stat.number}</div>
+            <div class="stat-label">{stat.label}</div>
+            <div class="stat-source">{stat.source}</div>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>
+
+<!-- Decorative section break (only after hot-stats overlapping the hero) -->
+{overlapHero && (
+  <section class="mt-10 md:mt-14">
+    <div class="max-w-[1200px] mx-auto px-6">
+      <div class="flex items-center justify-center gap-2 text-xs font-bold uppercase tracking-widest text-text-muted">
+        <span class="h-px w-8 bg-border"></span>
+        🔥 Most Popular Statistics
+        <span class="h-px w-8 bg-border"></span>
+      </div>
+    </div>
+  </section>
+)}

@@ -1,0 +1,17 @@
+---
+interface Props {
+  number: string;
+  label: string;
+  source?: string;
+  variant?: 'default' | 'growth' | 'decline';
+}
+
+const { number, label, source, variant = 'default' } = Astro.props;
+const borderClass = variant === 'growth' ? 'growth' : variant === 'decline' ? 'decline' : '';
+---
+
+<div class:list={['stat-card', borderClass]}>
+  <div class="stat-number">{number}</div>
+  <div class="stat-label">{label}</div>
+  {source && <div class="stat-source">Source: {source}</div>}
+</div>

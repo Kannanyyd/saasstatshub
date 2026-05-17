@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/global.css';
+const lastUpdated = 'May 16, 2026';
+---
+
+<BaseLayout title="Terms of Service" description="The terms governing your use of SaaSStatsHub.">
+  <article class="max-w-[740px] mx-auto px-6 py-12 article-body">
+    <h1 class="text-3xl md:text-4xl font-bold mb-2">Terms of Service</h1>
+    <p class="text-sm text-text-muted mb-8 font-mono">Last updated: {lastUpdated}</p>
+
+    <p>By accessing SaaSStatsHub you agree to these terms. If you disagree, please do not use the site.</p>
+
+    <h2 id="content">Content & Accuracy</h2>
+    <p>Statistics on this site are compiled from third-party sources and labeled accordingly. We do our best to ensure accuracy but cannot guarantee that all data is error-free or up-to-date. Always verify with the original source before making business decisions.</p>
+
+    <h2 id="ip">Intellectual Property</h2>
+    <p>Original commentary, analysis, and design on SaaSStatsHub are © 2026 SaaSStatsHub. You may quote up to 100 words with attribution and a link back. Statistics themselves belong to their original sources.</p>
+
+    <h2 id="affiliate">Affiliate Links</h2>
+    <p>Some outbound links may be affiliate links. We may earn a commission when you purchase through them at no extra cost to you. See our <a href="/affiliate-disclosure/">Affiliate Disclosure</a>.</p>
+
+    <h2 id="warranty">No Warranty</h2>
+    <p>SaaSStatsHub is provided "as is" without warranty of any kind. We are not liable for any decisions made based on data presented here.</p>
+
+    <h2 id="changes">Changes</h2>
+    <p>We may update these terms. Continued use after changes constitutes acceptance.</p>
+
+    <h2 id="contact">Contact</h2>
+    <p>Questions: <a href="mailto:hello@saasstatshub.com">hello@saasstatshub.com</a></p>
+  </article>
+</BaseLayout>

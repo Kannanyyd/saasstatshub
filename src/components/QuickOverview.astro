@@ -1,0 +1,31 @@
+---
+interface StatItem {
+  label: string;
+  value: string;
+  source?: string;
+  variant?: 'default' | 'growth' | 'decline';
+}
+
+interface Props {
+  items: StatItem[];
+}
+
+const { items } = Astro.props;
+---
+
+<table class="quick-overview">
+  <thead>
+    <tr>
+      <th>Statistic</th>
+      <th>Data</th>
+    </tr>
+  </thead>
+  <tbody>
+    {items.map((item) => (
+      <tr>
+        <td>{item.label}</td>
+        <td>{item.value}</td>
+      </tr>
+    ))}
+  </tbody>
+</table>

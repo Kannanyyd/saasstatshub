@@ -1,0 +1,16 @@
+---
+interface Props {
+  items: string[];
+}
+
+const { items } = Astro.props;
+---
+
+<div class="key-takeaways">
+  <h3 class="flex items-center gap-2 text-base font-bold mb-3">
+    <span>🎯</span> Key Takeaways
+  </h3>
+  <ul class="list-disc pl-5 space-y-1.5">
+    {items.map((item) => <li>{item}</li>)}
+  </ul>
+</div>

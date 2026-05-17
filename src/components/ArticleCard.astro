@@ -1,0 +1,44 @@
+---
+import CoverImage from './CoverImage.astro';
+
+interface Props {
+  title: string;
+  slug: string;
+  excerpt: string;
+  date: string;
+  readTime: string;
+  category: string;
+  categorySlug: string;
+  image?: string;
+}
+
+const { title, slug, excerpt, date, readTime, category, categorySlug, image } = Astro.props;
+---
+
+<article class="article-card h-full flex flex-col">
+  <a href={`/${categorySlug}/${slug}/`} class="card-image block no-underline">
+    {image ? (
+      <div class="aspect-video bg-bg-alt overflow-hidden">
+        <img src={image} alt={title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+      </div>
+    ) : (
+      <div class="aspect-video overflow-hidden">
+        <CoverImage title={title} category={category} />
+      </div>
+    )}
+  </a>
+  <div class="card-body flex-1 flex flex-col">
+    <a href={`/categories/${categorySlug}/`} class="card-tag">{category}</a>
+    <h3 class="font-bold text-base leading-snug mb-2 flex-1">
+      <a href={`/${categorySlug}/${slug}/`} class="text-text hover:text-primary transition-colors no-underline line-clamp-2">{title}</a>
+    </h3>
+    <p class="text-sm text-text-secondary line-clamp-2 mb-3">{excerpt}</p>
+    <div class="flex items-center justify-between text-xs text-text-muted pt-3 border-t border-border-light">
+      <span>{date}</span>
+      <span class="flex items-center gap-1">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        {readTime} read
+      </span>
+    </div>
+  </div>
+</article>
