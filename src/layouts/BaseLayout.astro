@@ -1,5 +1,6 @@
 ---
 import { CATEGORIES } from '../lib/constants';
+import SearchModal from '../components/SearchModal.astro';
 
 interface Props {
   title: string;
@@ -26,6 +27,39 @@ const defaultOg = new URL('/og-default.svg', Astro.site).href;
 const ogImageAbs = ogImage
   ? (ogImage.startsWith('http') ? ogImage : new URL(ogImage, Astro.site).href)
   : defaultOg;
+
+const siteOrigin = Astro.site ? Astro.site.origin : 'https://saasstatshub.com';
+const isHomepage = Astro.url.pathname === '/' || Astro.url.pathname === '';
+
+// Schema.org WebSite (homepage only) — enables Google sitelinks search box
+const websiteSchema = isHomepage
+  ? {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      name: siteName,
+      url: siteOrigin,
+      description,
+      inLanguage: 'en-US',
+      potentialAction: {
+        "@type": "SearchAction",
+        target: {
+          "@type": "EntryPoint",
+          urlTemplate: `${siteOrigin}/?q={search_term_string}`,
+        },
+        "query-input": "required name=search_term_string",
+      },
+    }
+  : null;
+
+// Schema.org Organization (every page) — links the brand for knowledge graph
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: siteName,
+  url: siteOrigin,
+  logo: `${siteOrigin}/og-default.svg`,
+  description,
+};
 ---
 
 <!doctype html>
@@ -62,6 +96,15 @@ const ogImageAbs = ogImage
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Sitemap & feed discovery -->
+    <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
+
+    <!-- Schema.org Organization (all pages) -->
+    <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+
+    {/* Schema.org WebSite (homepage only) — enables Google sitelinks search box */}
+    {websiteSchema && <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />}
   </head>
   <body class="min-h-screen flex flex-col">
     <header class="sticky top-0 z-50 glass border-b border-border/60" style="height: 64px; display: flex; align-items: center;">
@@ -195,6 +238,8 @@ const ogImageAbs = ogImage
       </div>
     </footer>
 
+    <SearchModal />
+
     <script>
       // Mobile menu toggle
       const mobileToggle = document.getElementById('mobile-menu-toggle');
@@ -205,14 +250,7 @@ const ogImageAbs = ogImage
         });
       }
 
-      // Search toggle (placeholder for future search)
-      const searchToggle = document.getElementById('search-toggle');
-      if (searchToggle) {
-        searchToggle.addEventListener('click', () => {
-          // TODO: Implement search modal
-          console.log('Search clicked');
-        });
-      }
+      // Search toggle is wired up by SearchModal.astro (data-search-trigger)
 
       const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 

@@ -1,0 +1,339 @@
+---
+/**
+ * SearchModal — full-screen search overlay powered by Pagefind.
+ *
+ * Pagefind index is built at `npm run build` time and lives in
+ * `dist/pagefind/`. The runtime is loaded lazily on first open.
+ */
+---
+
+<div
+  id="search-modal"
+  class="hidden fixed inset-0 z-[100] bg-slate-950/70 backdrop-blur-md"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Search"
+>
+  <div class="absolute inset-0" id="search-backdrop" aria-hidden="true"></div>
+
+  <div class="relative max-w-2xl mx-auto mt-[10vh] mx-4 px-4">
+    <div class="rounded-2xl border border-cyan-300/20 shadow-2xl overflow-hidden" style="background: linear-gradient(180deg, rgba(15,23,42,0.95), rgba(15,23,42,0.98));">
+      <!-- Header -->
+      <div class="flex items-center gap-3 px-5 py-4 border-b border-white/[0.08]">
+        <svg class="w-5 h-5 text-cyan-300/80 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+        <input
+          id="search-input"
+          type="search"
+          placeholder="Search articles, statistics, sources…"
+          class="flex-1 bg-transparent text-white placeholder-blue-300/40 text-base focus:outline-none font-mono"
+          autocomplete="off"
+          spellcheck="false"
+        />
+        <kbd class="hidden sm:inline-flex items-center gap-1 px-2 py-1 text-[11px] font-mono uppercase tracking-wider text-blue-300/60 border border-white/10 rounded bg-white/[0.04]">
+          ESC
+        </kbd>
+        <button
+          type="button"
+          id="search-close"
+          aria-label="Close search"
+          class="sm:hidden p-1.5 text-blue-300/60 hover:text-white transition-colors rounded"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- Results region -->
+      <div id="search-results" class="max-h-[60vh] overflow-y-auto px-2 py-2">
+        <div id="search-empty" class="px-4 py-8 text-center text-sm text-blue-300/60 font-mono">
+          <span class="live-dot" style="margin-right: 8px; vertical-align: middle;"></span>
+          Type to search across articles, sources, and statistics.
+        </div>
+      </div>
+
+      <!-- Footer hint bar -->
+      <div class="flex items-center justify-between px-4 py-2.5 border-t border-white/[0.06] text-[11px] font-mono text-blue-300/50 bg-white/[0.02]">
+        <span class="flex items-center gap-3">
+          <span><kbd class="px-1.5 py-0.5 border border-white/10 rounded bg-white/[0.04]">↑</kbd> <kbd class="px-1.5 py-0.5 border border-white/10 rounded bg-white/[0.04]">↓</kbd> navigate</span>
+          <span><kbd class="px-1.5 py-0.5 border border-white/10 rounded bg-white/[0.04]">↵</kbd> open</span>
+        </span>
+        <span class="text-blue-300/30">Powered by Pagefind</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Result item styles, scoped to the modal */
+  #search-results :global(.search-result) {
+    display: block;
+    padding: 12px 16px;
+    border-radius: 10px;
+    transition: background 120ms ease, transform 120ms ease;
+    border: 1px solid transparent;
+  }
+  #search-results :global(.search-result:hover),
+  #search-results :global(.search-result.is-active) {
+    background: rgba(56, 189, 248, 0.08);
+    border-color: rgba(56, 189, 248, 0.20);
+  }
+  #search-results :global(.search-result-meta) {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(165, 243, 252, 0.7);
+    margin-bottom: 6px;
+  }
+  #search-results :global(.search-result-title) {
+    color: white;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 1.4;
+    margin-bottom: 4px;
+  }
+  #search-results :global(.search-result-excerpt) {
+    color: rgba(203, 213, 225, 0.75);
+    font-size: 13px;
+    line-height: 1.55;
+  }
+  #search-results :global(mark) {
+    background: rgba(96, 165, 250, 0.25);
+    color: #fff;
+    padding: 0 2px;
+    border-radius: 2px;
+  }
+  #search-results :global(.search-empty-results) {
+    padding: 24px 16px;
+    text-align: center;
+    color: rgba(148, 163, 184, 0.7);
+    font-family: var(--font-mono);
+    font-size: 13px;
+  }
+</style>
+
+<script>
+  type PagefindResult = {
+    id: string;
+    data: () => Promise<{
+      url: string;
+      meta: { title?: string; image?: string };
+      excerpt: string;
+      filters?: Record<string, string[]>;
+    }>;
+  };
+
+  type Pagefind = {
+    search: (query: string) => Promise<{ results: PagefindResult[] }>;
+    debouncedSearch?: (query: string, debounceTime?: number) => Promise<{ results: PagefindResult[] } | null>;
+  };
+
+  declare global {
+    interface Window {
+      __pagefind?: Pagefind;
+    }
+  }
+
+  const modal = document.getElementById('search-modal');
+  const input = document.getElementById('search-input') as HTMLInputElement | null;
+  const resultsEl = document.getElementById('search-results');
+  const emptyEl = document.getElementById('search-empty');
+  const backdrop = document.getElementById('search-backdrop');
+  const closeBtn = document.getElementById('search-close');
+  const triggers = document.querySelectorAll<HTMLElement>('[data-search-trigger], #search-toggle');
+
+  if (!modal || !input || !resultsEl || !emptyEl) {
+    // Search modal not on this page (shouldn't happen, but be safe).
+  } else {
+    let pagefind: Pagefind | null = null;
+    let activeIndex = -1;
+    let currentResults: HTMLElement[] = [];
+
+    async function loadPagefind(): Promise<Pagefind> {
+      if (window.__pagefind) return window.__pagefind;
+      // Pagefind is generated at build time and served from /pagefind/.
+      // Build a string at runtime so Vite/Rollup don't try to resolve it.
+      const url = `${window.location.origin}/pagefind/pagefind.js`;
+      const mod = await import(/* @vite-ignore */ url);
+      window.__pagefind = mod as Pagefind;
+      return window.__pagefind;
+    }
+
+    function openModal() {
+      if (!modal) return;
+      modal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+      // Lazy-load pagefind on first open
+      loadPagefind().then((pf) => { pagefind = pf; }).catch((err) => {
+        console.warn('[search] Pagefind failed to load:', err);
+      });
+      setTimeout(() => input?.focus(), 30);
+    }
+
+    function closeModal() {
+      if (!modal) return;
+      modal.classList.add('hidden');
+      document.body.style.overflow = '';
+      if (input) input.value = '';
+      resetResults();
+    }
+
+    function resetResults() {
+      if (!resultsEl || !emptyEl) return;
+      resultsEl.innerHTML = '';
+      resultsEl.appendChild(emptyEl);
+      emptyEl.classList.remove('hidden');
+      activeIndex = -1;
+      currentResults = [];
+    }
+
+    function escapeHtml(s: string): string {
+      return s
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    function renderEmpty(query: string) {
+      if (!resultsEl) return;
+      resultsEl.innerHTML = `<div class="search-empty-results">No results for <strong>"${escapeHtml(query)}"</strong>. Try a different keyword.</div>`;
+      currentResults = [];
+      activeIndex = -1;
+    }
+
+    async function runSearch(query: string) {
+      if (!resultsEl || !emptyEl) return;
+      const q = query.trim();
+      if (q.length === 0) {
+        resetResults();
+        return;
+      }
+      if (!pagefind) {
+        try {
+          pagefind = await loadPagefind();
+        } catch {
+          renderEmpty(q);
+          return;
+        }
+      }
+
+      const search = pagefind.debouncedSearch ?? pagefind.search;
+      const result = await search.call(pagefind, q);
+      if (!result) return; // debounced call cancelled
+
+      const items = result.results.slice(0, 8);
+      if (items.length === 0) {
+        renderEmpty(q);
+        return;
+      }
+
+      // Resolve each result's data in parallel
+      const datas = await Promise.all(items.map((r) => r.data()));
+
+      emptyEl.classList.add('hidden');
+      resultsEl.innerHTML = '';
+
+      datas.forEach((data, i) => {
+        const a = document.createElement('a');
+        a.href = data.url;
+        a.className = 'search-result';
+        a.dataset.idx = String(i);
+
+        const category = data.filters?.category?.[0] || 'Article';
+        const title = data.meta?.title || data.url;
+
+        a.innerHTML = `
+          <div class="search-result-meta">
+            <span>${escapeHtml(category)}</span>
+            <span>·</span>
+            <span>${escapeHtml(data.url)}</span>
+          </div>
+          <div class="search-result-title">${escapeHtml(title)}</div>
+          <div class="search-result-excerpt">${data.excerpt}</div>
+        `;
+        if (resultsEl) resultsEl.appendChild(a);
+      });
+
+      currentResults = Array.from(resultsEl.querySelectorAll<HTMLElement>('.search-result'));
+      activeIndex = currentResults.length > 0 ? 0 : -1;
+      updateActive();
+    }
+
+    function updateActive() {
+      currentResults.forEach((el, i) => {
+        el.classList.toggle('is-active', i === activeIndex);
+      });
+      const active = currentResults[activeIndex];
+      if (active) {
+        active.scrollIntoView({ block: 'nearest' });
+      }
+    }
+
+    // Wire up triggers
+    triggers.forEach((t) => {
+      t.addEventListener('click', (e) => {
+        e.preventDefault();
+        openModal();
+      });
+    });
+
+    // Close on backdrop click / ESC / close button
+    backdrop?.addEventListener('click', closeModal);
+    closeBtn?.addEventListener('click', closeModal);
+
+    document.addEventListener('keydown', (e) => {
+      if (modal?.classList.contains('hidden')) {
+        // Cmd/Ctrl + K opens search from anywhere
+        if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+          e.preventDefault();
+          openModal();
+        }
+        return;
+      }
+      // Modal is open
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        closeModal();
+        return;
+      }
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        if (currentResults.length === 0) return;
+        activeIndex = (activeIndex + 1) % currentResults.length;
+        updateActive();
+      }
+      if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        if (currentResults.length === 0) return;
+        activeIndex = (activeIndex - 1 + currentResults.length) % currentResults.length;
+        updateActive();
+      }
+      if (e.key === 'Enter') {
+        const active = currentResults[activeIndex];
+        if (active && active instanceof HTMLAnchorElement) {
+          window.location.href = active.href;
+        }
+      }
+    });
+
+    // Live search as user types
+    input.addEventListener('input', () => {
+      runSearch(input.value);
+    });
+
+    // If URL contains ?q=foo (e.g. from sitelinks search box), open with that query prefilled
+    const params = new URLSearchParams(window.location.search);
+    const q0 = params.get('q');
+    if (q0) {
+      openModal();
+      input.value = q0;
+      runSearch(q0);
+    }
+  }
+</script>
