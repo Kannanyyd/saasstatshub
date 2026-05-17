@@ -53,6 +53,10 @@ export interface ArticleCard {
   imageAlt: string;
   category: { name: string; slug: string };
   readTime: number;
+  /** Whether the post is "stuck" to top of lists. Drives sort order. */
+  isSticky?: boolean;
+  /** ISO date string, used for stable sort within sticky/non-sticky groups. */
+  rawDate?: string;
 }
 
 export interface QuickOverviewItem {
@@ -108,20 +112,45 @@ export interface CategoryPageData {
 // ===== Data Transformers =====
 // Transform raw WPGraphQL response into clean frontend types
 
+/**
+ * Resolve a post's "primary category" — the one that determines its URL.
+ *
+ * Priority:
+ *   1. ACF taxonomy field `articleMeta.primaryCategory` (editor explicitly chose)
+ *   2. First entry of `categories` (WP-default, ordered by term ID)
+ *   3. Fallback to "uncategorized"
+ *
+ * Note: ACF taxonomy fields surface as a connection
+ * (`primaryCategory.nodes[]`) in newer wpgraphql-acf, not a single object.
+ */
+function resolvePrimaryCategory(raw: any): { name: string; slug: string } {
+  const acfNodes = raw?.articleMeta?.primaryCategory?.nodes;
+  if (Array.isArray(acfNodes) && acfNodes.length > 0 && acfNodes[0]?.slug) {
+    return {
+      name: acfNodes[0].name || acfNodes[0].slug,
+      slug: acfNodes[0].slug,
+    };
+  }
+  const firstCat = raw?.categories?.nodes?.[0];
+  if (firstCat?.slug) {
+    return { name: firstCat.name, slug: firstCat.slug };
+  }
+  return { name: 'Uncategorized', slug: 'uncategorized' };
+}
+
 function transformArticleCard(raw: any): ArticleCard {
   return {
     id: raw.id,
     title: raw.title,
     slug: raw.slug,
     excerpt: raw.excerpt?.replace(/<[^>]*>/g, '').trim() || '',
-    date: new Date(raw.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }),
+    date: raw.date ? new Date(raw.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) : '',
+    rawDate: raw.date,
     image: raw.featuredImage?.node?.sourceUrl || '',
     imageAlt: raw.featuredImage?.node?.altText || raw.title,
-    category: {
-      name: raw.categories?.nodes?.[0]?.name || 'Uncategorized',
-      slug: raw.categories?.nodes?.[0]?.slug || 'uncategorized',
-    },
+    category: resolvePrimaryCategory(raw),
     readTime: raw.articleMeta?.readTime || 8,
+    isSticky: raw.isSticky === true,
   };
 }
 
@@ -153,6 +182,7 @@ query HomePageData {
       id
       title
       slug
+      isSticky
       excerpt
       date
       featuredImage {
@@ -169,6 +199,14 @@ query HomePageData {
       }
       articleMeta {
         readTime
+        primaryCategory {
+          nodes {
+            ... on Category {
+              name
+              slug
+            }
+          }
+        }
       }
     }
   }
@@ -188,6 +226,7 @@ query CategoryPageData($slug: ID!) {
         id
         title
         slug
+        isSticky
         excerpt
         date
         featuredImage {
@@ -196,8 +235,22 @@ query CategoryPageData($slug: ID!) {
             altText
           }
         }
+        categories {
+          nodes {
+            name
+            slug
+          }
+        }
         articleMeta {
           readTime
+          primaryCategory {
+            nodes {
+              ... on Category {
+                name
+                slug
+              }
+            }
+          }
         }
       }
       pageInfo {
@@ -254,6 +307,14 @@ query ArticlePageData($slug: ID!) {
       readTime
       dataSource
       focusKeywords
+      primaryCategory {
+        nodes {
+          ... on Category {
+            name
+            slug
+          }
+        }
+      }
     }
     quickOverviewItems {
       quickOverviewItems {
@@ -330,11 +391,25 @@ query SiteMapData {
 
 // ===== Public API =====
 
+/**
+ * Sort posts: sticky first, then most recent date.
+ * Stable: relative order of same-bucket items preserved.
+ */
+export function sortBySticky<T extends { isSticky?: boolean; rawDate?: string }>(items: T[]): T[] {
+  return [...items].sort((a, b) => {
+    const stickyDiff = (b.isSticky ? 1 : 0) - (a.isSticky ? 1 : 0);
+    if (stickyDiff !== 0) return stickyDiff;
+    const ad = a.rawDate ? Date.parse(a.rawDate) : 0;
+    const bd = b.rawDate ? Date.parse(b.rawDate) : 0;
+    return bd - ad;
+  });
+}
+
 export async function getHomePageData(): Promise<HomePageData> {
   const data = await fetchGraphQL<any>(HOME_PAGE_QUERY);
   return {
     categories: data.categories.nodes.map(transformCategory),
-    latestArticles: data.posts.nodes.map(transformArticleCard),
+    latestArticles: sortBySticky(data.posts.nodes.map(transformArticleCard)),
   };
 }
 
@@ -343,7 +418,7 @@ export async function getCategoryPageData(slug: string): Promise<CategoryPageDat
   const cat = data.category;
   return {
     category: transformCategory(cat),
-    articles: cat.posts.nodes.map(transformArticleCard),
+    articles: sortBySticky(cat.posts.nodes.map(transformArticleCard)),
     hasNextPage: cat.posts.pageInfo.hasNextPage,
     endCursor: cat.posts.pageInfo.endCursor,
   };
@@ -387,10 +462,7 @@ export async function getArticleData(slug: string): Promise<ArticleDetail> {
     content: post.content || '',
     image: post.featuredImage?.node?.sourceUrl || '',
     imageAlt: post.featuredImage?.node?.altText || post.title,
-    category: {
-      name: post.categories?.nodes?.[0]?.name || 'Uncategorized',
-      slug: post.categories?.nodes?.[0]?.slug || 'uncategorized',
-    },
+    category: resolvePrimaryCategory(post),
     tags: post.tags?.nodes?.map((t: any) => ({ name: t.name, slug: t.slug })) || [],
     lastUpdated: post.articleMeta?.lastUpdated || '',
     readTime: post.articleMeta?.readTime || 8,
@@ -475,6 +547,82 @@ query SiteConfig {
   siteConfig {
     homepageSections {
       __typename
+      ... on SiteConfigHomepageSectionsHeroLayout {
+        sectionId
+        enabled
+        headlineLine1
+        headlineHighlight
+        headlineLine2
+        trustBadge
+        searchPlaceholder
+        taglinePhrases {
+          phrase
+        }
+        pillCount
+      }
+      ... on SiteConfigHomepageSectionsHotStatsLayout {
+        sectionId
+        enabled
+        eyebrow
+        heading
+        maxCards
+        cards {
+          cardId
+          icon
+          number
+          label
+          source
+          gradient
+          enabled
+        }
+      }
+      ... on SiteConfigHomepageSectionsLatestArticlesLayout {
+        sectionId
+        enabled
+        eyebrow
+        heading
+        mode
+        count
+        viewAllHref
+        pinnedPosts {
+          nodes {
+            ... on Post {
+              slug
+            }
+          }
+        }
+        category {
+          nodes {
+            ... on Category {
+              slug
+            }
+          }
+        }
+      }
+      ... on SiteConfigHomepageSectionsBrowseCategoriesLayout {
+        sectionId
+        enabled
+        eyebrow
+        heading
+        subheading
+        visibleCategories {
+          nodes {
+            ... on Category {
+              slug
+            }
+          }
+        }
+      }
+      ... on SiteConfigHomepageSectionsNewsletterCtaLayout {
+        sectionId
+        enabled
+        pillText
+        heading
+        description
+        emailPlaceholder
+        buttonLabel
+        socialProof
+      }
     }
   }
 }
@@ -512,10 +660,10 @@ interface RawAcfHomeSection {
   mode?: 'auto-latest' | 'manual-pinned' | 'category';
   count?: number;
   viewAllHref?: string;
-  pinnedPosts?: Array<{ slug: string } | null>;
-  category?: { slug: string } | null;
+  pinnedPosts?: { nodes?: Array<{ slug: string } | null> } | null;
+  category?: { nodes?: Array<{ slug: string } | null> } | null;
   // browse-categories
-  visibleCategories?: Array<{ slug: string } | null>;
+  visibleCategories?: { nodes?: Array<{ slug: string } | null> } | null;
   // newsletter-cta
   pillText?: string;
   description?: string;
@@ -588,14 +736,14 @@ function transformSiteConfig(raw: any): SiteConfig {
           mode: s.mode || 'auto-latest',
           count: s.count,
           viewAllHref: s.viewAllHref,
-          pinnedSlugs: (s.pinnedPosts || []).filter(Boolean).map((p: any) => p.slug),
-          categorySlug: s.category?.slug,
+          pinnedSlugs: (s.pinnedPosts?.nodes || []).filter(Boolean).map((p: any) => p.slug),
+          categorySlug: s.category?.nodes?.[0]?.slug,
         });
         break;
       case 'browse-categories':
         sections.push({
           ...base,
-          visibleSlugs: (s.visibleCategories || []).filter(Boolean).map((c: any) => c.slug),
+          visibleSlugs: (s.visibleCategories?.nodes || []).filter(Boolean).map((c: any) => c.slug),
         });
         break;
       case 'newsletter-cta':
