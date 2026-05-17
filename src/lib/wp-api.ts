@@ -12,25 +12,67 @@ interface GraphQLResponse<T> {
   errors?: Array<{ message: string; locations?: Array<{ line: number; column: number }> }>;
 }
 
+/**
+ * Fetch from WPGraphQL with retry on 429 (rate limit) and 5xx.
+ * Cloudflare Pages build machines fire ~15 GraphQL requests in a few
+ * seconds, which can briefly exceed Nginx's 30r/m rate limit on the
+ * WP backend. Retrying with exponential backoff fixes flaky builds
+ * without forcing the backend to relax its rate limit.
+ */
 async function fetchGraphQL<T>(query: string, variables?: Record<string, unknown>): Promise<T> {
-  const response = await fetch(WP_API_URL, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ query, variables }),
-  });
+  const MAX_ATTEMPTS = 4;
+  let lastErr: unknown = null;
 
-  if (!response.ok) {
-    throw new Error(`WP GraphQL request failed: ${response.status} ${response.statusText}`);
+  for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
+    try {
+      const response = await fetch(WP_API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ query, variables }),
+      });
+
+      // Retry on rate-limit (429) or transient server errors (5xx)
+      if (response.status === 429 || (response.status >= 500 && response.status <= 599)) {
+        lastErr = new Error(`WP GraphQL ${response.status} ${response.statusText}`);
+        if (attempt < MAX_ATTEMPTS) {
+          // Backoff: 2s, 4s, 8s — total worst-case wait ≈ 14s for rate window to reset
+          const delayMs = 2000 * Math.pow(2, attempt - 1);
+          console.warn(`[wp-api] ${response.status}, retrying in ${delayMs}ms (attempt ${attempt}/${MAX_ATTEMPTS - 1})`);
+          await new Promise((r) => setTimeout(r, delayMs));
+          continue;
+        }
+        throw lastErr;
+      }
+
+      if (!response.ok) {
+        throw new Error(`WP GraphQL request failed: ${response.status} ${response.statusText}`);
+      }
+
+      const json: GraphQLResponse<T> = await response.json();
+
+      if (json.errors && json.errors.length > 0) {
+        console.error('GraphQL Errors:', JSON.stringify(json.errors, null, 2));
+        throw new Error(`GraphQL Error: ${json.errors[0].message}`);
+      }
+
+      return json.data;
+    } catch (err) {
+      lastErr = err;
+      // Network-level errors (timeout, DNS, connection refused) — retry too
+      const msg = err instanceof Error ? err.message : String(err);
+      const isNetworkError = msg.includes('fetch failed') || msg.includes('ECONN') || msg.includes('timeout');
+      if (isNetworkError && attempt < MAX_ATTEMPTS) {
+        const delayMs = 2000 * Math.pow(2, attempt - 1);
+        console.warn(`[wp-api] network error, retrying in ${delayMs}ms (attempt ${attempt}/${MAX_ATTEMPTS - 1}): ${msg}`);
+        await new Promise((r) => setTimeout(r, delayMs));
+        continue;
+      }
+      // Non-retriable (GraphQL schema error, etc.) — throw immediately
+      throw err;
+    }
   }
 
-  const json: GraphQLResponse<T> = await response.json();
-
-  if (json.errors && json.errors.length > 0) {
-    console.error('GraphQL Errors:', JSON.stringify(json.errors, null, 2));
-    throw new Error(`GraphQL Error: ${json.errors[0].message}`);
-  }
-
-  return json.data;
+  throw lastErr ?? new Error('WP GraphQL: exhausted retries');
 }
 
 // ===== Type Definitions =====
