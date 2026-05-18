@@ -7,11 +7,38 @@
 //   3. Load the built _astro CSS and confirm each animation @keyframes
 //      block + the reduced-motion override block are present.
 
-import { readFileSync, readdirSync } from 'node:fs';
+import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 
 const HOME = readFileSync('dist/index.html', 'utf8');
-const ARTICLE = readFileSync('dist/analytics/saas-market-size-statistics/index.html', 'utf8');
+
+// Auto-discover a representative article page so the script doesn't
+// break when WP slugs change (e.g. Phase 1 -> Phase 1+content uplift
+// added a `-2026` suffix).
+function findRepresentativeArticle() {
+  const candidates = ['analytics', 'crm', 'ecommerce', 'marketing', 'security', 'communication', 'project-management', 'hr'];
+  for (const cat of candidates) {
+    const catDir = join('dist', cat);
+    if (!existsSync(catDir)) continue;
+    const slugs = readdirSync(catDir, { withFileTypes: true })
+      .filter((d) => d.isDirectory())
+      .map((d) => d.name)
+      .sort();
+    for (const slug of slugs) {
+      const f = join(catDir, slug, 'index.html');
+      if (existsSync(f)) return f;
+    }
+  }
+  return null;
+}
+
+const articlePath = findRepresentativeArticle();
+if (!articlePath) {
+  console.error('❌ Could not locate any article HTML in dist/. Run `npm run build` first.');
+  process.exit(2);
+}
+console.log(`(Auditing article page: ${articlePath})`);
+const ARTICLE = readFileSync(articlePath, 'utf8');
 
 // Load the bundled CSS file (Astro emits one or two _astro/*.css chunks).
 const cssDir = 'dist/_astro';
