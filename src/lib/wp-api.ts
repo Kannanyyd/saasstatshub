@@ -155,6 +155,50 @@ export interface CategoryPageData {
 // Transform raw WPGraphQL response into clean frontend types
 
 /**
+ * Clean a WordPress excerpt for display in cards / meta tags.
+ *
+ * WP `excerpt` is HTML and can contain:
+ *   1. <p>...</p> wrapper plus <a class="read-more">…</a> auto-link
+ *   2. The "read more" anchor text follows the WP site language. While
+ *      the site language remains zh_CN (a known backend cleanup item in
+ *      04-backend-progress-and-plan.md §二.C), this comes through as
+ *      "阅读更多". Even after switching to en_US, the auto-anchor still
+ *      adds noise we don't want in card excerpts.
+ *   3. Numeric HTML entities like &#8230; (…), &#038; (&), &#8217; (')
+ *      that browsers render fine inside HTML but show literally when
+ *      the excerpt is dropped into a `<p>{excerpt}</p>` JSX expression.
+ *
+ * Order: strip read-more anchor → strip remaining tags → decode entities → trim.
+ */
+function cleanExcerpt(raw: unknown): string {
+  if (typeof raw !== 'string' || !raw) return '';
+  return raw
+    // Drop the WP-auto-generated "read more" anchor (handles English + zh_CN)
+    .replace(/<a[^>]*class="[^"]*read-more[^"]*"[^>]*>[\s\S]*?<\/a>/gi, '')
+    // Strip remaining HTML tags
+    .replace(/<[^>]*>/g, '')
+    // Decode HTML entities
+    .replace(/&#(\d+);/g, (_, code) => String.fromCodePoint(parseInt(code, 10)))
+    .replace(/&#x([0-9a-fA-F]+);/g, (_, code) => String.fromCodePoint(parseInt(code, 16)))
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"')
+    .replace(/&#039;/g, "'")
+    .replace(/&apos;/g, "'")
+    .replace(/&hellip;/g, '…')
+    .replace(/&nbsp;/g, ' ')
+    .replace(/&mdash;/g, '—')
+    .replace(/&ndash;/g, '–')
+    // Strip any stray "Read more" / "阅读更多" tail that wasn't inside the
+    // read-more anchor (some WP themes emit them as plain text)
+    .replace(/\s*(?:Read more|Continue reading|阅读更多)\s*$/i, '')
+    // Collapse whitespace
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+/**
  * Resolve a post's "primary category" — the one that determines its URL.
  *
  * Priority:
@@ -185,7 +229,7 @@ function transformArticleCard(raw: any): ArticleCard {
     id: raw.id,
     title: raw.title,
     slug: raw.slug,
-    excerpt: raw.excerpt?.replace(/<[^>]*>/g, '').trim() || '',
+    excerpt: cleanExcerpt(raw.excerpt),
     date: raw.date ? new Date(raw.date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) : '',
     rawDate: raw.date,
     image: raw.featuredImage?.node?.sourceUrl || '',
@@ -500,7 +544,7 @@ export async function getArticleData(slug: string): Promise<ArticleDetail> {
     slug: post.slug,
     date: post.date,
     modified: post.modified,
-    excerpt: post.excerpt?.replace(/<[^>]*>/g, '').trim() || '',
+    excerpt: cleanExcerpt(post.excerpt),
     content: post.content || '',
     image: post.featuredImage?.node?.sourceUrl || '',
     imageAlt: post.featuredImage?.node?.altText || post.title,
