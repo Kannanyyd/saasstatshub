@@ -304,9 +304,11 @@ body {
 
 /* ===== Glass Effect ===== */
 .glass {
-  background: rgba(15,23,42,0.72);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  /* Used by sticky header. 95% opaque so scrolling content underneath
+     does NOT show through (Phase 1 had 72% which leaked text). */
+  background: rgba(10, 15, 31, 0.95);
+  backdrop-filter: blur(14px) saturate(180%);
+  -webkit-backdrop-filter: blur(14px) saturate(180%);
 }
 
 .glass-dark {
