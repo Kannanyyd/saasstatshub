@@ -1,4 +1,18 @@
 ---
+/**
+ * Table-of-Contents component (TWO modes).
+ *
+ * Pass `variant="mobile"` to render the collapsible <details> version
+ * intended for narrow viewports (article body, above the fold).
+ *
+ * Pass `variant="desktop"` (default) to render the sidebar nav version
+ * for wide viewports.
+ *
+ * The article layout decides which one to render via Tailwind responsive
+ * wrappers, so the visibility logic lives outside this component. That
+ * avoids the cascade-order surprise where a single component renders BOTH
+ * variants and one of them slips through `md:hidden`/`md:block`.
+ */
 import Icon from './Icon.astro';
 
 interface TOCItem {
@@ -8,29 +22,32 @@ interface TOCItem {
 
 interface Props {
   items: TOCItem[];
+  variant?: 'mobile' | 'desktop';
 }
 
-const { items } = Astro.props;
+const { items, variant = 'desktop' } = Astro.props;
 ---
 
-<details class="toc-mobile md:hidden">
-  <summary class="flex items-center gap-2">
-    <Icon name="list" aria-hidden="true" class="w-4 h-4" />
-    Table of Contents
-  </summary>
-  <div class="toc-list">
+{variant === 'mobile' ? (
+  <details class="toc-mobile">
+    <summary class="flex items-center gap-2">
+      <Icon name="list" aria-hidden="true" class="w-4 h-4" />
+      Table of Contents
+    </summary>
+    <div class="toc-list">
+      {items.map((item) => (
+        <a href={`#${item.id}`}>{item.text}</a>
+      ))}
+    </div>
+  </details>
+) : (
+  <nav class="toc" aria-label="Table of contents">
+    <h3 class="text-sm font-bold mb-3 flex items-center gap-2">
+      <Icon name="list" aria-hidden="true" class="w-4 h-4" />
+      Table of Contents
+    </h3>
     {items.map((item) => (
       <a href={`#${item.id}`}>{item.text}</a>
     ))}
-  </div>
-</details>
-
-<nav class="toc hidden md:block" aria-label="Table of contents">
-  <h3 class="text-sm font-bold mb-3 flex items-center gap-2">
-    <Icon name="list" aria-hidden="true" class="w-4 h-4" />
-    Table of Contents
-  </h3>
-  {items.map((item) => (
-    <a href={`#${item.id}`}>{item.text}</a>
-  ))}
-</nav>
+  </nav>
+)}

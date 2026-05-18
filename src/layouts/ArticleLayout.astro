@@ -154,8 +154,12 @@ const breadcrumbSchema = {
           <CoverImage title={title} category={category} />
         </div>
 
-        <!-- Mobile TOC -->
-        {tocItems.length > 0 && <TOC items={tocItems} />}
+        <!-- Mobile TOC (only visible below md breakpoint) -->
+        {tocItems.length > 0 && (
+          <div class="md:hidden">
+            <TOC items={tocItems} variant="mobile" />
+          </div>
+        )}
 
         <!-- Quick Overview -->
         {overviewItems.length > 0 && <QuickOverview items={overviewItems} />}
@@ -180,7 +184,7 @@ const breadcrumbSchema = {
       <!-- Desktop Sidebar -->
       <aside class="hidden md:block w-[340px] shrink-0">
         <div class="sticky top-20 space-y-6">
-          {tocItems.length > 0 && <TOC items={tocItems} />}
+          {tocItems.length > 0 && <TOC items={tocItems} variant="desktop" />}
           <Newsletter />
         </div>
       </aside>
