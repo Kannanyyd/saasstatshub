@@ -43,3 +43,5 @@ baseline/baseline-*.html
 baseline/baseline-*.json
 baseline/lh-*.report.json
 baseline/lh-*.report.html
+page-css3.css
+page-css*.css
