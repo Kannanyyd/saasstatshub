@@ -1,8 +1,24 @@
 ---
+/**
+ * Breadcrumb with optional Lucide icon support per crumb.
+ *
+ * Phase 2.1 adds the optional `iconName?` field per crumb (Req 2.5–2.6, 2.11).
+ * Existing call sites (homepage, category page) pass crumbs without
+ * iconName and continue to render byte-identically to their pre-phase
+ * output. Only ArticleLayout opts in by setting iconName on the
+ * category crumb (resolved via metaFor()).
+ */
 import Icon from './Icon.astro';
 
+interface Crumb {
+  label: string;
+  href?: string;
+  /** Phase 2.1: Lucide icon name to render immediately before the label. Decorative. */
+  iconName?: string;
+}
+
 interface Props {
-  crumbs: { label: string; href?: string }[];
+  crumbs: Crumb[];
 }
 
 const { crumbs } = Astro.props;
@@ -12,10 +28,25 @@ const { crumbs } = Astro.props;
   {crumbs.map((crumb, i) => (
     <>
       {i > 0 && <Icon name="chevron-right" aria-hidden="true" class="w-3 h-3 mx-1.5 opacity-60" />}
-      {crumb.href
-        ? <a href={crumb.href}>{crumb.label}</a>
-        : <span class="text-text-secondary">{crumb.label}</span>
-      }
+      {crumb.href ? (
+        crumb.iconName ? (
+          <a href={crumb.href} class="inline-flex items-center gap-1.5">
+            <Icon name={crumb.iconName} aria-hidden="true" class="w-4 h-4 text-text-secondary shrink-0" />
+            <span>{crumb.label}</span>
+          </a>
+        ) : (
+          <a href={crumb.href}>{crumb.label}</a>
+        )
+      ) : (
+        crumb.iconName ? (
+          <span class="text-text-secondary inline-flex items-center gap-1.5">
+            <Icon name={crumb.iconName} aria-hidden="true" class="w-4 h-4 text-text-secondary shrink-0" />
+            <span>{crumb.label}</span>
+          </span>
+        ) : (
+          <span class="text-text-secondary">{crumb.label}</span>
+        )
+      )}
     </>
   ))}
 </nav>

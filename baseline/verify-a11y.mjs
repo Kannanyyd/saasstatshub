@@ -111,6 +111,13 @@ check(`Footer muted text-muted ≥ 3.0 vs surface`,
   contrast(TOKENS.textMuted, TOKENS.surface) >= 3.0,
   `${contrast(TOKENS.textMuted, TOKENS.surface).toFixed(2)}:1`);
 
+console.log('\n=== Phase 2.1 Breadcrumb category icon contrast (Req 2.11) ===');
+// Crumb-2 Lucide icon stroke uses --color-text-secondary; non-text UI
+// component contrast floor per WCAG_AA is 3:1 vs the page background.
+check(`Breadcrumb crumb-2 icon stroke (--color-text-secondary) ≥ 3.0 vs --color-bg`,
+  contrast(TOKENS.textSecondary, TOKENS.bg) >= 3.0,
+  `${contrast(TOKENS.textSecondary, TOKENS.bg).toFixed(2)}:1`);
+
 // ---------- DOM attribute audit ----------
 console.log('\n=== Icon a11y (Reqs 4.7, 4.8) — homepage ===');
 const allSvgs = [...HOME.matchAll(/<svg\b[^>]*>/g)].map((m) => m[0]);

@@ -7,6 +7,10 @@ import KeyTakeaways from '../components/KeyTakeaways.astro';
 import Sources from '../components/Sources.astro';
 import Newsletter from '../components/Newsletter.astro';
 import CoverImage from '../components/CoverImage.astro';
+import RelatedArticles from '../components/RelatedArticles.astro';
+import { metaFor } from '../lib/constants';
+import { buildDatasetSchema } from '../lib/dataset-schema';
+import type { ArticleCard } from '../lib/wp-api';
 
 interface OverviewItem {
   label: string;
@@ -38,6 +42,12 @@ interface Props {
   sources?: Source[];
   tocItems?: TocItem[];
   ogImage?: string;
+  /** Phase 2.1: focus-keywords pass-through for Dataset.keywords. */
+  focusKeywords?: string;
+  /** Phase 2.1: lastUpdated pass-through for Dataset.temporalCoverage. */
+  lastUpdated?: string;
+  /** Phase 2.1: resolved Related Articles tiles (3 or 4 entries; <3 → don't render). */
+  relatedTiles?: ArticleCard[];
 }
 
 const {
@@ -53,6 +63,9 @@ const {
   sources = [],
   tocItems = [],
   ogImage,
+  focusKeywords = '',
+  lastUpdated = '',
+  relatedTiles = [],
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
@@ -114,6 +127,20 @@ const breadcrumbSchema = {
     { "@type": "ListItem", position: 3, name: title, item: canonicalURL },
   ],
 };
+
+// Phase 2.1: Schema.org Dataset (third JSON-LD block, after Article + BreadcrumbList)
+const datasetSchema = buildDatasetSchema({
+  title,
+  cleanExcerpt: description,
+  canonicalURL,
+  siteOrigin,
+  focusKeywords,
+  lastUpdated,
+  quickOverview: overviewItems.map((it) => ({ statLabel: it.label, statValue: it.value })),
+});
+
+// Phase 2.1: resolve category icon for the breadcrumb (Req 2.5, 2.12)
+const categoryMeta = metaFor(category, categorySlug);
 ---
 
 <BaseLayout title={title} description={description} canonicalURL={canonicalURL} ogImage={ogImage} ogType="article">
@@ -124,15 +151,16 @@ const breadcrumbSchema = {
        class="fixed left-0 top-16 right-0 h-[2px] origin-left z-40 bg-gradient-to-r from-cyan-400 via-blue-500 to-violet-500"
        style="transform: scaleX(0); transition: transform 80ms linear;"></div>
 
-  <!-- Structured Data -->
+  <!-- Structured Data: Article → BreadcrumbList → Dataset (Req 3.14) -->
   <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(datasetSchema)} />
 
   <div class="max-w-[1200px] mx-auto px-6 py-8">
-    <!-- Breadcrumb -->
+    <!-- Breadcrumb (Phase 2.1: category crumb gets a Lucide icon) -->
     <Breadcrumb crumbs={[
       { label: 'Home', href: '/' },
-      { label: category, href: `/categories/${categorySlug}/` },
+      { label: category, href: `/categories/${categorySlug}/`, iconName: categoryMeta.iconName },
       { label: title },
     ]} />
 
@@ -174,6 +202,9 @@ const breadcrumbSchema = {
 
         <!-- Sources -->
         {sources.length > 0 && <Sources sources={sources} />}
+
+        <!-- Phase 2.1: Related Articles (between Sources and bottom Newsletter) -->
+        {relatedTiles.length >= 3 && <RelatedArticles tiles={relatedTiles} />}
 
         <!-- Bottom Newsletter -->
         <div class="mt-8">

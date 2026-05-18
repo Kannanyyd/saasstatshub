@@ -1,0 +1,52 @@
+---
+/**
+ * Phase 2.1 — Related Articles section.
+ *
+ * Renders a heading + responsive grid of 3 or 4 ArticleCard tiles.
+ * NEVER renders an empty state — the caller (ArticleLayout) is
+ * responsible for not mounting this component when the resolved tile
+ * count is < 3.
+ *
+ * Reqs: 1.1, 1.2, 1.12, 1.13, 1.14, 1.15
+ */
+import ArticleCard from './ArticleCard.astro';
+import type { ArticleCard as ArticleCardType } from '../lib/wp-api';
+
+interface Props {
+  tiles: ArticleCardType[];
+}
+
+const { tiles } = Astro.props;
+
+// Defense-in-depth: even if a caller violates the contract, we never
+// render below the threshold (Req 1.7).
+const renderable = tiles.length >= 3 ? tiles.slice(0, 4) : [];
+
+// Req 1.13: 1-col / 2-col / N-col grid where N matches tile count
+const lgCols = renderable.length === 4 ? 'lg:grid-cols-4' : 'lg:grid-cols-3';
+---
+
+{renderable.length >= 3 && (
+  <section
+    class="related-articles mt-12 pt-8 border-t border-border"
+    aria-labelledby="related-articles-heading"
+  >
+    <h2 id="related-articles-heading" class="font-section-heading text-2xl mb-6">
+      Related Articles
+    </h2>
+    <div class={`grid grid-cols-1 sm:grid-cols-2 ${lgCols} gap-6`}>
+      {renderable.map((tile) => (
+        <ArticleCard
+          title={tile.title}
+          slug={tile.slug}
+          excerpt={tile.excerpt}
+          date={tile.date}
+          readTime={`${tile.readTime} min`}
+          category={tile.category.name}
+          categorySlug={tile.category.slug}
+          image={tile.image}
+        />
+      ))}
+    </div>
+  </section>
+)}

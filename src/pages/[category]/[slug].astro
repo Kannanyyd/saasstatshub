@@ -1,7 +1,13 @@
 ---
 import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import '../../styles/global.css';
-import { getArticleData, getAllArticleSlugs, type ArticleDetail } from '../../lib/wp-api';
+import {
+  getArticleData,
+  getAllArticleSlugs,
+  getRecentArticlesAcrossCategories,
+  type ArticleDetail,
+} from '../../lib/wp-api';
+import { resolveRelatedTiles } from '../../lib/related';
 import { mockArticleDetail } from '../../data/mock-data';
 import { CATEGORIES } from '../../lib/constants';
 import { withDropCap } from '../../lib/dropcap';
@@ -67,6 +73,17 @@ const overviewItems = article.quickOverview.map((item) => ({
 const takeaways = article.keyTakeaways.map((item) => item.takeawayText);
 const sources = parseSources(article.dataSource);
 const tocItems = buildTocItems(article.content, takeaways.length > 0, sources);
+
+// Phase 2.1: resolve Related Articles tiles
+// Cross-cat pool is module-level memoized in wp-api.ts so this fires
+// at most once per build across all 25 article-page renders.
+const crossCategoryPool = await getRecentArticlesAcrossCategories();
+const relatedTiles = resolveRelatedTiles({
+  sameCategory: article.relatedArticles,
+  crossCategoryPool,
+  currentArticleId: article.id,
+  currentPrimaryCategorySlug: article.category.slug,
+});
 ---
 
 <ArticleLayout
@@ -82,6 +99,9 @@ const tocItems = buildTocItems(article.content, takeaways.length > 0, sources);
   sources={sources}
   tocItems={tocItems}
   ogImage={article.image}
+  focusKeywords={article.focusKeywords}
+  lastUpdated={article.lastUpdated}
+  relatedTiles={relatedTiles}
 >
   <Fragment set:html={withDropCap(article.content)} />
 </ArticleLayout>

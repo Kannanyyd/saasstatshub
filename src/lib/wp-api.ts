@@ -912,3 +912,44 @@ export async function getPostsBySlugs(slugs: string[]): Promise<ArticleCard[]> {
     return [];
   }
 }
+
+// ============================================================
+// Phase 2.1 — Cross-category Recent Articles pool (additive export)
+// ============================================================
+
+let _crossCatPromise: Promise<ArticleCard[]> | null = null;
+
+/**
+ * Cross-category Recent Articles pool used by the Phase 2.1 Related
+ * Articles module to top-up tiles when same-category candidates are sparse.
+ *
+ * Reuses HOME_PAGE_QUERY byte-identical (no new query, no new
+ * selection-set field — Req 5.9). Returns the existing posts(first: 15)
+ * window transformed via transformArticleCard, sorted sticky-first then
+ * by date desc.
+ *
+ * Memoized: subsequent calls within the same Astro build return the
+ * cached Promise so we never fire >1 cross-cat fetch per build, even
+ * across the 25 article-page renders in getStaticPaths.
+ *
+ * On fetch failure: console.warn + return [] (graceful degradation).
+ * The build still succeeds; degraded to same-cat-only fill, which
+ * obeys Req 1.7 hide-when-<3.
+ */
+export function getRecentArticlesAcrossCategories(): Promise<ArticleCard[]> {
+  if (!_crossCatPromise) {
+    _crossCatPromise = (async () => {
+      try {
+        const data = await fetchGraphQL<any>(HOME_PAGE_QUERY);
+        return sortBySticky(data.posts.nodes.map(transformArticleCard));
+      } catch (err) {
+        console.warn(
+          '[wp-api] getRecentArticlesAcrossCategories failed; falling back to []:',
+          err instanceof Error ? err.message : err
+        );
+        return [];
+      }
+    })();
+  }
+  return _crossCatPromise;
+}
