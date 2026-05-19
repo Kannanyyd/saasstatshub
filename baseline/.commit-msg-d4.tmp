@@ -1,0 +1,53 @@
+refactor(d4): drop legacy articleMeta.dataSource — switch Sources to ACF Repeater
+
+D4 follow-up. The articleMeta.dataSource (text field, semicolon-separated)
+was the v1.0 fallback for article sources. The ACF Repeater
+sources.sources[].{name,title,date,url} has been live for a while but
+[category]/[slug].astro was still parsing dataSource via parseSources()
+instead of reading article.sources directly.
+
+Backend has confirmed they're ready to remove the dataSource ACF field
+once the front-end stops querying it. This commit removes the front-end
+side. Backend can now mark the field disabled / drop it from ACF.
+
+CHANGES (3 files, -18 / +1)
+
+  src/lib/wp-api.ts
+    - removed dataSource: string from ArticleDetail interface
+    - removed dataSource line from ARTICLE_PAGE_QUERY (no other queries touched)
+    - removed dataSource: post.articleMeta?.dataSource || '' from getArticleData
+
+  src/pages/[category]/[slug].astro
+    - removed parseSources() helper (12 lines of legacy text-split logic)
+    - changed: const sources = parseSources(article.dataSource)
+              -> const sources = article.sources
+
+  src/data/mock-data.ts
+    - removed dataSource line from mockArticleDetail (was already obsolete)
+
+PRODUCTION IMPACT (verified locally)
+
+  Salesforce article Sources block now uses ACF Repeater data (6 items
+  with full name/title/date from the backend), replacing the previous
+  semicolon-parsed text field. Visible improvement: each source carries
+  a publication date instead of just the publisher name.
+
+VERIFICATION (all green)
+
+  npm run test:phase1                          87/87
+  node baseline/verify-animations.mjs           31/31
+  node baseline/verify-a11y.mjs                 17/17
+  node baseline/verify-bundle.mjs                7/7
+  node baseline/verify-related.mjs              72/72
+  node baseline/verify-phase23-internal-links.mjs    5/5
+  node baseline/verify-faq.mjs                  49/49
+  TOTAL                                       268/268
+
+BACKEND HANDOFF
+
+  After CF Pages deploys this commit, the dataSource field is no longer
+  in any GraphQL query the front-end emits. Backend can safely:
+  1. Mark articleMeta.dataSource ACF field as disabled (recommended first
+     step), or
+  2. Drop the field entirely + clean up post_meta entries
+  Either path will not affect the front-end build.

@@ -12,19 +12,6 @@ import { mockArticleDetail } from '../../data/mock-data';
 import { CATEGORIES } from '../../lib/constants';
 import { withDropCap } from '../../lib/dropcap';
 
-function parseSources(dataSource: string) {
-  if (!dataSource) return [];
-  return dataSource.split(';').map((s, i) => {
-    const parts = s.trim().split(',');
-    return {
-      name: parts[0]?.trim() || `Source ${i + 1}`,
-      title: parts.slice(1).join(',').trim() || '',
-      date: '',
-      url: '#',
-    };
-  });
-}
-
 function buildTocItems(html: string, hasTakeaways: boolean, sourceList: Array<any>): Array<{ id: string; text: string }> {
   const items: Array<{ id: string; text: string }> = [];
   const regex = /<h2\s+id="([^"]*)"[^>]*>([^<]*)<\/h2>/g;
@@ -71,7 +58,7 @@ const overviewItems = article.quickOverview.map((item) => ({
 }));
 
 const takeaways = article.keyTakeaways.map((item) => item.takeawayText);
-const sources = parseSources(article.dataSource);
+const sources = article.sources;
 const tocItems = buildTocItems(article.content, takeaways.length > 0, sources);
 
 // Phase 2.1: resolve Related Articles tiles

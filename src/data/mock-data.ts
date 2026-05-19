@@ -115,7 +115,6 @@ export const mockArticleDetail: ArticleDetail = {
   ],
   lastUpdated: 'May 14, 2026',
   readTime: 15,
-  dataSource: 'Gartner, Jan 2026; Statista, Mar 2026',
   focusKeywords: 'saas market size, saas statistics, saas growth rate',
   quickOverview: [
     { statLabel: 'Global SaaS Market Size (2026)', statValue: '$232 Billion' },

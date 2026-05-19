@@ -136,7 +136,6 @@ export interface ArticleDetail {
   tags: Array<{ name: string; slug: string }>;
   lastUpdated: string;
   readTime: number;
-  dataSource: string;
   focusKeywords: string;
   quickOverview: QuickOverviewItem[];
   keyTakeaways: KeyTakeaway[];
@@ -397,7 +396,6 @@ query ArticlePageData($slug: ID!) {
     articleMeta {
       lastUpdated
       readTime
-      dataSource
       focusKeywords
       primaryCategory {
         nodes {
@@ -564,7 +562,6 @@ export async function getArticleData(slug: string): Promise<ArticleDetail> {
     tags: post.tags?.nodes?.map((t: any) => ({ name: t.name, slug: t.slug })) || [],
     lastUpdated: post.articleMeta?.lastUpdated || '',
     readTime: post.articleMeta?.readTime || 8,
-    dataSource: post.articleMeta?.dataSource || '',
     focusKeywords: post.articleMeta?.focusKeywords || '',
     quickOverview: post.quickOverviewItems?.quickOverviewItems?.map((item: any) => ({
       statLabel: item.statLabel,
