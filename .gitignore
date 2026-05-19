@@ -45,3 +45,8 @@ baseline/lh-*.report.json
 baseline/lh-*.report.html
 page-css3.css
 page-css*.css
+
+# Local commit-message scratch files (used by the agent to build multi-line
+# commit messages without escaping issues; never meant to be tracked).
+baseline/.commit-msg-*.tmp
+.commit-msg-*.tmp
