@@ -182,7 +182,7 @@ const faqPageSchema = buildFaqPageSchema(faqItems);
         <!-- Title -->
         <h1 class="font-display-lg text-3xl md:text-4xl font-bold mb-4" data-pagefind-meta="title">{title}</h1>
         <div class="flex items-center gap-4 text-sm text-text-muted mb-6">
-          <span>Updated: {dateModified || datePublished}</span>
+          <span>Updated: {new Date(dateModified || datePublished).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</span>
           <span>·</span>
           <span>{readTime} read</span>
           <span>·</span>
