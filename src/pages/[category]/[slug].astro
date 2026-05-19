@@ -14,14 +14,28 @@ import { withDropCap } from '../../lib/dropcap';
 
 function buildTocItems(html: string, hasTakeaways: boolean, sourceList: Array<any>): Array<{ id: string; text: string }> {
   const items: Array<{ id: string; text: string }> = [];
-  const regex = /<h2\s+id="([^"]*)"[^>]*>([^<]*)<\/h2>/g;
+  // Match all <h2> tags — with or without id attribute
+  const regex = /<h2(?:\s+[^>]*)?>([^<]*)<\/h2>/g;
   let match;
   while ((match = regex.exec(html)) !== null) {
-    items.push({ id: match[1], text: match[2] });
+    const text = match[1].trim();
+    if (!text) continue;
+    // Extract existing id if present, otherwise generate a slug
+    const idMatch = match[0].match(/id="([^"]*)"/);
+    const id = idMatch ? idMatch[1] : text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    items.push({ id, text });
   }
   if (hasTakeaways) items.push({ id: 'key-takeaways', text: 'Key Takeaways' });
   if (sourceList.length > 0) items.push({ id: 'sources', text: 'Sources' });
   return items;
+}
+
+/** Inject id attributes into <h2> tags that don't have one, so TOC anchor links work. */
+function injectH2Ids(html: string): string {
+  return html.replace(/<h2(?![^>]*\bid=)([^>]*)>([^<]*)<\/h2>/g, (_match, attrs, text) => {
+    const id = text.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    return `<h2 id="${id}"${attrs}>${text}</h2>`;
+  });
 }
 
 export async function getStaticPaths() {
@@ -91,5 +105,5 @@ const relatedTiles = resolveRelatedTiles({
   relatedTiles={relatedTiles}
   faqItems={article.faqItems}
 >
-  <Fragment set:html={withDropCap(article.content)} />
+  <Fragment set:html={withDropCap(injectH2Ids(article.content))} />
 </ArticleLayout>
