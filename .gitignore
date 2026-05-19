@@ -50,3 +50,8 @@ page-css*.css
 # commit messages without escaping issues; never meant to be tracked).
 baseline/.commit-msg-*.tmp
 .commit-msg-*.tmp
+
+# Archived Lighthouse reports and historical snapshots (large binary-like JSON/HTML).
+# Active verify-*.mjs scripts stay tracked; these archives are reference-only.
+baseline/archive-lighthouse-reports/
+baseline/archive-snapshots/
