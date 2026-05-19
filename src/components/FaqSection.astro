@@ -1,0 +1,45 @@
+---
+/**
+ * Phase 2.2 — FAQ accordion section.
+ *
+ * Renders a heading + a list of native HTML5 <details><summary> items.
+ * NEVER renders an empty state — caller (ArticleLayout) is responsible
+ * for not mounting this component when items.length < 1.
+ *
+ * Reqs: 3.1, 3.3-3.10
+ */
+import { filterFaqItems, type FaqItem } from '../lib/faq-schema';
+
+interface Props {
+  items: FaqItem[];
+}
+
+const { items } = Astro.props;
+
+// Defense-in-depth: same trim/skip rule as faq-schema.ts so visible
+// content matches the JSON-LD byte-for-byte (Req 3.8).
+const renderable = filterFaqItems(items);
+---
+
+{renderable.length > 0 && (
+  <section
+    class="faq-section mt-12 pt-8 border-t border-border"
+    aria-labelledby="faq-section-heading"
+  >
+    <h2 id="faq-section-heading" class="font-section-heading text-2xl mb-6">
+      Frequently Asked Questions
+    </h2>
+    <div class="space-y-3">
+      {renderable.map((item) => (
+        <details class="faq-item bg-surface rounded-lg border border-border overflow-hidden">
+          <summary class="cursor-pointer font-semibold p-4 select-none hover:bg-surface-elevated transition-colors">
+            {item.question}
+          </summary>
+          <div class="px-4 pb-4 pt-1 text-text-secondary leading-relaxed">
+            {item.answer}
+          </div>
+        </details>
+      ))}
+    </div>
+  </section>
+)}

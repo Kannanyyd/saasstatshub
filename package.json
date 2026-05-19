@@ -11,7 +11,7 @@
     "build": "astro build && pagefind --site dist",
     "preview": "astro preview",
     "astro": "astro",
-    "test:phase1": "node --test --experimental-strip-types \"src/lib/sparkline.test.mjs\" \"src/lib/dropcap.test.mjs\" \"src/lib/related.test.mjs\" \"src/lib/dataset-schema.test.mjs\""
+    "test:phase1": "node --test --experimental-strip-types \"src/lib/sparkline.test.mjs\" \"src/lib/dropcap.test.mjs\" \"src/lib/related.test.mjs\" \"src/lib/dataset-schema.test.mjs\" \"src/lib/faq-schema.test.mjs\""
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.2",

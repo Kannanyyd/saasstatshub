@@ -102,6 +102,7 @@ const relatedTiles = resolveRelatedTiles({
   focusKeywords={article.focusKeywords}
   lastUpdated={article.lastUpdated}
   relatedTiles={relatedTiles}
+  faqItems={article.faqItems}
 >
   <Fragment set:html={withDropCap(article.content)} />
 </ArticleLayout>

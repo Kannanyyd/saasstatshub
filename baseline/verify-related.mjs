@@ -79,16 +79,29 @@ let firstArticleSample = null;
 for (const a of articles) {
   const html = readFileSync(a.path, 'utf8');
   const blocks = extractLdJson(html);
-  // BaseLayout adds Organization on every page (1 block) before ArticleLayout adds 3.
-  // We only assert that the LAST 3 are Article → BreadcrumbList → Dataset, and
-  // the total count is at least 4 (Organization + 3 Article-Layout blocks).
+  // BaseLayout adds Organization on every page (1 block) before ArticleLayout adds 3 or 4.
+  // After Phase 2.2: articles can have 4 (Article + Breadcrumb + Dataset + FAQPage) or
+  //                  3 (Article + Breadcrumb + Dataset) if no FAQ items.
+  // We check that Article + BreadcrumbList + Dataset are always present in that order
+  // among the last 3 OR 4 blocks, and FAQPage (when present) is the very last.
   const types = blocks.map((b) => (b && (b['@type'] || b['@graph']?.[0]?.['@type'])) || 'unknown');
+  const last4 = types.slice(-4);
   const last3 = types.slice(-3);
-  check(
-    `[${a.category}] last 3 JSON-LD blocks are Article → BreadcrumbList → Dataset`,
-    last3.length === 3 && last3[0] === 'Article' && last3[1] === 'BreadcrumbList' && last3[2] === 'Dataset',
-    `actual: ${JSON.stringify(types)}`,
-  );
+  const hasFaq = types.includes('FAQPage');
+
+  if (hasFaq) {
+    check(
+      `[${a.category}] last 4 JSON-LD blocks are Article → BreadcrumbList → Dataset → FAQPage`,
+      last4.length === 4 && last4[0] === 'Article' && last4[1] === 'BreadcrumbList' && last4[2] === 'Dataset' && last4[3] === 'FAQPage',
+      `actual: ${JSON.stringify(types)}`,
+    );
+  } else {
+    check(
+      `[${a.category}] last 3 JSON-LD blocks are Article → BreadcrumbList → Dataset (no FAQ)`,
+      last3.length === 3 && last3[0] === 'Article' && last3[1] === 'BreadcrumbList' && last3[2] === 'Dataset',
+      `actual: ${JSON.stringify(types)}`,
+    );
+  }
 
   // Dataset block shape (Reqs 3.2, 3.8, 3.9, 3.10)
   const datasetBlock = blocks[blocks.length - 1];

@@ -117,6 +117,11 @@ export interface SourceItem {
   url?: string;
 }
 
+export interface FaqItem {
+  question: string;
+  answer: string;
+}
+
 export interface ArticleDetail {
   id: string;
   title: string;
@@ -137,6 +142,7 @@ export interface ArticleDetail {
   keyTakeaways: KeyTakeaway[];
   sources: SourceItem[];
   relatedArticles: ArticleCard[];
+  faqItems: FaqItem[];
 }
 
 export interface HomePageData {
@@ -421,6 +427,12 @@ query ArticlePageData($slug: ID!) {
         url
       }
     }
+    faq {
+      faq {
+        question
+        answer
+      }
+    }
   }
 }
 `;
@@ -568,6 +580,10 @@ export async function getArticleData(slug: string): Promise<ArticleDetail> {
       url: s.url,
     })) || [],
     relatedArticles: relatedArticles.slice(0, 4),
+    faqItems: post.faq?.faq?.map((item: any) => ({
+      question: typeof item?.question === 'string' ? item.question : '',
+      answer: typeof item?.answer === 'string' ? item.answer : '',
+    })) || [],
   };
 }
 

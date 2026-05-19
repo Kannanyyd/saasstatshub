@@ -8,9 +8,12 @@ import Sources from '../components/Sources.astro';
 import Newsletter from '../components/Newsletter.astro';
 import CoverImage from '../components/CoverImage.astro';
 import RelatedArticles from '../components/RelatedArticles.astro';
+import FaqSection from '../components/FaqSection.astro';
 import { metaFor } from '../lib/constants';
 import { buildDatasetSchema } from '../lib/dataset-schema';
+import { buildFaqPageSchema } from '../lib/faq-schema';
 import type { ArticleCard } from '../lib/wp-api';
+import type { FaqItem } from '../lib/faq-schema';
 
 interface OverviewItem {
   label: string;
@@ -48,6 +51,8 @@ interface Props {
   lastUpdated?: string;
   /** Phase 2.1: resolved Related Articles tiles (3 or 4 entries; <3 → don't render). */
   relatedTiles?: ArticleCard[];
+  /** Phase 2.2: FAQ items for Schema.org FAQPage + visible accordion. */
+  faqItems?: FaqItem[];
 }
 
 const {
@@ -66,6 +71,7 @@ const {
   focusKeywords = '',
   lastUpdated = '',
   relatedTiles = [],
+  faqItems = [],
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
@@ -141,6 +147,9 @@ const datasetSchema = buildDatasetSchema({
 
 // Phase 2.1: resolve category icon for the breadcrumb (Req 2.5, 2.12)
 const categoryMeta = metaFor(category, categorySlug);
+
+// Phase 2.2: build FAQPage JSON-LD (may be null if no valid FAQ items)
+const faqPageSchema = buildFaqPageSchema(faqItems);
 ---
 
 <BaseLayout title={title} description={description} canonicalURL={canonicalURL} ogImage={ogImage} ogType="article">
@@ -151,10 +160,13 @@ const categoryMeta = metaFor(category, categorySlug);
        class="fixed left-0 top-16 right-0 h-[2px] origin-left z-40 bg-gradient-to-r from-cyan-400 via-blue-500 to-violet-500"
        style="transform: scaleX(0); transition: transform 80ms linear;"></div>
 
-  <!-- Structured Data: Article → BreadcrumbList → Dataset (Req 3.14) -->
+  <!-- Structured Data: Article → BreadcrumbList → Dataset → FAQPage (Req 3.14, 2.8) -->
   <script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(datasetSchema)} />
+  {faqPageSchema && (
+    <script type="application/ld+json" set:html={JSON.stringify(faqPageSchema)} />
+  )}
 
   <div class="max-w-[1200px] mx-auto px-6 py-8">
     <!-- Breadcrumb (Phase 2.1: category crumb gets a Lucide icon) -->
@@ -202,6 +214,9 @@ const categoryMeta = metaFor(category, categorySlug);
 
         <!-- Sources -->
         {sources.length > 0 && <Sources sources={sources} />}
+
+        <!-- Phase 2.2: FAQ accordion (between Sources and Related Articles) -->
+        {faqItems.length > 0 && <FaqSection items={faqItems} />}
 
         <!-- Phase 2.1: Related Articles (between Sources and bottom Newsletter) -->
         {relatedTiles.length >= 3 && <RelatedArticles tiles={relatedTiles} />}
