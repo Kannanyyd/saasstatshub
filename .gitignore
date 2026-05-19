@@ -55,3 +55,6 @@ baseline/.commit-msg-*.tmp
 # Active verify-*.mjs scripts stay tracked; these archives are reference-only.
 baseline/archive-lighthouse-reports/
 baseline/archive-snapshots/
+
+# Temporary HTML files from production curl probes
+tmp-*.html
