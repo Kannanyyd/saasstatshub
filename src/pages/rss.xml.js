@@ -16,20 +16,15 @@
  */
 
 import rss from '@astrojs/rss';
-import { getHomePageData, getAllArticleSlugs, getArticleData } from '../lib/wp-api';
+import { getAllArticlesForRss } from '../lib/wp-api';
 
 const SITE_URL = 'https://saasstatshub.com';
 
 export async function GET(context) {
-  // Pull article metadata. We use the same HOME_PAGE_QUERY shape that's
-  // already populated for the homepage Latest Articles section, plus
-  // fall back to a per-slug fetch for anything not in the 15-post
-  // window so the feed represents the whole catalog.
   let items = [];
   try {
-    const home = await getHomePageData();
-    // home.latestArticles is up to 15 most-recent posts with full card metadata
-    items = home.latestArticles.map((a) => ({
+    const articles = await getAllArticlesForRss();
+    items = articles.map((a) => ({
       title: a.title,
       pubDate: a.rawDate ? new Date(a.rawDate) : new Date(),
       description: a.excerpt || a.title,
@@ -37,14 +32,13 @@ export async function GET(context) {
       categories: [a.category.name],
     }));
   } catch (err) {
-    // GraphQL transient failure — degrade gracefully to an empty feed
-    // rather than failing the build. Sitemap will still cover discovery.
-    console.warn('[rss] getHomePageData failed; emitting empty feed:', err);
+    console.warn('[rss] getAllArticlesForRss failed; emitting empty feed:', err);
   }
 
-  // Sort by pubDate desc and cap at 50 items
+  // Already sorted sticky-first by sortBySticky inside the helper, but
+  // for RSS we want strict pub-date desc (no sticky bias) so readers see
+  // the actual publication chronology.
   items.sort((a, b) => b.pubDate.getTime() - a.pubDate.getTime());
-  items = items.slice(0, 50);
 
   return rss({
     title: 'SaaSStatsHub — SaaS Statistics & Industry Data',

@@ -966,3 +966,83 @@ export function getRecentArticlesAcrossCategories(): Promise<ArticleCard[]> {
   }
   return _crossCatPromise;
 }
+
+
+// ============================================================
+// RSS feed data — pull ALL articles (no 15-post limit) for full
+// fresh-content discovery via Googlebot RSS subscription.
+// ============================================================
+
+const RSS_FEED_QUERY = `
+query RssFeedData($first: Int!, $after: String) {
+  posts(first: $first, after: $after, where: { status: PUBLISH }) {
+    nodes {
+      id
+      title
+      slug
+      excerpt
+      date
+      categories {
+        nodes {
+          name
+          slug
+        }
+      }
+      articleMeta {
+        primaryCategory {
+          nodes {
+            ... on Category {
+              name
+              slug
+            }
+          }
+        }
+      }
+    }
+    pageInfo {
+      hasNextPage
+      endCursor
+    }
+  }
+}
+`;
+
+/**
+ * Fetch all published articles for the RSS feed. Uses cursor-based
+ * pagination with a hard cap of 5 pages (500 posts) to avoid runaway
+ * builds. Cached at module level so the build fires this fetch at most
+ * once across the rss.xml endpoint render.
+ */
+let _rssArticlesPromise: Promise<ArticleCard[]> | null = null;
+
+export function getAllArticlesForRss(): Promise<ArticleCard[]> {
+  if (!_rssArticlesPromise) {
+    _rssArticlesPromise = (async () => {
+      const all: ArticleCard[] = [];
+      let cursor: string | null = null;
+      const HARD_CAP_PAGES = 5;
+      try {
+        for (let i = 0; i < HARD_CAP_PAGES; i++) {
+          const variables: Record<string, unknown> = { first: 100 };
+          if (cursor) variables.after = cursor;
+          const data = await fetchGraphQL<any>(RSS_FEED_QUERY, variables);
+          const page = data.posts;
+          if (!page || !Array.isArray(page.nodes)) break;
+          for (const node of page.nodes) {
+            all.push(transformArticleCard(node));
+          }
+          if (!page.pageInfo?.hasNextPage) break;
+          cursor = page.pageInfo.endCursor || null;
+          if (!cursor) break;
+        }
+      } catch (err) {
+        console.warn(
+          '[wp-api] getAllArticlesForRss failed; returning what we have:',
+          err instanceof Error ? err.message : err,
+        );
+      }
+      return sortBySticky(all);
+    })();
+  }
+  return _rssArticlesPromise;
+}
