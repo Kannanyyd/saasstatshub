@@ -571,7 +571,7 @@ export async function getArticleData(slug: string): Promise<ArticleDetail> {
       takeawayText: item.takeawayText,
     })) || [],
     sources: post.sources?.sources?.map((s: any) => ({
-      name: s.name,
+      name: typeof s.name === 'string' ? s.name.replace(/^\d+\.\s*/, '') : '',
       title: s.title,
       date: s.date,
       url: s.url,
