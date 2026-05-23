@@ -312,7 +312,7 @@ query CategoryPageData($slug: ID!) {
     slug
     description
     count
-    posts(first: 12) {
+    posts(first: 50) {
       nodes {
         id
         title
