@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+import '../styles/global.css';
+
+const title = 'SaaSStatsHub Signals';
+const description = 'SaaSStatsHub Signals is a trend intelligence tool that helps you discover rising SaaS, AI, and software opportunities. Track emerging keywords across Hacker News, GitHub, and Google Trends, and turn them into website ideas.';
+const signalsURL = 'https://signals.saasstatshub.com/';
+---
+
+<BaseLayout title={title} description={description}>
+  <article class="max-w-[860px] mx-auto px-6 py-12 md:py-16">
+    <!-- Breadcrumb -->
+    <nav aria-label="Breadcrumb" class="text-xs text-text-muted mb-6 font-mono uppercase tracking-wide">
+      <a href="/" class="hover:text-text-secondary">Home</a>
+      <span class="mx-2">/</span>
+      <span class="text-text-secondary">Signals</span>
+    </nav>
+
+    <header class="mb-10">
+      <p class="text-xs text-text-muted uppercase tracking-widest font-mono mb-2">
+        New product
+      </p>
+      <h1 class="text-4xl md:text-5xl font-extrabold mb-4 leading-tight">
+        SaaSStatsHub <span class="gradient-text-primary">Signals</span>
+      </h1>
+      <p class="text-lg text-text-secondary leading-relaxed">
+        Discover rising SaaS, AI, and software opportunities from global search trends.
+      </p>
+    </header>
+
+    <div class="prose prose-invert max-w-none mb-10">
+      <p>
+        <strong class="text-text">SaaSStatsHub Signals</strong> is the trend intelligence subsite
+        of SaaSStatsHub. While the main site publishes 100+ in-depth statistics articles, Signals
+        watches the live signals — tracking rising search keywords across <strong class="text-text">Hacker News</strong>,
+        <strong class="text-text">GitHub Trending</strong>, and <strong class="text-text">Google Trends</strong>,
+        then scoring each one for website potential.
+      </p>
+
+      <h2 class="text-2xl font-bold text-text mt-10 mb-4">Who is it for</h2>
+      <ul class="list-disc pl-6 space-y-2 text-text-secondary">
+        <li><strong class="text-text">SaaS founders</strong> — looking for the next product to build</li>
+        <li><strong class="text-text">Indie hackers</strong> — hunting niche markets to ship in</li>
+        <li><strong class="text-text">SEO / bloggers</strong> — picking topics with rising demand</li>
+        <li><strong class="text-text">Affiliate marketers</strong> — finding products worth promoting</li>
+        <li><strong class="text-text">Investors / analysts</strong> — spotting trends before they're obvious</li>
+      </ul>
+
+      <h2 class="text-2xl font-bold text-text mt-10 mb-4">How it works</h2>
+      <p>
+        Every day Signals collects data from public platforms — the Hacker News firehose,
+        GitHub's daily trending repos, and rising queries from Google Trends — then
+        applies a 5-dimension Opportunity Score (0-100) based on:
+      </p>
+      <ol class="list-decimal pl-6 space-y-1 text-text-secondary">
+        <li><strong class="text-text">Search Momentum</strong> — how fast interest is growing</li>
+        <li><strong class="text-text">Cross-platform Coverage</strong> — how many sources detected the keyword</li>
+        <li><strong class="text-text">Trend Duration</strong> — how long the trend has been active</li>
+        <li><strong class="text-text">Commercial Value</strong> — buyer intent (vs / best / pricing patterns)</li>
+        <li><strong class="text-text">Website Feasibility</strong> — how easy it is to build a site around</li>
+      </ol>
+
+      <p>
+        Each high-scoring keyword comes with suggested website types (SaaS product, comparison
+        site, content hub, utility tool…), monetization ideas (AdSense, affiliate, SaaS subscription…),
+        and SEO page templates you could target.
+      </p>
+
+      <h2 class="text-2xl font-bold text-text mt-10 mb-4">What's covered today</h2>
+      <ul class="list-disc pl-6 space-y-2 text-text-secondary">
+        <li>270+ active keywords tracked across 11 categories</li>
+        <li>3 data sources (Hacker News, GitHub Trending, Google Trends)</li>
+        <li>Daily score recomputation</li>
+        <li>30-day score history sparkline on every keyword</li>
+        <li>RSS feed for the top 30 opportunities</li>
+      </ul>
+
+      <h2 class="text-2xl font-bold text-text mt-10 mb-4">Free to use</h2>
+      <p>
+        Signals is free. Trend data is collected from publicly available sources and processed
+        by SaaSStatsHub Signals. We are not affiliated with Google, GitHub, or Hacker News.
+      </p>
+    </div>
+
+    <!-- CTA -->
+    <div class="bg-spotlight-dark p-8 rounded-xl border border-border text-center">
+      <h2 class="text-2xl md:text-3xl font-bold mb-3">Find your next website idea</h2>
+      <p class="text-text-secondary mb-6 max-w-xl mx-auto">
+        Browse 270+ keywords, scored for website potential. Free, updated daily.
+      </p>
+      <a
+        href={signalsURL}
+        class="inline-block px-8 py-3 rounded-lg font-semibold transition"
+        style="background-color: var(--color-primary); color: #ffffff;"
+        rel="noopener"
+      >
+        Open Signals →
+      </a>
+      <p class="text-xs text-text-muted mt-4 font-mono">
+        signals.saasstatshub.com
+      </p>
+    </div>
+  </article>
+</BaseLayout>

@@ -1,0 +1,90 @@
+---
+/**
+ * Homepage callout for the SaaSStatsHub Signals subsite.
+ * Sits between the article/category sections and the newsletter CTA.
+ */
+
+const signalsURL = 'https://signals.saasstatshub.com/';
+---
+
+<section class="py-14 px-6">
+  <div class="max-w-[1200px] mx-auto">
+    <div
+      class="relative overflow-hidden rounded-2xl border border-border p-8 md:p-12"
+      style="background: linear-gradient(135deg, var(--color-bg-alt) 0%, var(--color-primary-lighter) 100%);"
+    >
+      <!-- Decorative sparkline -->
+      <svg
+        class="absolute right-0 bottom-0 opacity-20 pointer-events-none"
+        width="320"
+        height="120"
+        viewBox="0 0 320 120"
+        aria-hidden="true"
+      >
+        <polyline
+          points="0,90 40,80 80,85 120,60 160,65 200,40 240,45 280,20 320,30"
+          fill="none"
+          stroke="var(--color-primary)"
+          stroke-width="2"
+          stroke-linecap="round"
+        />
+        <circle cx="320" cy="30" r="4" fill="var(--color-primary)" />
+      </svg>
+
+      <div class="relative grid grid-cols-1 md:grid-cols-[1fr_auto] gap-6 md:gap-10 items-center">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-elevated border border-border text-xs font-mono uppercase tracking-widest text-text-secondary mb-4">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+            New product
+          </div>
+
+          <h2 class="text-2xl md:text-3xl font-bold mb-3">
+            Beyond statistics:<br/>
+            <span class="gradient-text-primary">discover what's rising next</span>
+          </h2>
+
+          <p class="text-text-secondary leading-relaxed mb-6 max-w-2xl">
+            <strong class="text-text">SaaSStatsHub Signals</strong> is our trend intelligence
+            tool. It scans Hacker News, GitHub, and Google Trends every hour for rising keywords
+            — then scores each one for website potential. Find your next SaaS or content idea
+            before the competition does.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-3">
+            <a
+              href={signalsURL}
+              class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-semibold transition"
+              style="background-color: var(--color-primary); color: #ffffff;"
+              rel="noopener"
+            >
+              Explore Signals
+              <span aria-hidden="true">→</span>
+            </a>
+            <a
+              href="/signals/"
+              class="text-sm text-text-secondary hover:text-text underline-offset-4 hover:underline"
+            >
+              Learn more
+            </a>
+          </div>
+        </div>
+
+        <!-- Stat highlights -->
+        <div class="hidden md:flex flex-col gap-3 text-sm shrink-0">
+          <div class="flex items-baseline gap-3">
+            <span class="text-3xl font-extrabold gradient-text-primary tabular-nums">270+</span>
+            <span class="text-text-muted">rising keywords</span>
+          </div>
+          <div class="flex items-baseline gap-3">
+            <span class="text-3xl font-extrabold gradient-text-primary tabular-nums">3</span>
+            <span class="text-text-muted">data sources</span>
+          </div>
+          <div class="flex items-baseline gap-3">
+            <span class="text-3xl font-extrabold gradient-text-primary tabular-nums">11</span>
+            <span class="text-text-muted">categories</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -214,6 +214,7 @@ const gaId =
 
         <!-- Desktop Nav -->
         <nav class="hidden md:flex items-center gap-1" aria-label="Main navigation">
+          <a href="/" class="font-semibold text-sm text-text-secondary hover:text-primary transition-colors px-3 py-2 rounded-lg hover:bg-primary-lighter">Home</a>
           <div class="relative group">
             <button class="flex items-center gap-1.5 font-semibold text-sm text-text-secondary hover:text-primary transition-colors px-3 py-2 rounded-lg hover:bg-primary-lighter" aria-expanded="false">
               Categories
@@ -259,6 +260,8 @@ const gaId =
       <!-- Mobile Menu -->
       <div id="mobile-menu" class="hidden md:hidden absolute top-16 inset-x-0 bg-surface-elevated border-b border-border shadow-lg z-40">
         <nav class="max-w-[1200px] mx-auto px-6 py-4 flex flex-col gap-1">
+          <a href="/" class="text-sm text-text-secondary hover:text-primary py-2 px-3 rounded-lg hover:bg-primary-lighter font-semibold">Home</a>
+          <hr class="border-border my-1" />
           {CATEGORIES.map((cat) => (
             <a
               href={`/categories/${cat.slug}/`}

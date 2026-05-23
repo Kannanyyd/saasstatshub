@@ -5,6 +5,7 @@ import HotStatsSection from '../components/sections/HotStatsSection.astro';
 import LatestArticlesSection from '../components/sections/LatestArticlesSection.astro';
 import BrowseCategoriesSection from '../components/sections/BrowseCategoriesSection.astro';
 import NewsletterCtaSection from '../components/sections/NewsletterCtaSection.astro';
+import SignalsCalloutSection from '../components/sections/SignalsCalloutSection.astro';
 import '../styles/global.css';
 import { getHomePageData, getSiteConfig, getPostsBySlugs, type HomePageData, type ArticleCard } from '../lib/wp-api';
 import { mockHomePageData } from '../data/mock-data';
@@ -69,7 +70,12 @@ const enabledSections = siteConfig.homepageSections.filter((s) => s.enabled);
       return <BrowseCategoriesSection section={section} categories={categories} />;
     }
     if (section.type === 'newsletter-cta') {
-      return <NewsletterCtaSection section={section} />;
+      return (
+        <>
+          <SignalsCalloutSection />
+          <NewsletterCtaSection section={section} />
+        </>
+      );
     }
     return null;
   })}

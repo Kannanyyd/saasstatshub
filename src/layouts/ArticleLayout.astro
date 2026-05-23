@@ -221,6 +221,32 @@ const faqPageSchema = buildFaqPageSchema(faqItems);
         <!-- Phase 2.1: Related Articles (between Sources and bottom Newsletter) -->
         {relatedTiles.length >= 3 && <RelatedArticles tiles={relatedTiles} />}
 
+        <!-- Signals subsite CTA -->
+        <aside class="mt-8 p-5 rounded-xl border border-border bg-bg-alt/40">
+          <div class="flex items-start gap-3">
+            <div class="text-2xl shrink-0" aria-hidden="true">📡</div>
+            <div class="flex-1">
+              <p class="text-xs text-text-muted uppercase tracking-widest font-mono mb-1.5">
+                Looking for rising opportunities?
+              </p>
+              <h3 class="text-lg font-bold mb-2">Track this topic on Signals</h3>
+              <p class="text-sm text-text-secondary leading-relaxed mb-3">
+                Beyond statistics, <strong class="text-text">SaaSStatsHub Signals</strong> tracks
+                rising keywords across Hacker News, GitHub, and Google Trends — and tells you
+                what kind of website you could build around them. Free, updated daily.
+              </p>
+              <a
+                href="https://signals.saasstatshub.com/"
+                class="inline-flex items-center gap-1 text-sm font-semibold text-primary hover:text-primary-dark"
+                rel="noopener"
+              >
+                Explore SaaSStatsHub Signals
+                <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </div>
+        </aside>
+
         <!-- Bottom Newsletter -->
         <div class="mt-8">
           <Newsletter />
