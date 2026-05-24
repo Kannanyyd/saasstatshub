@@ -1,14 +1,23 @@
 ---
 /**
- * SaaS Pricing Calculator — Day 1 MVP
+ * SaaS Pricing Calculator — Day 2
  *
- * 功能：
- * - 5 个输入字段：MRR, 用户数, churn rate, CAC, 月增长率
- * - 实时计算：ARR / LTV / LTV:CAC / Payback Period / 12-24月预测 MRR
- * - 后续（Day 2-3）：How You Compare benchmark 卡片、CSV 导出、PDF 报告、嵌入代码、联盟 CTA
+ * Day 1 (shipped): 5 inputs + 10 calculated metrics + tier coloring
+ * Day 2 (this commit):
+ *   - Top info banner → CTA 4 (State of SaaS report)
+ *   - "How You Compare" benchmark card → 5 indicators with live tier classification
+ *     vs SaaSStatsHub data, source link to original article
+ *   - Conditional CTA 1 (CRM comparison) — shows when LTV:CAC < 3
+ *   - Static CTA 2 (Best CRM software) — always at bottom of benchmark card
+ *   - Bottom banner CTA 3 (HubSpot + Salesforce affiliate)
+ *   - CSV export button
+ *
+ * Day 3 (next): embed code generator + 1-page PDF report
  *
  * 路径：https://saasstatshub.com/saas-pricing-calculator/
  * 目标关键词：SaaS pricing calculator / LTV CAC calculator / SaaS metrics calculator
+ *
+ * Benchmark data source: D:\Agent\WEB\WEB1\SEO\plans\benchmarks-pricing-calculator.md (operations team, v1.0)
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import '../styles/global.css';
@@ -16,6 +25,88 @@ import '../styles/global.css';
 const title = 'SaaS Pricing Calculator';
 const description =
   'Free SaaS pricing and metrics calculator. Calculate your ARR, LTV, LTV:CAC ratio, payback period, and 12-24 month MRR forecast in seconds. Includes industry benchmarks from 130+ SaaS reports.';
+
+/**
+ * Benchmark configuration — values from operations team, sourced from main-site articles.
+ * The runtime JS classifies the user's calculated values against these tiers and renders
+ * the matching label/color + benchmark text + source article link.
+ *
+ * Tier-direction note:
+ *   - Most metrics: higher = better (ARR, LTV:CAC, growth)
+ *   - Inverse metrics: lower = better (churn, payback). The `direction` field flips
+ *     the logic so we can use a single classifier function.
+ */
+const BENCHMARKS = [
+  {
+    id: 'arr',
+    label: 'ARR',
+    direction: 'higher-better',
+    tiers: [
+      { max: 1_000_000, label: 'Pre-scale — still validating PMF', color: 'yellow' },
+      { max: 10_000_000, label: 'Scaling — proven GTM motion', color: 'green' },
+      { max: 50_000_000, label: 'Growth — Series B+ territory', color: 'green' },
+      { max: Infinity, label: 'Late-stage — pre-IPO track', color: 'green' },
+    ],
+    text: 'SaaS ARR benchmarks by stage: seed <$1M, Series A $1–10M, Series B+ $10M+. Public SaaS median ARR is $312M. Focus on growth rate, not just absolute ARR.',
+    sourceLabel: 'SaaS Industry Statistics 2026',
+    sourceUrl: '/analytics/saas-industry-statistics-2026/',
+  },
+  {
+    id: 'ltvcac',
+    label: 'LTV : CAC',
+    direction: 'higher-better',
+    tiers: [
+      { max: 1, label: 'Unprofitable — CAC exceeds LTV', color: 'red' },
+      { max: 3, label: 'Below 3:1 industry healthy line', color: 'yellow' },
+      { max: 5, label: 'Healthy SaaS benchmark (3:1+)', color: 'green' },
+      { max: Infinity, label: 'Top 10% — best-in-class', color: 'green' },
+    ],
+    text: 'SaaS industry healthy line is 3:1 (David Skok, 2008). Top 10% reach 5:1+. Seed-stage median is 1.5–2.5x; mature SaaS averages 5–8x. Below 1:1 means you are losing money on every customer.',
+    sourceLabel: 'SaaS Pricing Statistics 2026',
+    sourceUrl: '/marketing/saas-pricing-statistics-2026/',
+  },
+  {
+    id: 'churn',
+    label: 'Monthly Churn',
+    direction: 'lower-better',
+    tiers: [
+      { max: 1, label: 'Excellent — enterprise-grade retention', color: 'green' },
+      { max: 2, label: 'Low — top-quartile SaaS', color: 'green' },
+      { max: 5, label: 'Moderate — improving, keep going', color: 'yellow' },
+      { max: Infinity, label: 'High — at B2B SaaS average, act now', color: 'red' },
+    ],
+    text: 'B2B SaaS average monthly churn is 5.2% (2026). Top performers maintain ≤3.1%. Enterprise-grade SaaS targets <1% monthly. Reducing churn by 1% can increase company valuation by 10–20%.',
+    sourceLabel: 'SaaS Churn Rate Statistics 2026',
+    sourceUrl: '/analytics/saas-churn-rate-statistics-2026/',
+  },
+  {
+    id: 'payback',
+    label: 'CAC Payback',
+    direction: 'lower-better',
+    tiers: [
+      { max: 12, label: 'SMB target ≤12 mo — efficient growth', color: 'green' },
+      { max: 24, label: 'Enterprise acceptable — optimize if >18', color: 'yellow' },
+      { max: Infinity, label: 'Too long — review CAC strategy urgently', color: 'red' },
+    ],
+    text: 'SMB SaaS median payback is 12 months; enterprise acceptable up to 24 months (Bessemer). Top quartile achieves ≤8 months. PLG companies average 7.2 months payback due to lower CAC. If payback >24 months, your CAC is too high for sustainable growth.',
+    sourceLabel: 'SaaS Pricing Statistics 2026',
+    sourceUrl: '/marketing/saas-pricing-statistics-2026/',
+  },
+  {
+    id: 'growth',
+    label: 'Annual Growth',
+    direction: 'higher-better',
+    tiers: [
+      { max: 20, label: 'Below median — review GTM strategy', color: 'red' },
+      { max: 40, label: 'Median SaaS — solid growth', color: 'yellow' },
+      { max: 100, label: 'High-growth — top 25% SaaS', color: 'green' },
+      { max: Infinity, label: 'Hypergrowth — doubling ARR annually', color: 'green' },
+    ],
+    text: 'Median SaaS MRR growth is 25% annually (2026). High-growth SaaS maintains 40%+. PLG companies grow 1.5x faster than sales-led peers. If growth <20%, you are below SaaS median — review pricing, CAC efficiency, and churn.',
+    sourceLabel: 'State of SaaS 2026',
+    sourceUrl: '/analytics/state-of-saas-2026-annual-report/',
+  },
+];
 
 // Schema.org WebApplication marker — helps Google understand this is a tool, not an article
 const webAppSchema = {
@@ -43,6 +134,9 @@ const webAppSchema = {
   <!-- Schema.org WebApplication marker (legal in body per Google guidelines) -->
   <script type="application/ld+json" set:html={JSON.stringify(webAppSchema)} />
 
+  <!-- Benchmarks config (serialized JSON, parsed by client JS) -->
+  <script type="application/json" id="benchmarks-data" set:html={JSON.stringify(BENCHMARKS)} />
+
   <article class="max-w-[1100px] mx-auto px-6 py-10 md:py-14">
     <!-- Breadcrumb -->
     <nav aria-label="Breadcrumb" class="text-xs text-text-muted mb-6 font-mono uppercase tracking-wide">
@@ -50,6 +144,18 @@ const webAppSchema = {
       <span class="mx-2">/</span>
       <span class="text-text-secondary">SaaS Pricing Calculator</span>
     </nav>
+
+    <!-- CTA 4 — Top info banner: pointer to State of SaaS 2026 for users who need reference data -->
+    <div class="mb-8 flex items-start md:items-center gap-3 px-4 py-3 rounded-lg bg-primary-lighter border border-primary-deeper text-sm">
+      <span class="text-base shrink-0" aria-hidden="true">💡</span>
+      <p class="text-text-secondary">
+        Need data to estimate?
+        <a href="/analytics/state-of-saas-2026-annual-report/" class="text-primary hover:underline font-semibold">
+          See our State of SaaS 2026 report
+        </a>
+        for industry benchmarks across 130+ data points →
+      </p>
+    </div>
 
     <!-- Hero -->
     <header class="mb-10 text-center max-w-3xl mx-auto">
@@ -267,8 +373,106 @@ const webAppSchema = {
             Forecast assumes constant monthly growth rate &amp; churn. Real growth is rarely linear.
           </p>
         </div>
+
+        <!-- Export CSV button -->
+        <button
+          type="button"
+          id="btn-export-csv"
+          class="w-full py-3 rounded-lg border border-border-strong text-sm font-semibold text-text-secondary hover:border-primary hover:text-text hover:bg-primary-lighter transition flex items-center justify-center gap-2"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          Export results as CSV
+        </button>
+
+        <!-- ===== CTA 1 — Conditional, shows when LTV:CAC < 3 ===== -->
+        <div id="cta-low-ltvcac" class="hidden bg-primary-lighter border border-primary rounded-xl p-6">
+          <p class="text-xs text-primary uppercase tracking-widest font-mono mb-2 font-semibold">
+            ⚠ Recommended next step
+          </p>
+          <h3 class="text-lg font-bold text-text mb-2">Looking for the Right CRM?</h3>
+          <p class="text-sm text-text-secondary leading-relaxed mb-4">
+            The right CRM can cut your CAC by 30–40% and boost LTV through better retention.
+            See how the top 3 CRMs compare on pricing, features, and scalability.
+          </p>
+          <a
+            href="/crm/salesforce-vs-hubspot-vs-pipedrive/"
+            class="inline-block px-5 py-2.5 rounded-lg font-semibold text-sm transition"
+            style="background-color: var(--color-primary); color: #ffffff;"
+          >
+            Compare Top 3 CRMs →
+          </a>
+        </div>
       </section>
     </div>
+
+    <!-- ===== How You Compare — Benchmark card ===== -->
+    <section class="mb-12">
+      <div class="bg-surface border border-border rounded-xl overflow-hidden">
+        <div class="px-6 py-5 border-b border-border bg-bg-alt">
+          <p class="text-xs text-text-muted uppercase tracking-widest font-mono mb-1">
+            How You Compare
+          </p>
+          <h2 class="text-xl md:text-2xl font-bold text-text">Your numbers vs SaaS industry benchmarks</h2>
+          <p class="text-xs text-text-muted mt-1">
+            Based on SaaSStatsHub analysis of 130+ industry reports.
+            Live tier classification updates as you change the inputs.
+          </p>
+        </div>
+
+        <!-- 5 benchmark rows, populated by JS -->
+        <div id="benchmark-rows">
+          {BENCHMARKS.map((b) => (
+            <div class="benchmark-row px-6 py-5 border-b border-border last:border-b-0" data-bench-id={b.id}>
+              <div class="flex flex-col md:flex-row md:items-start md:gap-6">
+                <!-- Left: indicator + your value + tier label -->
+                <div class="md:w-[280px] mb-3 md:mb-0">
+                  <div class="flex items-center gap-2 mb-1">
+                    <span class="text-xs text-text-muted font-mono uppercase tracking-wide">
+                      {b.label}
+                    </span>
+                  </div>
+                  <p class="bench-value text-lg font-bold font-mono text-text mb-1" data-bench-value>—</p>
+                  <span class="bench-tier-label inline-block text-xs font-semibold px-2.5 py-1 rounded-full" data-bench-tier>
+                    —
+                  </span>
+                </div>
+                <!-- Right: benchmark text + source link -->
+                <div class="flex-1">
+                  <p class="text-sm text-text-secondary leading-relaxed mb-2">{b.text}</p>
+                  <a
+                    href={b.sourceUrl}
+                    class="inline-flex items-center gap-1 text-xs font-semibold text-primary hover:underline"
+                  >
+                    Source: {b.sourceLabel}
+                    <span aria-hidden="true">→</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <!-- ===== CTA 2 — Static, always shown at bottom of benchmark card ===== -->
+        <div class="px-6 py-5 bg-bg-alt border-t border-border flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+          <div>
+            <h3 class="text-base font-bold text-text mb-1">Get Detailed Pricing Breakdown</h3>
+            <p class="text-sm text-text-muted">
+              See how top SaaS tools stack up on pricing, features, and value — updated for 2026.
+            </p>
+          </div>
+          <a
+            href="/crm/best-crm-small-business/"
+            class="shrink-0 px-5 py-2.5 rounded-lg border border-border-strong text-sm font-semibold text-text-secondary hover:border-primary hover:text-text hover:bg-primary-lighter transition whitespace-nowrap"
+          >
+            See Best CRM Software →
+          </a>
+        </div>
+      </div>
+    </section>
 
     <!-- ===== How to use ===== -->
     <section class="bg-surface-elevated border border-border rounded-xl p-6 md:p-8 mb-12 max-w-3xl mx-auto">
@@ -319,6 +523,61 @@ const webAppSchema = {
       <p class="text-text-secondary text-sm leading-relaxed">
         The expected duration a customer stays with you. Calculated as <code class="text-xs">1 / monthly churn rate</code>.
         A 3% monthly churn implies ~33 month average lifetime.
+      </p>
+    </section>
+
+    <!-- ===== CTA 3 — Bottom banner: HubSpot + Salesforce affiliate ===== -->
+    <section class="mb-12">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- HubSpot -->
+        <div class="bg-surface border border-border rounded-xl p-6 hover:border-primary transition">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="text-xs font-mono uppercase tracking-wide text-text-muted">Sponsored</span>
+            <span class="text-xs px-2 py-0.5 rounded bg-primary-lighter text-primary font-semibold">FREE TIER</span>
+          </div>
+          <h3 class="text-lg font-bold text-text mb-2">Start Free with HubSpot CRM</h3>
+          <p class="text-sm text-text-secondary leading-relaxed mb-4">
+            HubSpot's free CRM includes contact management, deal tracking, and email tools — no credit card required.
+            Trusted by 228,000+ companies worldwide.
+          </p>
+          <a
+            href="https://hubspot.com/products/crm"
+            class="inline-block px-5 py-2.5 rounded-lg font-semibold text-sm transition"
+            style="background-color: #FF7A59; color: #ffffff;"
+            rel="sponsored noopener"
+            target="_blank"
+            data-affiliate="hubspot"
+          >
+            Get HubSpot Free →
+          </a>
+        </div>
+
+        <!-- Salesforce -->
+        <div class="bg-surface border border-border rounded-xl p-6 hover:border-primary transition">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="text-xs font-mono uppercase tracking-wide text-text-muted">Sponsored</span>
+            <span class="text-xs px-2 py-0.5 rounded bg-primary-lighter text-primary font-semibold">#1 CRM</span>
+          </div>
+          <h3 class="text-lg font-bold text-text mb-2">Try Salesforce Starter</h3>
+          <p class="text-sm text-text-secondary leading-relaxed mb-4">
+            Salesforce is the #1 CRM for scaling teams. Starter plan begins at $25/user/month
+            with AI-powered analytics built in.
+          </p>
+          <a
+            href="https://salesforce.com/sales/pricing/"
+            class="inline-block px-5 py-2.5 rounded-lg font-semibold text-sm transition"
+            style="background-color: #00A1E0; color: #ffffff;"
+            rel="sponsored noopener"
+            target="_blank"
+            data-affiliate="salesforce"
+          >
+            Explore Salesforce →
+          </a>
+        </div>
+      </div>
+      <p class="text-xs text-text-muted text-center mt-3">
+        We may earn a commission if you sign up through our links — at no extra cost to you.
+        See our <a href="/affiliate-disclosure/" class="text-primary hover:underline">affiliate disclosure</a>.
       </p>
     </section>
 
@@ -460,6 +719,31 @@ const webAppSchema = {
   [data-tier='bad'] {
     color: var(--color-negative);
   }
+
+  /* Benchmark row tier badges (How You Compare card) */
+  .bench-tier-label[data-bench-tier='green'] {
+    background: rgba(52, 211, 153, 0.12);
+    color: var(--color-positive);
+  }
+  .bench-tier-label[data-bench-tier='yellow'] {
+    background: rgba(251, 191, 36, 0.12);
+    color: var(--color-warning);
+  }
+  .bench-tier-label[data-bench-tier='red'] {
+    background: rgba(248, 113, 113, 0.12);
+    color: var(--color-negative);
+  }
+  .bench-tier-label[data-bench-tier='gray'] {
+    background: rgba(148, 163, 184, 0.12);
+    color: var(--color-text-muted);
+  }
+
+  .benchmark-row {
+    transition: background-color var(--duration-fast) var(--ease-out);
+  }
+  .benchmark-row:hover {
+    background-color: rgba(255, 255, 255, 0.02);
+  }
 </style>
 
 <script is:inline>
@@ -475,6 +759,63 @@ const webAppSchema = {
       cac: 800,
       growth: 8,
     };
+
+    // Day 2: Benchmark config — loaded from <script type="application/json"> injected by Astro
+    let BENCHMARKS = [];
+    const benchScript = document.getElementById('benchmarks-data');
+    if (benchScript) {
+      try {
+        BENCHMARKS = JSON.parse(benchScript.textContent || '[]');
+      } catch (e) {
+        console.error('[calculator] failed to parse benchmarks JSON', e);
+      }
+    }
+    // Build a quick id-keyed lookup
+    const BENCHMARK_BY_ID = {};
+    for (const b of BENCHMARKS) BENCHMARK_BY_ID[b.id] = b;
+
+    /**
+     * Find the matching tier for a value, given a benchmark config.
+     *
+     * Tiers are ordered ascending by threshold:
+     *   higher-better → first tier whose `max` >= value wins (lower thresholds = worse tier)
+     *   lower-better  → first tier whose `max` >= value wins (lower thresholds = better tier)
+     *
+     * The semantics differ but the lookup loop is identical because the tiers list
+     * is already pre-ordered correctly per direction.
+     */
+    function classifyBenchmark(benchmarkId, rawValue) {
+      const b = BENCHMARK_BY_ID[benchmarkId];
+      if (!b) return null;
+      if (!isFinite(rawValue) || rawValue < 0) return null;
+      for (const tier of b.tiers) {
+        if (rawValue <= tier.max) return tier;
+      }
+      // Fallback: last tier (Infinity bucket should always catch, but guard anyway)
+      return b.tiers[b.tiers.length - 1];
+    }
+
+    /**
+     * Update one benchmark row's value display + tier label/color.
+     */
+    function renderBenchmark(benchmarkId, rawValue, displayValue) {
+      const row = document.querySelector(`[data-bench-id="${benchmarkId}"]`);
+      if (!row) return;
+      const valueEl = row.querySelector('[data-bench-value]');
+      const tierEl = row.querySelector('[data-bench-tier]');
+      if (!valueEl || !tierEl) return;
+
+      valueEl.textContent = displayValue;
+
+      const tier = classifyBenchmark(benchmarkId, rawValue);
+      if (!tier) {
+        tierEl.textContent = '—';
+        tierEl.setAttribute('data-bench-tier', 'gray');
+      } else {
+        tierEl.textContent = tier.label;
+        tierEl.setAttribute('data-bench-tier', tier.color);
+      }
+    }
 
     function readInputs() {
       return {
@@ -621,6 +962,20 @@ const webAppSchema = {
       // Tier coloring on LTV:CAC and payback
       $('out-ltv-cac').setAttribute('data-tier', tierForLtvCac(r.ltvCac));
       $('out-payback').setAttribute('data-tier', tierForPayback(r.payback));
+
+      // ===== Day 2: Benchmark card rendering =====
+      renderBenchmark('arr', r.arr, formatUSD(r.arr));
+      renderBenchmark('ltvcac', r.ltvCac, formatRatio(r.ltvCac));
+      renderBenchmark('churn', inputs.churn, `${inputs.churn.toFixed(1)}%`);
+      renderBenchmark('payback', r.payback, formatMonths(r.payback));
+      renderBenchmark('growth', r.annualGrowth, formatPct(r.annualGrowth));
+
+      // ===== Day 2: Conditional CTA 1 — show when LTV:CAC < 3 =====
+      const cta1 = $('cta-low-ltvcac');
+      if (cta1) {
+        const showCta = isFinite(r.ltvCac) && r.ltvCac < 3 && r.ltvCac > 0;
+        cta1.classList.toggle('hidden', !showCta);
+      }
     }
 
     function attachListeners() {
@@ -642,6 +997,96 @@ const webAppSchema = {
           render();
         });
       }
+
+      // Day 2: CSV export
+      const csvBtn = $('btn-export-csv');
+      if (csvBtn) {
+        csvBtn.addEventListener('click', exportCSV);
+      }
+    }
+
+    /**
+     * Build a CSV with two sections:
+     *  1. Inputs (what the user typed)
+     *  2. Results (all computed metrics + benchmark tier per indicator)
+     * Then trigger a download via Blob URL.
+     */
+    function exportCSV() {
+      const inputs = readInputs();
+      const r = compute(inputs);
+      const ts = new Date().toISOString().slice(0, 10);
+
+      const rows = [];
+      rows.push(['SaaSStatsHub — SaaS Pricing Calculator Export']);
+      rows.push([`Generated: ${ts}`]);
+      rows.push([`URL: https://saasstatshub.com/saas-pricing-calculator/`]);
+      rows.push([]);
+
+      rows.push(['INPUTS', '', '']);
+      rows.push(['Metric', 'Value', 'Unit']);
+      rows.push(['Monthly Recurring Revenue (MRR)', inputs.mrr, 'USD']);
+      rows.push(['Active customers', inputs.customers, 'count']);
+      rows.push(['Monthly churn rate', inputs.churn, '%']);
+      rows.push(['Customer Acquisition Cost (CAC)', inputs.cac, 'USD']);
+      rows.push(['Monthly MRR growth rate', inputs.growth, '%']);
+      rows.push([]);
+
+      rows.push(['RESULTS', '', '']);
+      rows.push(['Metric', 'Value', 'Unit']);
+      rows.push(['Annual Recurring Revenue (ARR)', Math.round(r.arr), 'USD']);
+      rows.push(['Avg Revenue per Customer (ARPU)', Math.round(r.arpc * 100) / 100, 'USD/month']);
+      rows.push(['Customer lifetime', isFinite(r.lifetimeMonths) ? Math.round(r.lifetimeMonths * 10) / 10 : 'Infinite', 'months']);
+      rows.push(['Lifetime Value (LTV)', isFinite(r.ltv) ? Math.round(r.ltv) : 'Infinite', 'USD']);
+      rows.push(['LTV : CAC ratio', isFinite(r.ltvCac) ? Math.round(r.ltvCac * 10) / 10 : 'Infinite', 'ratio']);
+      rows.push(['CAC Payback Period', isFinite(r.payback) ? Math.round(r.payback * 10) / 10 : 'Infinite', 'months']);
+      rows.push(['Annual growth rate', Math.round(r.annualGrowth * 10) / 10, '%']);
+      rows.push(['MRR forecast — 6 months', Math.round(r.mrr6), 'USD']);
+      rows.push(['MRR forecast — 12 months', Math.round(r.mrr12), 'USD']);
+      rows.push(['MRR forecast — 24 months', Math.round(r.mrr24), 'USD']);
+      rows.push([]);
+
+      rows.push(['BENCHMARK COMPARISON', '', '']);
+      rows.push(['Indicator', 'Your value', 'Tier vs SaaS industry']);
+      const benchValues = {
+        arr: { val: Math.round(r.arr), display: formatUSD(r.arr) },
+        ltvcac: { val: r.ltvCac, display: formatRatio(r.ltvCac) },
+        churn: { val: inputs.churn, display: `${inputs.churn.toFixed(1)}%` },
+        payback: { val: r.payback, display: formatMonths(r.payback) },
+        growth: { val: r.annualGrowth, display: formatPct(r.annualGrowth) },
+      };
+      for (const b of BENCHMARKS) {
+        const v = benchValues[b.id];
+        if (!v) continue;
+        const tier = classifyBenchmark(b.id, v.val);
+        rows.push([b.label, v.display, tier ? tier.label : '—']);
+      }
+      rows.push([]);
+      rows.push(['Source: 130+ SaaS industry reports analyzed by SaaSStatsHub']);
+
+      // Encode CSV — quote any field containing comma/quote/newline
+      const csv = rows
+        .map((row) =>
+          row
+            .map((cell) => {
+              const s = String(cell ?? '');
+              if (/[,"\n\r]/.test(s)) return `"${s.replace(/"/g, '""')}"`;
+              return s;
+            })
+            .join(',')
+        )
+        .join('\r\n');
+
+      // BOM for Excel UTF-8 compatibility
+      const blob = new Blob(['\ufeff' + csv], { type: 'text/csv;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `saas-pricing-calculator-${ts}.csv`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      // Free the blob URL after a tick
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
     }
 
     // Initial render with defaults
