@@ -83,7 +83,7 @@ const webAppSchema = {
               <span class="text-text-muted font-normal">— current</span>
             </label>
             <div class="relative">
-              <span class="absolute left-3 top-1/2 -translate-y-1/2 text-text-muted font-mono">$</span>
+              <span class="prefix-symbol">$</span>
               <input
                 type="number"
                 id="input-mrr"
@@ -91,7 +91,7 @@ const webAppSchema = {
                 min="0"
                 step="100"
                 value="50000"
-                class="calc-input pl-7"
+                class="calc-input has-prefix"
                 aria-describedby="hint-mrr"
               />
             </div>
@@ -130,10 +130,10 @@ const webAppSchema = {
                 max="100"
                 step="0.1"
                 value="3"
-                class="calc-input pr-9"
+                class="calc-input has-suffix"
                 aria-describedby="hint-churn"
               />
-              <span class="absolute right-3 top-1/2 -translate-y-1/2 text-text-muted font-mono">%</span>
+              <span class="suffix-symbol">%</span>
             </div>
             <p id="hint-churn" class="text-xs text-text-muted mt-1">% of customers who cancel each month</p>
           </div>
@@ -144,7 +144,7 @@ const webAppSchema = {
               Customer Acquisition Cost (CAC)
             </label>
             <div class="relative">
-              <span class="absolute left-3 top-1/2 -translate-y-1/2 text-text-muted font-mono">$</span>
+              <span class="prefix-symbol">$</span>
               <input
                 type="number"
                 id="input-cac"
@@ -152,7 +152,7 @@ const webAppSchema = {
                 min="0"
                 step="10"
                 value="800"
-                class="calc-input pl-7"
+                class="calc-input has-prefix"
                 aria-describedby="hint-cac"
               />
             </div>
@@ -173,10 +173,10 @@ const webAppSchema = {
                 max="100"
                 step="0.5"
                 value="8"
-                class="calc-input pr-9"
+                class="calc-input has-suffix"
                 aria-describedby="hint-growth"
               />
-              <span class="absolute right-3 top-1/2 -translate-y-1/2 text-text-muted font-mono">%</span>
+              <span class="suffix-symbol">%</span>
             </div>
             <p id="hint-growth" class="text-xs text-text-muted mt-1">Net new MRR added each month, %</p>
           </div>
@@ -345,6 +345,40 @@ const webAppSchema = {
     font-weight: 600;
     transition: border-color var(--duration-fast) var(--ease-out),
                 box-shadow var(--duration-fast) var(--ease-out);
+  }
+
+  /* Reserve room for $ prefix / % suffix.
+     Tailwind v4 + custom @theme tokens disable default utility classes
+     like pl-7 / pr-9, so use plain CSS. */
+  .calc-input.has-prefix {
+    padding-left: 30px;
+  }
+  .calc-input.has-suffix {
+    padding-right: 36px;
+  }
+
+  .prefix-symbol {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-text-muted);
+    font-family: var(--font-mono);
+    font-size: 15px;
+    font-weight: 600;
+    pointer-events: none;
+  }
+
+  .suffix-symbol {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-text-muted);
+    font-family: var(--font-mono);
+    font-size: 15px;
+    font-weight: 600;
+    pointer-events: none;
   }
 
   .calc-input:focus {
