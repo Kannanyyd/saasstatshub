@@ -1,0 +1,619 @@
+---
+/**
+ * SaaS Pricing Calculator — Day 1 MVP
+ *
+ * 功能：
+ * - 5 个输入字段：MRR, 用户数, churn rate, CAC, 月增长率
+ * - 实时计算：ARR / LTV / LTV:CAC / Payback Period / 12-24月预测 MRR
+ * - 后续（Day 2-3）：How You Compare benchmark 卡片、CSV 导出、PDF 报告、嵌入代码、联盟 CTA
+ *
+ * 路径：https://saasstatshub.com/saas-pricing-calculator/
+ * 目标关键词：SaaS pricing calculator / LTV CAC calculator / SaaS metrics calculator
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/global.css';
+
+const title = 'SaaS Pricing Calculator';
+const description =
+  'Free SaaS pricing and metrics calculator. Calculate your ARR, LTV, LTV:CAC ratio, payback period, and 12-24 month MRR forecast in seconds. Includes industry benchmarks from 130+ SaaS reports.';
+
+// Schema.org WebApplication marker — helps Google understand this is a tool, not an article
+const webAppSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebApplication',
+  name: 'SaaS Pricing Calculator',
+  url: 'https://saasstatshub.com/saas-pricing-calculator/',
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'Any',
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'USD',
+  },
+  description,
+  publisher: {
+    '@type': 'Organization',
+    name: 'SaaSStatsHub',
+    url: 'https://saasstatshub.com',
+  },
+};
+---
+
+<BaseLayout title={title} description={description}>
+  <!-- Schema.org WebApplication marker (legal in body per Google guidelines) -->
+  <script type="application/ld+json" set:html={JSON.stringify(webAppSchema)} />
+
+  <article class="max-w-[1100px] mx-auto px-6 py-10 md:py-14">
+    <!-- Breadcrumb -->
+    <nav aria-label="Breadcrumb" class="text-xs text-text-muted mb-6 font-mono uppercase tracking-wide">
+      <a href="/" class="hover:text-text-secondary">Home</a>
+      <span class="mx-2">/</span>
+      <span class="text-text-secondary">SaaS Pricing Calculator</span>
+    </nav>
+
+    <!-- Hero -->
+    <header class="mb-10 text-center max-w-3xl mx-auto">
+      <p class="text-xs text-text-muted uppercase tracking-widest font-mono mb-3">
+        Free Tool
+      </p>
+      <h1 class="text-3xl md:text-5xl font-extrabold mb-4 leading-tight">
+        SaaS Pricing &amp;<br class="md:hidden" />
+        <span class="gradient-text-primary">Metrics Calculator</span>
+      </h1>
+      <p class="text-base md:text-lg text-text-secondary leading-relaxed">
+        Calculate your ARR, LTV, LTV:CAC ratio, payback period, and 12-24 month forecast.
+        Compare your numbers against industry benchmarks from 130+ SaaS statistics reports.
+      </p>
+    </header>
+
+    <!-- Calculator Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-[420px_1fr] gap-8 mb-12">
+      <!-- ===== Input Form ===== -->
+      <section class="card-input bg-surface border border-border rounded-xl p-6 md:p-8">
+        <h2 class="text-lg font-bold text-text mb-1">Your numbers</h2>
+        <p class="text-xs text-text-muted mb-6 font-mono">
+          Calculations update as you type
+        </p>
+
+        <div class="space-y-5">
+          <!-- MRR -->
+          <div>
+            <label for="input-mrr" class="block text-sm font-semibold text-text mb-1.5">
+              Monthly Recurring Revenue (MRR)
+              <span class="text-text-muted font-normal">— current</span>
+            </label>
+            <div class="relative">
+              <span class="absolute left-3 top-1/2 -translate-y-1/2 text-text-muted font-mono">$</span>
+              <input
+                type="number"
+                id="input-mrr"
+                inputmode="numeric"
+                min="0"
+                step="100"
+                value="50000"
+                class="calc-input pl-7"
+                aria-describedby="hint-mrr"
+              />
+            </div>
+            <p id="hint-mrr" class="text-xs text-text-muted mt-1">Total revenue you bill every month</p>
+          </div>
+
+          <!-- Customers -->
+          <div>
+            <label for="input-customers" class="block text-sm font-semibold text-text mb-1.5">
+              Active customers
+            </label>
+            <input
+              type="number"
+              id="input-customers"
+              inputmode="numeric"
+              min="1"
+              step="1"
+              value="500"
+              class="calc-input"
+              aria-describedby="hint-customers"
+            />
+            <p id="hint-customers" class="text-xs text-text-muted mt-1">Paying customers right now</p>
+          </div>
+
+          <!-- Churn Rate -->
+          <div>
+            <label for="input-churn" class="block text-sm font-semibold text-text mb-1.5">
+              Monthly churn rate
+            </label>
+            <div class="relative">
+              <input
+                type="number"
+                id="input-churn"
+                inputmode="decimal"
+                min="0"
+                max="100"
+                step="0.1"
+                value="3"
+                class="calc-input pr-9"
+                aria-describedby="hint-churn"
+              />
+              <span class="absolute right-3 top-1/2 -translate-y-1/2 text-text-muted font-mono">%</span>
+            </div>
+            <p id="hint-churn" class="text-xs text-text-muted mt-1">% of customers who cancel each month</p>
+          </div>
+
+          <!-- CAC -->
+          <div>
+            <label for="input-cac" class="block text-sm font-semibold text-text mb-1.5">
+              Customer Acquisition Cost (CAC)
+            </label>
+            <div class="relative">
+              <span class="absolute left-3 top-1/2 -translate-y-1/2 text-text-muted font-mono">$</span>
+              <input
+                type="number"
+                id="input-cac"
+                inputmode="numeric"
+                min="0"
+                step="10"
+                value="800"
+                class="calc-input pl-7"
+                aria-describedby="hint-cac"
+              />
+            </div>
+            <p id="hint-cac" class="text-xs text-text-muted mt-1">Total marketing &amp; sales spend ÷ new customers</p>
+          </div>
+
+          <!-- Growth Rate -->
+          <div>
+            <label for="input-growth" class="block text-sm font-semibold text-text mb-1.5">
+              Monthly MRR growth rate
+            </label>
+            <div class="relative">
+              <input
+                type="number"
+                id="input-growth"
+                inputmode="decimal"
+                min="-50"
+                max="100"
+                step="0.5"
+                value="8"
+                class="calc-input pr-9"
+                aria-describedby="hint-growth"
+              />
+              <span class="absolute right-3 top-1/2 -translate-y-1/2 text-text-muted font-mono">%</span>
+            </div>
+            <p id="hint-growth" class="text-xs text-text-muted mt-1">Net new MRR added each month, %</p>
+          </div>
+        </div>
+
+        <button
+          type="button"
+          id="btn-reset"
+          class="mt-6 w-full text-sm py-2 rounded border border-border text-text-secondary hover:border-primary hover:text-text transition"
+        >
+          Reset to defaults
+        </button>
+      </section>
+
+      <!-- ===== Results ===== -->
+      <section class="space-y-4">
+        <!-- Headline ARR -->
+        <div class="bg-surface border border-border rounded-xl p-6 md:p-8 relative overflow-hidden">
+          <p class="text-xs text-text-muted uppercase tracking-widest font-mono mb-2">
+            Annual Recurring Revenue
+          </p>
+          <p class="text-4xl md:text-5xl font-extrabold text-text font-mono mb-1" id="out-arr">
+            $0
+          </p>
+          <p class="text-sm text-text-muted">
+            Based on $<span id="out-mrr-echo">0</span> MRR × 12
+          </p>
+        </div>
+
+        <!-- 4 metric tiles -->
+        <div class="grid grid-cols-2 gap-3 md:gap-4">
+          <div class="metric-tile">
+            <div class="metric-label">Avg revenue per customer</div>
+            <div class="metric-value" id="out-arpc">$0</div>
+            <div class="metric-foot">ARPU per month</div>
+          </div>
+          <div class="metric-tile">
+            <div class="metric-label">Customer lifetime</div>
+            <div class="metric-value" id="out-lifetime">0 mo</div>
+            <div class="metric-foot">1 / churn rate</div>
+          </div>
+          <div class="metric-tile">
+            <div class="metric-label">Lifetime Value (LTV)</div>
+            <div class="metric-value" id="out-ltv">$0</div>
+            <div class="metric-foot">ARPU × lifetime</div>
+          </div>
+          <div class="metric-tile">
+            <div class="metric-label">LTV : CAC ratio</div>
+            <div class="metric-value" id="out-ltv-cac">0:1</div>
+            <div class="metric-foot" id="out-ltv-cac-tier">—</div>
+          </div>
+        </div>
+
+        <!-- Payback + Forecast -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="metric-tile">
+            <div class="metric-label">CAC Payback Period</div>
+            <div class="metric-value" id="out-payback">0 months</div>
+            <div class="metric-foot" id="out-payback-tier">—</div>
+          </div>
+          <div class="metric-tile">
+            <div class="metric-label">Annual growth rate</div>
+            <div class="metric-value" id="out-annual-growth">0%</div>
+            <div class="metric-foot">Compounded monthly</div>
+          </div>
+        </div>
+
+        <!-- Forecast -->
+        <div class="bg-surface border border-border rounded-xl p-6">
+          <p class="text-xs text-text-muted uppercase tracking-widest font-mono mb-3">
+            MRR Forecast
+          </p>
+          <div class="grid grid-cols-3 gap-4 text-center">
+            <div>
+              <p class="text-xs text-text-muted mb-1">In 6 months</p>
+              <p class="text-xl md:text-2xl font-bold font-mono text-text" id="out-mrr-6mo">$0</p>
+            </div>
+            <div class="border-x border-border">
+              <p class="text-xs text-text-muted mb-1">In 12 months</p>
+              <p class="text-xl md:text-2xl font-bold font-mono text-text" id="out-mrr-12mo">$0</p>
+            </div>
+            <div>
+              <p class="text-xs text-text-muted mb-1">In 24 months</p>
+              <p class="text-xl md:text-2xl font-bold font-mono text-text" id="out-mrr-24mo">$0</p>
+            </div>
+          </div>
+          <p class="text-xs text-text-muted mt-3 text-center">
+            Forecast assumes constant monthly growth rate &amp; churn. Real growth is rarely linear.
+          </p>
+        </div>
+      </section>
+    </div>
+
+    <!-- ===== How to use ===== -->
+    <section class="bg-surface-elevated border border-border rounded-xl p-6 md:p-8 mb-12 max-w-3xl mx-auto">
+      <h2 class="text-xl font-bold text-text mb-4">How to use this calculator</h2>
+      <ol class="list-decimal pl-6 space-y-2 text-text-secondary text-sm leading-relaxed">
+        <li>
+          <strong class="text-text">Enter your current numbers</strong> — your real MRR, customer count, and churn rate.
+          Don't guess; pull from Stripe / your billing system.
+        </li>
+        <li>
+          <strong class="text-text">Estimate your CAC</strong> by dividing total sales + marketing spend (last 90 days)
+          by the number of new customers acquired in the same period.
+        </li>
+        <li>
+          <strong class="text-text">Set your growth rate</strong> based on the last 3 months — average net MRR added per month
+          divided by starting MRR.
+        </li>
+        <li>
+          <strong class="text-text">Watch the metrics update.</strong> Compare against the benchmark hints
+          (coming soon) to see where you stand.
+        </li>
+      </ol>
+    </section>
+
+    <!-- ===== What the numbers mean ===== -->
+    <section class="prose prose-invert max-w-3xl mx-auto mb-12">
+      <h2 class="text-2xl font-bold text-text mb-4">What the numbers mean</h2>
+
+      <h3 class="text-lg font-bold text-text mt-6 mb-2">ARR (Annual Recurring Revenue)</h3>
+      <p class="text-text-secondary text-sm leading-relaxed">
+        Your monthly recurring revenue annualized. The single most important top-line metric for SaaS valuations.
+      </p>
+
+      <h3 class="text-lg font-bold text-text mt-6 mb-2">LTV : CAC ratio</h3>
+      <p class="text-text-secondary text-sm leading-relaxed">
+        How much customer revenue you earn over the customer's lifetime, divided by what it cost to acquire them.
+        Industry benchmark: <strong class="text-text">3:1 is healthy</strong>; below 1:1 is unprofitable;
+        top SaaS reach 5:1+.
+      </p>
+
+      <h3 class="text-lg font-bold text-text mt-6 mb-2">Payback Period</h3>
+      <p class="text-text-secondary text-sm leading-relaxed">
+        How many months it takes for a single customer's revenue to repay your acquisition cost.
+        Healthy SMB SaaS: <strong class="text-text">12 months</strong>; Enterprise: 18-24 months acceptable.
+      </p>
+
+      <h3 class="text-lg font-bold text-text mt-6 mb-2">Customer Lifetime</h3>
+      <p class="text-text-secondary text-sm leading-relaxed">
+        The expected duration a customer stays with you. Calculated as <code class="text-xs">1 / monthly churn rate</code>.
+        A 3% monthly churn implies ~33 month average lifetime.
+      </p>
+    </section>
+
+    <!-- Disclaimer -->
+    <div class="text-xs text-text-muted text-center max-w-2xl mx-auto leading-relaxed">
+      Calculations are based on the inputs you provide. SaaSStatsHub is not affiliated with any
+      vendor. Results are for educational purposes — consult a financial advisor for material business decisions.
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  /* Calculator-specific styles. Scoped to this page via Astro's <style> block. */
+  .calc-input {
+    width: 100%;
+    height: 44px;
+    padding: 0 12px;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border-strong);
+    border-radius: var(--radius-md);
+    color: var(--color-text);
+    font-family: var(--font-mono);
+    font-size: 15px;
+    font-weight: 600;
+    transition: border-color var(--duration-fast) var(--ease-out),
+                box-shadow var(--duration-fast) var(--ease-out);
+  }
+
+  .calc-input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.18);
+  }
+
+  .calc-input:invalid {
+    border-color: var(--color-danger);
+  }
+
+  /* Number input — hide spinner buttons (cleaner look, mobile keyboards still work) */
+  .calc-input::-webkit-outer-spin-button,
+  .calc-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  .calc-input[type='number'] {
+    -moz-appearance: textfield;
+  }
+
+  .metric-tile {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: 16px 20px;
+    transition: border-color var(--duration-fast) var(--ease-out);
+  }
+
+  .metric-tile:hover {
+    border-color: var(--color-border-strong);
+  }
+
+  .metric-label {
+    font-size: 11px;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-family: var(--font-mono);
+    margin-bottom: 6px;
+  }
+
+  .metric-value {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--color-text);
+    font-family: var(--font-mono);
+    line-height: 1.2;
+  }
+
+  @media (min-width: 768px) {
+    .metric-value {
+      font-size: 26px;
+    }
+  }
+
+  .metric-foot {
+    font-size: 11px;
+    color: var(--color-text-muted);
+    margin-top: 4px;
+  }
+
+  .gradient-text-primary {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-violet) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* LTV:CAC tier colors — driven by data attribute set in JS */
+  [data-tier='good'] {
+    color: var(--color-positive);
+  }
+  [data-tier='warn'] {
+    color: var(--color-warning);
+  }
+  [data-tier='bad'] {
+    color: var(--color-negative);
+  }
+</style>
+
+<script is:inline>
+  // ===== SaaS Pricing Calculator — vanilla JS, runs entirely client-side =====
+  (function () {
+    const $ = (id) => document.getElementById(id);
+
+    // Default values match the form's HTML defaults — keep in sync.
+    const DEFAULTS = {
+      mrr: 50000,
+      customers: 500,
+      churn: 3,
+      cac: 800,
+      growth: 8,
+    };
+
+    function readInputs() {
+      return {
+        mrr: parseFloat($('input-mrr').value) || 0,
+        customers: parseFloat($('input-customers').value) || 0,
+        churn: parseFloat($('input-churn').value) || 0,
+        cac: parseFloat($('input-cac').value) || 0,
+        growth: parseFloat($('input-growth').value) || 0,
+      };
+    }
+
+    /**
+     * Format USD with smart compaction:
+     *  $1,234       → "$1,234"
+     *  $12,345      → "$12.3K"
+     *  $1,234,567   → "$1.23M"
+     *  $1,234,567,890 → "$1.23B"
+     */
+    function formatUSD(n) {
+      if (!isFinite(n) || isNaN(n)) return '—';
+      const abs = Math.abs(n);
+      const sign = n < 0 ? '-' : '';
+      if (abs >= 1e9) return `${sign}$${(abs / 1e9).toFixed(2)}B`;
+      if (abs >= 1e6) return `${sign}$${(abs / 1e6).toFixed(2)}M`;
+      if (abs >= 1e4) return `${sign}$${(abs / 1e3).toFixed(1)}K`;
+      // Below $10K, show full number with commas
+      return `${sign}$${Math.round(abs).toLocaleString('en-US')}`;
+    }
+
+    function formatMonths(n) {
+      if (!isFinite(n) || isNaN(n)) return '—';
+      if (n >= 999) return '999+ mo';
+      if (n < 1) return '<1 mo';
+      return `${n.toFixed(1)} mo`;
+    }
+
+    function formatRatio(n) {
+      if (!isFinite(n) || isNaN(n)) return '—';
+      if (n >= 999) return '999+ : 1';
+      return `${n.toFixed(1)} : 1`;
+    }
+
+    function formatPct(n) {
+      if (!isFinite(n) || isNaN(n)) return '—';
+      return `${n >= 0 ? '+' : ''}${n.toFixed(1)}%`;
+    }
+
+    /**
+     * Tier classification matching operator's spec:
+     *   LTV:CAC < 1   → bad   (unprofitable)
+     *   LTV:CAC 1-3   → warn  (below industry healthy line)
+     *   LTV:CAC ≥ 3   → good  (3:1 SaaS healthy benchmark)
+     *   LTV:CAC ≥ 5   → good  (top 10%)
+     */
+    function tierForLtvCac(ratio) {
+      if (!isFinite(ratio) || ratio <= 0) return 'bad';
+      if (ratio < 1) return 'bad';
+      if (ratio < 3) return 'warn';
+      return 'good';
+    }
+
+    function tierLabelLtvCac(ratio) {
+      if (!isFinite(ratio) || ratio <= 0) return 'Insufficient data';
+      if (ratio < 1) return 'Unprofitable — CAC > LTV';
+      if (ratio < 3) return 'Below 3:1 industry benchmark';
+      if (ratio < 5) return 'Healthy (3:1+ SaaS benchmark)';
+      return 'Top tier (5:1+, top 10%)';
+    }
+
+    /**
+     * Tier for payback period:
+     *   ≤ 12 months → good (SMB SaaS target)
+     *   12-24       → warn (Enterprise acceptable)
+     *   > 24        → bad
+     */
+    function tierForPayback(months) {
+      if (!isFinite(months) || months <= 0) return 'bad';
+      if (months <= 12) return 'good';
+      if (months <= 24) return 'warn';
+      return 'bad';
+    }
+
+    function tierLabelPayback(months) {
+      if (!isFinite(months) || months <= 0) return '—';
+      if (months <= 12) return 'SMB target ≤ 12 mo ✓';
+      if (months <= 24) return 'Enterprise acceptable (12-24 mo)';
+      return 'Above 24 mo — review unit economics';
+    }
+
+    function compute(inputs) {
+      const { mrr, customers, churn, cac, growth } = inputs;
+
+      // ARPU = MRR / customers (avoid div-by-zero)
+      const arpc = customers > 0 ? mrr / customers : 0;
+
+      // Customer lifetime in months = 1 / monthly churn rate
+      // Churn input is %; convert to decimal
+      const lifetimeMonths = churn > 0 ? 100 / churn : Infinity;
+
+      // LTV = ARPU × lifetime
+      const ltv = arpc * lifetimeMonths;
+
+      // LTV:CAC ratio
+      const ltvCac = cac > 0 ? ltv / cac : Infinity;
+
+      // CAC payback period in months = CAC / ARPU (gross margin assumed 100%; future enhancement: gross margin input)
+      const payback = arpc > 0 ? cac / arpc : Infinity;
+
+      // ARR
+      const arr = mrr * 12;
+
+      // MRR forecast — compound monthly: MRR_n = MRR_0 × (1 + g)^n
+      const g = growth / 100;
+      const mrr6 = mrr * Math.pow(1 + g, 6);
+      const mrr12 = mrr * Math.pow(1 + g, 12);
+      const mrr24 = mrr * Math.pow(1 + g, 24);
+
+      // Annual growth (compounded)
+      const annualGrowth = (Math.pow(1 + g, 12) - 1) * 100;
+
+      return {
+        arr, arpc, lifetimeMonths, ltv, ltvCac, payback, mrr6, mrr12, mrr24, annualGrowth,
+      };
+    }
+
+    function render() {
+      const inputs = readInputs();
+      const r = compute(inputs);
+
+      $('out-arr').textContent = formatUSD(r.arr);
+      $('out-mrr-echo').textContent = inputs.mrr.toLocaleString('en-US');
+      $('out-arpc').textContent = formatUSD(r.arpc);
+      $('out-lifetime').textContent = formatMonths(r.lifetimeMonths);
+      $('out-ltv').textContent = formatUSD(r.ltv);
+      $('out-ltv-cac').textContent = formatRatio(r.ltvCac);
+      $('out-ltv-cac-tier').textContent = tierLabelLtvCac(r.ltvCac);
+      $('out-payback').textContent = formatMonths(r.payback);
+      $('out-payback-tier').textContent = tierLabelPayback(r.payback);
+      $('out-annual-growth').textContent = formatPct(r.annualGrowth);
+      $('out-mrr-6mo').textContent = formatUSD(r.mrr6);
+      $('out-mrr-12mo').textContent = formatUSD(r.mrr12);
+      $('out-mrr-24mo').textContent = formatUSD(r.mrr24);
+
+      // Tier coloring on LTV:CAC and payback
+      $('out-ltv-cac').setAttribute('data-tier', tierForLtvCac(r.ltvCac));
+      $('out-payback').setAttribute('data-tier', tierForPayback(r.payback));
+    }
+
+    function attachListeners() {
+      const ids = ['input-mrr', 'input-customers', 'input-churn', 'input-cac', 'input-growth'];
+      ids.forEach((id) => {
+        const el = $(id);
+        if (!el) return;
+        el.addEventListener('input', render);
+      });
+
+      const reset = $('btn-reset');
+      if (reset) {
+        reset.addEventListener('click', () => {
+          $('input-mrr').value = DEFAULTS.mrr;
+          $('input-customers').value = DEFAULTS.customers;
+          $('input-churn').value = DEFAULTS.churn;
+          $('input-cac').value = DEFAULTS.cac;
+          $('input-growth').value = DEFAULTS.growth;
+          render();
+        });
+      }
+    }
+
+    // Initial render with defaults
+    document.addEventListener('DOMContentLoaded', () => {
+      attachListeners();
+      render();
+    });
+  })();
+</script>
