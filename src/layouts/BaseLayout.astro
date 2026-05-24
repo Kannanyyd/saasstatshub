@@ -237,6 +237,28 @@ const gaId =
             </div>
           </div>
           <a href="/about/" class="font-semibold text-sm text-text-secondary hover:text-primary transition-colors px-3 py-2 rounded-lg hover:bg-primary-lighter">About</a>
+          <div class="relative group">
+            <button class="flex items-center gap-1.5 font-semibold text-sm text-text-secondary hover:text-primary transition-colors px-3 py-2 rounded-lg hover:bg-primary-lighter" aria-expanded="false">
+              Tools
+              <Icon name="chevron-down" aria-hidden="true" class="w-3.5 h-3.5 transition-transform duration-200 group-hover:rotate-180" />
+            </button>
+            <div class="absolute top-full right-0 mt-1 w-[280px] bg-surface-elevated border border-border rounded-xl shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 overflow-hidden">
+              <div class="p-2">
+                <a
+                  href="/saas-pricing-calculator/"
+                  class="flex items-start gap-2.5 px-3 py-2.5 text-[13px] text-text-secondary hover:text-primary hover:bg-primary-lighter rounded-lg transition-colors"
+                >
+                  <span class="w-7 h-7 inline-flex items-center justify-center rounded-md bg-primary-lighter shrink-0">
+                    <Icon name="bar-chart-3" aria-hidden="true" class="w-4 h-4" />
+                  </span>
+                  <span class="flex flex-col">
+                    <span class="font-semibold">SaaS Pricing Calculator</span>
+                    <span class="text-[11px] text-text-muted">ARR · LTV · Payback · Forecast</span>
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
           <a
             href="https://signals.saasstatshub.com/"
             class="hidden lg:inline-flex items-center gap-1.5 font-semibold text-sm text-text-secondary hover:text-primary transition-colors px-3 py-2 rounded-lg hover:bg-primary-lighter"
@@ -273,6 +295,10 @@ const gaId =
           ))}
           <hr class="border-border my-1" />
           <a href="/about/" class="text-sm text-text-secondary hover:text-primary py-2 px-3 rounded-lg hover:bg-primary-lighter">About</a>
+          <a href="/saas-pricing-calculator/" class="flex items-center gap-2 text-sm text-text-secondary hover:text-primary py-2 px-3 rounded-lg hover:bg-primary-lighter">
+            <Icon name="bar-chart-3" aria-hidden="true" class="w-4 h-4" />
+            SaaS Pricing Calculator
+          </a>
           <a href="https://signals.saasstatshub.com/" class="flex items-center gap-2 text-sm text-text-secondary hover:text-primary py-2 px-3 rounded-lg hover:bg-primary-lighter" rel="noopener">
             <span class="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
             Signals — Trend opportunities
@@ -324,6 +350,7 @@ const gaId =
               <li><a href="/about/" class="text-text-secondary hover:text-primary transition-colors">About</a></li>
               <li><a href="/contact/" class="text-text-secondary hover:text-primary transition-colors">Contact</a></li>
               <li><a href="/write-for-us/" class="text-text-secondary hover:text-primary transition-colors">Write for Us</a></li>
+              <li><a href="/saas-pricing-calculator/" class="text-text-secondary hover:text-primary transition-colors">SaaS Pricing Calculator</a></li>
               <li>
                 <a href="https://signals.saasstatshub.com/" class="text-text-secondary hover:text-primary transition-colors inline-flex items-center gap-1.5" rel="noopener">
                   Signals
