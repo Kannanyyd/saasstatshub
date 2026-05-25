@@ -159,7 +159,7 @@ const webAppSchema = {
 
     <!-- Embed-mode minimal header (only visible inside iframes) -->
     <div class="embed-only mb-6 pb-3 border-b border-border">
-      <h1 class="text-xl font-bold text-text">SaaS Pricing &amp; Metrics Calculator</h1>
+      <p class="text-xl font-bold text-text">SaaS Pricing &amp; Metrics Calculator</p>
       <p class="text-xs text-text-muted mt-1">Calculate ARR, LTV, payback &amp; more — free</p>
     </div>
 
@@ -688,27 +688,30 @@ const webAppSchema = {
 <style>
   /* Calculator-specific styles. Scoped to this page via Astro's <style> block. */
 
-  /* ===== Day 3: Embed mode (?embed=1) hides chrome for clean iframe rendering ===== */
-  :global(html.embed-mode) header,
-  :global(html.embed-mode) footer,
-  :global(html.embed-mode) nav[aria-label='Breadcrumb'] {
+  /* ===== Day 3: Embed mode (?embed=1) hides chrome for clean iframe rendering =====
+     Use :global() on every selector because header/footer/nav live in BaseLayout
+     (different astro-cid). Without :global, Astro scopes selectors with the
+     calculator page's data-astro-cid-* attribute and the rule misses entirely. */
+  :global(html.embed-mode header),
+  :global(html.embed-mode footer),
+  :global(html.embed-mode nav[aria-label='Breadcrumb']) {
     display: none !important;
   }
-  :global(html.embed-mode) main {
+  :global(html.embed-mode main) {
     margin-top: 0 !important;
   }
   /* Hide all CTA blocks + share section in embed mode (only the calculator core stays) */
-  :global(html.embed-mode) .embed-hide {
+  :global(html.embed-mode .embed-hide) {
     display: none !important;
   }
   /* In embed mode, tighten padding (no nav above article) */
-  :global(html.embed-mode) main > article {
+  :global(html.embed-mode main > article) {
     padding-top: 16px !important;
     padding-bottom: 16px !important;
   }
   /* Show embed-mode-only attribution at bottom of iframe */
   .embed-only { display: none; }
-  :global(html.embed-mode) .embed-only { display: block; }
+  :global(html.embed-mode .embed-only) { display: block; }
 
   .calc-input {
     width: 100%;
