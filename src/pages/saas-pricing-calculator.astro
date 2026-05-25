@@ -1101,11 +1101,30 @@ const webAppSchema = {
     }
 
     function attachListeners() {
+      // ===== Day 4: GA4 event tracking =====
+      // - Funnel step 1: first input change (real-use vs view-only)
+      // - Funnel completion: count distinct fields the user touched
+      // - Conversion events: CSV/PDF download, embed copy
+      // - CTA clicks: HubSpot/Salesforce affiliate, internal CTAs, source links
+      // - UX signal: Reset button (frustration indicator)
+      const touchedFields = new Set();
+      let firstInputFired = false;
+
       const ids = ['input-mrr', 'input-customers', 'input-churn', 'input-cac', 'input-growth'];
       ids.forEach((id) => {
         const el = $(id);
         if (!el) return;
-        el.addEventListener('input', render);
+        el.addEventListener('input', () => {
+          render();
+          if (!firstInputFired) {
+            firstInputFired = true;
+            track('calc_input_changed');  // Funnel step 1: real engagement
+          }
+          if (!touchedFields.has(id)) {
+            touchedFields.add(id);
+            track('calc_input_count', { count: touchedFields.size, field: id });
+          }
+        });
       });
 
       const reset = $('btn-reset');
@@ -1117,14 +1136,71 @@ const webAppSchema = {
           $('input-cac').value = DEFAULTS.cac;
           $('input-growth').value = DEFAULTS.growth;
           render();
+          track('calc_reset');
         });
       }
 
-      // Day 2: CSV export
+      // Day 2: CSV export (track happens inside exportCSV)
       const csvBtn = $('btn-export-csv');
       if (csvBtn) {
         csvBtn.addEventListener('click', exportCSV);
       }
+
+      // Day 4: track all CTA + source link clicks via delegation
+      attachCtaTracking();
+    }
+
+    /**
+     * GA4 event tracking helper. Safe no-op if gtag not loaded
+     * (e.g. user denied analytics consent).
+     */
+    function track(eventName, params) {
+      try {
+        if (typeof window.gtag === 'function') {
+          window.gtag('event', eventName, Object.assign({
+            event_category: 'calculator',
+            page_path: '/saas-pricing-calculator/',
+          }, params || {}));
+        }
+      } catch (e) {
+        // Don't let tracking errors break the user flow
+      }
+    }
+
+    /**
+     * Attach click trackers to all CTA buttons + benchmark source links.
+     * Uses event delegation on the article so dynamically-shown CTAs
+     * (like CTA 1 conditional) are also covered.
+     */
+    function attachCtaTracking() {
+      // Affiliate CTAs (HubSpot / Salesforce) — already have data-affiliate attr
+      document.querySelectorAll('a[data-affiliate]').forEach((a) => {
+        a.addEventListener('click', () => {
+          track('calc_cta_affiliate', { vendor: a.getAttribute('data-affiliate') });
+        });
+      });
+
+      // CTA 1 (conditional, LTV:CAC < 3) — link to /crm/salesforce-vs-hubspot-vs-pipedrive/
+      const cta1Link = document.querySelector('#cta-low-ltvcac a[href*="/crm/"]');
+      if (cta1Link) {
+        cta1Link.addEventListener('click', () => track('calc_cta_crm_compare'));
+      }
+
+      // CTA 2 (static) — "See Best CRM Software"
+      document.querySelectorAll('a[href="/crm/best-crm-small-business/"]').forEach((a) => {
+        a.addEventListener('click', () => track('calc_cta_best_crm'));
+      });
+
+      // CTA 4 (top banner) — State of SaaS report
+      document.querySelectorAll('a[href="/analytics/state-of-saas-2026-annual-report/"]').forEach((a) => {
+        a.addEventListener('click', () => track('calc_cta_state_of_saas'));
+      });
+
+      // Benchmark source links — internal articles linked from each row
+      document.querySelectorAll('.benchmark-row a[href^="/"]').forEach((a) => {
+        const sourceUrl = a.getAttribute('href');
+        a.addEventListener('click', () => track('calc_source_click', { destination: sourceUrl }));
+      });
     }
 
     /**
@@ -1209,6 +1285,8 @@ const webAppSchema = {
       document.body.removeChild(a);
       // Free the blob URL after a tick
       setTimeout(() => URL.revokeObjectURL(url), 1000);
+
+      track('calc_csv_download');
     }
 
     // ===== Day 3: Embed mode + PDF download + Embed copy =====
@@ -1251,6 +1329,7 @@ const webAppSchema = {
           btn.textContent = 'Copied!';
           if (status) status.textContent = 'Embed code copied to clipboard.';
           setTimeout(() => { btn.textContent = 'Copy'; }, 2000);
+          track('calc_embed_copy');
         } catch (e) {
           if (status) status.textContent = 'Copy failed — please select and copy manually.';
         }
@@ -1281,6 +1360,7 @@ const webAppSchema = {
           const ts = new Date().toISOString().slice(0, 10);
           pdf.save(`saas-pricing-calculator-report-${ts}.pdf`);
           if (status) status.textContent = 'PDF downloaded.';
+          track('calc_pdf_download');
         } catch (e) {
           console.error('[calculator] PDF generation failed', e);
           if (status) status.textContent = 'PDF generation failed. Try CSV export instead.';
