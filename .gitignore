@@ -58,3 +58,10 @@ baseline/archive-snapshots/
 
 # Temporary HTML files from production curl probes
 tmp-*.html
+
+# Temporary test scripts (e2e validation, never meant to be tracked)
+test-*.py
+test-*.mjs
+test-*.js
+*-debug.py
+*-debug.mjs
