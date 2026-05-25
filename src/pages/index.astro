@@ -6,6 +6,7 @@ import LatestArticlesSection from '../components/sections/LatestArticlesSection.
 import BrowseCategoriesSection from '../components/sections/BrowseCategoriesSection.astro';
 import NewsletterCtaSection from '../components/sections/NewsletterCtaSection.astro';
 import SignalsCalloutSection from '../components/sections/SignalsCalloutSection.astro';
+import ToolsCalloutSection from '../components/sections/ToolsCalloutSection.astro';
 import '../styles/global.css';
 import { getHomePageData, getSiteConfig, getPostsBySlugs, type HomePageData, type ArticleCard } from '../lib/wp-api';
 import { mockHomePageData } from '../data/mock-data';
@@ -73,6 +74,7 @@ const enabledSections = siteConfig.homepageSections.filter((s) => s.enabled);
       return (
         <>
           <SignalsCalloutSection />
+          <ToolsCalloutSection />
           <NewsletterCtaSection section={section} />
         </>
       );

@@ -146,7 +146,7 @@ const webAppSchema = {
     </nav>
 
     <!-- CTA 4 — Top info banner: pointer to State of SaaS 2026 for users who need reference data -->
-    <div class="mb-8 flex items-start md:items-center gap-3 px-4 py-3 rounded-lg bg-primary-lighter border border-primary-deeper text-sm">
+    <div class="embed-hide mb-8 flex items-start md:items-center gap-3 px-4 py-3 rounded-lg bg-primary-lighter border border-primary-deeper text-sm">
       <span class="text-base shrink-0" aria-hidden="true">💡</span>
       <p class="text-text-secondary">
         Need data to estimate?
@@ -157,8 +157,14 @@ const webAppSchema = {
       </p>
     </div>
 
+    <!-- Embed-mode minimal header (only visible inside iframes) -->
+    <div class="embed-only mb-6 pb-3 border-b border-border">
+      <h1 class="text-xl font-bold text-text">SaaS Pricing &amp; Metrics Calculator</h1>
+      <p class="text-xs text-text-muted mt-1">Calculate ARR, LTV, payback &amp; more — free</p>
+    </div>
+
     <!-- Hero -->
-    <header class="mb-10 text-center max-w-3xl mx-auto">
+    <header class="embed-hide mb-10 text-center max-w-3xl mx-auto">
       <p class="text-xs text-text-muted uppercase tracking-widest font-mono mb-3">
         Free Tool
       </p>
@@ -389,7 +395,7 @@ const webAppSchema = {
         </button>
 
         <!-- ===== CTA 1 — Conditional, shows when LTV:CAC < 3 ===== -->
-        <div id="cta-low-ltvcac" class="hidden bg-primary-lighter border border-primary rounded-xl p-6">
+        <div id="cta-low-ltvcac" class="embed-hide hidden bg-primary-lighter border border-primary rounded-xl p-6">
           <p class="text-xs text-primary uppercase tracking-widest font-mono mb-2 font-semibold">
             ⚠ Recommended next step
           </p>
@@ -457,7 +463,7 @@ const webAppSchema = {
         </div>
 
         <!-- ===== CTA 2 — Static, always shown at bottom of benchmark card ===== -->
-        <div class="px-6 py-5 bg-bg-alt border-t border-border flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+        <div class="embed-hide px-6 py-5 bg-bg-alt border-t border-border flex flex-col md:flex-row md:items-center md:justify-between gap-3">
           <div>
             <h3 class="text-base font-bold text-text mb-1">Get Detailed Pricing Breakdown</h3>
             <p class="text-sm text-text-muted">
@@ -475,7 +481,7 @@ const webAppSchema = {
     </section>
 
     <!-- ===== How to use ===== -->
-    <section class="bg-surface-elevated border border-border rounded-xl p-6 md:p-8 mb-12 max-w-3xl mx-auto">
+    <section class="embed-hide bg-surface-elevated border border-border rounded-xl p-6 md:p-8 mb-12 max-w-3xl mx-auto">
       <h2 class="text-xl font-bold text-text mb-4">How to use this calculator</h2>
       <ol class="list-decimal pl-6 space-y-2 text-text-secondary text-sm leading-relaxed">
         <li>
@@ -498,7 +504,7 @@ const webAppSchema = {
     </section>
 
     <!-- ===== What the numbers mean ===== -->
-    <section class="prose prose-invert max-w-3xl mx-auto mb-12">
+    <section class="embed-hide prose prose-invert max-w-3xl mx-auto mb-12">
       <h2 class="text-2xl font-bold text-text mb-4">What the numbers mean</h2>
 
       <h3 class="text-lg font-bold text-text mt-6 mb-2">ARR (Annual Recurring Revenue)</h3>
@@ -527,7 +533,7 @@ const webAppSchema = {
     </section>
 
     <!-- ===== CTA 3 — Bottom banner: HubSpot + Salesforce affiliate ===== -->
-    <section class="mb-12">
+    <section class="embed-hide mb-12">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <!-- HubSpot -->
         <div class="bg-surface border border-border rounded-xl p-6 hover:border-primary transition">
@@ -581,16 +587,129 @@ const webAppSchema = {
       </p>
     </section>
 
+    <!-- ===== Day 3: Share This Calculator (PDF + Embed) ===== -->
+    <section class="embed-hide mb-12">
+      <div class="bg-bg-alt border border-border rounded-xl p-6 md:p-8">
+        <p class="text-xs text-text-muted uppercase tracking-widest font-mono mb-2">
+          Share &amp; Embed
+        </p>
+        <h2 class="text-xl md:text-2xl font-bold text-text mb-1">Take this with you</h2>
+        <p class="text-sm text-text-secondary mb-6">
+          Generate a 1-page PDF report of your numbers, or embed this calculator on your own blog.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- PDF download -->
+          <div class="flex flex-col">
+            <h3 class="text-sm font-bold text-text mb-2 flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <polyline points="14 2 14 8 20 8"/>
+                <line x1="16" y1="13" x2="8" y2="13"/>
+                <line x1="16" y1="17" x2="8" y2="17"/>
+              </svg>
+              Download as PDF report
+            </h3>
+            <p class="text-xs text-text-muted mb-4 flex-1">
+              A 1-page summary with your inputs, results, and benchmark comparison.
+              Great for sharing with co-founders, investors, or your team.
+            </p>
+            <button
+              type="button"
+              id="btn-download-pdf"
+              class="w-full py-2.5 rounded-lg font-semibold text-sm transition flex items-center justify-center gap-2"
+              style="background-color: var(--color-primary); color: #ffffff;"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                <polyline points="7 10 12 15 17 10"/>
+                <line x1="12" y1="15" x2="12" y2="3"/>
+              </svg>
+              Download PDF
+            </button>
+            <p class="text-[11px] text-text-muted mt-2 text-center" id="pdf-status" aria-live="polite"></p>
+          </div>
+
+          <!-- Embed code -->
+          <div class="flex flex-col">
+            <h3 class="text-sm font-bold text-text mb-2 flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="16 18 22 12 16 6"/>
+                <polyline points="8 6 2 12 8 18"/>
+              </svg>
+              Embed on your blog
+            </h3>
+            <p class="text-xs text-text-muted mb-3 flex-1">
+              Copy the code below and paste it into your site (HTML, WordPress block, Ghost, Notion).
+              Free to use; we'd appreciate a backlink.
+            </p>
+            <div class="relative">
+              <textarea
+                id="embed-code"
+                readonly
+                rows="3"
+                class="w-full p-3 pr-12 rounded-lg border border-border-strong bg-bg text-text-secondary font-mono text-xs leading-relaxed resize-none"
+              ><iframe src="https://saasstatshub.com/saas-pricing-calculator/?embed=1" width="100%" height="900" frameborder="0" loading="lazy" title="SaaS Pricing Calculator"></iframe></textarea>
+              <button
+                type="button"
+                id="btn-copy-embed"
+                class="absolute top-2 right-2 px-2.5 py-1.5 rounded-md text-xs font-semibold bg-surface border border-border-strong text-text-secondary hover:border-primary hover:text-text transition"
+                aria-label="Copy embed code"
+              >
+                Copy
+              </button>
+            </div>
+            <p class="text-[11px] text-text-muted mt-2" id="embed-status" aria-live="polite"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Disclaimer -->
-    <div class="text-xs text-text-muted text-center max-w-2xl mx-auto leading-relaxed">
+    <div class="embed-hide text-xs text-text-muted text-center max-w-2xl mx-auto leading-relaxed">
       Calculations are based on the inputs you provide. SaaSStatsHub is not affiliated with any
       vendor. Results are for educational purposes — consult a financial advisor for material business decisions.
+    </div>
+
+    <!-- Embed-mode footer (only visible inside iframes) — backlink mechanism -->
+    <div class="embed-only mt-6 pt-4 border-t border-border text-center">
+      <a
+        href="https://saasstatshub.com/saas-pricing-calculator/?utm_source=embed&amp;utm_medium=iframe"
+        target="_blank"
+        rel="noopener"
+        class="text-xs text-text-muted hover:text-primary transition"
+      >
+        Powered by <strong class="text-text">SaaSStatsHub</strong> — Free SaaS Pricing Calculator →
+      </a>
     </div>
   </article>
 </BaseLayout>
 
 <style>
   /* Calculator-specific styles. Scoped to this page via Astro's <style> block. */
+
+  /* ===== Day 3: Embed mode (?embed=1) hides chrome for clean iframe rendering ===== */
+  :global(html.embed-mode) header,
+  :global(html.embed-mode) footer,
+  :global(html.embed-mode) nav[aria-label='Breadcrumb'] {
+    display: none !important;
+  }
+  :global(html.embed-mode) main {
+    margin-top: 0 !important;
+  }
+  /* Hide all CTA blocks + share section in embed mode (only the calculator core stays) */
+  :global(html.embed-mode) .embed-hide {
+    display: none !important;
+  }
+  /* In embed mode, tighten padding (no nav above article) */
+  :global(html.embed-mode) main > article {
+    padding-top: 16px !important;
+    padding-bottom: 16px !important;
+  }
+  /* Show embed-mode-only attribution at bottom of iframe */
+  .embed-only { display: none; }
+  :global(html.embed-mode) .embed-only { display: block; }
+
   .calc-input {
     width: 100%;
     height: 44px;
@@ -1089,9 +1208,304 @@ const webAppSchema = {
       setTimeout(() => URL.revokeObjectURL(url), 1000);
     }
 
+    // ===== Day 3: Embed mode + PDF download + Embed copy =====
+
+    /**
+     * Detect embed mode via ?embed=1 URL parameter.
+     * When true, body gets class .embed-mode → CSS hides nav/footer/CTAs/breadcrumb.
+     */
+    function applyEmbedMode() {
+      try {
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('embed') === '1') {
+          document.documentElement.classList.add('embed-mode');
+        }
+      } catch (e) {
+        // No-op — older browsers or sandboxed iframe
+      }
+    }
+
+    /**
+     * Copy embed iframe code to clipboard.
+     * Falls back to execCommand for older browsers.
+     */
+    function attachEmbedCopy() {
+      const btn = $('btn-copy-embed');
+      const textarea = $('embed-code');
+      const status = $('embed-status');
+      if (!btn || !textarea) return;
+
+      btn.addEventListener('click', async () => {
+        const code = textarea.value;
+        try {
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            await navigator.clipboard.writeText(code);
+          } else {
+            // Fallback: select + execCommand
+            textarea.select();
+            document.execCommand('copy');
+          }
+          btn.textContent = 'Copied!';
+          if (status) status.textContent = 'Embed code copied to clipboard.';
+          setTimeout(() => { btn.textContent = 'Copy'; }, 2000);
+        } catch (e) {
+          if (status) status.textContent = 'Copy failed — please select and copy manually.';
+        }
+      });
+
+      // Click textarea → select all (UX: easy manual copy)
+      textarea.addEventListener('focus', () => textarea.select());
+    }
+
+    /**
+     * Generate a 1-page PDF report client-side using jsPDF (loaded on demand from CDN).
+     * Layout: header (logo/title) → inputs → results → benchmark table → footer (URL/disclaimer)
+     */
+    function attachPdfDownload() {
+      const btn = $('btn-download-pdf');
+      const status = $('pdf-status');
+      if (!btn) return;
+
+      btn.addEventListener('click', async () => {
+        if (status) status.textContent = 'Generating PDF...';
+        btn.disabled = true;
+
+        try {
+          // Lazy-load jsPDF from CDN — keeps initial page fast
+          const jsPDF = await loadJsPDF();
+          const pdf = new jsPDF({ unit: 'pt', format: 'a4' }); // 595 x 842 pt
+          buildPdf(pdf);
+          const ts = new Date().toISOString().slice(0, 10);
+          pdf.save(`saas-pricing-calculator-report-${ts}.pdf`);
+          if (status) status.textContent = 'PDF downloaded.';
+        } catch (e) {
+          console.error('[calculator] PDF generation failed', e);
+          if (status) status.textContent = 'PDF generation failed. Try CSV export instead.';
+        } finally {
+          btn.disabled = false;
+          setTimeout(() => { if (status) status.textContent = ''; }, 4000);
+        }
+      });
+    }
+
+    /**
+     * Lazy-load jsPDF from cdnjs. Cached on window after first load.
+     */
+    function loadJsPDF() {
+      if (window.jspdf && window.jspdf.jsPDF) return Promise.resolve(window.jspdf.jsPDF);
+      return new Promise((resolve, reject) => {
+        const s = document.createElement('script');
+        s.src = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js';
+        s.onload = () => {
+          if (window.jspdf && window.jspdf.jsPDF) resolve(window.jspdf.jsPDF);
+          else reject(new Error('jsPDF not on window'));
+        };
+        s.onerror = () => reject(new Error('Failed to load jsPDF'));
+        document.head.appendChild(s);
+      });
+    }
+
+    /**
+     * Render the actual PDF content. Uses jsPDF's basic text/rect/line APIs
+     * (no html2canvas to keep deps small and avoid font/style mismatch).
+     */
+    function buildPdf(pdf) {
+      const inputs = readInputs();
+      const r = compute(inputs);
+
+      const PAGE_W = 595;
+      const PAGE_H = 842;
+      const MARGIN = 40;
+      const ts = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+      // ===== Header =====
+      pdf.setFillColor(15, 26, 46); // #0F1A2E
+      pdf.rect(0, 0, PAGE_W, 80, 'F');
+      pdf.setTextColor(255, 255, 255);
+      pdf.setFont('helvetica', 'bold');
+      pdf.setFontSize(22);
+      pdf.text('SaaS Pricing & Metrics Report', MARGIN, 35);
+      pdf.setFont('helvetica', 'normal');
+      pdf.setFontSize(10);
+      pdf.setTextColor(148, 163, 184); // #94A3B8
+      pdf.text(`Generated ${ts} · saasstatshub.com/saas-pricing-calculator`, MARGIN, 55);
+
+      let y = 110;
+
+      // ===== Inputs section =====
+      pdf.setTextColor(15, 23, 42);
+      pdf.setFont('helvetica', 'bold');
+      pdf.setFontSize(12);
+      pdf.text('YOUR INPUTS', MARGIN, y);
+      y += 18;
+
+      pdf.setFont('helvetica', 'normal');
+      pdf.setFontSize(10);
+      pdf.setTextColor(60, 71, 89);
+
+      const inputRows = [
+        ['Monthly Recurring Revenue', `$${inputs.mrr.toLocaleString()}`],
+        ['Active customers', inputs.customers.toLocaleString()],
+        ['Monthly churn rate', `${inputs.churn.toFixed(1)}%`],
+        ['Customer Acquisition Cost', `$${inputs.cac.toLocaleString()}`],
+        ['Monthly MRR growth rate', `${inputs.growth.toFixed(1)}%`],
+      ];
+      inputRows.forEach((row) => {
+        pdf.text(row[0], MARGIN, y);
+        pdf.setFont('helvetica', 'bold');
+        pdf.text(row[1], PAGE_W - MARGIN, y, { align: 'right' });
+        pdf.setFont('helvetica', 'normal');
+        y += 16;
+      });
+
+      y += 14;
+
+      // ===== Results section =====
+      pdf.setFillColor(241, 245, 249); // #F1F5F9
+      pdf.rect(MARGIN, y - 14, PAGE_W - 2 * MARGIN, 1, 'F');
+
+      pdf.setFont('helvetica', 'bold');
+      pdf.setFontSize(12);
+      pdf.setTextColor(15, 23, 42);
+      pdf.text('YOUR RESULTS', MARGIN, y);
+      y += 6;
+
+      // ARR — big headline
+      pdf.setFontSize(28);
+      pdf.setTextColor(59, 130, 246);
+      pdf.text(formatUSD(r.arr), MARGIN, y + 24);
+      pdf.setFont('helvetica', 'normal');
+      pdf.setFontSize(9);
+      pdf.setTextColor(148, 163, 184);
+      pdf.text('ANNUAL RECURRING REVENUE', MARGIN, y + 38);
+      y += 60;
+
+      // Other key metrics — 2 columns
+      const metrics = [
+        ['LTV', formatUSD(r.ltv)],
+        ['LTV : CAC ratio', formatRatio(r.ltvCac)],
+        ['Customer lifetime', formatMonths(r.lifetimeMonths)],
+        ['CAC payback period', formatMonths(r.payback)],
+        ['ARPU per month', formatUSD(r.arpc)],
+        ['Annual growth rate', formatPct(r.annualGrowth)],
+      ];
+      pdf.setFontSize(10);
+      const colW = (PAGE_W - 2 * MARGIN) / 2;
+      metrics.forEach((m, i) => {
+        const col = i % 2;
+        const row = Math.floor(i / 2);
+        const x = MARGIN + col * colW;
+        const rowY = y + row * 22;
+        pdf.setTextColor(60, 71, 89);
+        pdf.setFont('helvetica', 'normal');
+        pdf.text(m[0], x, rowY);
+        pdf.setFont('helvetica', 'bold');
+        pdf.setTextColor(15, 23, 42);
+        pdf.text(m[1], x + colW - 10, rowY, { align: 'right' });
+      });
+      y += Math.ceil(metrics.length / 2) * 22 + 10;
+
+      // MRR Forecast strip
+      pdf.setFillColor(248, 250, 252); // #F8FAFC
+      pdf.rect(MARGIN, y, PAGE_W - 2 * MARGIN, 50, 'F');
+      pdf.setFontSize(9);
+      pdf.setTextColor(148, 163, 184);
+      pdf.text('MRR FORECAST', MARGIN + 12, y + 16);
+
+      pdf.setFontSize(13);
+      pdf.setFont('helvetica', 'bold');
+      pdf.setTextColor(15, 23, 42);
+      const fcWidth = (PAGE_W - 2 * MARGIN - 24) / 3;
+      ['6 months', '12 months', '24 months'].forEach((label, i) => {
+        const fcX = MARGIN + 12 + i * fcWidth;
+        const val = i === 0 ? r.mrr6 : i === 1 ? r.mrr12 : r.mrr24;
+        pdf.setFontSize(9);
+        pdf.setFont('helvetica', 'normal');
+        pdf.setTextColor(148, 163, 184);
+        pdf.text(label, fcX, y + 32);
+        pdf.setFont('helvetica', 'bold');
+        pdf.setFontSize(13);
+        pdf.setTextColor(15, 23, 42);
+        pdf.text(formatUSD(val), fcX, y + 46);
+      });
+      y += 70;
+
+      // ===== Benchmark comparison =====
+      pdf.setFont('helvetica', 'bold');
+      pdf.setFontSize(12);
+      pdf.setTextColor(15, 23, 42);
+      pdf.text('HOW YOU COMPARE', MARGIN, y);
+      y += 6;
+      pdf.setFont('helvetica', 'normal');
+      pdf.setFontSize(8);
+      pdf.setTextColor(148, 163, 184);
+      pdf.text('vs SaaS industry benchmarks (130+ reports analyzed)', MARGIN, y + 10);
+      y += 28;
+
+      // 5 benchmark rows
+      const benchValues = {
+        arr: { val: r.arr, display: formatUSD(r.arr) },
+        ltvcac: { val: r.ltvCac, display: formatRatio(r.ltvCac) },
+        churn: { val: inputs.churn, display: `${inputs.churn.toFixed(1)}%` },
+        payback: { val: r.payback, display: formatMonths(r.payback) },
+        growth: { val: r.annualGrowth, display: formatPct(r.annualGrowth) },
+      };
+
+      pdf.setFontSize(9);
+      for (const b of BENCHMARKS) {
+        const v = benchValues[b.id];
+        if (!v) continue;
+        const tier = classifyBenchmark(b.id, v.val);
+
+        // Indicator label (left)
+        pdf.setFont('helvetica', 'bold');
+        pdf.setTextColor(60, 71, 89);
+        pdf.text(b.label, MARGIN, y);
+
+        // Your value (middle)
+        pdf.setTextColor(15, 23, 42);
+        pdf.text(v.display, MARGIN + 100, y);
+
+        // Tier label (right) — colored
+        if (tier) {
+          if (tier.color === 'green') pdf.setTextColor(16, 185, 129);
+          else if (tier.color === 'yellow') pdf.setTextColor(202, 138, 4);
+          else if (tier.color === 'red') pdf.setTextColor(220, 38, 38);
+          else pdf.setTextColor(100, 116, 139);
+          pdf.setFont('helvetica', 'normal');
+          pdf.setFontSize(8);
+          pdf.text(tier.label, PAGE_W - MARGIN, y, { align: 'right' });
+          pdf.setFontSize(9);
+        }
+        y += 16;
+      }
+
+      // ===== Footer =====
+      const footerY = PAGE_H - 60;
+      pdf.setDrawColor(226, 232, 240);
+      pdf.line(MARGIN, footerY - 16, PAGE_W - MARGIN, footerY - 16);
+
+      pdf.setFontSize(8);
+      pdf.setFont('helvetica', 'normal');
+      pdf.setTextColor(148, 163, 184);
+      pdf.text('Generated by SaaSStatsHub Pricing Calculator', MARGIN, footerY);
+      pdf.text('saasstatshub.com/saas-pricing-calculator', PAGE_W - MARGIN, footerY, { align: 'right' });
+
+      pdf.setFontSize(7);
+      pdf.text(
+        'Calculations are based on the inputs you provide. Results are for educational purposes — consult a financial advisor for material business decisions.',
+        MARGIN,
+        footerY + 14,
+        { maxWidth: PAGE_W - 2 * MARGIN }
+      );
+    }
+
     // Initial render with defaults
     document.addEventListener('DOMContentLoaded', () => {
+      applyEmbedMode();
       attachListeners();
+      attachEmbedCopy();
+      attachPdfDownload();
       render();
     });
   })();

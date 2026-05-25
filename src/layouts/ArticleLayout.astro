@@ -247,6 +247,33 @@ const faqPageSchema = buildFaqPageSchema(faqItems);
           </div>
         </aside>
 
+        <!-- Calculator CTA (Phase C-1 T1) — show on commerce/SaaS-metric relevant categories -->
+        {['crm', 'marketing', 'analytics', 'ecommerce', 'project-management'].includes(categorySlug) && (
+          <aside class="mt-4 p-5 rounded-xl border border-border bg-bg-alt/40">
+            <div class="flex items-start gap-3">
+              <div class="text-2xl shrink-0" aria-hidden="true">🧮</div>
+              <div class="flex-1">
+                <p class="text-xs text-text-muted uppercase tracking-widest font-mono mb-1.5">
+                  Free tool
+                </p>
+                <h3 class="text-lg font-bold mb-2">Calculate your own SaaS metrics</h3>
+                <p class="text-sm text-text-secondary leading-relaxed mb-3">
+                  Plug in your MRR, CAC, and churn — get instant ARR, LTV, payback period, and a
+                  24-month forecast. Compare your numbers against industry benchmarks from
+                  <strong class="text-text">130+ SaaS reports</strong>.
+                </p>
+                <a
+                  href="/saas-pricing-calculator/"
+                  class="inline-flex items-center gap-1 text-sm font-semibold text-primary hover:text-primary-dark"
+                >
+                  Open SaaS Pricing Calculator
+                  <span aria-hidden="true">→</span>
+                </a>
+              </div>
+            </div>
+          </aside>
+        )}
+
         <!-- Bottom Newsletter -->
         <div class="mt-8">
           <Newsletter />
