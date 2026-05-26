@@ -150,6 +150,57 @@ const categoryMeta = metaFor(category, categorySlug);
 
 // Phase 2.2: build FAQPage JSON-LD (may be null if no valid FAQ items)
 const faqPageSchema = buildFaqPageSchema(faqItems);
+
+// Phase C-1 follow-up: detect affiliate-bearing articles to inject FTC-compliant
+// disclosure prominently above-the-fold (BaseLayout footer link is not enough).
+//
+// An article is treated as affiliate-bearing when ALL of:
+//   1. The category is one of the 8 commercial-intent slugs that hold paid links.
+//   2. The URL slug looks like a comparison ("…-vs-…") or a buyer's guide
+//      ("best-…"), excluding the few "…-statistics-2026" stat pages that
+//      happen to contain "-vs-" in the title.
+//
+// Keep this list in sync with the categories that surface affiliate CTAs in the
+// article body and the bottom recommendations block below.
+const AFFILIATE_CATEGORIES = new Set([
+  'crm',
+  'marketing',
+  'ecommerce',
+  'project-management',
+  'hr',
+  'communication',
+  'analytics',
+  'security',
+]);
+const pathSegments = Astro.url.pathname.split('/').filter(Boolean);
+const articleSlug = pathSegments[pathSegments.length - 1] || '';
+const isStatisticsPost =
+  articleSlug.includes('-statistics-') || articleSlug.endsWith('-statistics');
+const isComparison = articleSlug.includes('-vs-') && !isStatisticsPost;
+const isBuyersGuide = articleSlug.startsWith('best-');
+const hasAffiliateLinks =
+  AFFILIATE_CATEGORIES.has(categorySlug) && (isComparison || isBuyersGuide);
+
+// Phase C-1 follow-up: auto-suggest a related affiliate-style read at the
+// bottom of every commercial article so readers always have a next step.
+// For comparison posts we point to the category buyer's guide; for buyer's
+// guides we point to the category landing page (which lists every comparison).
+let relatedRecommendation: { href: string; label: string; kind: 'guide' | 'category' } | null = null;
+if (hasAffiliateLinks) {
+  if (isComparison) {
+    relatedRecommendation = {
+      href: `/categories/${categorySlug}/`,
+      label: `See all ${category} buyer's guides & comparisons`,
+      kind: 'category',
+    };
+  } else if (isBuyersGuide) {
+    relatedRecommendation = {
+      href: `/categories/${categorySlug}/`,
+      label: `Browse more ${category} comparisons & data`,
+      kind: 'category',
+    };
+  }
+}
 ---
 
 <BaseLayout title={title} description={description} canonicalURL={canonicalURL} ogImage={ogImage} ogType="article">
@@ -188,6 +239,30 @@ const faqPageSchema = buildFaqPageSchema(faqItems);
           <span>·</span>
           <a href={`/categories/${categorySlug}/`} class="text-primary font-semibold" data-pagefind-filter="category">{category}</a>
         </div>
+
+        <!--
+          Affiliate disclosure (FTC 16 CFR 255 + Google "sneaky" content guideline).
+          Must appear ABOVE any affiliate link, in clear and conspicuous text — a
+          footer-only link is not considered prominent. Rendered only on
+          comparison/buyer's-guide articles in commercial categories.
+        -->
+        {hasAffiliateLinks && (
+          <aside
+            class="mb-8 px-4 py-3 rounded-lg border border-border bg-bg-alt/60 text-sm text-text-secondary leading-relaxed"
+            role="note"
+            aria-label="Affiliate disclosure"
+          >
+            <strong class="text-text">Disclosure:</strong> This page contains
+            affiliate links. We may earn a commission if you sign up through our
+            links — at no extra cost to you. We only recommend tools we have
+            researched against the {' '}
+            <a href="/categories/" class="underline text-primary hover:text-primary-dark">130+ SaaS reports</a>
+            {' '}we cite across the site. {' '}
+            <a href="/affiliate-disclosure/" class="underline text-primary hover:text-primary-dark">
+              Read our full disclosure
+            </a>.
+          </aside>
+        )}
 
         <!-- Cover image -->
         <div class="aspect-[16/9] rounded-xl overflow-hidden mb-8 shadow-sm border border-border">
@@ -267,6 +342,41 @@ const faqPageSchema = buildFaqPageSchema(faqItems);
                   class="inline-flex items-center gap-1 text-sm font-semibold text-primary hover:text-primary-dark"
                 >
                   Open SaaS Pricing Calculator
+                  <span aria-hidden="true">→</span>
+                </a>
+              </div>
+            </div>
+          </aside>
+        )}
+
+        <!--
+          Auto-injected related recommendation (Phase C-1 follow-up).
+          Closes the loop: a comparison article points back to the category
+          buyer's guide hub; a buyer's guide points back to all category
+          comparisons. Keeps internal-link depth low and surfaces affiliate
+          paths without manually editing each post body.
+        -->
+        {relatedRecommendation && (
+          <aside class="mt-4 p-5 rounded-xl border border-border bg-bg-alt/40">
+            <div class="flex items-start gap-3">
+              <div class="text-2xl shrink-0" aria-hidden="true">🧭</div>
+              <div class="flex-1">
+                <p class="text-xs text-text-muted uppercase tracking-widest font-mono mb-1.5">
+                  Keep exploring
+                </p>
+                <h3 class="text-lg font-bold mb-2">
+                  {isComparison ? 'Still comparing options?' : 'Want a deeper comparison?'}
+                </h3>
+                <p class="text-sm text-text-secondary leading-relaxed mb-3">
+                  {isComparison
+                    ? `We've ranked the top ${category} tools side-by-side with pricing, fit, and trade-offs — pulled from our underlying SaaS reports.`
+                    : `See head-to-head matchups for the ${category} tools listed above, with pricing data and migration friction.`}
+                </p>
+                <a
+                  href={relatedRecommendation.href}
+                  class="inline-flex items-center gap-1 text-sm font-semibold text-primary hover:text-primary-dark"
+                >
+                  {relatedRecommendation.label}
                   <span aria-hidden="true">→</span>
                 </a>
               </div>
