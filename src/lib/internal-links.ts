@@ -128,7 +128,7 @@ const LINK_RULES: LinkRule[] = [
     href: '/crm/crm-software-statistics-2026/',
     title: 'CRM software statistics',
     priority: 2,
-    restrictToSlugs: ['crm', 'best-crm'],
+    restrictToSlugs: ['crm', 'best-crm', 'intercom-vs', 'zendesk'],
   },
   {
     pattern: /\bCRM adoption\b/i,
@@ -157,6 +157,34 @@ const LINK_RULES: LinkRule[] = [
     title: 'Small business CRM statistics',
     priority: 2,
     restrictToSlugs: ['best-crm-small-business'],
+  },
+  {
+    pattern: /\bIntercom\b/i,
+    href: '/crm/crm-software-statistics-2026/',
+    title: 'CRM software statistics',
+    priority: 2,
+    restrictToSlugs: ['intercom-vs', 'zendesk', 'crm', 'best-crm'],
+  },
+  {
+    pattern: /\bZendesk\b/i,
+    href: '/crm/crm-software-statistics-2026/',
+    title: 'CRM software statistics',
+    priority: 2,
+    restrictToSlugs: ['intercom-vs', 'zendesk', 'crm', 'best-crm'],
+  },
+  {
+    pattern: /\bcustomer support (?:software|platform|tool)\b/i,
+    href: '/crm/crm-software-statistics-2026/',
+    title: 'CRM software statistics',
+    priority: 2,
+    restrictToSlugs: ['intercom-vs', 'zendesk', 'crm'],
+  },
+  {
+    pattern: /\bhelp(?:\s|-)?desk (?:software|platform|tool)\b/i,
+    href: '/crm/crm-software-statistics-2026/',
+    title: 'CRM software statistics',
+    priority: 2,
+    restrictToSlugs: ['intercom-vs', 'zendesk', 'crm'],
   },
 
   // ===== Marketing Stats (Priority 2) =====
