@@ -11,6 +11,7 @@ import { resolveRelatedTiles } from '../../lib/related';
 import { mockArticleDetail } from '../../data/mock-data';
 import { CATEGORIES } from '../../lib/constants';
 import { withDropCap } from '../../lib/dropcap';
+import { injectInternalLinks } from '../../lib/internal-links';
 
 /** Decode common HTML entities (&#038; → &, &#8217; → ', etc.) */
 function decodeHtmlEntities(str: string): string {
@@ -116,5 +117,5 @@ const relatedTiles = resolveRelatedTiles({
   relatedTiles={relatedTiles}
   faqItems={article.faqItems}
 >
-  <Fragment set:html={withDropCap(injectH2Ids(article.content))} />
+  <Fragment set:html={withDropCap(injectInternalLinks(injectH2Ids(article.content), slug!))} />
 </ArticleLayout>
