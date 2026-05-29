@@ -14,6 +14,11 @@
  *   --color-positive       (#34D399) →  8.4:1  (≥ 4.5     ✅)
  *   --color-negative       (#F87171) →  5.7:1  (≥ 4.5     ✅)
  *   --color-primary        (#3B82F6) →  5.5:1  (≥ 4.5 AA  ✅)
+ *
+ * IMPORTANT: the 5.5:1 above is for #3B82F6 TEXT on the dark background.
+ * When #3B82F6 is used as a BUTTON BACKGROUND with white (#fff) text, the
+ * ratio is only 3.67:1 (FAILS AA). For white-on-blue buttons (filled CTAs),
+ * use --color-primary-dark (#1D4ED8) instead → 6.3:1 with white text. ✅
  */
 @theme {
   /* Colors - Dark palette. Background tier first, then text, then borders, then brand. */
