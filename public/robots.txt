@@ -6,4 +6,17 @@ Allow: /
 Disallow: /api/
 Disallow: /_astro/
 
+# Block query-parameter URL variants. The static site serves identical
+# content regardless of these params (canonical tags already point to the
+# clean URL), so crawling them just wastes Google's crawl budget and inflates
+# the "Discovered – currently not indexed" count. Examples blocked:
+#   /?q=...        on-site search queries
+#   /?p=...        legacy WordPress-style permalinks
+#   /categories/crm/?page=2   pagination variants
+Disallow: /*?q=
+Disallow: /*?p=
+Disallow: /*?page=
+Disallow: /*?s=
+Disallow: /*?replytocom=
+
 Sitemap: https://saasstatshub.com/sitemap-index.xml
