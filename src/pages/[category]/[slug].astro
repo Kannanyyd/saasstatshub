@@ -78,10 +78,16 @@ try {
   article = mockArticleDetail;
 }
 
-const overviewItems = article.quickOverview.map((item) => ({
-  label: item.statLabel,
-  value: item.statValue,
-}));
+function normalizeOverviewItems(items: ArticleDetail['quickOverview']) {
+  return items
+    .map((item) => ({
+      label: typeof item.statLabel === 'string' ? item.statLabel.trim() : '',
+      value: typeof item.statValue === 'string' ? item.statValue.trim() : '',
+    }))
+    .filter((item) => item.label.length > 0 && item.value.length > 0);
+}
+
+const overviewItems = normalizeOverviewItems(article.quickOverview);
 
 const takeaways = article.keyTakeaways.map((item) => item.takeawayText);
 const sources = article.sources;

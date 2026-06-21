@@ -4,7 +4,6 @@
 User-agent: *
 Allow: /
 Disallow: /api/
-Disallow: /_astro/
 
 # Block query-parameter URL variants. The static site serves identical
 # content regardless of these params (canonical tags already point to the
