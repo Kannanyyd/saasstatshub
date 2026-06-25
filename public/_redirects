@@ -2,10 +2,28 @@
 # Generated from dist/sitemap-0.xml on 2026-06-25 after Phase F/G publication.
 # Keep this file under the Cloudflare Pages 2,000 static redirects limit.
 
-/category/:slug/ /categories/:slug/ 301
-/category/:slug /categories/:slug/ 301
+# GSC 404 remediation rules observed on 2026-06-25. Keep these near the top.
+/performance-management-statistics-2026/ /hr/performance-management-statistics-2026/ 301
+/performance-management-statistics-2026 /hr/performance-management-statistics-2026/ 301
+/remote-work-statistics-2026/ /project-management/remote-work-statistics-2026/ 301
+/remote-work-statistics-2026 /project-management/remote-work-statistics-2026/ 301
+/state-of-saas-2026-annual-report/ /analytics/state-of-saas-2026-annual-report/ 301
+/state-of-saas-2026-annual-report /analytics/state-of-saas-2026-annual-report/ 301
+/talent-acquisition-statistics-2026/ /hr/talent-acquisition-statistics-2026/ 301
+/talent-acquisition-statistics-2026 /hr/talent-acquisition-statistics-2026/ 301
+/saas-software-engineer-salary/ /hr/saas-software-engineer-salary/ 301
+/saas-software-engineer-salary /hr/saas-software-engineer-salary/ 301
+/best-remote-work-tools/ /project-management/best-remote-work-tools/ 301
+/best-remote-work-tools /project-management/best-remote-work-tools/ 301
+/saas-founder-salary/ /hr/saas-founder-salary/ 301
+/saas-founder-salary /hr/saas-founder-salary/ 301
+/fintech-statistics-2026/ /marketing/fintech-statistics-2026/ 301
+/fintech-statistics-2026 /marketing/fintech-statistics-2026/ 301
 /ecommerce/fintech-statistics-2026/ /marketing/fintech-statistics-2026/ 301
 /ecommerce/fintech-statistics-2026 /marketing/fintech-statistics-2026/ 301
+
+/category/:slug/ /categories/:slug/ 301
+/category/:slug /categories/:slug/ 301
 /1password-vs-bitwarden/ /security/1password-vs-bitwarden/ 301
 /1password-vs-bitwarden /security/1password-vs-bitwarden/ 301
 /abm-statistics-2026/ /marketing/abm-statistics-2026/ 301
