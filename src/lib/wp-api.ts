@@ -1009,7 +1009,8 @@ query RssFeedData($first: Int!, $after: String) {
 
 /**
  * Fetch all published articles for the RSS feed. Uses cursor-based
- * pagination with a hard cap of 5 pages (500 posts) to avoid runaway
+ * pagination with the same 50-page safety cap as sitemap route generation,
+ * enough for thousands of published articles while still avoiding runaway
  * builds. Cached at module level so the build fires this fetch at most
  * once across the rss.xml endpoint render.
  */
@@ -1020,7 +1021,7 @@ export function getAllArticlesForRss(): Promise<ArticleCard[]> {
     _rssArticlesPromise = (async () => {
       const all: ArticleCard[] = [];
       let cursor: string | null = null;
-      const HARD_CAP_PAGES = 5;
+      const HARD_CAP_PAGES = 50;
       try {
         for (let i = 0; i < HARD_CAP_PAGES; i++) {
           const variables: Record<string, unknown> = { first: 100 };

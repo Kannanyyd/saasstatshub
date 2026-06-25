@@ -9,7 +9,7 @@
  *     vs SaaSStatsHub data, source link to original article
  *   - Conditional CTA 1 (CRM comparison) — shows when LTV:CAC < 3
  *   - Static CTA 2 (Best CRM software) — always at bottom of benchmark card
- *   - Bottom banner CTA 3 (HubSpot + Salesforce affiliate)
+ *   - Bottom banner CTA 3 (internal CRM comparison + best CRM guide)
  *   - CSV export button
  *
  * Day 3 (next): embed code generator + 1-page PDF report
@@ -532,59 +532,51 @@ const webAppSchema = {
       </p>
     </section>
 
-    <!-- ===== CTA 3 — Bottom banner: HubSpot + Salesforce affiliate ===== -->
+    <!-- ===== CTA 3 — Bottom banner: internal CRM resources ===== -->
     <section class="embed-hide mb-12">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <!-- HubSpot -->
+        <!-- CRM comparison -->
         <div class="bg-surface border border-border rounded-xl p-6 hover:border-primary transition">
           <div class="flex items-center gap-2 mb-3">
-            <span class="text-xs font-mono uppercase tracking-wide text-text-muted">Sponsored</span>
-            <span class="text-xs px-2 py-0.5 rounded bg-primary-lighter text-primary font-semibold">FREE TIER</span>
+            <span class="text-xs font-mono uppercase tracking-wide text-text-muted">Guide</span>
+            <span class="text-xs px-2 py-0.5 rounded bg-primary-lighter text-primary font-semibold">CRM COMPARISON</span>
           </div>
-          <h3 class="text-lg font-bold text-text mb-2">Start Free with HubSpot CRM</h3>
+          <h3 class="text-lg font-bold text-text mb-2">Compare Salesforce, HubSpot, and Pipedrive</h3>
           <p class="text-sm text-text-secondary leading-relaxed mb-4">
-            HubSpot's free CRM includes contact management, deal tracking, and email tools — no credit card required.
-            Trusted by 228,000+ companies worldwide.
+            See how three popular CRM platforms compare on pricing, pipeline management, automation,
+            reporting, and fit by team size.
           </p>
           <a
-            href="https://hubspot.com/products/crm"
+            href="/crm/salesforce-vs-hubspot-vs-pipedrive/"
             class="inline-block px-5 py-2.5 rounded-lg font-semibold text-sm transition"
-            style="background-color: #FF7A59; color: #ffffff;"
-            rel="sponsored noopener"
-            target="_blank"
-            data-affiliate="hubspot"
+            style="background-color: var(--color-primary-dark); color: #ffffff;"
+            data-internal-cta="crm-comparison"
           >
-            Get HubSpot Free →
+            Compare CRM Platforms →
           </a>
         </div>
 
-        <!-- Salesforce -->
+        <!-- Best CRM guide -->
         <div class="bg-surface border border-border rounded-xl p-6 hover:border-primary transition">
           <div class="flex items-center gap-2 mb-3">
-            <span class="text-xs font-mono uppercase tracking-wide text-text-muted">Sponsored</span>
-            <span class="text-xs px-2 py-0.5 rounded bg-primary-lighter text-primary font-semibold">#1 CRM</span>
+            <span class="text-xs font-mono uppercase tracking-wide text-text-muted">Guide</span>
+            <span class="text-xs px-2 py-0.5 rounded bg-primary-lighter text-primary font-semibold">BUYER'S GUIDE</span>
           </div>
-          <h3 class="text-lg font-bold text-text mb-2">Try Salesforce Starter</h3>
+          <h3 class="text-lg font-bold text-text mb-2">Find the Best CRM for Small Business</h3>
           <p class="text-sm text-text-secondary leading-relaxed mb-4">
-            Salesforce is the #1 CRM for scaling teams. Starter plan begins at $25/user/month
-            with AI-powered analytics built in.
+            Review CRM options for growing teams, including key features, use cases, tradeoffs,
+            and selection criteria.
           </p>
           <a
-            href="https://salesforce.com/sales/pricing/"
+            href="/crm/best-crm-small-business/"
             class="inline-block px-5 py-2.5 rounded-lg font-semibold text-sm transition"
             style="background-color: #00A1E0; color: #ffffff;"
-            rel="sponsored noopener"
-            target="_blank"
-            data-affiliate="salesforce"
+            data-internal-cta="best-crm"
           >
-            Explore Salesforce →
+            See Best CRM Software →
           </a>
         </div>
       </div>
-      <p class="text-xs text-text-muted text-center mt-3">
-        We may earn a commission if you sign up through our links — at no extra cost to you.
-        See our <a href="/affiliate-disclosure/" class="text-primary hover:underline">affiliate disclosure</a>.
-      </p>
     </section>
 
     <!-- ===== Day 3: Share This Calculator (PDF + Embed) ===== -->
@@ -1105,7 +1097,7 @@ const webAppSchema = {
       // - Funnel step 1: first input change (real-use vs view-only)
       // - Funnel completion: count distinct fields the user touched
       // - Conversion events: CSV/PDF download, embed copy
-      // - CTA clicks: HubSpot/Salesforce affiliate, internal CTAs, source links
+      // - CTA clicks: internal CTAs and source links
       // - UX signal: Reset button (frustration indicator)
       const touchedFields = new Set();
       let firstInputFired = false;
@@ -1173,10 +1165,10 @@ const webAppSchema = {
      * (like CTA 1 conditional) are also covered.
      */
     function attachCtaTracking() {
-      // Affiliate CTAs (HubSpot / Salesforce) — already have data-affiliate attr
-      document.querySelectorAll('a[data-affiliate]').forEach((a) => {
+      // Bottom resource CTAs
+      document.querySelectorAll('a[data-internal-cta]').forEach((a) => {
         a.addEventListener('click', () => {
-          track('calc_cta_affiliate', { vendor: a.getAttribute('data-affiliate') });
+          track('calc_cta_internal', { target: a.getAttribute('data-internal-cta') });
         });
       });
 
@@ -1187,7 +1179,7 @@ const webAppSchema = {
       }
 
       // CTA 2 (static) — "See Best CRM Software"
-      document.querySelectorAll('a[href="/crm/best-crm-small-business/"]').forEach((a) => {
+      document.querySelectorAll('a[href="/crm/best-crm-small-business/"]:not([data-internal-cta])').forEach((a) => {
         a.addEventListener('click', () => track('calc_cta_best_crm'));
       });
 
