@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SaaS Pricing Calculator v2 — Free Online Calculator</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 0 auto; padding: 20px; }
+        h1 { color: #0F172A; margin-bottom: 20px; font-size: 28px; }
+        .description { color: #64748B; margin-bottom: 30px; font-size: 18px; }
+        .calculator { background: #f8fafc; border-radius: 12px; padding: 30px; margin-bottom: 30px; border: 1px solid #e2e8f0; }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; font-weight: 600; color: #1e293b; }
+        .form-control { width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 16px; }
+        .form-control:focus { outline: none; border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1); }
+        .btn { background: #3b82f6; color: white; border: none; padding: 14px 28px; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%; }
+        .btn:hover { background: #2563eb; }
+        .result { background: #10b981; color: white; padding: 20px; border-radius: 8px; text-align: center; margin-top: 20px; display: none; }
+        .result h2 { font-size: 24px; margin-bottom: 10px; }
+        .result .value { font-size: 36px; font-weight: 700; }
+        .explanation { background: #f1f5f9; padding: 20px; border-radius: 8px; margin-top: 30px; }
+        .explanation h3 { margin-bottom: 10px; color: #1e293b; }
+        .explanation p { color: #64748B; }
+        .cta { background: #0F172A; color: white; padding: 30px; border-radius: 12px; text-align: center; margin-top: 30px; }
+        .cta h3 { margin-bottom: 10px; }
+        .cta p { color: #94a3b8; margin-bottom: 20px; }
+        .cta a { background: #3b82f6; color: white; text-decoration: none; padding: 12px 24px; border-radius: 8px; display: inline-block; }
+    </style>
+</head>
+<body>
+    <h1>SaaS Pricing Calculator v2 — Free Online Calculator</h1>
+    <p class="description">Calculate optimal SaaS pricing based on costs and target margins</p>
+    
+    <div class="calculator">
+        
+        <div class="form-group">
+            <label for="cost_per_user">Cost Per User Per Month ($)</label>
+            <input type="number" id="cost_per_user" value="5" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="target_margin">Target Gross Margin (%)</label>
+            <input type="number" id="target_margin" value="80" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="competitor_price">Competitor Average Price ($)</label>
+            <input type="number" id="competitor_price" value="49" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="value_multiplier">Value Multiplier (1-3)</label>
+            <input type="number" id="value_multiplier" value="1.5" class="form-control">
+        </div>
+        <button class="btn" onclick="calculate()">Calculate</button>
+        <div class="result" id="result">
+            <h2>Suggested Price ($/month)</h2>
+            <div class="value" id="resultValue">-</div>
+        </div>
+    </div>
+    
+    <div class="explanation">
+        <h3>How It Works</h3>
+        <p>This calculator suggests optimal SaaS pricing by considering cost-based pricing, competitor pricing, and value-based pricing.</p>
+    </div>
+    
+    <div class="cta">
+        <h3>Compare SaaS Pricing Calculator v2 Solutions</h3>
+        <p>Find the best tools for your business needs</p>
+        <a href="/tools">Browse All Tools</a>
+    </div>
+    
+    <script>
+        function calculate() {
+            const cost_per_user = parseFloat(document.getElementById('cost_per_user').value) || 0;
+const target_margin = parseFloat(document.getElementById('target_margin').value) || 0;
+const competitor_price = parseFloat(document.getElementById('competitor_price').value) || 0;
+const value_multiplier = parseFloat(document.getElementById('value_multiplier').value) || 0;
+            
+            let result;
+            const formula = "cost_based = cost_per_user / (1 - target_margin/100); value_based = competitor_price * value_multiplier; suggested = (cost_based + value_based) / 2";
+            eval(formula);
+            
+            const resultDiv = document.getElementById('result');
+            const resultValue = document.getElementById('resultValue');
+            
+            if (formula.includes('arr') || formula.includes('mrr') || formula.includes('revenue') || formula.includes('cost') || formula.includes('commission') || formula.includes('clv') || formula.includes('cac') || formula.includes('total_benefit') || formula.includes('total_cost')) {
+                resultValue.textContent = '$' + result.toLocaleString('en-US', {minimumFractionDigits: 0, maximumFractionDigits: 0});
+            } else {
+                resultValue.textContent = result.toLocaleString('en-US', {minimumFractionDigits: 1, maximumFractionDigits: 1}) + (formula.includes('roi') || formula.includes('churn') ? '%' : '');
+            }
+            
+            resultDiv.style.display = 'block';
+        }
+    </script>
+</body>
+</html>

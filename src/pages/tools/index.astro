@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { TOOLS } from '../../lib/tools';
+import '../../styles/global.css';
+
+const title = 'SaaS Tools & Calculators';
+const description = 'Free SaaS calculators for churn, CAC, LTV, MRR, ROI, commissions, pricing, security risk, and subscription billing.';
+---
+
+<BaseLayout title={title} description={description} canonicalURL={new URL(Astro.url.pathname, Astro.site).href}>
+  <main class="container mx-auto px-4 py-10">
+    <section class="max-w-5xl">
+      <p class="text-primary font-semibold uppercase tracking-wider text-sm">Tools</p>
+      <h1 class="font-display-lg text-4xl md:text-5xl font-extrabold mt-3">SaaS Tools & Calculators</h1>
+      <p class="text-text-secondary text-lg mt-4 max-w-3xl">{description}</p>
+    </section>
+
+    <section class="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mt-10" aria-label="Calculators">
+      {TOOLS.map((tool) => (
+        <a class="article-card block p-5 no-underline" href={`/tools/${tool.slug}/`}>
+          <span class="text-xs font-bold uppercase tracking-wider text-primary">Calculator</span>
+          <h2 class="text-xl font-bold text-text mt-2">{tool.title}</h2>
+          <p class="text-text-secondary mt-2 text-sm leading-6">{tool.description}</p>
+        </a>
+      ))}
+    </section>
+  </main>
+</BaseLayout>

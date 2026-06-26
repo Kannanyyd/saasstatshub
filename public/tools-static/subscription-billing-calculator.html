@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscription Billing Calculator — Free Online Calculator</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 0 auto; padding: 20px; }
+        h1 { color: #0F172A; margin-bottom: 20px; font-size: 28px; }
+        .description { color: #64748B; margin-bottom: 30px; font-size: 18px; }
+        .calculator { background: #f8fafc; border-radius: 12px; padding: 30px; margin-bottom: 30px; border: 1px solid #e2e8f0; }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; font-weight: 600; color: #1e293b; }
+        .form-control { width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 16px; }
+        .form-control:focus { outline: none; border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1); }
+        .btn { background: #3b82f6; color: white; border: none; padding: 14px 28px; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%; }
+        .btn:hover { background: #2563eb; }
+        .result { background: #10b981; color: white; padding: 20px; border-radius: 8px; text-align: center; margin-top: 20px; display: none; }
+        .result h2 { font-size: 24px; margin-bottom: 10px; }
+        .result .value { font-size: 36px; font-weight: 700; }
+        .explanation { background: #f1f5f9; padding: 20px; border-radius: 8px; margin-top: 30px; }
+        .explanation h3 { margin-bottom: 10px; color: #1e293b; }
+        .explanation p { color: #64748B; }
+        .cta { background: #0F172A; color: white; padding: 30px; border-radius: 12px; text-align: center; margin-top: 30px; }
+        .cta h3 { margin-bottom: 10px; }
+        .cta p { color: #94a3b8; margin-bottom: 20px; }
+        .cta a { background: #3b82f6; color: white; text-decoration: none; padding: 12px 24px; border-radius: 8px; display: inline-block; }
+    </style>
+</head>
+<body>
+    <h1>Subscription Billing Calculator — Free Online Calculator</h1>
+    <p class="description">Calculate subscription revenue and billing metrics</p>
+    
+    <div class="calculator">
+        
+        <div class="form-group">
+            <label for="subscribers">Number of Subscribers</label>
+            <input type="number" id="subscribers" value="1000" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="monthly_price">Monthly Price ($)</label>
+            <input type="number" id="monthly_price" value="29" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="annual_discount">Annual Discount (%)</label>
+            <input type="number" id="annual_discount" value="20" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="annual_subscribers">Annual Subscribers (%)</label>
+            <input type="number" id="annual_subscribers" value="30" class="form-control">
+        </div>
+        <button class="btn" onclick="calculate()">Calculate</button>
+        <div class="result" id="result">
+            <h2>Monthly Revenue ($)</h2>
+            <div class="value" id="resultValue">-</div>
+        </div>
+    </div>
+    
+    <div class="explanation">
+        <h3>How It Works</h3>
+        <p>This calculator projects subscription revenue based on subscriber count, pricing, and mix of monthly vs annual subscriptions.</p>
+    </div>
+    
+    <div class="cta">
+        <h3>Compare Subscription Billing Calculator Solutions</h3>
+        <p>Find the best tools for your business needs</p>
+        <a href="/tools">Browse All Tools</a>
+    </div>
+    
+    <script>
+        function calculate() {
+            const subscribers = parseFloat(document.getElementById('subscribers').value) || 0;
+const monthly_price = parseFloat(document.getElementById('monthly_price').value) || 0;
+const annual_discount = parseFloat(document.getElementById('annual_discount').value) || 0;
+const annual_subscribers = parseFloat(document.getElementById('annual_subscribers').value) || 0;
+            
+            let result;
+            const formula = "monthly_rev = subscribers * (1 - annual_subscribers/100) * monthly_price; annual_rev = subscribers * annual_subscribers/100 * monthly_price * 12 * (1 - annual_discount/100); total_mrr = monthly_rev + annual_rev/12";
+            eval(formula);
+            
+            const resultDiv = document.getElementById('result');
+            const resultValue = document.getElementById('resultValue');
+            
+            if (formula.includes('arr') || formula.includes('mrr') || formula.includes('revenue') || formula.includes('cost') || formula.includes('commission') || formula.includes('clv') || formula.includes('cac') || formula.includes('total_benefit') || formula.includes('total_cost')) {
+                resultValue.textContent = '$' + result.toLocaleString('en-US', {minimumFractionDigits: 0, maximumFractionDigits: 0});
+            } else {
+                resultValue.textContent = result.toLocaleString('en-US', {minimumFractionDigits: 1, maximumFractionDigits: 1}) + (formula.includes('roi') || formula.includes('churn') ? '%' : '');
+            }
+            
+            resultDiv.style.display = 'block';
+        }
+    </script>
+</body>
+</html>

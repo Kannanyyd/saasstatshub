@@ -1,0 +1,91 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { TOOLS, toolBySlug } from '../../lib/tools';
+import '../../styles/global.css';
+
+export function getStaticPaths() {
+  return TOOLS.map((tool) => ({ params: { slug: tool.slug }, props: { tool } }));
+}
+
+const { slug } = Astro.params;
+const tool = Astro.props.tool ?? toolBySlug(slug ?? '');
+
+if (!tool) {
+  return Astro.redirect('/tools/');
+}
+
+const title = tool.title;
+const description = tool.description;
+const src = `/tools-static/${tool.filename}`;
+---
+
+<BaseLayout title={title} description={description} canonicalURL={new URL(Astro.url.pathname, Astro.site).href}>
+  <main class="tool-shell">
+    <header class="tool-header">
+      <a class="tool-back" href="/tools/">All tools</a>
+      <h1>{title}</h1>
+      <p>{description}</p>
+    </header>
+    <iframe class="tool-frame" src={src} title={title} loading="eager"></iframe>
+  </main>
+</BaseLayout>
+
+<style>
+  .tool-shell {
+    min-height: calc(100vh - 80px);
+    background: #0b1020;
+  }
+
+  .tool-header {
+    width: min(1120px, calc(100% - 32px));
+    margin: 0 auto;
+    padding: 32px 0 20px;
+  }
+
+  .tool-back {
+    color: var(--color-primary);
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .tool-header h1 {
+    margin: 10px 0 8px;
+    color: var(--color-text);
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.08;
+    letter-spacing: 0;
+  }
+
+  .tool-header p {
+    max-width: 760px;
+    color: var(--color-text-secondary);
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+
+  .tool-frame {
+    display: block;
+    width: min(1120px, calc(100% - 32px));
+    min-height: 920px;
+    margin: 0 auto 40px;
+    border: 1px solid rgba(148, 163, 184, 0.24);
+    border-radius: 8px;
+    background: #ffffff;
+  }
+
+  @media (max-width: 720px) {
+    .tool-header {
+      padding-top: 24px;
+    }
+
+    .tool-frame {
+      width: 100%;
+      min-height: 980px;
+      border-left: 0;
+      border-right: 0;
+      border-radius: 0;
+    }
+  }
+</style>
