@@ -2,14 +2,14 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Icon from '../../components/Icon.astro';
 import '../../styles/global.css';
-import { getHomePageData, type Category } from '../../lib/wp-api';
+import { getAllCategories, type Category } from '../../lib/wp-api';
 import { mockHomePageData } from '../../data/mock-data';
 import { CATEGORIES } from '../../lib/constants';
 
 // Pull WP categories with counts. Fall back to constants if WP is unreachable.
 let wpCategories: Category[];
 try {
-  wpCategories = (await getHomePageData()).categories;
+  wpCategories = await getAllCategories();
 } catch {
   wpCategories = mockHomePageData.categories;
 }
@@ -26,7 +26,7 @@ const categoryCards = CATEGORIES.map((meta) => {
 }).filter((c) => knownSlugs.has(c.slug));
 
 const title = 'All Categories';
-const description = 'Browse SaaS statistics by category — CRM, marketing, e-commerce, project management, HR, analytics, security, and communication. 100+ in-depth statistics articles for 2026.';
+const description = 'Browse SaaS statistics by category across CRM, marketing, e-commerce, AI, security, healthcare, legal tech, education, real estate, and more. 850+ in-depth statistics articles for 2026.';
 ---
 
 <BaseLayout title={title} description={description}>
@@ -35,7 +35,7 @@ const description = 'Browse SaaS statistics by category — CRM, marketing, e-co
       <p class="text-xs text-text-muted uppercase tracking-widest font-mono mb-2">All Categories</p>
       <h1 class="text-3xl md:text-4xl font-bold mb-3">Browse SaaS Statistics by Category</h1>
       <p class="text-text-secondary max-w-2xl">
-        100+ in-depth statistics articles covering 8 major SaaS and technology categories.
+        850+ in-depth statistics articles covering 22 major SaaS and technology categories.
         Each article includes Quick Overview tables, key takeaways, and cited sources.
       </p>
     </div>

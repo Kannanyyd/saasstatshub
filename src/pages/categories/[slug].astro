@@ -4,7 +4,7 @@ import ArticleCard from '../../components/ArticleCard.astro';
 import CoverImage from '../../components/CoverImage.astro';
 import Icon from '../../components/Icon.astro';
 import '../../styles/global.css';
-import { getCategoryPageData, getHomePageData, type CategoryPageData, type Category } from '../../lib/wp-api';
+import { getAllCategories, getCategoryPageData, type CategoryPageData, type Category } from '../../lib/wp-api';
 import { mockCategoryData, mockHomePageData } from '../../data/mock-data';
 import { metaFor, CATEGORIES } from '../../lib/constants';
 
@@ -13,7 +13,7 @@ export async function getStaticPaths() {
   // so every category page renders an accurate sidebar without re-querying.
   let allCats: Category[];
   try {
-    allCats = (await getHomePageData()).categories;
+    allCats = await getAllCategories();
   } catch {
     allCats = mockHomePageData.categories;
   }

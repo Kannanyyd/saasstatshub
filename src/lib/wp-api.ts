@@ -440,6 +440,7 @@ query AllPostSlugs($first: Int!, $after: String) {
   posts(first: $first, after: $after, where: { status: PUBLISH }) {
     nodes {
       slug
+      modified
       categories {
         nodes {
           slug
@@ -455,10 +456,14 @@ query AllPostSlugs($first: Int!, $after: String) {
 `;
 
 const ALL_CATEGORIES_QUERY = `
-query AllCategorySlugs {
+query AllCategories {
   categories(first: 50) {
     nodes {
+      id
+      name
       slug
+      count
+      description
     }
   }
 }
@@ -584,8 +589,8 @@ export async function getArticleData(slug: string): Promise<ArticleDetail> {
   };
 }
 
-export async function getAllArticleSlugs(): Promise<Array<{ slug: string; categorySlug: string }>> {
-  const all: Array<{ slug: string; categorySlug: string }> = [];
+export async function getAllArticleSlugs(): Promise<Array<{ slug: string; categorySlug: string; modified?: string }>> {
+  const all: Array<{ slug: string; categorySlug: string; modified?: string }> = [];
   let cursor: string | null = null;
   // Hard cap to avoid infinite loop on misconfigured backends.
   const HARD_CAP = 50;
@@ -599,6 +604,7 @@ export async function getAllArticleSlugs(): Promise<Array<{ slug: string; catego
       all.push({
         slug: post.slug,
         categorySlug: post.categories?.nodes?.[0]?.slug || 'uncategorized',
+        modified: post.modified,
       });
     }
     if (!page.pageInfo?.hasNextPage) break;
@@ -613,18 +619,23 @@ export async function getAllCategorySlugs(): Promise<string[]> {
   return data.categories.nodes.map((cat: any) => cat.slug);
 }
 
+export async function getAllCategories(): Promise<Category[]> {
+  const data = await fetchGraphQL<any>(ALL_CATEGORIES_QUERY);
+  return data.categories.nodes.map(transformCategory);
+}
+
 export async function getSitemapData(): Promise<{
   posts: Array<{ slug: string; modified: string; categorySlug: string }>;
   categories: string[];
 }> {
-  const data = await fetchGraphQL<any>(SITEMAP_QUERY);
+  const [posts, categories] = await Promise.all([getAllArticleSlugs(), getAllCategorySlugs()]);
   return {
-    posts: data.posts.nodes.map((post: any) => ({
+    posts: posts.map((post) => ({
       slug: post.slug,
-      modified: post.modified,
-      categorySlug: post.categories?.nodes?.[0]?.slug || 'uncategorized',
+      modified: post.modified || new Date().toISOString(),
+      categorySlug: post.categorySlug || 'uncategorized',
     })),
-    categories: data.categories.nodes.map((cat: any) => cat.slug),
+    categories,
   };
 }
 

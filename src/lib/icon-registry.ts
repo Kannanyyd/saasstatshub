@@ -22,6 +22,16 @@ import {
   BarChart3,
   Shield,
   MessageSquare,
+  Scale,
+  Home,
+  GraduationCap,
+  HeartPulse,
+  Headphones,
+  PenTool,
+  Truck,
+  Building,
+  HardHat,
+  HeartHandshake,
 
   // UI controls (Req 4.4)
   Search,
@@ -63,6 +73,16 @@ export const ICON_REGISTRY: Readonly<Record<string, IconBody>> = {
   'bar-chart-3': BarChart3 as unknown as IconBody,
   shield: Shield as unknown as IconBody,
   'message-square': MessageSquare as unknown as IconBody,
+  scale: Scale as unknown as IconBody,
+  home: Home as unknown as IconBody,
+  'graduation-cap': GraduationCap as unknown as IconBody,
+  'heart-pulse': HeartPulse as unknown as IconBody,
+  headphones: Headphones as unknown as IconBody,
+  'pen-tool': PenTool as unknown as IconBody,
+  truck: Truck as unknown as IconBody,
+  building: Building as unknown as IconBody,
+  'hard-hat': HardHat as unknown as IconBody,
+  'heart-handshake': HeartHandshake as unknown as IconBody,
 
   // UI controls
   search: Search as unknown as IconBody,
