@@ -189,6 +189,10 @@ const gaId =
 
     {/* Schema.org WebSite (homepage only) — enables Google sitelinks search box */}
     {websiteSchema && <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />}
+
+    {/* Named slot for page-specific head content (e.g., article:published_time,
+        article:author meta tags injected by ArticleLayout). */}
+    <slot name="head" />
   </head>
   <body class="min-h-screen flex flex-col">
     <header class="sticky top-0 z-50 glass border-b border-border/60" style="height: 64px; display: flex; align-items: center;">

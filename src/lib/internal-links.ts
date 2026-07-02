@@ -685,11 +685,24 @@ function isInsideHeading(html: string, position: number): boolean {
 }
 
 export function injectInternalLinks(html: string, articleSlug: string): string {
-  // Only auto-link Phase C-1 articles
-  if (!PHASE_C_SLUGS.has(articleSlug)) return html;
+  // Previously limited to 30 Phase C-1 articles. Now applied to all articles
+  // so high-impression pages (and all other pages) get contextual internal
+  // links to relevant statistics articles. Classification relevance is
+  // enforced by each rule's `restrictToSlugs` field, which prevents
+  // cross-category link stuffing.
+  //
+  // Safety guards:
+  // 1. Never link an article to itself (rule.href must not match articleSlug)
+  // 2. Never link inside an existing <a> tag, HTML tag, or heading
+  // 3. Max MAX_LINKS_PER_ARTICLE links per article (avoid over-optimization)
+  // 4. Only first occurrence of each keyword is linked
 
   // Collect applicable rules for this article
   const applicableRules = LINK_RULES.filter((rule) => {
+    // Skip self-links: if the rule's target href contains the current
+    // article's slug, don't inject a link to itself.
+    if (articleSlug && rule.href.includes(articleSlug)) return false;
+
     if (rule.restrictToSlugs && rule.restrictToSlugs.length > 0) {
       return rule.restrictToSlugs.some((s) => articleSlug.includes(s));
     }

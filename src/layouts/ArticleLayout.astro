@@ -208,7 +208,21 @@ if (hasAffiliateLinks) {
 ---
 
 <BaseLayout title={title} description={description} canonicalURL={canonicalURL} ogImage={ogImage} ogType="article">
-  <slot name="head" />
+  {/* Article-specific meta tags for social and search engines.
+      Previously missing — only JSON-LD Article schema was present, but
+      Google and Facebook also look for these HTML meta tags.
+      Injected into BaseLayout's <head> via the named "head" slot. */}
+  <Fragment slot="head">
+    {datePublished && (
+      <meta property="article:published_time" content={datePublished} />
+    )}
+    {dateModified && (
+      <meta property="article:modified_time" content={dateModified} />
+    )}
+    <meta property="article:author" content="SaaSStatsHub" />
+    <meta property="article:section" content={category} />
+    <meta name="author" content="SaaSStatsHub" />
+  </Fragment>
 
   <!-- Reading progress bar -->
   <div id="reading-progress" aria-hidden="true"
