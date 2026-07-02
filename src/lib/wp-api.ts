@@ -206,10 +206,13 @@ function cleanExcerpt(raw: unknown): string {
     // 568+ posts share near-identical meta descriptions beginning with
     // "Disclosure: Some links on this page are affiliate links..." which
     // tanks CTR and triggers duplicate-description flags in GSC.
-    // Match the full disclosure sentence(s) up to the first real content
-    // signal ("Quick Picks", "Quick Definition", "Key Stats", or any
-    // sentence that doesn't start with disclosure keywords).
-    .replace(/^(?:Disclosure:\s*[^.]*\.\s*|Some links on this page are affiliate links[^.]*\.\s*|Written by the SaaSStatsHub research team[^.]*\.\s*|Updated [A-Za-z]+ \d{4}\.\s*)+/i, '')
+    // The disclosure block spans multiple sentences (Disclosure:... We may
+    // earn a commission... Written by... Updated [Month] [Year].) so we match
+    // greedily from "Disclosure:" / "Some links" to the "Updated [Month]
+    // [Year]." terminator, or to the first content signal (Quick Picks /
+    // Quick Definition / Key Stats) if no "Updated" marker is present.
+    .replace(/^Disclosure:[\s\S]*?(?:Updated\s+[A-Za-z]+\s+\d{4}\.\s*|(?=Quick\s+(?:Picks|Definition|Stats|Overview|Takeaways)))/i, '')
+    .replace(/^Some links on this page are affiliate links[\s\S]*?(?:Updated\s+[A-Za-z]+\s+\d{4}\.\s*|(?=Quick\s+(?:Picks|Definition|Stats|Overview|Takeaways)))/i, '')
     // If after stripping disclosure we're left with "Quick Picks X: ..." or
     // similar template lead-ins, keep them — they are unique per article
     // (each names different products) and far more search-intent-aligned
