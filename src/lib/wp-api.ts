@@ -200,6 +200,20 @@ function cleanExcerpt(raw: unknown): string {
     .replace(/\s*(?:Read more|Continue reading|阅读更多)\s*$/i, '')
     // Collapse whitespace
     .replace(/\s+/g, ' ')
+    .trim()
+    // Strip leading affiliate-disclosure boilerplate that WP captures as the
+    // excerpt when a post starts with the disclosure block. Without this,
+    // 568+ posts share near-identical meta descriptions beginning with
+    // "Disclosure: Some links on this page are affiliate links..." which
+    // tanks CTR and triggers duplicate-description flags in GSC.
+    // Match the full disclosure sentence(s) up to the first real content
+    // signal ("Quick Picks", "Quick Definition", "Key Stats", or any
+    // sentence that doesn't start with disclosure keywords).
+    .replace(/^(?:Disclosure:\s*[^.]*\.\s*|Some links on this page are affiliate links[^.]*\.\s*|Written by the SaaSStatsHub research team[^.]*\.\s*|Updated [A-Za-z]+ \d{4}\.\s*)+/i, '')
+    // If after stripping disclosure we're left with "Quick Picks X: ..." or
+    // similar template lead-ins, keep them — they are unique per article
+    // (each names different products) and far more search-intent-aligned
+    // than the disclosure boilerplate.
     .trim();
 }
 
