@@ -1,23 +1,101 @@
-﻿---
+---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import '../styles/global.css';
 ---
 
-<BaseLayout title="Contact" description="Get in touch with the SaaSStatsHub team.">
+<BaseLayout title="Contact" description="Get in touch with the SaaSStatsHub team — general inquiries, press, corrections, partnerships, and DMCA notices. We respond within 48 hours.">
   <article class="max-w-[640px] mx-auto px-6 py-12 article-body">
     <h1 class="text-3xl md:text-4xl font-bold mb-4">Contact</h1>
     <p>We read every email. Here's how to reach us:</p>
 
     <h2 id="general">General Inquiries</h2>
-    <p><a href="mailto:sangaypopo@gmail.com">sangaypopo@gmail.com</a></p>
+    <p>
+      Questions about an article, a statistic, or the site in general:
+      <a href="mailto:sangaypopo@gmail.com" class="text-primary hover:underline">sangaypopo@gmail.com</a>
+    </p>
 
     <h2 id="press">Press &amp; Media</h2>
-    <p>If you'd like to cite our data or interview the team, email <a href="mailto:sangaypopo@gmail.com">sangaypopo@gmail.com</a>. Please include your outlet and deadline.</p>
+    <p>
+      If you'd like to cite our data or interview the team, email
+      <a href="mailto:sangaypopo@gmail.com" class="text-primary hover:underline">sangaypopo@gmail.com</a>.
+      Please include your outlet and deadline. We can provide:
+    </p>
+    <ul class="list-disc pl-6 space-y-1">
+      <li>Original source citations for any statistic we publish</li>
+      <li>Higher-resolution versions of charts and infographics</li>
+      <li>Written responses to questions about our methodology</li>
+      <li>Expert commentary on SaaS market trends (subject to availability)</li>
+    </ul>
 
     <h2 id="corrections">Corrections</h2>
-    <p>Spotted an outdated number or a sourcing issue? Email <a href="mailto:sangaypopo@gmail.com">sangaypopo@gmail.com</a> with the article URL and the specific data point. We typically respond within 48 hours.</p>
+    <p>
+      Spotted an outdated number, a sourcing issue, or a factual error? Email
+      <a href="mailto:sangaypopo@gmail.com" class="text-primary hover:underline">sangaypopo@gmail.com</a>
+      with:
+    </p>
+    <ul class="list-disc pl-6 space-y-1">
+      <li>The article URL</li>
+      <li>The specific data point or sentence that needs correction</li>
+      <li>The correct information and its source (if you have it)</li>
+    </ul>
+    <p>
+      We review corrections within <strong class="text-text">48 hours</strong>
+      and publish fixes after verification. See our
+      <a href="/editorial-policy/" class="text-primary hover:underline">Editorial Policy</a>
+      for details on how we handle updates.
+    </p>
 
-    <h2 id="partnerships">Partnerships</h2>
-    <p>For sponsored content, data partnerships, or research collaboration, reach out at <a href="mailto:sangaypopo@gmail.com">sangaypopo@gmail.com</a>.</p>
+    <h2 id="partnerships">Partnerships &amp; Data Licensing</h2>
+    <p>
+      For data partnerships, research collaboration, API access, or bulk data
+      licensing, reach out at
+      <a href="mailto:sangaypopo@gmail.com" class="text-primary hover:underline">sangaypopo@gmail.com</a>.
+      We do not accept paid placements in our statistics articles.
+    </p>
+
+    <h2 id="dmca">DMCA &amp; Copyright</h2>
+    <p>
+      To report copyright infringement, email
+      <a href="mailto:sangaypopo@gmail.com" class="text-primary hover:underline">sangaypopo@gmail.com</a>
+      with the subject line "DMCA Notice." Include the URL of the allegedly
+      infringing content and proof of ownership. We respond to valid DMCA
+      notices within 72 hours.
+    </p>
+
+    <h2 id="privacy">Privacy &amp; Data Requests</h2>
+    <p>
+      Questions about how we handle your data, or requests under GDPR / CCPA,
+      can be sent to
+      <a href="mailto:sangaypopo@gmail.com" class="text-primary hover:underline">sangaypopo@gmail.com</a>.
+      See our <a href="/privacy-policy/" class="text-primary hover:underline">Privacy Policy</a>
+      for details.
+    </p>
+
+    <h2 id="response-times">Response Times</h2>
+    <table class="w-full text-sm my-4 border-collapse">
+      <thead>
+        <tr class="border-b border-border">
+          <th class="text-left py-2 pr-4 text-text">Inquiry type</th>
+          <th class="text-left py-2 text-text">Typical response</th>
+        </tr>
+      </thead>
+      <tbody class="text-text-secondary">
+        <tr class="border-b border-border"><td class="py-2 pr-4">Corrections (factual errors)</td><td class="py-2">Within 48 hours</td></tr>
+        <tr class="border-b border-border"><td class="py-2 pr-4">General inquiries</td><td class="py-2">2–3 business days</td></tr>
+        <tr class="border-b border-border"><td class="py-2 pr-4">Press &amp; media</td><td class="py-2">Within 24 hours (if deadline noted)</td></tr>
+        <tr class="border-b border-border"><td class="py-2 pr-4">Partnerships</td><td class="py-2">3–5 business days</td></tr>
+        <tr class="border-b border-border"><td class="py-2 pr-4">DMCA notices</td><td class="py-2">Within 72 hours</td></tr>
+        <tr><td class="py-2 pr-4">Privacy / data requests</td><td class="py-2">Within 30 days (per GDPR / CCPA)</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="address">Mailing Address</h2>
+    <p>
+      SaaSStatsHub is a remote-first operation. For legal correspondence:
+    </p>
+    <address class="not-italic text-text-secondary mt-2">
+      SaaSStatsHub Editorial Team<br />
+      sangaypopo@gmail.com
+    </address>
   </article>
 </BaseLayout>

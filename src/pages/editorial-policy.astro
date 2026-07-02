@@ -1,0 +1,192 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/global.css';
+---
+
+<BaseLayout title="Editorial Policy" description="SaaSStatsHub editorial policy — how we source, verify, and update SaaS statistics, our independence principles, and our corrections process.">
+  <article class="max-w-[740px] mx-auto px-6 py-12 article-body">
+    <h1 class="text-3xl md:text-4xl font-bold mb-6">Editorial Policy</h1>
+    <p class="text-text-secondary">Last updated: July 2026</p>
+
+    <p class="mt-6">
+      SaaSStatsHub publishes SaaS industry statistics, market data, and product
+      comparisons. This policy explains how we select sources, verify numbers,
+      handle affiliate relationships, and correct mistakes. It applies to every
+      article on the site.
+    </p>
+
+    <h2 id="independence">1. Editorial Independence</h2>
+    <p>
+      Our research team selects topics and statistics based on reader demand and
+      industry relevance, not on vendor relationships. No SaaS vendor pays for
+      coverage, and no advertiser can edit, approve, or suppress an article.
+      Sponsored content, when it occurs, is labeled clearly and kept separate
+      from editorial coverage (see Section 5).
+    </p>
+    <p>
+      Affiliate relationships do not influence our statistics or rankings. A
+      product's affiliate status has zero weight in our data; we report market
+      share, revenue, and adoption numbers the same way whether or not we earn a
+      commission on the product.
+    </p>
+
+    <h2 id="sourcing">2. Source Selection and Citation</h2>
+    <p>
+      Every statistic on SaaSStatsHub must trace back to a primary or
+      authoritative source. We use the following source hierarchy, in order of
+      preference:
+    </p>
+    <ol class="list-decimal pl-6 space-y-2">
+      <li>
+        <strong class="text-text">Primary sources</strong> — company filings
+        (10-K, 10-Q, S-1), earnings releases, official press releases, and
+        vendor documentation. These are always preferred when available.
+      </li>
+      <li>
+        <strong class="text-text">Government data</strong> — U.S. Bureau of
+        Labor Statistics, Census Bureau, Eurostat, and equivalent national
+        statistics offices.
+      </li>
+      <li>
+        <strong class="text-text">Established research firms</strong> — Gartner,
+        Forrester, IDC, Statista, McKinsey, Deloitte, and similar firms with a
+        documented methodology.
+      </li>
+      <li>
+        <strong class="text-text">Reputable news outlets</strong> — Reuters,
+        Bloomberg, TechCrunch, The Wall Street Journal, Financial Times, and
+        similar outlets with editorial standards.
+      </li>
+    </ol>
+    <p>
+      We do not cite blog posts, forum threads, or unverified social media
+      posts as sources for statistics. When a number is widely cited but no
+      primary source exists, we say so explicitly and label it as an estimate.
+    </p>
+    <p>
+      Every article includes a <strong class="text-text">Sources</strong>
+      section listing the name, title, date, and URL of each source used.
+      Sources are linked directly to the original document, not to an
+      intermediary.
+    </p>
+
+    <h2 id="verification">3. Data Verification</h3>
+    <p>
+      Before publication, each statistic is checked against its cited source. We
+      verify that:
+    </p>
+    <ul class="list-disc pl-6 space-y-2">
+      <li>The number matches the source exactly (no rounding errors or transcription mistakes).</li>
+      <li>The source date is current (within 24 months for market data, within 12 months for company financials).</li>
+      <li>The context is preserved (we do not strip qualifying language like "estimated" or "projected").</li>
+      <li>The source URL resolves and is publicly accessible (not behind a paywall we cannot verify).</li>
+    </ul>
+    <p>
+      When a vendor publishes a number in a press release and later restates it
+      in a filing, we prefer the filing. When two reputable sources disagree,
+      we cite both and explain the discrepancy.
+    </p>
+
+    <h2 id="updates">4. Updates and Corrections</h2>
+    <p>
+      SaaS data changes quickly. We update articles when:
+    </p>
+    <ul class="list-disc pl-6 space-y-2">
+      <li>A new quarterly earnings report supersedes prior figures.</li>
+      <li>A new industry report is published with revised market size or growth estimates.</li>
+      <li>A reader or source flags an error.</li>
+      <li>A product is acquired, rebranded, or discontinued.</li>
+    </ul>
+    <p>
+      We prefer updating an existing article over publishing a duplicate. When
+      we make a material correction (a number, a conclusion, or a source), we
+      update the <code>lastUpdated</code> field and note the change in the
+      article. Minor copy edits and formatting fixes are not flagged.
+    </p>
+    <p>
+      To report an error, email
+      <a href="mailto:sangaypopo@gmail.com" class="text-primary hover:underline">sangaypopo@gmail.com</a>
+      with the article URL and the specific data point. We review corrections
+      within 48 hours and publish fixes after verification.
+    </p>
+
+    <h2 id="affiliate">5. Affiliate Relationships and Sponsored Content</h2>
+    <p>
+      SaaSStatsHub participates in affiliate programs with some (not all) of the
+      SaaS vendors we cover. When a reader clicks an affiliate link and makes a
+      purchase, we may earn a commission at no additional cost to the reader.
+      This does not affect the price the reader pays.
+    </p>
+    <p>
+      Affiliate links are disclosed on every article that contains them, in a
+      clearly labeled disclosure block at the top of the article. See our
+      <a href="/affiliate-disclosure/" class="text-primary hover:underline">Affiliate Disclosure</a>
+      page for the full policy.
+    </p>
+    <p>
+      We do not accept paid placements in our statistics articles. A vendor
+      cannot pay to appear in our "best of" lists, to be ranked higher, or to
+      have a competitor removed. "Best of" rankings are based on publicly
+      available data and our editorial assessment.
+    </p>
+    <p>
+      Sponsored content, if we ever publish it, will be labeled as
+      "Sponsored" or "Advertisement" at the top of the article, and the sponsor
+      will be named. As of July 2026, we do not publish sponsored content.
+    </p>
+
+    <h2 id="authors">6. Authorship and Review</h2>
+    <p>
+      Articles are written by the SaaSStatsHub research team. Each article is
+      reviewed by at least one other team member before publication to check
+      source accuracy, internal consistency, and clarity. Articles covering
+      financial data (company revenue, market size, valuation) receive an
+      additional check against the primary filing.
+    </p>
+    <p>
+      We do not use AI to generate statistics or source citations. AI tools may
+      be used for copy editing, formatting, or translation, but every data
+      point and every source is selected and verified by a human researcher.
+    </p>
+
+    <h2 id="conflicts">7. Conflicts of Interest</h2>
+    <p>
+      Team members must disclose any financial interest in companies they cover
+      (stock ownership, advisory roles, employment). A team member with a
+      disclosed conflict may not write or edit articles about that company.
+    </p>
+    <p>
+      SaaSStatsHub does not accept gifts, free products, or paid travel from
+      vendors we cover. We may use free trials of SaaS products for evaluation
+      purposes, but this is disclosed and does not affect our coverage.
+    </p>
+
+    <h2 id="ai">8. Use of AI Tools</h2>
+    <p>
+      SaaSStatsHub uses AI-assisted tools for:
+    </p>
+    <ul class="list-disc pl-6 space-y-2">
+      <li>Copy editing and proofreading</li>
+      <li>Formatting and content organization</li>
+      <li>Translation of source material</li>
+      <li>Initial research gathering (source URLs are then verified manually)</li>
+    </ul>
+    <p>
+      AI tools are <strong class="text-text">not</strong> used for:
+    </p>
+    <ul class="list-disc pl-6 space-y-2">
+      <li>Generating statistics or data points</li>
+      <li>Creating source citations</li>
+      <li>Making editorial judgments about product rankings</li>
+      <li>Writing claims about first-hand testing or product experience (we do not claim to have tested products we have not evaluated)</li>
+    </ul>
+
+    <h2 id="contact">9. Contact</h2>
+    <p>
+      Questions about this policy or any article on the site can be sent to
+      <a href="mailto:sangaypopo@gmail.com" class="text-primary hover:underline">sangaypopo@gmail.com</a>.
+      See our <a href="/contact/" class="text-primary hover:underline">Contact page</a>
+      for more ways to reach us.
+    </p>
+  </article>
+</BaseLayout>
