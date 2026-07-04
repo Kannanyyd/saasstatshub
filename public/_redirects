@@ -4,8 +4,10 @@
 
 # GSC 404 remediation rules observed on 2026-06-25. Keep these near the top.
 /analytics/google-analytics-alternatives-2026/ /analytics/google-analytics-alternatives/ 301
+/analytics/google-analytics-alternatives-2026/* /analytics/google-analytics-alternatives/ 301
 /analytics/google-analytics-alternatives-2026 /analytics/google-analytics-alternatives/ 301
 /ecommerce/shopify-alternatives-2026/ /ecommerce/shopify-alternatives/ 301
+/ecommerce/shopify-alternatives-2026/* /ecommerce/shopify-alternatives/ 301
 /ecommerce/shopify-alternatives-2026 /ecommerce/shopify-alternatives/ 301
 /performance-management-statistics-2026/ /hr/performance-management-statistics-2026/ 301
 /performance-management-statistics-2026 /hr/performance-management-statistics-2026/ 301
