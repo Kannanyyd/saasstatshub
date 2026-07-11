@@ -1,0 +1,46 @@
+name: Bug report
+description: Report a reproducible problem in the open-source frontend.
+title: "[Bug]: "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for taking the time to report a problem. Do not include credentials or private CMS data.
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What happened, and what did you expect instead?
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction
+      description: Provide the smallest set of steps needed to reproduce the issue.
+    validations:
+      required: true
+  - type: input
+    id: route
+    attributes:
+      label: Affected route or component
+      placeholder: /categories/analytics/ or src/components/ArticleCard.astro
+  - type: input
+    id: commit
+    attributes:
+      label: Commit or branch
+      placeholder: main or a commit SHA
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Include Node version, browser, operating system, and relevant configuration without secrets.
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checklist
+      options:
+        - label: I searched existing issues for duplicates.
+          required: true
+        - label: I removed credentials, private content, and personal data.
+          required: true

@@ -1,0 +1,33 @@
+name: Content or data accuracy
+description: Report a source, citation, metadata, or structured-data problem.
+title: "[Content]: "
+labels: [content, data-quality]
+body:
+  - type: input
+    id: url
+    attributes:
+      label: Public page URL
+      placeholder: https://saasstatshub.com/category/article/
+    validations:
+      required: true
+  - type: textarea
+    id: issue
+    attributes:
+      label: Accuracy issue
+      description: Identify the exact claim, source, year, scope, or metadata that appears incorrect.
+    validations:
+      required: true
+  - type: input
+    id: primary_source
+    attributes:
+      label: Primary source URL
+      description: Link to the most authoritative source available.
+    validations:
+      required: true
+  - type: textarea
+    id: correction
+    attributes:
+      label: Suggested correction
+      description: Explain the corrected wording and any limits on the source data.
+    validations:
+      required: true
