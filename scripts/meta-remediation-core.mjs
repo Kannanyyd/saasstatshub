@@ -17,7 +17,7 @@ const REVIEWED_OVERRIDES = {
 const EXCLUDED_HEADINGS = /^(?:sources?|references?|frequently asked questions|faqs?|table of contents|contents|affiliate disclosure|disclosure|about the author|author|related articles?|recommended reading|final thoughts?|conclusion)$/i;
 const EXCLUDED_TEXT = /^(?:disclosure:|some links on this page are affiliate links|written by\b|updated\s+[A-Z][a-z]+\s+\d{4}\b|quick overview\b|key takeaways?\b|table of contents\b|click here\b|learn more\b|read more\b)/i;
 const CTA_TEXT = /\b(?:click here|sign up|start (?:a )?free trial|get started|buy now|subscribe|download (?:the|our)|contact (?:us|sales))\b/i;
-const GENERIC_AI_TEXT = /\b(?:critical focus area|looking ahead|organizations implement|if your organization handles sensitive data)\b/i;
+const GENERIC_AI_TEXT = /\b(?:critical focus area|looking ahead|organizations implement|if your organization handles sensitive data|AI expected to handle|choosing the right .+ can transform your team)\b/i;
 const DANGLING_WORDS = new Set([
   'a', 'an', 'and', 'as', 'at', 'because', 'but', 'by', 'for', 'from', 'if', 'in',
   'into', 'nor', 'of', 'on', 'or', 'over', 'so', 'than', 'that', 'the', 'through',
@@ -211,15 +211,22 @@ function formatList(values) {
 export function buildStructuralFallback(record) {
   const title = normalizeAscii(stripHtml(record.title)).replace(/[.!?]+$/, '');
   if (!title || !/^[\x20-\x7E]+$/.test(title)) return [];
+  const compactTitle = title
+    .replace(/:\s*Which Is Better in 2026$/i, '')
+    .replace(/:\s*The Complete Comparison$/i, '')
+    .replace(/^\d+\s+Best\s+/i, 'Best ');
+  const titleVariants = [...new Set([title, compactTitle])];
   const type = pageType(record);
   const templates = STRUCTURAL_FALLBACKS[type];
   const seed = Number.parseInt(sha256(`${record.slug ?? ''}|${title}`).slice(0, 8), 16);
-  const candidates = templates.map((template) => template(title));
+  const candidates = titleVariants.flatMap((variant) => templates.map((template) => template(variant)));
   const parts = STRUCTURAL_PARTS[type];
-  for (let rotation = 0; rotation < parts.length; rotation += 1) {
-    for (const lead of STRUCTURAL_LEADS) {
-      for (const tail of STRUCTURAL_TAILS) {
-        candidates.push(`${title} ${lead} ${formatList(rotate(parts, rotation))} ${tail}`);
+  for (const variant of titleVariants) {
+    for (let rotation = 0; rotation < parts.length; rotation += 1) {
+      for (const lead of STRUCTURAL_LEADS) {
+        for (const tail of STRUCTURAL_TAILS) {
+          candidates.push(`${variant} ${lead} ${formatList(rotate(parts, rotation))} ${tail}`);
+        }
       }
     }
   }
