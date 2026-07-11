@@ -2,6 +2,15 @@
   "name": "d-agent-web-saasstatshub",
   "type": "module",
   "version": "0.0.1",
+  "license": "AGPL-3.0-only",
+  "homepage": "https://saasstatshub.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Kannanyyd/saasstatshub.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Kannanyyd/saasstatshub/issues"
+  },
   "engines": {
     "node": ">=22.12.0"
   },
