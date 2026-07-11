@@ -21,7 +21,7 @@ const {
 } = Astro.props;
 
 const siteName = 'SaaSStatsHub';
-const fullTitle = title === 'Home' ? `${siteName} — The #1 Source for SaaS Statistics & Data` : `${title} | ${siteName}`;
+const fullTitle = title === 'Home' ? `${siteName} - SaaS Research, Statistics and Guides` : `${title} | ${siteName}`;
 
 // Resolve absolute URLs for social card metadata.
 const pageUrl = canonicalURL || new URL(Astro.url.pathname, Astro.site).href;
@@ -33,7 +33,7 @@ const ogImageAbs = ogImage
 const siteOrigin = Astro.site ? Astro.site.origin : 'https://saasstatshub.com';
 const isHomepage = Astro.url.pathname === '/' || Astro.url.pathname === '';
 
-// Schema.org WebSite (homepage only) — enables Google sitelinks search box
+// Schema.org WebSite (homepage only).
 const websiteSchema = isHomepage
   ? {
       "@context": "https://schema.org",
@@ -42,25 +42,17 @@ const websiteSchema = isHomepage
       url: siteOrigin,
       description,
       inLanguage: 'en-US',
-      potentialAction: {
-        "@type": "SearchAction",
-        target: {
-          "@type": "EntryPoint",
-          urlTemplate: `${siteOrigin}/?q={search_term_string}`,
-        },
-        "query-input": "required name=search_term_string",
-      },
     }
   : null;
 
-// Schema.org Organization (every page) — links the brand for knowledge graph
+// Schema.org Organization (every page) links the brand for knowledge graph.
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: siteName,
   url: siteOrigin,
   logo: `${siteOrigin}/og-default.svg`,
-  description: 'SaaSStatsHub provides 100+ comprehensive SaaS statistics and market data for 2026, covering CRM, marketing automation, e-commerce, cybersecurity, cloud computing, HR technology, analytics, and communication platforms. All data points are cited from original sources.',
+  description: 'SaaSStatsHub publishes structured SaaS research, explainers, comparisons, practical guides, and source-backed statistics across major software categories.',
 };
 
 // Google Analytics 4 — Measurement ID is public (not a secret).
