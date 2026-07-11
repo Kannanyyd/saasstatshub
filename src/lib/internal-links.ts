@@ -561,7 +561,7 @@ const LINK_RULES: LinkRule[] = [
   },
   {
     pattern: /\bproject management\b/i,
-    href: '/project-management/project-management-statistics-2026/',
+    href: '/categories/project-management/',
     title: 'Project management statistics',
     priority: 3,
     restrictToSlugs: ['project-management'],
@@ -586,7 +586,7 @@ const LINK_RULES: LinkRule[] = [
   },
   {
     pattern: /\bDevOps\b/i,
-    href: '/devops/devops-statistics-2026/',
+    href: '/categories/devops/',
     title: 'DevOps statistics',
     priority: 3,
     restrictToSlugs: ['jira', 'project-management'],
