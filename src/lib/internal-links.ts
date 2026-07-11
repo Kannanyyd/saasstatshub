@@ -586,7 +586,7 @@ const LINK_RULES: LinkRule[] = [
   },
   {
     pattern: /\bDevOps\b/i,
-    href: '/analytics/devops-statistics-2026/',
+    href: '/devops/devops-statistics-2026/',
     title: 'DevOps statistics',
     priority: 3,
     restrictToSlugs: ['jira', 'project-management'],
