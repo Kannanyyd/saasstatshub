@@ -509,7 +509,7 @@ const webAppSchema = {
 
       <h3 class="text-lg font-bold text-text mt-6 mb-2">ARR (Annual Recurring Revenue)</h3>
       <p class="text-text-secondary text-sm leading-relaxed">
-        Your monthly recurring revenue annualized. The single most important top-line metric for SaaS valuations.
+        Your monthly recurring revenue annualized. ARR is a useful scale measure, but it does not show margin, retention, cash flow, or valuation by itself.
       </p>
 
       <h3 class="text-lg font-bold text-text mt-6 mb-2">LTV : CAC ratio</h3>
@@ -522,7 +522,8 @@ const webAppSchema = {
       <h3 class="text-lg font-bold text-text mt-6 mb-2">Payback Period</h3>
       <p class="text-text-secondary text-sm leading-relaxed">
         How many months it takes for a single customer's revenue to repay your acquisition cost.
-        Healthy SMB SaaS: <strong class="text-text">12 months</strong>; Enterprise: 18-24 months acceptable.
+        Use the result to compare scenarios. The sustainable period depends on margin, cash availability,
+        retention, contract timing, and customer segment.
       </p>
 
       <h3 class="text-lg font-bold text-text mt-6 mb-2">Customer Lifetime</h3>
@@ -603,7 +604,7 @@ const webAppSchema = {
               Download as PDF report
             </h3>
             <p class="text-xs text-text-muted mb-4 flex-1">
-              A 1-page summary with your inputs, results, and benchmark comparison.
+              A 1-page summary with your inputs, results, and illustrative range comparison.
               Great for sharing with co-founders, investors, or your team.
             </p>
             <button
@@ -1008,9 +1009,9 @@ const webAppSchema = {
 
     function tierLabelPayback(months) {
       if (!isFinite(months) || months <= 0) return '—';
-      if (months <= 12) return 'SMB target ≤ 12 mo ✓';
-      if (months <= 24) return 'Enterprise acceptable (12-24 mo)';
-      return 'Above 24 mo — review unit economics';
+      if (months <= 12) return 'Illustrative range: 12 months or less';
+      if (months <= 24) return 'Illustrative range: 12-24 months';
+      return 'Illustrative range: above 24 months';
     }
 
     function compute(inputs) {
