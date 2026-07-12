@@ -18,6 +18,7 @@
     "dev": "astro dev",
     "prebuild": "node scripts/copy-fonts.mjs",
     "build": "astro build && pagefind --site dist",
+    "audit:links": "node scripts/audit-internal-links.mjs",
     "preview": "astro preview",
     "astro": "astro",
     "test:phase1": "node --test --experimental-strip-types \"src/lib/sparkline.test.mjs\" \"src/lib/dropcap.test.mjs\" \"src/lib/related.test.mjs\" \"src/lib/dataset-schema.test.mjs\" \"src/lib/faq-schema.test.mjs\""

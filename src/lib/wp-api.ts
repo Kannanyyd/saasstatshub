@@ -322,14 +322,14 @@ query HomePageData {
 `;
 
 const CATEGORY_PAGE_QUERY = `
-query CategoryPageData($slug: ID!) {
+query CategoryPageData($slug: ID!, $first: Int!, $after: String) {
   category(id: $slug, idType: SLUG) {
     id
     name
     slug
     description
     count
-    posts(first: 50) {
+    posts(first: $first, after: $after, where: { status: PUBLISH }) {
       nodes {
         id
         title
@@ -532,13 +532,30 @@ export async function getHomePageData(): Promise<HomePageData> {
 }
 
 export async function getCategoryPageData(slug: string): Promise<CategoryPageData> {
-  const data = await fetchGraphQL<any>(CATEGORY_PAGE_QUERY, { slug });
-  const cat = data.category;
+  const articles: ArticleCard[] = [];
+  let cursor: string | null = null;
+  let cat: any = null;
+
+  // Category archives are crawl paths, not just recent-content widgets. Fetch
+  // every page so older published posts remain reachable from their category.
+  for (let pageNumber = 0; pageNumber < 50; pageNumber++) {
+    const variables: Record<string, unknown> = { slug, first: 100 };
+    if (cursor) variables.after = cursor;
+    const data = await fetchGraphQL<any>(CATEGORY_PAGE_QUERY, variables);
+    cat = data.category;
+    if (!cat?.posts) break;
+    articles.push(...cat.posts.nodes.map(transformArticleCard));
+    if (!cat.posts.pageInfo?.hasNextPage) break;
+    cursor = cat.posts.pageInfo.endCursor || null;
+    if (!cursor) break;
+  }
+
+  if (!cat) throw new Error(`Category not found: ${slug}`);
   return {
     category: transformCategory(cat),
-    articles: sortBySticky(cat.posts.nodes.map(transformArticleCard)),
-    hasNextPage: cat.posts.pageInfo.hasNextPage,
-    endCursor: cat.posts.pageInfo.endCursor,
+    articles: sortBySticky(articles),
+    hasNextPage: false,
+    endCursor: '',
   };
 }
 
