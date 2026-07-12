@@ -17,7 +17,9 @@ export default defineConfig({
       // unless overridden via `serialize`.
       changefreq: 'weekly',
       priority: 0.7,
-      lastmod: new Date(),
+      // Do not stamp every URL with the build time. Article pages expose their
+      // real WordPress dateModified value; an inaccurate sitemap lastmod is
+      // less useful than omitting it.
       // Per-URL overrides. Higher priority for homepage, lower for legal pages.
       serialize(item) {
         const url = new URL(item.url);

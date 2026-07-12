@@ -1,0 +1,76 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/global.css';
+
+const canonicalURL = new URL('/research-data/', Astro.site).href;
+const datasetSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Dataset',
+  name: 'SaaSStatsHub Public Research Catalog',
+  description: 'A machine-readable catalog of public SaaSStatsHub articles with category, canonical URL, and last-modified timestamp.',
+  creator: { '@type': 'Organization', name: 'SaaSStatsHub Research Desk', url: new URL('/editorial-policy/#authors', Astro.site).href },
+  license: 'https://creativecommons.org/licenses/by-nc/4.0/',
+  url: canonicalURL,
+  distribution: {
+    '@type': 'DataDownload',
+    encodingFormat: 'text/csv',
+    contentUrl: new URL('/research-catalog.csv', Astro.site).href,
+  },
+};
+---
+
+<BaseLayout title="Research Data" description="Download the SaaSStatsHub public research catalog and review its fields, generation method, scope, license, and limitations." canonicalURL={canonicalURL}>
+  <script type="application/ld+json" set:html={JSON.stringify(datasetSchema)} />
+  <div class="max-w-[820px] mx-auto px-6 py-12">
+    <p class="text-sm font-semibold uppercase tracking-wider text-primary mb-3">Open Research Catalog</p>
+    <h1 class="text-3xl md:text-4xl font-bold mb-5">SaaSStatsHub Research Data</h1>
+    <p class="text-lg text-text-secondary leading-relaxed mb-8">
+      Download a machine-readable index of the articles currently available on SaaSStatsHub.
+      The catalog is regenerated from the publishing system during each production build.
+    </p>
+
+    <a href="/research-catalog.csv" download class="inline-flex items-center px-5 py-3 rounded-lg bg-primary text-white font-semibold hover:bg-primary-dark transition-colors">
+      Download research catalog (CSV)
+    </a>
+
+    <div class="mt-10 space-y-7 text-text-secondary leading-relaxed">
+      <section>
+        <h2 class="text-xl font-bold text-text mb-3">Included Fields</h2>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>Article title</li>
+          <li>Primary category and category slug</li>
+          <li>Canonical public URL</li>
+          <li>Last-modified timestamp reported by WordPress</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-text mb-3">Scope and Limitations</h2>
+        <p>
+          This file is a publication catalog, not a claim that every article is a standalone statistical
+          dataset. Inclusion means that the page was public when the catalog was generated. Article facts,
+          product details, and external source availability can change after publication.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-text mb-3">Reuse and Attribution</h2>
+        <p>
+          The catalog is available under
+          <a href="https://creativecommons.org/licenses/by-nc/4.0/" class="text-primary hover:underline" rel="license">CC BY-NC 4.0</a>.
+          Third-party article sources, trademarks, product data, and linked materials retain their own rights.
+          Suggested attribution: "SaaSStatsHub Public Research Catalog, accessed [date]."
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-text mb-3">Corrections</h2>
+        <p>
+          Report an incorrect URL, category, or publication state through the
+          <a href="/contact/" class="text-primary hover:underline">Contact page</a>. For the wider sourcing
+          process, see the <a href="/editorial-policy/" class="text-primary hover:underline">Editorial Policy</a>.
+        </p>
+      </section>
+    </div>
+  </div>
+</BaseLayout>

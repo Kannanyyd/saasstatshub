@@ -22,9 +22,9 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import '../styles/global.css';
 
-const title = 'SaaS Pricing Calculator';
+const title = 'SaaS Metrics and Spend Calculator: LTV, CAC, MRR and ARR';
 const description =
-  'Free SaaS pricing and metrics calculator. Calculate your ARR, LTV, LTV:CAC ratio, payback period, and 12-24 month MRR forecast in seconds. Includes industry benchmarks from 130+ SaaS reports.';
+  'Free SaaS metrics calculator for ARR, MRR, LTV, CAC ratio, payback period, and revenue forecasts using your pricing, customer, churn, and cost assumptions.';
 
 /**
  * Benchmark configuration — values from operations team, sourced from main-site articles.
@@ -42,12 +42,12 @@ const BENCHMARKS = [
     label: 'ARR',
     direction: 'higher-better',
     tiers: [
-      { max: 1_000_000, label: 'Pre-scale — still validating PMF', color: 'yellow' },
-      { max: 10_000_000, label: 'Scaling — proven GTM motion', color: 'green' },
-      { max: 50_000_000, label: 'Growth — Series B+ territory', color: 'green' },
-      { max: Infinity, label: 'Late-stage — pre-IPO track', color: 'green' },
+      { max: 1_000_000, label: 'Illustrative band: under $1M ARR', color: 'yellow' },
+      { max: 10_000_000, label: 'Illustrative band: $1M-$10M ARR', color: 'green' },
+      { max: 50_000_000, label: 'Illustrative band: $10M-$50M ARR', color: 'green' },
+      { max: Infinity, label: 'Illustrative band: above $50M ARR', color: 'green' },
     ],
-    text: 'SaaS ARR benchmarks by stage: seed <$1M, Series A $1–10M, Series B+ $10M+. Public SaaS median ARR is $312M. Focus on growth rate, not just absolute ARR.',
+    text: 'ARR is shown in broad scale bands for planning convenience. Funding stage cannot be inferred from ARR alone, and these bands are not market benchmarks.',
     sourceLabel: 'SaaS Industry Statistics 2026',
     sourceUrl: '/analytics/saas-industry-statistics-2026/',
   },
@@ -56,12 +56,12 @@ const BENCHMARKS = [
     label: 'LTV : CAC',
     direction: 'higher-better',
     tiers: [
-      { max: 1, label: 'Unprofitable — CAC exceeds LTV', color: 'red' },
-      { max: 3, label: 'Below 3:1 industry healthy line', color: 'yellow' },
-      { max: 5, label: 'Healthy SaaS benchmark (3:1+)', color: 'green' },
-      { max: Infinity, label: 'Top 10% — best-in-class', color: 'green' },
+      { max: 1, label: 'Illustrative band: below 1:1', color: 'red' },
+      { max: 3, label: 'Illustrative band: 1:1 to 3:1', color: 'yellow' },
+      { max: 5, label: 'Illustrative band: 3:1 to 5:1', color: 'green' },
+      { max: Infinity, label: 'Illustrative band: above 5:1', color: 'green' },
     ],
-    text: 'SaaS industry healthy line is 3:1 (David Skok, 2008). Top 10% reach 5:1+. Seed-stage median is 1.5–2.5x; mature SaaS averages 5–8x. Below 1:1 means you are losing money on every customer.',
+    text: 'LTV:CAC is a planning ratio, not a universal score. Interpret it alongside gross margin, cash timing, retention, and the assumptions used to estimate lifetime value.',
     sourceLabel: 'SaaS Pricing Statistics 2026',
     sourceUrl: '/marketing/saas-pricing-statistics-2026/',
   },
@@ -70,12 +70,12 @@ const BENCHMARKS = [
     label: 'Monthly Churn',
     direction: 'lower-better',
     tiers: [
-      { max: 1, label: 'Excellent — enterprise-grade retention', color: 'green' },
-      { max: 2, label: 'Low — top-quartile SaaS', color: 'green' },
-      { max: 5, label: 'Moderate — improving, keep going', color: 'yellow' },
-      { max: Infinity, label: 'High — at B2B SaaS average, act now', color: 'red' },
+      { max: 1, label: 'Illustrative band: under 1% monthly', color: 'green' },
+      { max: 2, label: 'Illustrative band: 1%-2% monthly', color: 'green' },
+      { max: 5, label: 'Illustrative band: 2%-5% monthly', color: 'yellow' },
+      { max: Infinity, label: 'Illustrative band: above 5% monthly', color: 'red' },
     ],
-    text: 'B2B SaaS average monthly churn is 5.2% (2026). Top performers maintain ≤3.1%. Enterprise-grade SaaS targets <1% monthly. Reducing churn by 1% can increase company valuation by 10–20%.',
+    text: 'Monthly churn is grouped into illustrative ranges. The appropriate range depends on customer segment, contract length, calculation method, and business maturity.',
     sourceLabel: 'SaaS Churn Rate Statistics 2026',
     sourceUrl: '/analytics/saas-churn-rate-statistics-2026/',
   },
@@ -84,11 +84,11 @@ const BENCHMARKS = [
     label: 'CAC Payback',
     direction: 'lower-better',
     tiers: [
-      { max: 12, label: 'SMB target ≤12 mo — efficient growth', color: 'green' },
-      { max: 24, label: 'Enterprise acceptable — optimize if >18', color: 'yellow' },
-      { max: Infinity, label: 'Too long — review CAC strategy urgently', color: 'red' },
+      { max: 12, label: 'Illustrative band: 12 months or less', color: 'green' },
+      { max: 24, label: 'Illustrative band: 12-24 months', color: 'yellow' },
+      { max: Infinity, label: 'Illustrative band: above 24 months', color: 'red' },
     ],
-    text: 'SMB SaaS median payback is 12 months; enterprise acceptable up to 24 months (Bessemer). Top quartile achieves ≤8 months. PLG companies average 7.2 months payback due to lower CAC. If payback >24 months, your CAC is too high for sustainable growth.',
+    text: 'Payback is grouped into planning ranges only. A sustainable period depends on gross margin, available cash, contract terms, retention, and the cost of capital.',
     sourceLabel: 'SaaS Pricing Statistics 2026',
     sourceUrl: '/marketing/saas-pricing-statistics-2026/',
   },
@@ -97,12 +97,12 @@ const BENCHMARKS = [
     label: 'Annual Growth',
     direction: 'higher-better',
     tiers: [
-      { max: 20, label: 'Below median — review GTM strategy', color: 'red' },
-      { max: 40, label: 'Median SaaS — solid growth', color: 'yellow' },
-      { max: 100, label: 'High-growth — top 25% SaaS', color: 'green' },
-      { max: Infinity, label: 'Hypergrowth — doubling ARR annually', color: 'green' },
+      { max: 20, label: 'Illustrative band: under 20% annualized', color: 'red' },
+      { max: 40, label: 'Illustrative band: 20%-40% annualized', color: 'yellow' },
+      { max: 100, label: 'Illustrative band: 40%-100% annualized', color: 'green' },
+      { max: Infinity, label: 'Illustrative band: above 100% annualized', color: 'green' },
     ],
-    text: 'Median SaaS MRR growth is 25% annually (2026). High-growth SaaS maintains 40%+. PLG companies grow 1.5x faster than sales-led peers. If growth <20%, you are below SaaS median — review pricing, CAC efficiency, and churn.',
+    text: 'Growth is grouped into illustrative annualized ranges. Compare the result with your own plan and prior periods rather than treating it as an industry percentile.',
     sourceLabel: 'State of SaaS 2026',
     sourceUrl: '/analytics/state-of-saas-2026-annual-report/',
   },
@@ -153,7 +153,7 @@ const webAppSchema = {
         <a href="/analytics/state-of-saas-2026-annual-report/" class="text-primary hover:underline font-semibold">
           See our State of SaaS 2026 report
         </a>
-        for industry benchmarks across 130+ data points →
+        for source-scoped industry context →
       </p>
     </div>
 
@@ -174,7 +174,7 @@ const webAppSchema = {
       </h1>
       <p class="text-base md:text-lg text-text-secondary leading-relaxed">
         Calculate your ARR, LTV, LTV:CAC ratio, payback period, and 12-24 month forecast.
-        Compare your numbers against industry benchmarks from 130+ SaaS statistics reports.
+        Review your results against clearly labeled illustrative planning ranges.
       </p>
     </header>
 
@@ -422,10 +422,10 @@ const webAppSchema = {
           <p class="text-xs text-text-muted uppercase tracking-widest font-mono mb-1">
             How You Compare
           </p>
-          <h2 class="text-xl md:text-2xl font-bold text-text">Your numbers vs SaaS industry benchmarks</h2>
+          <h2 class="text-xl md:text-2xl font-bold text-text">Your numbers and illustrative planning ranges</h2>
           <p class="text-xs text-text-muted mt-1">
-            Based on SaaSStatsHub analysis of 130+ industry reports.
-            Live tier classification updates as you change the inputs.
+            These ranges are planning aids, not audited industry benchmarks or investment advice.
+            The classification updates as you change the inputs.
           </p>
         </div>
 
@@ -497,8 +497,8 @@ const webAppSchema = {
           divided by starting MRR.
         </li>
         <li>
-          <strong class="text-text">Watch the metrics update.</strong> Compare against the benchmark hints
-          (coming soon) to see where you stand.
+          <strong class="text-text">Watch the metrics update.</strong> Use the range hints to compare
+          scenarios without treating them as universal performance standards.
         </li>
       </ol>
     </section>
@@ -515,8 +515,8 @@ const webAppSchema = {
       <h3 class="text-lg font-bold text-text mt-6 mb-2">LTV : CAC ratio</h3>
       <p class="text-text-secondary text-sm leading-relaxed">
         How much customer revenue you earn over the customer's lifetime, divided by what it cost to acquire them.
-        Industry benchmark: <strong class="text-text">3:1 is healthy</strong>; below 1:1 is unprofitable;
-        top SaaS reach 5:1+.
+        A 3:1 ratio is often used as a planning convention, but the right target depends on gross margin,
+        cash timing, retention, and how lifetime value is estimated.
       </p>
 
       <h3 class="text-lg font-bold text-text mt-6 mb-2">Payback Period</h3>
@@ -979,10 +979,7 @@ const webAppSchema = {
 
     /**
      * Tier classification matching operator's spec:
-     *   LTV:CAC < 1   → bad   (unprofitable)
-     *   LTV:CAC 1-3   → warn  (below industry healthy line)
-     *   LTV:CAC ≥ 3   → good  (3:1 SaaS healthy benchmark)
-     *   LTV:CAC ≥ 5   → good  (top 10%)
+     * Display bands are illustrative UI guidance, not industry percentiles.
      */
     function tierForLtvCac(ratio) {
       if (!isFinite(ratio) || ratio <= 0) return 'bad';
@@ -994,16 +991,13 @@ const webAppSchema = {
     function tierLabelLtvCac(ratio) {
       if (!isFinite(ratio) || ratio <= 0) return 'Insufficient data';
       if (ratio < 1) return 'Unprofitable — CAC > LTV';
-      if (ratio < 3) return 'Below 3:1 industry benchmark';
-      if (ratio < 5) return 'Healthy (3:1+ SaaS benchmark)';
-      return 'Top tier (5:1+, top 10%)';
+      if (ratio < 3) return 'Illustrative range: 1:1 to 3:1';
+      if (ratio < 5) return 'Illustrative range: 3:1 to 5:1';
+      return 'Illustrative range: above 5:1';
     }
 
     /**
-     * Tier for payback period:
-     *   ≤ 12 months → good (SMB SaaS target)
-     *   12-24       → warn (Enterprise acceptable)
-     *   > 24        → bad
+     * Payback bands are illustrative UI guidance, not market benchmarks.
      */
     function tierForPayback(months) {
       if (!isFinite(months) || months <= 0) return 'bad';
@@ -1251,7 +1245,7 @@ const webAppSchema = {
         rows.push([b.label, v.display, tier ? tier.label : '—']);
       }
       rows.push([]);
-      rows.push(['Source: 130+ SaaS industry reports analyzed by SaaSStatsHub']);
+      rows.push(['Note: Planning ranges are illustrative and are not audited industry benchmarks.']);
 
       // Encode CSV — quote any field containing comma/quote/newline
       const csv = rows
@@ -1514,7 +1508,7 @@ const webAppSchema = {
       pdf.setFont('helvetica', 'normal');
       pdf.setFontSize(8);
       pdf.setTextColor(148, 163, 184);
-      pdf.text('vs SaaS industry benchmarks (130+ reports analyzed)', MARGIN, y + 10);
+      pdf.text('Illustrative planning ranges; not audited industry benchmarks', MARGIN, y + 10);
       y += 28;
 
       // 5 benchmark rows

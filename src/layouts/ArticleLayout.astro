@@ -88,8 +88,8 @@ const articleSchema = {
   dateModified: dateModified || datePublished,
   author: {
     "@type": "Organization",
-    name: "SaaSStatsHub",
-    url: siteOrigin,
+    name: "SaaSStatsHub Research Desk",
+    url: `${siteOrigin}/editorial-policy/#authors`,
   },
   publisher: {
     "@type": "Organization",
@@ -219,9 +219,9 @@ if (hasAffiliateLinks) {
     {dateModified && (
       <meta property="article:modified_time" content={dateModified} />
     )}
-    <meta property="article:author" content="SaaSStatsHub" />
+    <meta property="article:author" content="SaaSStatsHub Research Desk" />
     <meta property="article:section" content={category} />
-    <meta name="author" content="SaaSStatsHub" />
+    <meta name="author" content="SaaSStatsHub Research Desk" />
   </Fragment>
 
   <!-- Reading progress bar -->
@@ -258,6 +258,13 @@ if (hasAffiliateLinks) {
           <a href={`/categories/${categorySlug}/`} class="text-primary font-semibold" data-pagefind-filter="category">{category}</a>
         </div>
 
+        <aside class="mb-6 text-sm text-text-secondary leading-relaxed" aria-label="Article authorship and review">
+          <strong class="text-text">Research and editorial review:</strong>{' '}
+          SaaSStatsHub Research Desk. Sources, scope, and revisions follow our{' '}
+          <a href="/editorial-policy/#authors" class="text-primary hover:underline">editorial process</a>.
+          Report a correction through the <a href="/contact/" class="text-primary hover:underline">contact page</a>.
+        </aside>
+
         <!--
           Affiliate disclosure (FTC 16 CFR 255 + Google "sneaky" content guideline).
           Must appear ABOVE any affiliate link, in clear and conspicuous text — a
@@ -273,9 +280,8 @@ if (hasAffiliateLinks) {
             <strong class="text-text">Disclosure:</strong> This page contains
             affiliate links. We may earn a commission if you sign up through our
             links — at no extra cost to you. We only recommend tools we have
-            researched against the {' '}
-            <a href="/categories/" class="underline text-primary hover:text-primary-dark">130+ SaaS reports</a>
-            {' '}we cite across the site. {' '}
+            researched using public product information and the{' '}
+            <a href="/research-data/" class="underline text-primary hover:text-primary-dark">SaaSStatsHub research catalog</a>.{' '}
             <a href="/affiliate-disclosure/" class="underline text-primary hover:text-primary-dark">
               Read our full disclosure
             </a>.
@@ -352,8 +358,8 @@ if (hasAffiliateLinks) {
                 <h3 class="text-lg font-bold mb-2">Calculate your own SaaS metrics</h3>
                 <p class="text-sm text-text-secondary leading-relaxed mb-3">
                   Plug in your MRR, CAC, and churn — get instant ARR, LTV, payback period, and a
-                  24-month forecast. Compare your numbers against industry benchmarks from
-                  <strong class="text-text">130+ SaaS reports</strong>.
+                  24-month forecast. Compare scenarios using clearly labeled illustrative
+                  planning ranges.
                 </p>
                 <a
                   href="/saas-pricing-calculator/"

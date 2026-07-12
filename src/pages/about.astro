@@ -3,90 +3,62 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import '../styles/global.css';
 ---
 
-<BaseLayout title="About" description="About SaaSStatsHub — the #1 source for SaaS industry statistics, market size data, growth trends, and adoption rates across CRM, marketing, e-commerce, security, and more.">
+<BaseLayout title="About" description="Learn how SaaSStatsHub publishes structured SaaS research, maintains its open-source frontend, reviews sources, records corrections, and scopes its data.">
   <div class="max-w-[740px] mx-auto px-6 py-12">
     <h1 class="text-3xl md:text-4xl font-bold mb-6">About SaaSStatsHub</h1>
 
-    <div class="space-y-6 text-text-secondary leading-relaxed">
+    <article class="space-y-6 text-text-secondary leading-relaxed">
       <p>
-        <strong class="text-text">SaaSStatsHub</strong> is the #1 source for SaaS statistics, market data, and industry trends in 2026. We provide comprehensive, up-to-date, and always-cited statistics covering the entire SaaS ecosystem — from market size and revenue growth to enterprise adoption rates, pricing benchmarks, and regional insights across 850+ articles and 22 major categories.
+        <strong class="text-text">SaaSStatsHub</strong> is an early-stage research publishing project
+        covering SaaS markets, software categories, product comparisons, and practical buying questions.
+        The site combines an Astro frontend with a Headless WordPress publishing workflow and Cloudflare Pages.
       </p>
 
-      <h2 class="text-xl font-bold text-text">Our Mission</h2>
+      <h2 class="text-xl font-bold text-text">Why the Project Exists</h2>
       <p>
-        We believe that reliable SaaS industry data should be accessible to everyone. Whether you're a founder building a business case, an analyst writing a market research report, a marketer creating data-driven content, or an investor evaluating SaaS companies, SaaSStatsHub gives you the statistics you need — with original sources you can cite and trust.
+        SaaS research is often difficult to evaluate because market estimates use different scopes,
+        vendor prices change, and secondary summaries can separate a number from its original context.
+        SaaSStatsHub aims to make those boundaries visible by naming sources, dates, methodologies, and
+        limitations where they are available.
       </p>
 
-      <h2 class="text-xl font-bold text-text">What Makes Us Different</h2>
+      <h2 class="text-xl font-bold text-text">Who Maintains It</h2>
+      <p>
+        The project is maintained by a primary independent maintainer under the
+        <strong class="text-text">SaaSStatsHub Research Desk</strong> byline. Development, publishing,
+        source remediation, deployment, and corrections are managed through the same project workflow.
+        The frontend source is available on
+        <a href="https://github.com/Kannanyyd/saasstatshub" class="text-primary hover:underline" rel="noopener">GitHub</a>.
+      </p>
+
+      <h2 class="text-xl font-bold text-text">How Research Is Handled</h2>
       <ul class="list-disc pl-6 space-y-2">
-        <li><strong class="text-text">Always Cited</strong> — Every statistic links back to its original source (Gartner, Statista, McKinsey, company reports). No phantom numbers.</li>
-        <li><strong class="text-text">Always Current</strong> — We update our SaaS statistics regularly to reflect the latest 2026 data from quarterly earnings, industry reports, and market research.</li>
-        <li><strong class="text-text">Comprehensive Coverage</strong> — From SaaS market size ($232B in 2026) to individual platform statistics (Salesforce, HubSpot, Shopify, Zoom), we cover every angle.</li>
-        <li><strong class="text-text">Free & Accessible</strong> — All 850+ statistical articles are freely accessible. No paywalls, no subscriptions required.</li>
+        <li>Primary filings, official product documentation, public agencies, and named research reports are preferred.</li>
+        <li>Forecasts are distinguished from observed results, and broad cloud totals are not relabeled as SaaS revenue.</li>
+        <li>Automated checks help find broken links, duplicate passages, and unsupported claim patterns.</li>
+        <li>Pages that cannot meet the current evidence standard may be qualified, rewritten, or moved out of public publication.</li>
+        <li>Product pricing and features should be confirmed on the vendor's official site before a buying decision.</li>
       </ul>
 
-      <h2 class="text-xl font-bold text-text">How We Work</h2>
       <p>
-        Each article starts with source research, not keyword stuffing. We collect public filings,
-        vendor documentation, earnings releases, market research summaries, and primary-source
-        product data where available. The editorial pass then turns those inputs into plain-English
-        takeaways, comparison tables, and context about what the numbers mean for SaaS operators,
-        buyers, analysts, and founders.
-      </p>
-      <p>
-        When a number changes, we prefer updating the original page instead of publishing duplicate
-        versions. If you spot a stale figure or a weak citation, send us the URL and the data point;
-        corrections are reviewed manually before publication.
-      </p>
-      <p>
-        Our full <a href="/editorial-policy/" class="text-primary hover:underline">Editorial Policy</a>
-        explains how we select sources, verify numbers, handle affiliate relationships, and correct
-        mistakes.
+        Read the complete <a href="/editorial-policy/" class="text-primary hover:underline">Editorial Policy</a>
+        for sourcing, corrections, affiliate independence, conflicts, and the use of automated tools.
       </p>
 
-      <h2 class="text-xl font-bold text-text">Team</h2>
+      <h2 class="text-xl font-bold text-text">Open Research Catalog</h2>
       <p>
-        SaaSStatsHub is run by a small research team with backgrounds in SaaS
-        operations, data analysis, and technical writing. We do not accept paid
-        placements, and no vendor can edit or suppress our coverage. Team
-        members with a financial interest in a company (stock ownership,
-        advisory roles) are recused from writing about that company.
+        The <a href="/research-data/" class="text-primary hover:underline">Research Data page</a> provides
+        a machine-readable CSV catalog of currently public articles, including category, canonical URL,
+        and last-modified timestamp. It is generated from the publishing system during each production build.
       </p>
 
-      <h2 class="text-xl font-bold text-text">Coverage Areas</h2>
-      <p>We publish in-depth statistics across all major SaaS and technology categories:</p>
-      <ul class="list-disc pl-6 space-y-1">
-        <li><a href="/categories/crm/" class="text-primary hover:underline">CRM Statistics</a> — Salesforce, HubSpot, Zoho, Pipedrive, Microsoft Dynamics 365 market share & revenue</li>
-        <li><a href="/categories/marketing/" class="text-primary hover:underline">Marketing Statistics</a> — SEO, PPC, email marketing, social media, content marketing & automation data</li>
-        <li><a href="/categories/ecommerce/" class="text-primary hover:underline">E-commerce Statistics</a> — Shopify, WooCommerce, Amazon FBA, Stripe, BigCommerce & online retail trends</li>
-        <li><a href="/categories/project-management/" class="text-primary hover:underline">Project Management Statistics</a> — Asana, Jira, Monday.com, Trello, ClickUp, DevOps & Scrum data</li>
-        <li><a href="/categories/hr/" class="text-primary hover:underline">HR & Payroll Statistics</a> — Employee engagement, talent acquisition, compensation, benefits & HR technology</li>
-        <li><a href="/categories/analytics/" class="text-primary hover:underline">Analytics & SaaS Market Statistics</a> — Cloud computing, big data, AI, business intelligence, SaaS market size & growth</li>
-        <li><a href="/categories/security/" class="text-primary hover:underline">Cybersecurity Statistics</a> — Ransomware, data privacy, cloud security, endpoint protection & cyber insurance</li>
-        <li><a href="/categories/communication/" class="text-primary hover:underline">Communication Statistics</a> — Zoom, Slack, Microsoft Teams, UCaaS, CPaaS & video conferencing</li>
-        <li><a href="/categories/legal/" class="text-primary hover:underline">Legal Tech Statistics</a> — Contract management, e-signatures, compliance, legal AI & practice management</li>
-        <li><a href="/categories/real-estate/" class="text-primary hover:underline">Real Estate Statistics</a> — Property management, real estate CRM, virtual tours, PropTech & MLS data</li>
-        <li><a href="/categories/education/" class="text-primary hover:underline">Education Statistics</a> — LMS, online courses, EdTech, virtual classrooms & corporate training</li>
-        <li><a href="/categories/healthcare/" class="text-primary hover:underline">Healthcare Statistics</a> — EHR, telemedicine, medical billing, patient scheduling & HIPAA compliance</li>
-      </ul>
-
-      <h2 class="text-xl font-bold text-text">Key Statistics We Track</h2>
-      <p>Our data coverage includes but is not limited to:</p>
-      <ul class="list-disc pl-6 space-y-1">
-        <li>Global SaaS market size and CAGR growth projections (2024–2030)</li>
-        <li>Individual SaaS company revenue, market share, and user counts</li>
-        <li>Enterprise vs SMB adoption rates by category</li>
-        <li>Regional market data (North America, Europe, Asia-Pacific)</li>
-        <li>Pricing trends, churn rates, and customer acquisition costs</li>
-        <li>AI and automation adoption in SaaS platforms</li>
-        <li>Cybersecurity spending, breach costs, and threat statistics</li>
-      </ul>
-
-      <h2 class="text-xl font-bold text-text">Contact</h2>
+      <h2 class="text-xl font-bold text-text">Corrections and Contact</h2>
       <p>
-        Have a question, correction, or suggestion? We'd love to hear from you.
-        Reach out at <a href="mailto:sangaypopo@gmail.com" class="text-primary hover:underline">sangaypopo@gmail.com</a>.
+        If you find a stale figure, broken source, incorrect scope, or product change, send the article URL,
+        the affected passage, and a better primary source through the
+        <a href="/contact/" class="text-primary hover:underline">Contact page</a> or email
+        <a href="mailto:sangaypopo@gmail.com" class="text-primary hover:underline">sangaypopo@gmail.com</a>.
       </p>
-    </div>
+    </article>
   </div>
 </BaseLayout>
