@@ -55,8 +55,8 @@
 /ecommerce/shopify-alternatives-2026/ /ecommerce/shopify-alternatives/ 301
 /ecommerce/shopify-alternatives-2026/* /ecommerce/shopify-alternatives/ 301
 /ecommerce/shopify-alternatives-2026 /ecommerce/shopify-alternatives/ 301
-/performance-management-statistics-2026/ /hr/performance-management-statistics-2026/ 301
-/performance-management-statistics-2026 /hr/performance-management-statistics-2026/ 301
+/performance-management-statistics-2026/ /categories/hr/ 301
+/performance-management-statistics-2026 /categories/hr/ 301
 /remote-work-statistics-2026/ /project-management/remote-work-statistics-2026/ 301
 /remote-work-statistics-2026 /project-management/remote-work-statistics-2026/ 301
 /state-of-saas-2026-annual-report/ /analytics/state-of-saas-2026-annual-report/ 301
@@ -69,10 +69,10 @@
 /best-remote-work-tools /project-management/best-remote-work-tools/ 301
 /saas-founder-salary/ /hr/saas-founder-salary/ 301
 /saas-founder-salary /hr/saas-founder-salary/ 301
-/fintech-statistics-2026/ /marketing/fintech-statistics-2026/ 301
-/fintech-statistics-2026 /marketing/fintech-statistics-2026/ 301
-/ecommerce/fintech-statistics-2026/ /marketing/fintech-statistics-2026/ 301
-/ecommerce/fintech-statistics-2026 /marketing/fintech-statistics-2026/ 301
+/fintech-statistics-2026/ /ecommerce/fintech-saas-statistics-2026/ 301
+/fintech-statistics-2026 /ecommerce/fintech-saas-statistics-2026/ 301
+/ecommerce/fintech-statistics-2026/ /ecommerce/fintech-saas-statistics-2026/ 301
+/ecommerce/fintech-statistics-2026 /ecommerce/fintech-saas-statistics-2026/ 301
 
 /category/:slug/ /categories/:slug/ 301
 /category/:slug /categories/:slug/ 301
