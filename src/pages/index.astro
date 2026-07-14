@@ -52,7 +52,7 @@ const latestById = new Map(latestSectionsResolved);
 const enabledSections = siteConfig.homepageSections.filter((s) => s.enabled);
 ---
 
-<BaseLayout title="Home" description="100+ SaaS statistics for 2026 — covering CRM, marketing, e-commerce, cybersecurity, cloud computing, HR, analytics & communication. Data-driven insights with cited sources, updated monthly.">
+<BaseLayout title="Home" description="Independent SaaS research, source-backed statistics, software comparisons, practical guides, and free calculators across major business software categories.">
   {enabledSections.map((section, i) => {
     const prev = enabledSections[i - 1];
     const overlapHero = prev?.type === 'hero';

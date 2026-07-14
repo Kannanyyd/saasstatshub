@@ -3,6 +3,26 @@
 # Keep this file under the Cloudflare Pages 2,000 static redirects limit.
 
 # GSC 404 remediation rules observed on 2026-06-25. Keep these near the top.
+/mailchimp-statistics-2026/ /categories/marketing/ 301
+/mailchimp-statistics-2026 /categories/marketing/ 301
+/crm-statistics-2026/ /categories/crm/ 301
+/crm-statistics-2026 /categories/crm/ 301
+/communication/communication-statistics-2026/ /marketing/communication-statistics-2026/ 301
+/communication/communication-statistics-2026 /marketing/communication-statistics-2026/ 301
+/zoom-statistics-2026/ /categories/communication/ 301
+/zoom-statistics-2026 /categories/communication/ 301
+/salesforce-statistics-2026/ /crm/salesforce-statistics-2026/ 301
+/salesforce-statistics-2026 /crm/salesforce-statistics-2026/ 301
+/crm-integration-statistics-2026/ /crm/crm-integration-statistics-2026/ 301
+/crm-integration-statistics-2026 /crm/crm-integration-statistics-2026/ 301
+/employee-engagement-statistics-2026/ /hr/employee-engagement-statistics-2026/ 301
+/employee-engagement-statistics-2026 /hr/employee-engagement-statistics-2026/ 301
+/analytics/remote-work-statistics-2026/ /project-management/remote-work-statistics-2026/ 301
+/analytics/remote-work-statistics-2026 /project-management/remote-work-statistics-2026/ 301
+/analytics/saas-market-size-statistics/ /analytics/saas-market-size-statistics-2026/ 301
+/analytics/saas-market-size-statistics /analytics/saas-market-size-statistics-2026/ 301
+/crm/salesforce-statistics/ /crm/salesforce-statistics-2026/ 301
+/crm/salesforce-statistics /crm/salesforce-statistics-2026/ 301
 /slack-statistics-2026/ /communication/slack-statistics-2026/ 301
 /slack-statistics-2026 /communication/slack-statistics-2026/ 301
 /marketing/email-marketing-statistics /marketing/email-marketing-statistics-2026/ 301

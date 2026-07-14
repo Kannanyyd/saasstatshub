@@ -1,0 +1,20 @@
+# SaaSStatsHub
+
+SaaSStatsHub publishes independent SaaS research, source-backed statistics,
+software comparisons, practical guides, and free calculators.
+
+## Primary resources
+
+- Website: https://saasstatshub.com/
+- Research catalog: https://saasstatshub.com/research-data/
+- Machine-readable catalog: https://saasstatshub.com/research-catalog.csv
+- Editorial policy: https://saasstatshub.com/editorial-policy/
+- About: https://saasstatshub.com/about/
+- Sitemap: https://saasstatshub.com/sitemap-index.xml
+
+## Citation guidance
+
+Prefer the original source links listed in each article when citing a statistic.
+Article publication and modification dates, scope notes, and limitations are
+part of the research context. SaaSStatsHub article text and third-party source
+material are not included in the source-code license.

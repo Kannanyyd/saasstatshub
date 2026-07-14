@@ -21,7 +21,12 @@ const {
 } = Astro.props;
 
 const siteName = 'SaaSStatsHub';
-const fullTitle = title === 'Home' ? `${siteName} - SaaS Research, Statistics and Guides` : `${title} | ${siteName}`;
+const brandedTitle = `${title} | ${siteName}`;
+const fullTitle = title === 'Home'
+  ? `${siteName} - SaaS Research, Statistics and Guides`
+  : brandedTitle.length <= 65
+    ? brandedTitle
+    : title;
 
 // Resolve absolute URLs for social card metadata.
 const pageUrl = canonicalURL || new URL(Astro.url.pathname, Astro.site).href;
@@ -31,6 +36,8 @@ const ogImageAbs = ogImage
   : defaultOg;
 
 const siteOrigin = Astro.site ? Astro.site.origin : 'https://saasstatshub.com';
+const organizationId = `${siteOrigin}/#organization`;
+const researchDeskId = `${siteOrigin}/#research-desk`;
 const isHomepage = Astro.url.pathname === '/' || Astro.url.pathname === '';
 
 // Schema.org WebSite (homepage only).
@@ -42,6 +49,7 @@ const websiteSchema = isHomepage
       url: siteOrigin,
       description,
       inLanguage: 'en-US',
+      publisher: { "@id": organizationId },
     }
   : null;
 
@@ -49,10 +57,21 @@ const websiteSchema = isHomepage
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
+  "@id": organizationId,
   name: siteName,
   url: siteOrigin,
   logo: `${siteOrigin}/og-default.svg`,
   description: 'SaaSStatsHub publishes structured SaaS research, explainers, comparisons, practical guides, and source-backed statistics across major software categories.',
+  sameAs: ['https://github.com/Kannanyyd/saasstatshub'],
+  publishingPrinciples: `${siteOrigin}/editorial-policy/`,
+  ethicsPolicy: `${siteOrigin}/editorial-policy/`,
+  department: {
+    "@type": "Organization",
+    "@id": researchDeskId,
+    name: 'SaaSStatsHub Research Desk',
+    url: `${siteOrigin}/editorial-policy/#authors`,
+    parentOrganization: { "@id": organizationId },
+  },
 };
 
 // Google Analytics 4 — Measurement ID is public (not a secret).
