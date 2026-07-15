@@ -456,11 +456,33 @@ const ALL_SLUGS_QUERY = `
 query AllPostSlugs($first: Int!, $after: String) {
   posts(first: $first, after: $after, where: { status: PUBLISH }) {
     nodes {
+      id
+      title
       slug
+      excerpt
+      date
       modified
+      featuredImage {
+        node {
+          sourceUrl
+          altText
+        }
+      }
       categories {
         nodes {
+          name
           slug
+        }
+      }
+      articleMeta {
+        readTime
+        primaryCategory {
+          nodes {
+            ... on Category {
+              name
+              slug
+            }
+          }
         }
       }
     }
@@ -623,8 +645,13 @@ export async function getArticleData(slug: string): Promise<ArticleDetail> {
   };
 }
 
-export async function getAllArticleSlugs(): Promise<Array<{ slug: string; categorySlug: string; modified?: string }>> {
-  const all: Array<{ slug: string; categorySlug: string; modified?: string }> = [];
+export interface ArticleRoute extends ArticleCard {
+  categorySlug: string;
+  modified?: string;
+}
+
+export async function getAllArticleSlugs(): Promise<ArticleRoute[]> {
+  const all: ArticleRoute[] = [];
   let cursor: string | null = null;
   // Hard cap to avoid infinite loop on misconfigured backends.
   const HARD_CAP = 50;
@@ -635,9 +662,10 @@ export async function getAllArticleSlugs(): Promise<Array<{ slug: string; catego
     const page = data.posts;
     if (!page) break;
     for (const post of page.nodes) {
+      const card = transformArticleCard(post);
       all.push({
-        slug: post.slug,
-        categorySlug: post.categories?.nodes?.[0]?.slug || 'uncategorized',
+        ...card,
+        categorySlug: card.category.slug || 'uncategorized',
         modified: post.modified,
       });
     }

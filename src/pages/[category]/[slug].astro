@@ -5,9 +5,10 @@ import {
   getArticleData,
   getAllArticleSlugs,
   getRecentArticlesAcrossCategories,
+  type ArticleCard,
   type ArticleDetail,
 } from '../../lib/wp-api';
-import { resolveRelatedTiles } from '../../lib/related';
+import { resolveCategoryNeighbors, resolveRelatedTiles } from '../../lib/related';
 import { mockArticleDetail } from '../../data/mock-data';
 import { CATEGORIES } from '../../lib/constants';
 import { withDropCap } from '../../lib/dropcap';
@@ -51,26 +52,51 @@ function injectH2Ids(html: string): string {
 }
 
 export async function getStaticPaths() {
-  let slugs: Array<{ slug: string; categorySlug: string }>;
+  let slugs: Awaited<ReturnType<typeof getAllArticleSlugs>>;
   try {
     slugs = await getAllArticleSlugs();
   } catch {
     // Mock fallback so dev/preview always renders one article.
-    slugs = [{ slug: 'saas-market-size-statistics', categorySlug: 'analytics' }];
+    slugs = [{
+      id: mockArticleDetail.id,
+      title: mockArticleDetail.title,
+      slug: mockArticleDetail.slug,
+      excerpt: mockArticleDetail.excerpt,
+      date: mockArticleDetail.date,
+      modified: mockArticleDetail.modified,
+      image: mockArticleDetail.image,
+      imageAlt: mockArticleDetail.imageAlt,
+      category: mockArticleDetail.category,
+      categorySlug: mockArticleDetail.category.slug,
+      readTime: mockArticleDetail.readTime,
+    }];
   }
 
   // Filter out posts whose category is not in our known list, so we don't
   // create routes that conflict with /categories/[slug]/, /about/, etc.
   const knownSlugs = new Set(CATEGORIES.map((c) => c.slug));
 
-  return slugs
-    .filter((s) => knownSlugs.has(s.categorySlug))
-    .map((s) => ({
-      params: { category: s.categorySlug, slug: s.slug },
-    }));
+  const published = slugs.filter((article) => knownSlugs.has(article.categorySlug));
+  const byCategory = new Map<string, ArticleCard[]>();
+  for (const article of published) {
+    const articles = byCategory.get(article.categorySlug) || [];
+    articles.push(article);
+    byCategory.set(article.categorySlug, articles);
+  }
+
+  return published.map((article) => ({
+    params: { category: article.categorySlug, slug: article.slug },
+    props: {
+      categoryNeighbors: resolveCategoryNeighbors(
+        byCategory.get(article.categorySlug) || [],
+        article.slug,
+      ),
+    },
+  }));
 }
 
 const { slug } = Astro.params;
+const { categoryNeighbors = [] } = Astro.props as { categoryNeighbors?: ArticleCard[] };
 let article: ArticleDetail;
 try {
   article = await getArticleData(slug!);
@@ -98,7 +124,7 @@ const tocItems = buildTocItems(article.content, takeaways.length > 0, sources);
 // at most once per build across all 25 article-page renders.
 const crossCategoryPool = await getRecentArticlesAcrossCategories();
 const relatedTiles = resolveRelatedTiles({
-  sameCategory: article.relatedArticles,
+  sameCategory: categoryNeighbors.length > 0 ? categoryNeighbors : article.relatedArticles,
   crossCategoryPool,
   currentArticleId: article.id,
   currentPrimaryCategorySlug: article.category.slug,

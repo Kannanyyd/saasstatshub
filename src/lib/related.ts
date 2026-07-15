@@ -12,6 +12,37 @@
 
 import type { ArticleCard } from './wp-api';
 
+/**
+ * Pick nearby articles from a category ring so every article links to peers,
+ * including the first and last entries in the category archive.
+ */
+export function resolveCategoryNeighbors(
+  articles: ArticleCard[],
+  currentSlug: string,
+  limit = 4,
+): ArticleCard[] {
+  if (articles.length < 2 || limit < 1) return [];
+
+  const currentIndex = articles.findIndex((article) => article.slug === currentSlug);
+  if (currentIndex === -1) return [];
+
+  const neighbors: ArticleCard[] = [];
+  const seen = new Set([currentSlug]);
+  for (let distance = 1; distance < articles.length && neighbors.length < limit; distance++) {
+    for (const index of [
+      (currentIndex - distance + articles.length) % articles.length,
+      (currentIndex + distance) % articles.length,
+    ]) {
+      const candidate = articles[index];
+      if (seen.has(candidate.slug)) continue;
+      seen.add(candidate.slug);
+      neighbors.push(candidate);
+      if (neighbors.length === limit) break;
+    }
+  }
+  return neighbors;
+}
+
 export interface ResolveRelatedArgs {
   /** Same-category candidates already populated by getArticleData().relatedArticles. */
   sameCategory: ArticleCard[];

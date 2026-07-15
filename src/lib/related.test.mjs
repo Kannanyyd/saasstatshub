@@ -12,6 +12,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { resolveRelatedTiles } from './related.ts';
+import * as relatedModule from './related.ts';
 
 const mk = (id, catSlug, date = '2026-04-01') => ({
   id,
@@ -194,4 +195,30 @@ test('Req 1.11: deterministic — two calls with same input return identical res
   const a = resolveRelatedTiles(args);
   const b = resolveRelatedTiles(args);
   assert.deepEqual(a, b);
+});
+
+test('resolveCategoryNeighbors selects nearby articles with wraparound', () => {
+  assert.equal(typeof relatedModule.resolveCategoryNeighbors, 'function');
+  const articles = ['a', 'b', 'c', 'd', 'e'].map((slug) => ({
+    ...mk(slug, 'crm'),
+    slug,
+  }));
+
+  assert.deepEqual(
+    relatedModule.resolveCategoryNeighbors(articles, 'a', 4).map((article) => article.slug),
+    ['e', 'b', 'd', 'c'],
+  );
+});
+
+test('resolveCategoryNeighbors excludes self and avoids duplicates in small pools', () => {
+  assert.equal(typeof relatedModule.resolveCategoryNeighbors, 'function');
+  const articles = ['a', 'b', 'c'].map((slug) => ({
+    ...mk(slug, 'crm'),
+    slug,
+  }));
+
+  assert.deepEqual(
+    relatedModule.resolveCategoryNeighbors(articles, 'b', 4).map((article) => article.slug),
+    ['a', 'c'],
+  );
 });
