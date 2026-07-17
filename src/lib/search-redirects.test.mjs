@@ -32,18 +32,34 @@ async function resolveRedirect(pathname) {
   return rules.find(({ source }) => matchesSource(source, pathname));
 }
 
-test("recovers the cloud computing market-size URL", async () => {
-  const expected = {
-    destination: "/analytics/cloud-computing-statistics-2026/",
-    status: "301",
-  };
-
-  assert.deepEqual(await resolveRedirect("/analytics/cloud-computing-market-size-2026/"), {
-    source: "/analytics/cloud-computing-market-size-2026/",
-    ...expected,
-  });
-  assert.deepEqual(await resolveRedirect("/analytics/cloud-computing-market-size-2026"), {
+const recoveryCases = [
+  {
     source: "/analytics/cloud-computing-market-size-2026",
-    ...expected,
+    destination: "/analytics/cloud-computing-statistics-2026/",
+  },
+  {
+    source: "/ai/ai-statistics-2026",
+    destination: "/analytics/artificial-intelligence-statistics-2026/",
+  },
+  {
+    source: "/crm/crm-statistics-2026",
+    destination: "/crm/crm-software-statistics-2026/",
+  },
+  {
+    source: "/hr/hr-software-statistics-2026",
+    destination: "/hr/hr-hcm-statistics-2026/",
+  },
+];
+
+for (const { source, destination } of recoveryCases) {
+  test(`recovers ${source}`, async () => {
+    for (const suffix of ["/", ""]) {
+      const pathname = `${source}${suffix}`;
+      assert.deepEqual(await resolveRedirect(pathname), {
+        source: pathname,
+        destination,
+        status: "301",
+      });
+    }
   });
-});
+}
