@@ -19,6 +19,7 @@
     "prebuild": "node scripts/copy-fonts.mjs && node scripts/generate-research-catalog.mjs",
     "build": "astro build && pagefind --site dist",
     "audit:links": "node scripts/audit-internal-links.mjs",
+    "seo:audit-priority": "node scripts/audit-search-priority-pages.mjs",
     "seo:indexnow": "node scripts/submit-indexnow.mjs",
     "preview": "astro preview",
     "astro": "astro",
