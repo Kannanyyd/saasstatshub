@@ -8,15 +8,8 @@
   },
   "license": "https://creativecommons.org/licenses/by-nc/4.0/",
   "catalog_modified": "2026-07-30T23:18:25",
-  "article_count": 1694,
+  "article_count": 1669,
   "articles": [
-    {
-      "title": "AI Adoption Trends 2027",
-      "category": "AI",
-      "category_slug": "ai",
-      "url": "https://saasstatshub.com/ai/ai-adoption-trends-2027/",
-      "last_modified": "2026-07-11T22:02:09"
-    },
     {
       "title": "AI Chatbot for Website: Implementation Guide",
       "category": "AI",
@@ -51,13 +44,6 @@
       "category_slug": "ai",
       "url": "https://saasstatshub.com/ai/ai-data-requirements/",
       "last_modified": "2026-07-11T22:02:01"
-    },
-    {
-      "title": "AI Ethics Framework: Implementation",
-      "category": "AI",
-      "category_slug": "ai",
-      "url": "https://saasstatshub.com/ai/ai-ethics-framework/",
-      "last_modified": "2026-07-11T22:01:59"
     },
     {
       "title": "AI Ethics: Checklist Template",
@@ -1033,13 +1019,6 @@
       "last_modified": "2026-07-11T22:44:52"
     },
     {
-      "title": "Predictive Analytics: Getting Started",
-      "category": "Analytics",
-      "category_slug": "analytics",
-      "url": "https://saasstatshub.com/analytics/predictive-analytics-guide/",
-      "last_modified": "2026-07-11T21:55:40"
-    },
-    {
       "title": "Product Analytics: Essential Tools",
       "category": "Analytics",
       "category_slug": "analytics",
@@ -1087,13 +1066,6 @@
       "category_slug": "analytics",
       "url": "https://saasstatshub.com/analytics/saas-onboarding-statistics-2026/",
       "last_modified": "2026-07-11T22:15:01"
-    },
-    {
-      "title": "SaaS Pricing Trends 2027",
-      "category": "Analytics",
-      "category_slug": "analytics",
-      "url": "https://saasstatshub.com/analytics/saas-pricing-trends-2027/",
-      "last_modified": "2026-07-11T21:54:50"
     },
     {
       "title": "SaaS vs On-Premise Statistics 2026: Cloud Adoption, Spend and Workload Trends",
@@ -1619,13 +1591,6 @@
       "category_slug": "communication",
       "url": "https://saasstatshub.com/communication/unified-communications-guide/",
       "last_modified": "2026-07-11T21:53:40"
-    },
-    {
-      "title": "Video Conferencing Etiquette Guide",
-      "category": "Communication",
-      "category_slug": "communication",
-      "url": "https://saasstatshub.com/communication/video-conferencing-etiquette/",
-      "last_modified": "2026-07-11T21:53:38"
     },
     {
       "title": "Video Conferencing Statistics 2026: Zoom, Meet and RingCentral Limits",
@@ -2522,13 +2487,6 @@
       "category_slug": "crm",
       "url": "https://saasstatshub.com/crm/crm-analytics-statistics-2026/",
       "last_modified": "2026-07-11T22:14:20"
-    },
-    {
-      "title": "CRM Automation: Complete Guide",
-      "category": "CRM",
-      "category_slug": "crm",
-      "url": "https://saasstatshub.com/crm/crm-automation-guide/",
-      "last_modified": "2026-07-11T22:00:19"
     },
     {
       "title": "CRM Data Migration: Checklist Template",
@@ -3707,13 +3665,6 @@
       "last_modified": "2026-07-11T21:59:39"
     },
     {
-      "title": "DevOps Trends 2027",
-      "category": "DevOps & Cloud",
-      "category_slug": "devops",
-      "url": "https://saasstatshub.com/devops/devops-trends-2027/",
-      "last_modified": "2026-07-11T21:59:38"
-    },
-    {
       "title": "Disaster Recovery: Plan Template",
       "category": "DevOps & Cloud",
       "category_slug": "devops",
@@ -3873,13 +3824,6 @@
       "category_slug": "devops",
       "url": "https://saasstatshub.com/devops/infrastructure-audit-checklist/",
       "last_modified": "2026-07-11T21:57:09"
-    },
-    {
-      "title": "Kubernetes Optimization: Best Practices",
-      "category": "DevOps & Cloud",
-      "category_slug": "devops",
-      "url": "https://saasstatshub.com/devops/kubernetes-optimization/",
-      "last_modified": "2026-07-11T21:56:51"
     },
     {
       "title": "Monitoring Setup: Configuration Template",
@@ -4435,13 +4379,6 @@
       "last_modified": "2026-07-11T21:59:06"
     },
     {
-      "title": "E-commerce Personalization: Strategies",
-      "category": "E-commerce",
-      "category_slug": "ecommerce",
-      "url": "https://saasstatshub.com/ecommerce/ecommerce-personalization-guide/",
-      "last_modified": "2026-07-11T21:59:05"
-    },
-    {
       "title": "E-commerce Returns: Management Guide",
       "category": "E-commerce",
       "category_slug": "ecommerce",
@@ -4461,13 +4398,6 @@
       "category_slug": "ecommerce",
       "url": "https://saasstatshub.com/ecommerce/ecommerce-statistics-2026/",
       "last_modified": "2026-07-17T22:37:11"
-    },
-    {
-      "title": "E-commerce Trends 2027",
-      "category": "E-commerce",
-      "category_slug": "ecommerce",
-      "url": "https://saasstatshub.com/ecommerce/ecommerce-trends-2027/",
-      "last_modified": "2026-07-11T21:59:01"
     },
     {
       "title": "FinTech SaaS Statistics 2026: Public-Company Benchmarks and Market Signals",
@@ -5849,13 +5779,6 @@
       "last_modified": "2026-07-11T21:58:41"
     },
     {
-      "title": "Financial Forecasting: Complete Guide",
-      "category": "Finance",
-      "category_slug": "finance",
-      "url": "https://saasstatshub.com/finance/financial-forecasting-guide/",
-      "last_modified": "2026-07-11T21:58:40"
-    },
-    {
       "title": "Financial Projection: 3-Year Template",
       "category": "Finance",
       "category_slug": "finance",
@@ -5882,13 +5805,6 @@
       "category_slug": "finance",
       "url": "https://saasstatshub.com/finance/financial-reporting-guide/",
       "last_modified": "2026-07-11T21:58:35"
-    },
-    {
-      "title": "FinTech Trends 2027",
-      "category": "Finance",
-      "category_slug": "finance",
-      "url": "https://saasstatshub.com/finance/fintech-trends-2027/",
-      "last_modified": "2026-07-11T21:58:33"
     },
     {
       "title": "FreshBooks vs QuickBooks Online: Which Is Better in 2026?",
@@ -6386,13 +6302,6 @@
       "category_slug": "healthcare",
       "url": "https://saasstatshub.com/healthcare/healthcare-interoperability/",
       "last_modified": "2026-07-11T21:57:48"
-    },
-    {
-      "title": "Healthcare Technology Trends 2027",
-      "category": "Healthcare",
-      "category_slug": "healthcare",
-      "url": "https://saasstatshub.com/healthcare/healthcare-technology-trends-2027/",
-      "last_modified": "2026-07-11T21:57:47"
     },
     {
       "title": "HIPAA Compliance Software Guide",
@@ -7263,13 +7172,6 @@
       "last_modified": "2026-07-11T21:58:51"
     },
     {
-      "title": "Employee Retention: Strategies That Work",
-      "category": "HR & Payroll",
-      "category_slug": "hr",
-      "url": "https://saasstatshub.com/hr/employee-retention-strategies/",
-      "last_modified": "2026-07-11T21:58:50"
-    },
-    {
       "title": "Exit Interview: Questionnaire Template",
       "category": "HR & Payroll",
       "category_slug": "hr",
@@ -7387,13 +7289,6 @@
       "category_slug": "hr",
       "url": "https://saasstatshub.com/hr/hr-compliance-checklist/",
       "last_modified": "2026-07-11T21:57:21"
-    },
-    {
-      "title": "HR Technology Trends 2027",
-      "category": "HR & Payroll",
-      "category_slug": "hr",
-      "url": "https://saasstatshub.com/hr/hr-technology-trends-2027/",
-      "last_modified": "2026-07-11T21:57:19"
     },
     {
       "title": "Interview Questions: Template",
@@ -7772,13 +7667,6 @@
       "category_slug": "legal",
       "url": "https://saasstatshub.com/legal/compliance-management-guide/",
       "last_modified": "2026-07-11T22:00:42"
-    },
-    {
-      "title": "Contract Lifecycle Management Guide",
-      "category": "Legal Tech",
-      "category_slug": "legal",
-      "url": "https://saasstatshub.com/legal/contract-lifecycle-management/",
-      "last_modified": "2026-07-11T22:00:24"
     },
     {
       "title": "Contract Negotiation: Complete Guide",
@@ -8887,13 +8775,6 @@
       "last_modified": "2026-07-11T22:44:54"
     },
     {
-      "title": "Marketing Attribution: Complete Guide",
-      "category": "Marketing",
-      "category_slug": "marketing",
-      "url": "https://saasstatshub.com/marketing/marketing-attribution-guide/",
-      "last_modified": "2026-07-11T21:56:30"
-    },
-    {
       "title": "Marketing Automation for Small Business",
       "category": "Marketing",
       "category_slug": "marketing",
@@ -8962,13 +8843,6 @@
       "category_slug": "marketing",
       "url": "https://saasstatshub.com/marketing/marketing-tech-stack-2026/",
       "last_modified": "2026-07-11T21:56:19"
-    },
-    {
-      "title": "Marketing Technology Trends 2027",
-      "category": "Marketing",
-      "category_slug": "marketing",
-      "url": "https://saasstatshub.com/marketing/marketing-technology-trends-2027/",
-      "last_modified": "2026-07-11T21:56:17"
     },
     {
       "title": "SaaS Pricing Statistics 2026: Usage-Based, Hybrid and Subscription Models",
@@ -9417,13 +9291,6 @@
       "category_slug": "nonprofit",
       "url": "https://saasstatshub.com/nonprofit/nonprofit-marketing-guide/",
       "last_modified": "2026-07-11T21:56:02"
-    },
-    {
-      "title": "Nonprofit Sustainability: Strategies",
-      "category": "Nonprofit",
-      "category_slug": "nonprofit",
-      "url": "https://saasstatshub.com/nonprofit/nonprofit-sustainability-guide/",
-      "last_modified": "2026-07-11T21:56:00"
     },
     {
       "title": "Nonprofit Tech Stack: Building Your Arsenal",
@@ -10042,13 +9909,6 @@
       "last_modified": "2026-07-11T21:55:30"
     },
     {
-      "title": "Project Risk Management: Guide",
-      "category": "Project Management",
-      "category_slug": "project-management",
-      "url": "https://saasstatshub.com/project-management/project-risk-management/",
-      "last_modified": "2026-07-11T21:55:29"
-    },
-    {
       "title": "Project Timeline: Gantt Template",
       "category": "Project Management",
       "category_slug": "project-management",
@@ -10462,13 +10322,6 @@
       "last_modified": "2026-07-11T21:55:26"
     },
     {
-      "title": "Property Valuation: Tools and Methods",
-      "category": "Real Estate",
-      "category_slug": "real-estate",
-      "url": "https://saasstatshub.com/real-estate/property-valuation-tools/",
-      "last_modified": "2026-07-11T21:55:25"
-    },
-    {
       "title": "PropTech Trends 2026",
       "category": "Real Estate",
       "category_slug": "real-estate",
@@ -10516,13 +10369,6 @@
       "category_slug": "real-estate",
       "url": "https://saasstatshub.com/real-estate/real-estate-photography-tools/",
       "last_modified": "2026-07-11T21:55:14"
-    },
-    {
-      "title": "Real Estate Technology Trends 2027",
-      "category": "Real Estate",
-      "category_slug": "real-estate",
-      "url": "https://saasstatshub.com/real-estate/real-estate-technology-trends-2027/",
-      "last_modified": "2026-07-11T21:55:13"
     },
     {
       "title": "Real Geeks vs LionDesk: Which Is Better in 2026?",
@@ -10894,13 +10740,6 @@
       "category_slug": "sales",
       "url": "https://saasstatshub.com/sales/sales-demo-best-practices/",
       "last_modified": "2026-07-11T21:54:47"
-    },
-    {
-      "title": "Sales Enablement: Complete Guide",
-      "category": "Sales",
-      "category_slug": "sales",
-      "url": "https://saasstatshub.com/sales/sales-enablement-guide/",
-      "last_modified": "2026-07-11T21:54:46"
     },
     {
       "title": "Sales Forecast: Spreadsheet Template",
@@ -11421,13 +11260,6 @@
       "last_modified": "2026-07-30T23:18:17"
     },
     {
-      "title": "Cybersecurity Threats 2027",
-      "category": "Security",
-      "category_slug": "security",
-      "url": "https://saasstatshub.com/security/cybersecurity-threats-2027/",
-      "last_modified": "2026-07-11T21:59:50"
-    },
-    {
       "title": "Data Breach Response: Plan Template",
       "category": "Security",
       "category_slug": "security",
@@ -11853,13 +11685,6 @@
       "category_slug": "security",
       "url": "https://saasstatshub.com/security/what-is-zero-trust-security/",
       "last_modified": "2026-07-11T21:40:30"
-    },
-    {
-      "title": "Zero Trust Architecture: Implementation",
-      "category": "Security",
-      "category_slug": "security",
-      "url": "https://saasstatshub.com/security/zero-trust-architecture/",
-      "last_modified": "2026-07-11T21:52:54"
     },
     {
       "title": "Zero Trust: Implementation Guide",

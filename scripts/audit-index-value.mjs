@@ -169,6 +169,7 @@ const paragraphFrequency = new Map();
 
 for (const [url, page] of pages) {
   const html = await readFile(page.file, 'utf8');
+  const noindex = /<meta\b[^>]*name=["']robots["'][^>]*content=["'][^"']*\bnoindex\b/i.test(html);
   const articleHtml =
     html.match(/<article\b[^>]*data-pagefind-body[^>]*>([\s\S]*?)<\/article>/i)?.[1] || html;
   const mainText = decodeText(articleHtml);
@@ -192,13 +193,16 @@ for (const [url, page] of pages) {
   const paragraphs = [...articleHtml.matchAll(/<p\b[^>]*>([\s\S]*?)<\/p>/gi)]
     .map((match) => normalizeParagraph(match[1]))
     .filter((paragraph) => paragraph.length >= 100);
-  for (const paragraph of new Set(paragraphs)) {
-    paragraphFrequency.set(paragraph, (paragraphFrequency.get(paragraph) || 0) + 1);
+  if (!noindex) {
+    for (const paragraph of new Set(paragraphs)) {
+      paragraphFrequency.set(paragraph, (paragraphFrequency.get(paragraph) || 0) + 1);
+    }
   }
   const slug = url.split('/').filter(Boolean).at(-1);
   Object.assign(page, {
     url,
     html,
+    noindex,
     title,
     slug,
     category: url.split('/').filter(Boolean)[0],
@@ -222,7 +226,9 @@ for (const [sourceUrl, page] of pages) {
   }
 }
 
-const byCategory = Map.groupBy([...pages.values()], (page) => page.category);
+const indexablePages = [...pages.values()].filter((page) => !page.noindex);
+const excludedPages = pages.size - indexablePages.length;
+const byCategory = Map.groupBy(indexablePages, (page) => page.category);
 const duplicateCandidates = new Map();
 for (const categoryPages of byCategory.values()) {
   for (let leftIndex = 0; leftIndex < categoryPages.length; leftIndex += 1) {
@@ -246,7 +252,7 @@ for (const categoryPages of byCategory.values()) {
   }
 }
 
-const results = [...pages.values()].map((page) => {
+const results = indexablePages.map((page) => {
   const repeatedParagraphs = page.paragraphs.filter(
     (paragraph) => (paragraphFrequency.get(paragraph) || 0) >= 5,
   ).length;
@@ -364,6 +370,7 @@ const summary = `# Index Value Audit - ${auditDate}
 This audit evaluates ${results.length} built content pages. It uses rendered word count,
 linked source count, heading and FAQ presence, incoming internal links, normalized
 paragraph reuse, title similarity, and the current GSC priority manifest.
+It excludes ${excludedPages} reviewed pages that already emit a robots noindex directive.
 
 It does not change publication state, sitemap inclusion, canonical tags, or robots
 directives. Every recommendation requires editorial review.
@@ -414,4 +421,9 @@ await Promise.all([
   writeFile(csvPath, `${csvLines.join('\n')}\n`, 'utf8'),
   writeFile(summaryPath, summary, 'utf8'),
 ]);
-console.log(JSON.stringify({ pages: results.length, ...totals, highConfidenceNoindex: highConfidenceNoindex.length }));
+console.log(JSON.stringify({
+  pages: results.length,
+  excludedPages,
+  ...totals,
+  highConfidenceNoindex: highConfidenceNoindex.length,
+}));

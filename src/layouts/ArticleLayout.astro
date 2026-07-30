@@ -53,6 +53,8 @@ interface Props {
   relatedTiles?: ArticleCard[];
   /** Phase 2.2: FAQ items for Schema.org FAQPage + visible accordion. */
   faqItems?: FaqItem[];
+  /** Temporarily exclude reviewed low-value pages while preserving the URL. */
+  noindex?: boolean;
 }
 
 const {
@@ -72,6 +74,7 @@ const {
   lastUpdated = '',
   relatedTiles = [],
   faqItems = [],
+  noindex = false,
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
@@ -218,7 +221,7 @@ if (hasAffiliateLinks) {
 }
 ---
 
-<BaseLayout title={title} description={description} canonicalURL={canonicalURL} ogImage={ogImage} ogType="article">
+<BaseLayout title={title} description={description} canonicalURL={canonicalURL} ogImage={ogImage} ogType="article" noindex={noindex}>
   {/* Article-specific meta tags for social and search engines.
       Previously missing — only JSON-LD Article schema was present, but
       Google and Facebook also look for these HTML meta tags.

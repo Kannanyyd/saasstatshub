@@ -13,6 +13,7 @@ import { mockArticleDetail } from '../../data/mock-data';
 import { CATEGORIES } from '../../lib/constants';
 import { withDropCap } from '../../lib/dropcap';
 import { injectInternalLinks } from '../../lib/internal-links';
+import { isIndexExcluded } from '../../lib/index-exclusions';
 
 /** Decode common HTML entities (&#038; → &, &#8217; → ', etc.) */
 function decodeHtmlEntities(str: string): string {
@@ -95,7 +96,7 @@ export async function getStaticPaths() {
   }));
 }
 
-const { slug } = Astro.params;
+const { category, slug } = Astro.params;
 const { categoryNeighbors = [] } = Astro.props as { categoryNeighbors?: ArticleCard[] };
 let article: ArticleDetail;
 try {
@@ -148,6 +149,7 @@ const relatedTiles = resolveRelatedTiles({
   lastUpdated={article.lastUpdated}
   relatedTiles={relatedTiles}
   faqItems={article.faqItems}
+  noindex={isIndexExcluded(category!, slug!)}
 >
   <Fragment set:html={withDropCap(injectInternalLinks(injectH2Ids(article.content), slug!))} />
 </ArticleLayout>

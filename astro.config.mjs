@@ -2,6 +2,11 @@
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
+import indexExclusions from './src/data/index-exclusions.json' with { type: 'json' };
+
+const excludedIndexPaths = new Set(
+  indexExclusions.pages.map(({ category, slug }) => `/${category}/${slug}/`),
+);
 
 // https://astro.build/config
 export default defineConfig({
@@ -13,6 +18,9 @@ export default defineConfig({
   output: 'static',
   integrations: [
     sitemap({
+      filter(page) {
+        return !excludedIndexPaths.has(new URL(page).pathname);
+      },
       // Sensible defaults for a content site. These get added to every URL
       // unless overridden via `serialize`.
       changefreq: 'weekly',

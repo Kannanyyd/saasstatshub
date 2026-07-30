@@ -1,0 +1,31 @@
+{
+  "reviewedAt": "2026-07-31",
+  "reason": "No GSC impressions, no linked sources, and normalized paragraph reuse of at least 84%.",
+  "pages": [
+    { "category": "ai", "slug": "ai-ethics-framework" },
+    { "category": "analytics", "slug": "predictive-analytics-guide" },
+    { "category": "communication", "slug": "video-conferencing-etiquette" },
+    { "category": "crm", "slug": "crm-automation-guide" },
+    { "category": "devops", "slug": "kubernetes-optimization" },
+    { "category": "ecommerce", "slug": "ecommerce-personalization-guide" },
+    { "category": "finance", "slug": "financial-forecasting-guide" },
+    { "category": "hr", "slug": "employee-retention-strategies" },
+    { "category": "legal", "slug": "contract-lifecycle-management" },
+    { "category": "marketing", "slug": "marketing-attribution-guide" },
+    { "category": "nonprofit", "slug": "nonprofit-sustainability-guide" },
+    { "category": "project-management", "slug": "project-risk-management" },
+    { "category": "real-estate", "slug": "property-valuation-tools" },
+    { "category": "sales", "slug": "sales-enablement-guide" },
+    { "category": "security", "slug": "zero-trust-architecture" },
+    { "category": "ai", "slug": "ai-adoption-trends-2027" },
+    { "category": "analytics", "slug": "saas-pricing-trends-2027" },
+    { "category": "devops", "slug": "devops-trends-2027" },
+    { "category": "ecommerce", "slug": "ecommerce-trends-2027" },
+    { "category": "finance", "slug": "fintech-trends-2027" },
+    { "category": "healthcare", "slug": "healthcare-technology-trends-2027" },
+    { "category": "hr", "slug": "hr-technology-trends-2027" },
+    { "category": "marketing", "slug": "marketing-technology-trends-2027" },
+    { "category": "real-estate", "slug": "real-estate-technology-trends-2027" },
+    { "category": "security", "slug": "cybersecurity-threats-2027" }
+  ]
+}
