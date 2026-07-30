@@ -1,7 +1,8 @@
 import { writeFile } from 'node:fs/promises';
 
 const endpoint = process.env.WP_API_URL || 'https://cms.saasstatshub.com/index.php?graphql';
-const output = new URL('../public/research-catalog.csv', import.meta.url);
+const csvOutput = new URL('../public/research-catalog.csv', import.meta.url);
+const jsonOutput = new URL('../public/research-catalog.json', import.meta.url);
 const query = `
 query ResearchCatalog($first: Int!, $after: String) {
   posts(first: $first, after: $after, where: { status: PUBLISH }) {
@@ -56,5 +57,33 @@ const lines = [
   ['title', 'category', 'category_slug', 'url', 'last_modified'].map(csv).join(','),
   ...rows.map((row) => [row.title, row.category, row.categorySlug, row.url, row.modified].map(csv).join(',')),
 ];
-await writeFile(output, `${lines.join('\n')}\n`, 'utf8');
-console.log(`[research-catalog] Wrote ${rows.length} public article records.`);
+const catalogModified = rows
+  .map((row) => row.modified)
+  .filter(Boolean)
+  .sort()
+  .at(-1) || null;
+const jsonCatalog = {
+  schema_version: '1.0',
+  name: 'SaaSStatsHub Public Research Catalog',
+  url: 'https://saasstatshub.com/research-data/',
+  publisher: {
+    name: 'SaaSStatsHub Research Desk',
+    url: 'https://saasstatshub.com/research-desk/',
+  },
+  license: 'https://creativecommons.org/licenses/by-nc/4.0/',
+  catalog_modified: catalogModified,
+  article_count: rows.length,
+  articles: rows.map((row) => ({
+    title: row.title,
+    category: row.category,
+    category_slug: row.categorySlug,
+    url: row.url,
+    last_modified: row.modified,
+  })),
+};
+
+await Promise.all([
+  writeFile(csvOutput, `${lines.join('\n')}\n`, 'utf8'),
+  writeFile(jsonOutput, `${JSON.stringify(jsonCatalog, null, 2)}\n`, 'utf8'),
+]);
+console.log(`[research-catalog] Wrote ${rows.length} public article records to CSV and JSON.`);

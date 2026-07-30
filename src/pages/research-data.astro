@@ -6,16 +6,24 @@ const canonicalURL = new URL('/research-data/', Astro.site).href;
 const datasetSchema = {
   '@context': 'https://schema.org',
   '@type': 'Dataset',
+  '@id': `${canonicalURL}#catalog`,
   name: 'SaaSStatsHub Public Research Catalog',
   description: 'A machine-readable catalog of public SaaSStatsHub articles with category, canonical URL, and last-modified timestamp.',
-  creator: { '@type': 'Organization', name: 'SaaSStatsHub Research Desk', url: new URL('/editorial-policy/#authors', Astro.site).href },
+  creator: { '@type': 'Organization', '@id': new URL('/#research-desk', Astro.site).href, name: 'SaaSStatsHub Research Desk', url: new URL('/research-desk/', Astro.site).href },
   license: 'https://creativecommons.org/licenses/by-nc/4.0/',
   url: canonicalURL,
-  distribution: {
-    '@type': 'DataDownload',
-    encodingFormat: 'text/csv',
-    contentUrl: new URL('/research-catalog.csv', Astro.site).href,
-  },
+  distribution: [
+    {
+      '@type': 'DataDownload',
+      encodingFormat: 'application/json',
+      contentUrl: new URL('/research-catalog.json', Astro.site).href,
+    },
+    {
+      '@type': 'DataDownload',
+      encodingFormat: 'text/csv',
+      contentUrl: new URL('/research-catalog.csv', Astro.site).href,
+    },
+  ],
 };
 ---
 
@@ -29,9 +37,14 @@ const datasetSchema = {
       The catalog is regenerated from the publishing system during each production build.
     </p>
 
-    <a href="/research-catalog.csv" download class="inline-flex items-center px-5 py-3 rounded-lg bg-primary text-white font-semibold hover:bg-primary-dark transition-colors">
-      Download research catalog (CSV)
-    </a>
+    <div class="flex flex-wrap gap-3">
+      <a href="/research-catalog.json" download class="inline-flex items-center px-5 py-3 rounded-lg bg-primary text-white font-semibold hover:bg-primary-dark transition-colors">
+        Download JSON
+      </a>
+      <a href="/research-catalog.csv" download class="inline-flex items-center px-5 py-3 rounded-lg border border-border text-text font-semibold hover:border-primary hover:text-primary transition-colors">
+        Download CSV
+      </a>
+    </div>
 
     <div class="mt-10 space-y-7 text-text-secondary leading-relaxed">
       <section>
@@ -41,6 +54,7 @@ const datasetSchema = {
           <li>Primary category and category slug</li>
           <li>Canonical public URL</li>
           <li>Last-modified timestamp reported by WordPress</li>
+          <li>Catalog version, publisher, license, and article count in the JSON edition</li>
         </ul>
       </section>
 

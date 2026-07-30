@@ -7,7 +7,9 @@ software comparisons, practical guides, and free calculators.
 
 - Website: https://saasstatshub.com/
 - Research catalog: https://saasstatshub.com/research-data/
-- Machine-readable catalog: https://saasstatshub.com/research-catalog.csv
+- Machine-readable catalog (JSON): https://saasstatshub.com/research-catalog.json
+- Machine-readable catalog (CSV): https://saasstatshub.com/research-catalog.csv
+- Research Desk: https://saasstatshub.com/research-desk/
 - Editorial policy: https://saasstatshub.com/editorial-policy/
 - About: https://saasstatshub.com/about/
 - Sitemap: https://saasstatshub.com/sitemap-index.xml

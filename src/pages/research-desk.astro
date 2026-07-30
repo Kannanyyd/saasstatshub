@@ -1,0 +1,85 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import '../styles/global.css';
+
+const siteOrigin = Astro.site ? Astro.site.origin : 'https://saasstatshub.com';
+const canonicalURL = `${siteOrigin}/research-desk/`;
+const deskId = `${siteOrigin}/#research-desk`;
+const profileSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfilePage',
+  '@id': `${canonicalURL}#profile`,
+  url: canonicalURL,
+  name: 'SaaSStatsHub Research Desk',
+  mainEntity: {
+    '@type': 'Organization',
+    '@id': deskId,
+    name: 'SaaSStatsHub Research Desk',
+    url: canonicalURL,
+    description: 'The publishing, source review, correction, and release function for SaaSStatsHub.',
+    parentOrganization: { '@id': `${siteOrigin}/#organization` },
+    sameAs: ['https://github.com/Kannanyyd/saasstatshub'],
+  },
+};
+---
+
+<BaseLayout
+  title="Research Desk"
+  description="Meet the SaaSStatsHub Research Desk and review its sourcing, publishing, correction, automation, and disclosure responsibilities."
+  canonicalURL={canonicalURL}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(profileSchema)} />
+  <div class="max-w-[760px] mx-auto px-6 py-12">
+    <p class="text-sm font-semibold uppercase tracking-wider text-primary mb-3">Authorship and Review</p>
+    <h1 class="text-3xl md:text-4xl font-bold mb-6">SaaSStatsHub Research Desk</h1>
+
+    <article class="space-y-7 text-text-secondary leading-relaxed">
+      <p>
+        The SaaSStatsHub Research Desk is the organizational byline used for research,
+        source review, corrections, publishing, and release verification. The project is
+        currently maintained by a primary independent maintainer rather than a large
+        newsroom. We do not invent individual author identities.
+      </p>
+
+      <section>
+        <h2 class="text-xl font-bold text-text mb-3">Responsibilities</h2>
+        <ul class="list-disc pl-6 space-y-2">
+          <li>Prefer primary filings, official documentation, public agencies, and named research reports.</li>
+          <li>Separate observed figures from forecasts and explain material scope limitations.</li>
+          <li>Review corrections, broken sources, duplicate passages, and unsupported quantitative claims.</li>
+          <li>Verify production builds, redirects, structured data, and machine-readable research catalogs.</li>
+          <li>Disclose affiliate relationships without allowing vendors to purchase editorial placement.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-text mb-3">Use of Automation</h2>
+        <p>
+          Automated and AI-assisted tools may help with formatting, candidate-source discovery,
+          link checking, duplicate detection, and structural validation. They are not accepted
+          as evidence for a statistic, a first-hand product test, or an invented citation.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-text mb-3">Public Records</h2>
+        <p>
+          The open-source frontend and issue history are available on
+          <a href="https://github.com/Kannanyyd/saasstatshub" class="text-primary hover:underline" rel="noopener">GitHub</a>.
+          The <a href="/research-data/" class="text-primary hover:underline">Research Data page</a>
+          provides JSON and CSV catalogs of public articles. Editorial standards and correction
+          rules are documented in the
+          <a href="/editorial-policy/" class="text-primary hover:underline">Editorial Policy</a>.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-text mb-3">Corrections</h2>
+        <p>
+          Send the affected page URL, the passage in question, and a better direct source through
+          the <a href="/contact/" class="text-primary hover:underline">Contact page</a>.
+        </p>
+      </section>
+    </article>
+  </div>
+</BaseLayout>
