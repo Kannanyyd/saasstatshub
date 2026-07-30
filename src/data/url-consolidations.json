@@ -1,0 +1,93 @@
+[
+  {
+    "sourceCategory": "ai",
+    "sourceSlug": "best-ai-tools-for-customer-service",
+    "destinationCategory": "ai",
+    "destinationSlug": "best-ai-customer-service-tools",
+    "reason": "The destination has a longer, more distinct body and the same search intent."
+  },
+  {
+    "sourceCategory": "ai",
+    "sourceSlug": "best-ai-tools-for-sales",
+    "destinationCategory": "ai",
+    "destinationSlug": "best-ai-sales-tools",
+    "reason": "The destination has a longer, more distinct body and the same search intent."
+  },
+  {
+    "sourceCategory": "ai",
+    "sourceSlug": "claude-vs-chatgpt",
+    "destinationCategory": "ai",
+    "destinationSlug": "chatgpt-vs-claude",
+    "reason": "The pages target the same comparison; the destination uses the more conventional query order."
+  },
+  {
+    "sourceCategory": "crm",
+    "sourceSlug": "pipedrive-vs-hubspot",
+    "destinationCategory": "crm",
+    "destinationSlug": "hubspot-vs-pipedrive",
+    "reason": "The pages target the same comparison; the destination is longer and uses the more conventional query order."
+  },
+  {
+    "sourceCategory": "devops",
+    "sourceSlug": "best-ci-cd-tools-2027",
+    "destinationCategory": "devops",
+    "destinationSlug": "best-ci-cd-tools",
+    "reason": "The evergreen destination is longer, less repetitive, and avoids a premature year-specific URL."
+  },
+  {
+    "sourceCategory": "ecommerce",
+    "sourceSlug": "shopify-vs-woocommerce-2026",
+    "destinationCategory": "ecommerce",
+    "destinationSlug": "woocommerce-vs-shopify",
+    "reason": "The evergreen destination covers the same comparison without a year-bound URL."
+  },
+  {
+    "sourceCategory": "hospitality",
+    "sourceSlug": "hotel-revenue-management",
+    "destinationCategory": "hospitality",
+    "destinationSlug": "hotel-revenue-management-strategies",
+    "reason": "The destination is longer and has a lower repeated-paragraph ratio."
+  },
+  {
+    "sourceCategory": "hr",
+    "sourceSlug": "best-hr-software-for-small-business",
+    "destinationCategory": "hr",
+    "destinationSlug": "best-hr-software-small-business",
+    "reason": "The destination already has 61 GSC impressions at average position 13."
+  },
+  {
+    "sourceCategory": "marketing",
+    "sourceSlug": "best-email-marketing-platforms-2026",
+    "destinationCategory": "marketing",
+    "destinationSlug": "best-email-marketing-software",
+    "reason": "The evergreen destination covers the same buyer intent without a year-bound URL."
+  },
+  {
+    "sourceCategory": "marketing",
+    "sourceSlug": "best-marketing-automation-software-2026",
+    "destinationCategory": "marketing",
+    "destinationSlug": "best-marketing-automation-tools",
+    "reason": "The evergreen destination has comparable depth and avoids a year-bound URL."
+  },
+  {
+    "sourceCategory": "project-management",
+    "sourceSlug": "best-project-management-software-2026",
+    "destinationCategory": "project-management",
+    "destinationSlug": "best-project-management-tools",
+    "reason": "The evergreen destination covers the same buyer intent without a year-bound URL."
+  },
+  {
+    "sourceCategory": "real-estate",
+    "sourceSlug": "what-is-property-management-software-2027",
+    "destinationCategory": "real-estate",
+    "destinationSlug": "what-is-property-management-software",
+    "reason": "The evergreen definition page avoids a premature 2027 URL."
+  },
+  {
+    "sourceCategory": "security",
+    "sourceSlug": "best-security-awareness-training-2027",
+    "destinationCategory": "security",
+    "destinationSlug": "best-security-awareness-training",
+    "reason": "The evergreen destination is current, similarly detailed, and avoids a premature 2027 URL."
+  }
+]

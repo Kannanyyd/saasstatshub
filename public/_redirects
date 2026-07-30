@@ -3,6 +3,32 @@
 # Keep this file under the Cloudflare Pages 2,000 static redirects limit.
 
 # GSC 404 remediation rules observed on 2026-06-25. Keep these near the top.
+/ai/best-ai-tools-for-customer-service/ /ai/best-ai-customer-service-tools/ 301
+/ai/best-ai-tools-for-customer-service /ai/best-ai-customer-service-tools/ 301
+/ai/best-ai-tools-for-sales/ /ai/best-ai-sales-tools/ 301
+/ai/best-ai-tools-for-sales /ai/best-ai-sales-tools/ 301
+/ai/claude-vs-chatgpt/ /ai/chatgpt-vs-claude/ 301
+/ai/claude-vs-chatgpt /ai/chatgpt-vs-claude/ 301
+/crm/pipedrive-vs-hubspot/ /crm/hubspot-vs-pipedrive/ 301
+/crm/pipedrive-vs-hubspot /crm/hubspot-vs-pipedrive/ 301
+/devops/best-ci-cd-tools-2027/ /devops/best-ci-cd-tools/ 301
+/devops/best-ci-cd-tools-2027 /devops/best-ci-cd-tools/ 301
+/ecommerce/shopify-vs-woocommerce-2026/ /ecommerce/woocommerce-vs-shopify/ 301
+/ecommerce/shopify-vs-woocommerce-2026 /ecommerce/woocommerce-vs-shopify/ 301
+/hospitality/hotel-revenue-management/ /hospitality/hotel-revenue-management-strategies/ 301
+/hospitality/hotel-revenue-management /hospitality/hotel-revenue-management-strategies/ 301
+/hr/best-hr-software-for-small-business/ /hr/best-hr-software-small-business/ 301
+/hr/best-hr-software-for-small-business /hr/best-hr-software-small-business/ 301
+/marketing/best-email-marketing-platforms-2026/ /marketing/best-email-marketing-software/ 301
+/marketing/best-email-marketing-platforms-2026 /marketing/best-email-marketing-software/ 301
+/marketing/best-marketing-automation-software-2026/ /marketing/best-marketing-automation-tools/ 301
+/marketing/best-marketing-automation-software-2026 /marketing/best-marketing-automation-tools/ 301
+/project-management/best-project-management-software-2026/ /project-management/best-project-management-tools/ 301
+/project-management/best-project-management-software-2026 /project-management/best-project-management-tools/ 301
+/real-estate/what-is-property-management-software-2027/ /real-estate/what-is-property-management-software/ 301
+/real-estate/what-is-property-management-software-2027 /real-estate/what-is-property-management-software/ 301
+/security/best-security-awareness-training-2027/ /security/best-security-awareness-training/ 301
+/security/best-security-awareness-training-2027 /security/best-security-awareness-training/ 301
 /analytics/cloud-computing-market-size-2026/ /analytics/cloud-computing-statistics-2026/ 301
 /analytics/cloud-computing-market-size-2026 /analytics/cloud-computing-statistics-2026/ 301
 /marketing/fintech-statistics-2026/ /ecommerce/fintech-saas-statistics-2026/ 301

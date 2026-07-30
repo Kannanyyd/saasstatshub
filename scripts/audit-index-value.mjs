@@ -8,6 +8,9 @@ const csvPath = path.resolve(
 const summaryPath = path.resolve(
   process.argv[4] || 'docs/seo/index-value-audit-2026-07-30.md',
 );
+const auditDate =
+  summaryPath.match(/(\d{4}-\d{2}-\d{2})/)?.[1] ||
+  new Date().toISOString().slice(0, 10);
 const catalogPath = path.resolve('public/research-catalog.csv');
 const priorityPath = path.resolve('docs/seo/search-priority-pages-2026-07.csv');
 const siteOrigin = 'https://saasstatshub.com';
@@ -354,7 +357,7 @@ const highConfidenceCategoryRows = highConfidenceByCategory
   .slice(0, 10)
   .map((row) => `| ${row.category} | ${row.count} |`)
   .join('\n');
-const summary = `# Index Value Audit - 2026-07-30
+const summary = `# Index Value Audit - ${auditDate}
 
 ## Scope
 

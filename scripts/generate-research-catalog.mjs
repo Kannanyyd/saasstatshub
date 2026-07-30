@@ -1,8 +1,11 @@
-import { writeFile } from 'node:fs/promises';
+import { readFile, writeFile } from 'node:fs/promises';
 
 const endpoint = process.env.WP_API_URL || 'https://cms.saasstatshub.com/index.php?graphql';
 const csvOutput = new URL('../public/research-catalog.csv', import.meta.url);
 const jsonOutput = new URL('../public/research-catalog.json', import.meta.url);
+const consolidationFile = new URL('../src/data/url-consolidations.json', import.meta.url);
+const consolidations = JSON.parse(await readFile(consolidationFile, 'utf8'));
+const consolidatedSlugs = new Set(consolidations.map((rule) => rule.sourceSlug));
 const query = `
 query ResearchCatalog($first: Int!, $after: String) {
   posts(first: $first, after: $after, where: { status: PUBLISH }) {
@@ -37,6 +40,7 @@ for (let pageNumber = 0; pageNumber < 50; pageNumber++) {
   if (!page) throw new Error('WordPress GraphQL did not return posts.');
 
   for (const post of page.nodes) {
+    if (consolidatedSlugs.has(post.slug)) continue;
     const primary = post.articleMeta?.primaryCategory?.nodes?.[0] || post.categories?.nodes?.[0];
     if (!primary?.slug) continue;
     rows.push({

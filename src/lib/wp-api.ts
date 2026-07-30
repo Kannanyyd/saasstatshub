@@ -4,6 +4,7 @@
  */
 
 import { mergeSiteConfig, defaultSiteConfig, type SiteConfig } from './site-config';
+import { activePosts, isConsolidatedSlug } from './consolidations';
 
 const WP_API_URL = import.meta.env.WP_API_URL || 'https://cms.saasstatshub.com/index.php?graphql';
 
@@ -549,7 +550,7 @@ export async function getHomePageData(): Promise<HomePageData> {
   const data = await fetchGraphQL<any>(HOME_PAGE_QUERY);
   return {
     categories: data.categories.nodes.map(transformCategory),
-    latestArticles: sortBySticky(data.posts.nodes.map(transformArticleCard)),
+    latestArticles: sortBySticky(activePosts(data.posts.nodes).map(transformArticleCard)),
   };
 }
 
@@ -566,7 +567,7 @@ export async function getCategoryPageData(slug: string): Promise<CategoryPageDat
     const data = await fetchGraphQL<any>(CATEGORY_PAGE_QUERY, variables);
     cat = data.category;
     if (!cat?.posts) break;
-    articles.push(...cat.posts.nodes.map(transformArticleCard));
+    articles.push(...activePosts(cat.posts.nodes).map(transformArticleCard));
     if (!cat.posts.pageInfo?.hasNextPage) break;
     cursor = cat.posts.pageInfo.endCursor || null;
     if (!cursor) break;
@@ -591,6 +592,7 @@ export async function getArticleData(slug: string): Promise<ArticleDetail> {
     for (const cat of post.categories.nodes) {
       if (cat.posts?.nodes) {
         for (const related of cat.posts.nodes) {
+          if (isConsolidatedSlug(related.slug)) continue;
           if (related.id !== post.id && !relatedArticles.find(r => r.id === related.id)) {
             relatedArticles.push({
               id: related.id,
@@ -662,6 +664,7 @@ export async function getAllArticleSlugs(): Promise<ArticleRoute[]> {
     const page = data.posts;
     if (!page) break;
     for (const post of page.nodes) {
+      if (isConsolidatedSlug(post.slug)) continue;
       const card = transformArticleCard(post);
       all.push({
         ...card,
@@ -985,15 +988,16 @@ query PostsBySlugs($slugs: [String]!) {
  * Used by `LatestArticlesSection` mode === 'manual-pinned'.
  */
 export async function getPostsBySlugs(slugs: string[]): Promise<ArticleCard[]> {
-  if (slugs.length === 0) return [];
+  const activeSlugs = slugs.filter((slug) => !isConsolidatedSlug(slug));
+  if (activeSlugs.length === 0) return [];
   try {
-    const data = await fetchGraphQL<any>(POSTS_BY_SLUGS_QUERY, { slugs });
+    const data = await fetchGraphQL<any>(POSTS_BY_SLUGS_QUERY, { slugs: activeSlugs });
     const bySlug = new Map<string, ArticleCard>();
     for (const node of data.posts.nodes) {
       bySlug.set(node.slug, transformArticleCard(node));
     }
     // Preserve editor-defined order; drop slugs that didn't resolve.
-    return slugs.map((s) => bySlug.get(s)).filter((x): x is ArticleCard => !!x);
+    return activeSlugs.map((s) => bySlug.get(s)).filter((x): x is ArticleCard => !!x);
   } catch {
     return [];
   }
@@ -1027,7 +1031,7 @@ export function getRecentArticlesAcrossCategories(): Promise<ArticleCard[]> {
     _crossCatPromise = (async () => {
       try {
         const data = await fetchGraphQL<any>(HOME_PAGE_QUERY);
-        return sortBySticky(data.posts.nodes.map(transformArticleCard));
+        return sortBySticky(activePosts(data.posts.nodes).map(transformArticleCard));
       } catch (err) {
         console.warn(
           '[wp-api] getRecentArticlesAcrossCategories failed; falling back to []:',
@@ -1103,6 +1107,7 @@ export function getAllArticlesForRss(): Promise<ArticleCard[]> {
           const page = data.posts;
           if (!page || !Array.isArray(page.nodes)) break;
           for (const node of page.nodes) {
+            if (isConsolidatedSlug(node.slug)) continue;
             all.push(transformArticleCard(node));
           }
           if (!page.pageInfo?.hasNextPage) break;

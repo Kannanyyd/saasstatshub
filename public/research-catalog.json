@@ -8,7 +8,7 @@
   },
   "license": "https://creativecommons.org/licenses/by-nc/4.0/",
   "catalog_modified": "2026-07-30T23:18:25",
-  "article_count": 1707,
+  "article_count": 1694,
   "articles": [
     {
       "title": "AI Adoption Trends 2027",
@@ -277,13 +277,6 @@
       "last_modified": "2026-07-11T21:52:45"
     },
     {
-      "title": "Best AI Tools for Customer Service in 2026",
-      "category": "AI",
-      "category_slug": "ai",
-      "url": "https://saasstatshub.com/ai/best-ai-tools-for-customer-service/",
-      "last_modified": "2026-07-11T21:52:44"
-    },
-    {
       "title": "Best AI Tools for Developers in 2026",
       "category": "AI",
       "category_slug": "ai",
@@ -303,13 +296,6 @@
       "category_slug": "ai",
       "url": "https://saasstatshub.com/ai/best-ai-tools-for-marketing/",
       "last_modified": "2026-07-11T21:52:37"
-    },
-    {
-      "title": "Best AI Tools for Sales in 2026",
-      "category": "AI",
-      "category_slug": "ai",
-      "url": "https://saasstatshub.com/ai/best-ai-tools-for-sales/",
-      "last_modified": "2026-07-11T21:52:36"
     },
     {
       "title": "Best AI Video Generation in 2026",
@@ -352,13 +338,6 @@
       "category_slug": "ai",
       "url": "https://saasstatshub.com/ai/chatgpt-vs-gemini/",
       "last_modified": "2026-07-11T22:46:09"
-    },
-    {
-      "title": "Claude vs ChatGPT: Which Is Better in 2026?",
-      "category": "AI",
-      "category_slug": "ai",
-      "url": "https://saasstatshub.com/ai/claude-vs-chatgpt/",
-      "last_modified": "2026-07-11T22:45:18"
     },
     {
       "title": "Cursor vs GitHub Copilot: Which Is Better in 2026?",
@@ -2832,13 +2811,6 @@
       "last_modified": "2026-07-11T22:14:39"
     },
     {
-      "title": "Pipedrive vs HubSpot: Which Is Better in 2026?",
-      "category": "CRM",
-      "category_slug": "crm",
-      "url": "https://saasstatshub.com/crm/pipedrive-vs-hubspot/",
-      "last_modified": "2026-07-11T22:44:47"
-    },
-    {
       "title": "Salesforce for Small Business: Complete Guide",
       "category": "CRM",
       "category_slug": "crm",
@@ -3537,13 +3509,6 @@
       "category_slug": "devops",
       "url": "https://saasstatshub.com/devops/best-ci-cd-tools/",
       "last_modified": "2026-07-11T22:11:27"
-    },
-    {
-      "title": "Best CI/CD Tools in 2026",
-      "category": "DevOps & Cloud",
-      "category_slug": "devops",
-      "url": "https://saasstatshub.com/devops/best-ci-cd-tools-2027/",
-      "last_modified": "2026-07-11T21:52:27"
     },
     {
       "title": "Best Cloud Hosting Providers in 2026",
@@ -4664,13 +4629,6 @@
       "category_slug": "ecommerce",
       "url": "https://saasstatshub.com/ecommerce/shopify-vs-woocommerce-vs-bigcommerce/",
       "last_modified": "2026-07-11T22:14:08"
-    },
-    {
-      "title": "Shopify vs WooCommerce: Which Is Better in 2026?",
-      "category": "E-commerce",
-      "category_slug": "ecommerce",
-      "url": "https://saasstatshub.com/ecommerce/shopify-vs-woocommerce-2026/",
-      "last_modified": "2026-07-11T22:45:45"
     },
     {
       "title": "Squarespace vs Wix: Which Is Better in 2026?",
@@ -6808,13 +6766,6 @@
       "last_modified": "2026-07-11T21:57:40"
     },
     {
-      "title": "Hotel Revenue Management: Strategies",
-      "category": "Hospitality",
-      "category_slug": "hospitality",
-      "url": "https://saasstatshub.com/hospitality/hotel-revenue-management/",
-      "last_modified": "2026-07-11T21:57:38"
-    },
-    {
       "title": "Hotel Technology: Trends to Watch",
       "category": "Hospitality",
       "category_slug": "hospitality",
@@ -7198,13 +7149,6 @@
       "category_slug": "hr",
       "url": "https://saasstatshub.com/hr/best-hr-software-for-small-business-2026/",
       "last_modified": "2026-07-11T22:01:24"
-    },
-    {
-      "title": "Best HR Software for Small Business in 2026",
-      "category": "HR & Payroll",
-      "category_slug": "hr",
-      "url": "https://saasstatshub.com/hr/best-hr-software-for-small-business/",
-      "last_modified": "2026-07-11T21:51:34"
     },
     {
       "title": "Best HR Software in 2026",
@@ -8593,13 +8537,6 @@
       "last_modified": "2026-07-11T22:13:49"
     },
     {
-      "title": "Best Email Marketing Software in 2026",
-      "category": "Marketing",
-      "category_slug": "marketing",
-      "url": "https://saasstatshub.com/marketing/best-email-marketing-platforms-2026/",
-      "last_modified": "2026-07-11T22:13:13"
-    },
-    {
       "title": "Best Free Email Marketing Tools in 2026",
       "category": "Marketing",
       "category_slug": "marketing",
@@ -8661,13 +8598,6 @@
       "category_slug": "marketing",
       "url": "https://saasstatshub.com/marketing/best-marketing-automation-tools/",
       "last_modified": "2026-07-11T22:13:46"
-    },
-    {
-      "title": "Best Marketing Automation Tools in 2026",
-      "category": "Marketing",
-      "category_slug": "marketing",
-      "url": "https://saasstatshub.com/marketing/best-marketing-automation-software-2026/",
-      "last_modified": "2026-07-11T22:13:02"
     },
     {
       "title": "Best Marketing Channels for Small Business",
@@ -9839,13 +9769,6 @@
       "last_modified": "2026-07-11T22:01:21"
     },
     {
-      "title": "Best Project Management Tools in 2026",
-      "category": "Project Management",
-      "category_slug": "project-management",
-      "url": "https://saasstatshub.com/project-management/best-project-management-software-2026/",
-      "last_modified": "2026-07-11T22:12:58"
-    },
-    {
       "title": "Best Remote Work Tools 2026",
       "category": "Project Management",
       "category_slug": "project-management",
@@ -10672,13 +10595,6 @@
       "last_modified": "2026-07-11T21:53:02"
     },
     {
-      "title": "What Is Property Management Software? 2027 Guide",
-      "category": "Real Estate",
-      "category_slug": "real-estate",
-      "url": "https://saasstatshub.com/real-estate/what-is-property-management-software-2027/",
-      "last_modified": "2026-07-11T21:43:00"
-    },
-    {
       "title": "What Is Property Valuation?",
       "category": "Real Estate",
       "category_slug": "real-estate",
@@ -11405,13 +11321,6 @@
       "category_slug": "security",
       "url": "https://saasstatshub.com/security/best-security-awareness-training/",
       "last_modified": "2026-07-11T22:08:32"
-    },
-    {
-      "title": "Best Security Awareness Training in 2027",
-      "category": "Security",
-      "category_slug": "security",
-      "url": "https://saasstatshub.com/security/best-security-awareness-training-2027/",
-      "last_modified": "2026-07-11T21:50:55"
     },
     {
       "title": "Best Security Tools for Startups in 2026",
