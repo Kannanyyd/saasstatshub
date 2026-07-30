@@ -81,8 +81,9 @@ const pathSegments = Astro.url.pathname.split('/').filter(Boolean);
 const articleSlug = pathSegments[pathSegments.length - 1] || '';
 const isStatisticsPost =
   articleSlug.includes('-statistics-') || articleSlug.endsWith('-statistics');
-const isDatasetArticle =
-  isStatisticsPost || articleSlug.includes('annual-report') || articleSlug.endsWith('-report');
+// Narrative reports are articles, not downloadable datasets. Restrict Dataset
+// markup to statistics pages so report schema cannot expose stale ACF metrics.
+const isDatasetArticle = isStatisticsPost;
 const citationUrls = Array.from(new Set(
   sources.map((source) => source.url?.trim()).filter((url): url is string => Boolean(url))
 ));

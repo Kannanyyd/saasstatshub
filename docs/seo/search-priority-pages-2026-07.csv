@@ -4,11 +4,11 @@ url,window,clicks,impressions,position,http_status,priority,action,review_after
 /hr/saas-sales-rep-salary/,3m,1,110,10.8,200,high,ctr_updated,2026-07-31
 /project-management/devops-statistics-2026/,3m,1,34,9.3,301,medium,redirect_to:/categories/devops/,2026-07-22
 /analytics/business-intelligence-statistics-2026/,3m,1,12,1.8,200,medium,monitor_only,2026-07-22
-/analytics/ai-saas-statistics-2026/,3m,0,633,8.6,200,high,monitor_only,2026-07-29
-/crm/zoho-vs-freshsales-vs-close/,3m,0,566,7.8,200,high,monitor_only,2026-07-29
-/analytics/state-of-saas-2026-annual-report/,3m,0,421,7.6,200,high,monitor_only,2026-07-29
-/crm/best-crm-small-business/,3m,0,264,37.7,200,high,monitor_only,2026-07-29
-/security/cybersecurity-statistics-2026/,3m,0,212,8.8,200,high,monitor_only,2026-07-29
+/analytics/ai-saas-statistics-2026/,3m,0,633,8.6,200,high,ctr_updated_round2,2026-08-13
+/crm/zoho-vs-freshsales-vs-close/,3m,0,571,7.8,200,high,ctr_and_acf_updated,2026-08-13
+/analytics/state-of-saas-2026-annual-report/,3m,0,422,7.6,200,high,ctr_acf_schema_updated,2026-08-13
+/crm/best-crm-small-business/,3m,0,264,37.7,200,high,acf_updated,2026-08-13
+/security/cybersecurity-statistics-2026/,3m,0,218,8.7,200,high,ctr_updated_round2,2026-08-13
 /ecommerce/ecommerce-statistics-2026/,3m,0,191,8.8,200,high,ctr_updated,2026-07-31
 /,3m,0,145,10.1,200,high,monitor_only,2026-07-29
 /crm/salesforce-vs-hubspot-vs-pipedrive/,3m,0,135,33.7,200,high,monitor_only,2026-07-29
