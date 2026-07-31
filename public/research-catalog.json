@@ -8,7 +8,7 @@
   },
   "license": "https://creativecommons.org/licenses/by-nc/4.0/",
   "catalog_modified": "2026-07-30T23:18:25",
-  "article_count": 1669,
+  "article_count": 1639,
   "articles": [
     {
       "title": "AI Chatbot for Website: Implementation Guide",
@@ -46,13 +46,6 @@
       "last_modified": "2026-07-11T22:02:01"
     },
     {
-      "title": "AI Ethics: Checklist Template",
-      "category": "AI",
-      "category_slug": "ai",
-      "url": "https://saasstatshub.com/ai/ai-ethics-checklist/",
-      "last_modified": "2026-07-11T22:02:00"
-    },
-    {
       "title": "AI Ethics: What You Need to Know",
       "category": "AI",
       "category_slug": "ai",
@@ -79,13 +72,6 @@
       "category_slug": "ai",
       "url": "https://saasstatshub.com/ai/ai-governance-policy/",
       "last_modified": "2026-07-11T22:01:53"
-    },
-    {
-      "title": "AI Implementation: Checklist Template",
-      "category": "AI",
-      "category_slug": "ai",
-      "url": "https://saasstatshub.com/ai/ai-implementation-checklist/",
-      "last_modified": "2026-07-11T22:01:52"
     },
     {
       "title": "AI Implementation: Getting Started Guide",
@@ -121,13 +107,6 @@
       "category_slug": "ai",
       "url": "https://saasstatshub.com/ai/ai-training-plan/",
       "last_modified": "2026-07-11T22:01:45"
-    },
-    {
-      "title": "AI Use Case: Documentation Template",
-      "category": "AI",
-      "category_slug": "ai",
-      "url": "https://saasstatshub.com/ai/ai-use-case-template/",
-      "last_modified": "2026-07-11T22:01:44"
     },
     {
       "title": "AI Vendor: Evaluation Template",
@@ -2489,25 +2468,11 @@
       "last_modified": "2026-07-11T22:14:20"
     },
     {
-      "title": "CRM Data Migration: Checklist Template",
-      "category": "CRM",
-      "category_slug": "crm",
-      "url": "https://saasstatshub.com/crm/crm-data-migration-checklist/",
-      "last_modified": "2026-07-11T22:00:18"
-    },
-    {
       "title": "CRM Data Migration: Complete Guide",
       "category": "CRM",
       "category_slug": "crm",
       "url": "https://saasstatshub.com/crm/crm-data-migration-guide/",
       "last_modified": "2026-07-11T22:00:17"
-    },
-    {
-      "title": "CRM Evaluation Checklist: Complete Template",
-      "category": "CRM",
-      "category_slug": "crm",
-      "url": "https://saasstatshub.com/crm/crm-evaluation-checklist/",
-      "last_modified": "2026-07-11T22:00:16"
     },
     {
       "title": "CRM for Real Estate Statistics 2026: Verified Workflow Signals and Limits",
@@ -2543,13 +2508,6 @@
       "category_slug": "crm",
       "url": "https://saasstatshub.com/crm/crm-integration-guide-2026/",
       "last_modified": "2026-07-11T22:00:13"
-    },
-    {
-      "title": "CRM Integration Planning: Template",
-      "category": "CRM",
-      "category_slug": "crm",
-      "url": "https://saasstatshub.com/crm/crm-integration-planning-template/",
-      "last_modified": "2026-07-11T22:00:12"
     },
     {
       "title": "CRM Integration Statistics 2026: Verified Ecosystem Signals and Limits",
@@ -3574,25 +3532,11 @@
       "last_modified": "2026-07-11T22:11:08"
     },
     {
-      "title": "Capacity Planning: Spreadsheet Template",
-      "category": "DevOps & Cloud",
-      "category_slug": "devops",
-      "url": "https://saasstatshub.com/devops/capacity-planning-template/",
-      "last_modified": "2026-07-11T22:01:05"
-    },
-    {
       "title": "CI/CD Pipeline Explained",
       "category": "DevOps & Cloud",
       "category_slug": "devops",
       "url": "https://saasstatshub.com/devops/ci-cd-pipeline-explained/",
       "last_modified": "2026-07-11T22:01:00"
-    },
-    {
-      "title": "CI/CD Pipeline: Configuration Template",
-      "category": "DevOps & Cloud",
-      "category_slug": "devops",
-      "url": "https://saasstatshub.com/devops/cicd-pipeline-template/",
-      "last_modified": "2026-07-11T22:00:58"
     },
     {
       "title": "CI/CD Pipeline: Setup Guide",
@@ -3642,13 +3586,6 @@
       "category_slug": "devops",
       "url": "https://saasstatshub.com/devops/datadog-vs-sumologic/",
       "last_modified": "2026-07-11T22:45:10"
-    },
-    {
-      "title": "Deployment: Complete Checklist",
-      "category": "DevOps & Cloud",
-      "category_slug": "devops",
-      "url": "https://saasstatshub.com/devops/deployment-checklist/",
-      "last_modified": "2026-07-11T21:59:42"
     },
     {
       "title": "Developer Productivity: Essential Tools",
@@ -4489,27 +4426,6 @@
       "category_slug": "ecommerce",
       "url": "https://saasstatshub.com/ecommerce/how-to-start-dropshipping-2026/",
       "last_modified": "2026-07-11T21:57:24"
-    },
-    {
-      "title": "Inventory Management: Spreadsheet Template",
-      "category": "E-commerce",
-      "category_slug": "ecommerce",
-      "url": "https://saasstatshub.com/ecommerce/inventory-management-template/",
-      "last_modified": "2026-07-11T21:57:03"
-    },
-    {
-      "title": "Product Listing: Optimization Template",
-      "category": "E-commerce",
-      "category_slug": "ecommerce",
-      "url": "https://saasstatshub.com/ecommerce/product-listing-template/",
-      "last_modified": "2026-07-11T21:55:38"
-    },
-    {
-      "title": "Return Policy: Document Template",
-      "category": "E-commerce",
-      "category_slug": "ecommerce",
-      "url": "https://saasstatshub.com/ecommerce/return-policy-template/",
-      "last_modified": "2026-07-11T21:54:55"
     },
     {
       "title": "Shipping Calculator: Spreadsheet Template",
@@ -5555,20 +5471,6 @@
       "last_modified": "2026-07-11T22:02:13"
     },
     {
-      "title": "Accounts Receivable: Tracking Template",
-      "category": "Finance",
-      "category_slug": "finance",
-      "url": "https://saasstatshub.com/finance/accounts-receivable-template/",
-      "last_modified": "2026-07-11T22:02:12"
-    },
-    {
-      "title": "Audit Preparation: Checklist Template",
-      "category": "Finance",
-      "category_slug": "finance",
-      "url": "https://saasstatshub.com/finance/audit-preparation-checklist/",
-      "last_modified": "2026-07-11T22:01:35"
-    },
-    {
       "title": "Best Accounting Software 2026",
       "category": "Finance",
       "category_slug": "finance",
@@ -5728,13 +5630,6 @@
       "category_slug": "finance",
       "url": "https://saasstatshub.com/finance/best-tax-software-for-small-business/",
       "last_modified": "2026-07-11T21:50:47"
-    },
-    {
-      "title": "Budget Forecast: Spreadsheet Template",
-      "category": "Finance",
-      "category_slug": "finance",
-      "url": "https://saasstatshub.com/finance/budget-forecast-template/",
-      "last_modified": "2026-07-11T22:01:10"
     },
     {
       "title": "Budgeting Tools: Top Picks for 2026",
@@ -7116,13 +7011,6 @@
       "last_modified": "2026-07-11T22:08:41"
     },
     {
-      "title": "Compensation Plan: Template",
-      "category": "HR & Payroll",
-      "category_slug": "hr",
-      "url": "https://saasstatshub.com/hr/compensation-plan-template/",
-      "last_modified": "2026-07-11T22:00:45"
-    },
-    {
       "title": "Deel vs Remote: Which Is Better in 2026?",
       "category": "HR & Payroll",
       "category_slug": "hr",
@@ -7151,13 +7039,6 @@
       "last_modified": "2026-07-11T22:14:45"
     },
     {
-      "title": "Employee Handbook: Document Template",
-      "category": "HR & Payroll",
-      "category_slug": "hr",
-      "url": "https://saasstatshub.com/hr/employee-handbook-template/",
-      "last_modified": "2026-07-11T21:58:53"
-    },
-    {
       "title": "Employee Onboarding Best Practices",
       "category": "HR & Payroll",
       "category_slug": "hr",
@@ -7170,13 +7051,6 @@
       "category_slug": "hr",
       "url": "https://saasstatshub.com/hr/employee-onboarding-checklist/",
       "last_modified": "2026-07-11T21:58:51"
-    },
-    {
-      "title": "Exit Interview: Questionnaire Template",
-      "category": "HR & Payroll",
-      "category_slug": "hr",
-      "url": "https://saasstatshub.com/hr/exit-interview-template/",
-      "last_modified": "2026-07-11T21:58:45"
     },
     {
       "title": "Gusto vs ADP: Which Payroll Platform Is Better in 2026?",
@@ -8558,25 +8432,11 @@
       "last_modified": "2026-07-11T21:50:48"
     },
     {
-      "title": "Brand Guidelines: Document Template",
-      "category": "Marketing",
-      "category_slug": "marketing",
-      "url": "https://saasstatshub.com/marketing/brand-guidelines-template/",
-      "last_modified": "2026-07-11T22:01:12"
-    },
-    {
       "title": "Communication Statistics 2026: Messaging Apps, Email Volume, and Global Connectivity Trends",
       "category": "Marketing",
       "category_slug": "marketing",
       "url": "https://saasstatshub.com/marketing/communication-statistics-2026/",
       "last_modified": "2026-07-11T22:14:11"
-    },
-    {
-      "title": "Content Calendar: Planning Template",
-      "category": "Marketing",
-      "category_slug": "marketing",
-      "url": "https://saasstatshub.com/marketing/content-calendar-template/",
-      "last_modified": "2026-07-11T22:00:26"
     },
     {
       "title": "Content Marketing Statistics 2026: AI Adoption and Platform Data",
@@ -8612,13 +8472,6 @@
       "category_slug": "marketing",
       "url": "https://saasstatshub.com/marketing/email-marketing-statistics-2026/",
       "last_modified": "2026-07-11T22:14:46"
-    },
-    {
-      "title": "Email Marketing: Campaign Checklist",
-      "category": "Marketing",
-      "category_slug": "marketing",
-      "url": "https://saasstatshub.com/marketing/email-marketing-checklist/",
-      "last_modified": "2026-07-11T21:58:56"
     },
     {
       "title": "How Email Marketing Works: Complete Guide",
@@ -9657,13 +9510,6 @@
       "last_modified": "2026-07-11T22:08:27"
     },
     {
-      "title": "Change Request: Form Template",
-      "category": "Project Management",
-      "category_slug": "project-management",
-      "url": "https://saasstatshub.com/project-management/change-request-template/",
-      "last_modified": "2026-07-11T22:01:02"
-    },
-    {
       "title": "ClickUp vs Monday.com: Which Project Management Tool Is Better in 2026?",
       "category": "Project Management",
       "category_slug": "project-management",
@@ -9797,13 +9643,6 @@
       "last_modified": "2026-07-11T22:44:56"
     },
     {
-      "title": "Meeting Agenda: Template",
-      "category": "Project Management",
-      "category_slug": "project-management",
-      "url": "https://saasstatshub.com/project-management/meeting-agenda-template/",
-      "last_modified": "2026-07-11T21:56:13"
-    },
-    {
       "title": "Monday.com Statistics 2026: Company Scale, Work OS Usage and Product Limits",
       "category": "Project Management",
       "category_slug": "project-management",
@@ -9858,13 +9697,6 @@
       "category_slug": "project-management",
       "url": "https://saasstatshub.com/project-management/notion-vs-obsidian/",
       "last_modified": "2026-07-11T22:45:52"
-    },
-    {
-      "title": "Project Budget: Spreadsheet Template",
-      "category": "Project Management",
-      "category_slug": "project-management",
-      "url": "https://saasstatshub.com/project-management/project-budget-template/",
-      "last_modified": "2026-07-11T21:55:37"
     },
     {
       "title": "Project Budgeting: Essential Tools",
@@ -10714,13 +10546,6 @@
       "last_modified": "2026-07-11T22:44:49"
     },
     {
-      "title": "Proposal: Business Template",
-      "category": "Sales",
-      "category_slug": "sales",
-      "url": "https://saasstatshub.com/sales/proposal-template/",
-      "last_modified": "2026-07-11T21:55:23"
-    },
-    {
       "title": "Sales Coaching: Complete Guide",
       "category": "Sales",
       "category_slug": "sales",
@@ -10742,13 +10567,6 @@
       "last_modified": "2026-07-11T21:54:47"
     },
     {
-      "title": "Sales Forecast: Spreadsheet Template",
-      "category": "Sales",
-      "category_slug": "sales",
-      "url": "https://saasstatshub.com/sales/sales-forecast-template/",
-      "last_modified": "2026-07-11T21:54:44"
-    },
-    {
       "title": "Sales Forecasting: Methods and Best Practices",
       "category": "Sales",
       "category_slug": "sales",
@@ -10768,13 +10586,6 @@
       "category_slug": "sales",
       "url": "https://saasstatshub.com/sales/sales-pipeline-management/",
       "last_modified": "2026-07-11T21:54:40"
-    },
-    {
-      "title": "Sales Pipeline: Tracking Template",
-      "category": "Sales",
-      "category_slug": "sales",
-      "url": "https://saasstatshub.com/sales/sales-pipeline-template/",
-      "last_modified": "2026-07-11T21:54:39"
     },
     {
       "title": "Sales Playbook: Complete Template",
@@ -11029,13 +10840,6 @@
       "last_modified": "2026-07-11T22:42:43"
     },
     {
-      "title": "Access Control: Policy Template",
-      "category": "Security",
-      "category_slug": "security",
-      "url": "https://saasstatshub.com/security/access-control-template/",
-      "last_modified": "2026-07-11T22:02:15"
-    },
-    {
       "title": "Best Antivirus for Small Business in 2026",
       "category": "Security",
       "category_slug": "security",
@@ -11216,13 +11020,6 @@
       "category_slug": "security",
       "url": "https://saasstatshub.com/security/cloudflare-vs-akamai/",
       "last_modified": "2026-07-11T22:12:48"
-    },
-    {
-      "title": "Compliance: Checklist Template",
-      "category": "Security",
-      "category_slug": "security",
-      "url": "https://saasstatshub.com/security/compliance-checklist/",
-      "last_modified": "2026-07-11T22:00:43"
     },
     {
       "title": "CrowdStrike vs Okta vs Datadog: Security Stack 2026",
@@ -11433,13 +11230,6 @@
       "category_slug": "security",
       "url": "https://saasstatshub.com/security/ransomware-statistics-2026/",
       "last_modified": "2026-07-11T22:14:38"
-    },
-    {
-      "title": "Risk Assessment: Template",
-      "category": "Security",
-      "category_slug": "security",
-      "url": "https://saasstatshub.com/security/risk-assessment-template/",
-      "last_modified": "2026-07-11T21:54:53"
     },
     {
       "title": "Security Audit: Checklist and Guide",

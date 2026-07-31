@@ -21,14 +21,33 @@ const catalogGenerator = fs.readFileSync(
 );
 
 test('first noindex batch contains 25 unique reviewed routes', () => {
-  assert.equal(manifest.pages.length, 25);
-  const paths = manifest.pages.map(({ category, slug }) => `/${category}/${slug}/`);
+  const firstBatch = manifest.pages.filter((page) => !page.batch || page.batch === 1);
+  assert.equal(firstBatch.length, 25);
+  const paths = firstBatch.map(({ category, slug }) => `/${category}/${slug}/`);
   assert.equal(new Set(paths).size, paths.length);
   for (const path of paths) {
     const auditRow = audit.split('\n').find((line) => line.startsWith(`"${path}"`));
     assert.ok(auditRow, `missing audit evidence for ${path}`);
     assert.match(auditRow, /"noindex_review","high"/);
     assert.match(auditRow, /"0\.8[45]"/);
+  }
+});
+
+test('second noindex batch contains 30 audited templates balanced across categories', () => {
+  const secondBatch = manifest.pages.filter((page) => page.batch === 2);
+  assert.equal(secondBatch.length, 30);
+
+  const byCategory = Object.groupBy(secondBatch, (page) => page.category);
+  assert.equal(Object.keys(byCategory).length, 10);
+  for (const [category, pages] of Object.entries(byCategory)) {
+    assert.equal(pages.length, 3, `expected three second-batch pages in ${category}`);
+    for (const { slug } of pages) {
+      const path = `/${category}/${slug}/`;
+      const auditRow = audit.split('\n').find((line) => line.startsWith(`"${path}"`));
+      assert.ok(auditRow, `missing audit evidence for ${path}`);
+      assert.match(auditRow, /"template","noindex_review","high"/);
+      assert.match(auditRow, /"0\.81"/);
+    }
   }
 });
 
