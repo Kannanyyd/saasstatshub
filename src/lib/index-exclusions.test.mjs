@@ -51,6 +51,41 @@ test('second noindex batch contains 30 audited templates balanced across categor
   }
 });
 
+test('third noindex batch contains 30 audited templates with the reviewed category quotas', () => {
+  const thirdBatch = manifest.pages.filter((page) => page.batch === 3);
+  assert.equal(thirdBatch.length, 30);
+
+  const expectedCounts = {
+    crm: 3,
+    devops: 4,
+    ecommerce: 3,
+    finance: 4,
+    hr: 3,
+    marketing: 4,
+    'project-management': 3,
+    sales: 3,
+    security: 3,
+  };
+  const byCategory = Object.groupBy(thirdBatch, (page) => page.category);
+  assert.deepEqual(
+    Object.fromEntries(
+      Object.entries(byCategory).map(([category, pages]) => [category, pages.length]),
+    ),
+    expectedCounts,
+  );
+
+  for (const { category, slug } of thirdBatch) {
+    const path = `/${category}/${slug}/`;
+    const auditRow = audit.split('\n').find((line) => line.startsWith(`"${path}"`));
+    assert.ok(auditRow, `missing audit evidence for ${path}`);
+    assert.match(auditRow, /"template","noindex_review","high"/);
+    assert.match(auditRow, /"0\.81"/);
+  }
+
+  const allPaths = manifest.pages.map(({ category, slug }) => `/${category}/${slug}/`);
+  assert.equal(new Set(allPaths).size, allPaths.length);
+});
+
 test('reviewed exclusions are applied to every indexing surface', () => {
   assert.match(baseLayout, /'noindex, follow'/);
   assert.match(articlePage, /isIndexExcluded\(category!, slug!\)/);
