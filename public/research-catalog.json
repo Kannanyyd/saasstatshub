@@ -8,7 +8,7 @@
   },
   "license": "https://creativecommons.org/licenses/by-nc/4.0/",
   "catalog_modified": "2026-07-30T23:18:25",
-  "article_count": 1609,
+  "article_count": 1573,
   "articles": [
     {
       "title": "AI Chatbot for Website: Implementation Guide",
@@ -39,13 +39,6 @@
       "last_modified": "2026-07-11T22:02:03"
     },
     {
-      "title": "AI Data: Requirements Template",
-      "category": "AI",
-      "category_slug": "ai",
-      "url": "https://saasstatshub.com/ai/ai-data-requirements/",
-      "last_modified": "2026-07-11T22:02:01"
-    },
-    {
       "title": "AI Ethics: What You Need to Know",
       "category": "AI",
       "category_slug": "ai",
@@ -67,53 +60,11 @@
       "last_modified": "2026-07-11T22:01:55"
     },
     {
-      "title": "AI Governance: Policy Template",
-      "category": "AI",
-      "category_slug": "ai",
-      "url": "https://saasstatshub.com/ai/ai-governance-policy/",
-      "last_modified": "2026-07-11T22:01:53"
-    },
-    {
       "title": "AI Implementation: Getting Started Guide",
       "category": "AI",
       "category_slug": "ai",
       "url": "https://saasstatshub.com/ai/ai-implementation-guide/",
       "last_modified": "2026-07-11T22:01:51"
-    },
-    {
-      "title": "AI Readiness: Assessment Template",
-      "category": "AI",
-      "category_slug": "ai",
-      "url": "https://saasstatshub.com/ai/ai-readiness-assessment/",
-      "last_modified": "2026-07-11T22:01:50"
-    },
-    {
-      "title": "AI ROI: Calculator Template",
-      "category": "AI",
-      "category_slug": "ai",
-      "url": "https://saasstatshub.com/ai/ai-roi-calculator/",
-      "last_modified": "2026-07-11T22:01:48"
-    },
-    {
-      "title": "AI Success: Metrics Template",
-      "category": "AI",
-      "category_slug": "ai",
-      "url": "https://saasstatshub.com/ai/ai-success-metrics/",
-      "last_modified": "2026-07-11T22:01:47"
-    },
-    {
-      "title": "AI Training: Plan Template",
-      "category": "AI",
-      "category_slug": "ai",
-      "url": "https://saasstatshub.com/ai/ai-training-plan/",
-      "last_modified": "2026-07-11T22:01:45"
-    },
-    {
-      "title": "AI Vendor: Evaluation Template",
-      "category": "AI",
-      "category_slug": "ai",
-      "url": "https://saasstatshub.com/ai/ai-vendor-evaluation/",
-      "last_modified": "2026-07-11T22:01:43"
     },
     {
       "title": "AI vs Automation: Understanding the Difference",
@@ -2496,13 +2447,6 @@
       "last_modified": "2026-07-11T22:14:28"
     },
     {
-      "title": "CRM Implementation Timeline: Project Plan",
-      "category": "CRM",
-      "category_slug": "crm",
-      "url": "https://saasstatshub.com/crm/crm-implementation-timeline/",
-      "last_modified": "2026-07-11T22:00:14"
-    },
-    {
       "title": "CRM Integration Guide: Connecting Your Systems",
       "category": "CRM",
       "category_slug": "crm",
@@ -2524,13 +2468,6 @@
       "last_modified": "2026-07-11T22:00:11"
     },
     {
-      "title": "CRM Requirements: Document Template",
-      "category": "CRM",
-      "category_slug": "crm",
-      "url": "https://saasstatshub.com/crm/crm-requirements-document/",
-      "last_modified": "2026-07-11T22:00:09"
-    },
-    {
       "title": "CRM ROI Calculator: Measure Your Returns",
       "category": "CRM",
       "category_slug": "crm",
@@ -2550,20 +2487,6 @@
       "category_slug": "crm",
       "url": "https://saasstatshub.com/crm/crm-software-statistics-2026/",
       "last_modified": "2026-07-11T22:14:49"
-    },
-    {
-      "title": "CRM User Adoption: Checklist Template",
-      "category": "CRM",
-      "category_slug": "crm",
-      "url": "https://saasstatshub.com/crm/crm-user-adoption-checklist/",
-      "last_modified": "2026-07-11T22:00:04"
-    },
-    {
-      "title": "CRM Vendor Comparison: Evaluation Template",
-      "category": "CRM",
-      "category_slug": "crm",
-      "url": "https://saasstatshub.com/crm/crm-vendor-comparison-template/",
-      "last_modified": "2026-07-11T22:00:03"
     },
     {
       "title": "CRM vs ERP: Understanding the Difference",
@@ -3581,13 +3504,6 @@
       "last_modified": "2026-07-11T21:59:39"
     },
     {
-      "title": "Disaster Recovery: Plan Template",
-      "category": "DevOps & Cloud",
-      "category_slug": "devops",
-      "url": "https://saasstatshub.com/devops/disaster-recovery-plan/",
-      "last_modified": "2026-07-11T21:59:35"
-    },
-    {
       "title": "Docker vs Kubernetes Comparison",
       "category": "DevOps & Cloud",
       "category_slug": "devops",
@@ -3726,20 +3642,6 @@
       "category_slug": "devops",
       "url": "https://saasstatshub.com/devops/monitoring-tools-comparison/",
       "last_modified": "2026-07-11T21:56:09"
-    },
-    {
-      "title": "Release Management: Process Template",
-      "category": "DevOps & Cloud",
-      "category_slug": "devops",
-      "url": "https://saasstatshub.com/devops/release-management-template/",
-      "last_modified": "2026-07-11T21:55:05"
-    },
-    {
-      "title": "Security Hardening: Checklist Template",
-      "category": "DevOps & Cloud",
-      "category_slug": "devops",
-      "url": "https://saasstatshub.com/devops/security-hardening-checklist/",
-      "last_modified": "2026-07-11T21:54:25"
     },
     {
       "title": "Serverless Computing: Implementation Guide",
@@ -4211,25 +4113,11 @@
       "last_modified": "2026-07-11T22:45:24"
     },
     {
-      "title": "Customer Service: Script Template",
-      "category": "E-commerce",
-      "category_slug": "ecommerce",
-      "url": "https://saasstatshub.com/ecommerce/customer-service-script/",
-      "last_modified": "2026-07-11T21:59:55"
-    },
-    {
       "title": "E-commerce Analytics: Essential Tools",
       "category": "E-commerce",
       "category_slug": "ecommerce",
       "url": "https://saasstatshub.com/ecommerce/ecommerce-analytics-tools/",
       "last_modified": "2026-07-11T21:59:15"
-    },
-    {
-      "title": "E-commerce Business Plan: Template",
-      "category": "E-commerce",
-      "category_slug": "ecommerce",
-      "url": "https://saasstatshub.com/ecommerce/ecommerce-business-plan/",
-      "last_modified": "2026-07-11T21:59:13"
     },
     {
       "title": "E-commerce CRO: Boost Your Conversion Rate",
@@ -4244,20 +4132,6 @@
       "category_slug": "ecommerce",
       "url": "https://saasstatshub.com/ecommerce/ecommerce-fulfillment-options/",
       "last_modified": "2026-07-11T21:59:10"
-    },
-    {
-      "title": "E-commerce KPI: Dashboard Template",
-      "category": "E-commerce",
-      "category_slug": "ecommerce",
-      "url": "https://saasstatshub.com/ecommerce/ecommerce-kpi-dashboard/",
-      "last_modified": "2026-07-11T21:59:09"
-    },
-    {
-      "title": "E-commerce Marketing: Plan Template",
-      "category": "E-commerce",
-      "category_slug": "ecommerce",
-      "url": "https://saasstatshub.com/ecommerce/ecommerce-marketing-plan/",
-      "last_modified": "2026-07-11T21:59:07"
     },
     {
       "title": "E-commerce Payment Gateways Comparison",
@@ -5576,13 +5450,6 @@
       "last_modified": "2026-07-11T22:45:21"
     },
     {
-      "title": "Expense Report: Template",
-      "category": "Finance",
-      "category_slug": "finance",
-      "url": "https://saasstatshub.com/finance/expense-report-template/",
-      "last_modified": "2026-07-11T21:58:43"
-    },
-    {
       "title": "Expense Tracking: Essential Tools",
       "category": "Finance",
       "category_slug": "finance",
@@ -5595,13 +5462,6 @@
       "category_slug": "finance",
       "url": "https://saasstatshub.com/finance/financial-dashboards-guide/",
       "last_modified": "2026-07-11T21:58:41"
-    },
-    {
-      "title": "Financial Report: Monthly Template",
-      "category": "Finance",
-      "category_slug": "finance",
-      "url": "https://saasstatshub.com/finance/financial-report-template/",
-      "last_modified": "2026-07-11T21:58:37"
     },
     {
       "title": "Financial Reporting Best Practices",
@@ -5763,13 +5623,6 @@
       "category_slug": "finance",
       "url": "https://saasstatshub.com/finance/subscription-billing-platforms/",
       "last_modified": "2026-07-11T21:54:02"
-    },
-    {
-      "title": "Tax Preparation: Checklist Template",
-      "category": "Finance",
-      "category_slug": "finance",
-      "url": "https://saasstatshub.com/finance/tax-preparation-checklist/",
-      "last_modified": "2026-07-11T21:53:50"
     },
     {
       "title": "Tax Software for Small Business: Best Options",
@@ -7158,13 +7011,6 @@
       "last_modified": "2026-07-11T21:50:29"
     },
     {
-      "title": "Training Needs: Assessment Template",
-      "category": "HR & Payroll",
-      "category_slug": "hr",
-      "url": "https://saasstatshub.com/hr/training-needs-assessment/",
-      "last_modified": "2026-07-11T21:53:41"
-    },
-    {
       "title": "What Is Applicant Tracking System?",
       "category": "HR & Payroll",
       "category_slug": "hr",
@@ -8537,13 +8383,6 @@
       "last_modified": "2026-07-11T21:56:21"
     },
     {
-      "title": "Marketing Report: Monthly Template",
-      "category": "Marketing",
-      "category_slug": "marketing",
-      "url": "https://saasstatshub.com/marketing/marketing-report-template/",
-      "last_modified": "2026-07-11T21:56:20"
-    },
-    {
       "title": "Marketing Tech Stack: Building Your Arsenal",
       "category": "Marketing",
       "category_slug": "marketing",
@@ -8584,20 +8423,6 @@
       "category_slug": "marketing",
       "url": "https://saasstatshub.com/marketing/semrush-vs-spyfu/",
       "last_modified": "2026-07-11T22:44:37"
-    },
-    {
-      "title": "SEO Audit: Complete Checklist",
-      "category": "Marketing",
-      "category_slug": "marketing",
-      "url": "https://saasstatshub.com/marketing/seo-audit-checklist/",
-      "last_modified": "2026-07-11T21:54:20"
-    },
-    {
-      "title": "Social Media Calendar: Template",
-      "category": "Marketing",
-      "category_slug": "marketing",
-      "url": "https://saasstatshub.com/marketing/social-media-calendar/",
-      "last_modified": "2026-07-11T21:54:14"
     },
     {
       "title": "Social Media Marketing ROI: How to Measure",
@@ -9594,32 +9419,11 @@
       "last_modified": "2026-07-11T22:15:04"
     },
     {
-      "title": "Risk Register: Template",
-      "category": "Project Management",
-      "category_slug": "project-management",
-      "url": "https://saasstatshub.com/project-management/risk-register-template/",
-      "last_modified": "2026-07-11T21:54:52"
-    },
-    {
       "title": "Sprint Planning: Complete Guide",
       "category": "Project Management",
       "category_slug": "project-management",
       "url": "https://saasstatshub.com/project-management/sprint-planning-guide/",
       "last_modified": "2026-07-11T21:54:10"
-    },
-    {
-      "title": "Stakeholder Register: Template",
-      "category": "Project Management",
-      "category_slug": "project-management",
-      "url": "https://saasstatshub.com/project-management/stakeholder-register/",
-      "last_modified": "2026-07-11T21:54:09"
-    },
-    {
-      "title": "Status Report: Weekly Template",
-      "category": "Project Management",
-      "category_slug": "project-management",
-      "url": "https://saasstatshub.com/project-management/status-report-template/",
-      "last_modified": "2026-07-11T21:54:08"
     },
     {
       "title": "Task Management Apps: Best in 2026",
@@ -9823,13 +9627,6 @@
       "category_slug": "project-management",
       "url": "https://saasstatshub.com/project-management/what-is-work-breakdown-structure/",
       "last_modified": "2026-07-11T21:40:33"
-    },
-    {
-      "title": "Work Breakdown Structure: Template",
-      "category": "Project Management",
-      "category_slug": "project-management",
-      "url": "https://saasstatshub.com/project-management/work-breakdown-structure/",
-      "last_modified": "2026-07-11T21:52:56"
     },
     {
       "title": "Best Free Real Estate Templates 2026",
@@ -10294,13 +10091,6 @@
       "last_modified": "2026-07-11T22:00:50"
     },
     {
-      "title": "Commission Calculator: Template",
-      "category": "Sales",
-      "category_slug": "sales",
-      "url": "https://saasstatshub.com/sales/commission-calculator/",
-      "last_modified": "2026-07-11T22:00:47"
-    },
-    {
       "title": "Gong vs Chorus: Which Is Better in 2026?",
       "category": "Sales",
       "category_slug": "sales",
@@ -10362,13 +10152,6 @@
       "category_slug": "sales",
       "url": "https://saasstatshub.com/sales/lead-scoring-explained/",
       "last_modified": "2026-07-11T21:56:46"
-    },
-    {
-      "title": "Objection Handling: Guide Template",
-      "category": "Sales",
-      "category_slug": "sales",
-      "url": "https://saasstatshub.com/sales/objection-handling-guide/",
-      "last_modified": "2026-07-11T21:55:58"
     },
     {
       "title": "Outreach vs Salesloft: Which Is Better in 2026?",
@@ -10446,13 +10229,6 @@
       "category_slug": "sales",
       "url": "https://saasstatshub.com/sales/social-selling-strategies/",
       "last_modified": "2026-07-11T21:54:11"
-    },
-    {
-      "title": "Territory Plan: Template",
-      "category": "Sales",
-      "category_slug": "sales",
-      "url": "https://saasstatshub.com/sales/territory-plan-template/",
-      "last_modified": "2026-07-11T21:53:43"
     },
     {
       "title": "The Ultimate Guide to Sales Technology in 2026",
@@ -10607,13 +10383,6 @@
       "category_slug": "sales",
       "url": "https://saasstatshub.com/sales/what-is-win-loss-analysis/",
       "last_modified": "2026-07-11T21:40:35"
-    },
-    {
-      "title": "Win/Loss Analysis: Template",
-      "category": "Sales",
-      "category_slug": "sales",
-      "url": "https://saasstatshub.com/sales/win-loss-analysis-template/",
-      "last_modified": "2026-07-11T21:52:57"
     },
     {
       "title": "1Password vs Bitwarden: Which Is Better in 2026?",
@@ -10868,13 +10637,6 @@
       "last_modified": "2026-07-30T23:18:17"
     },
     {
-      "title": "Data Breach Response: Plan Template",
-      "category": "Security",
-      "category_slug": "security",
-      "url": "https://saasstatshub.com/security/data-breach-response-plan/",
-      "last_modified": "2026-07-11T21:59:48"
-    },
-    {
       "title": "Data Privacy Compliance: What You Need to Know",
       "category": "Security",
       "category_slug": "security",
@@ -11001,13 +10763,6 @@
       "last_modified": "2026-07-11T22:14:43"
     },
     {
-      "title": "Incident Response Plan: Template",
-      "category": "Security",
-      "category_slug": "security",
-      "url": "https://saasstatshub.com/security/incident-response-plan/",
-      "last_modified": "2026-07-11T21:57:13"
-    },
-    {
       "title": "Incident Response Plan: Template and Guide",
       "category": "Security",
       "category_slug": "security",
@@ -11069,13 +10824,6 @@
       "category_slug": "security",
       "url": "https://saasstatshub.com/security/cybersecurity-guide/",
       "last_modified": "2026-07-11T21:50:40"
-    },
-    {
-      "title": "Vulnerability Assessment: Template",
-      "category": "Security",
-      "category_slug": "security",
-      "url": "https://saasstatshub.com/security/vulnerability-assessment-template/",
-      "last_modified": "2026-07-11T21:53:28"
     },
     {
       "title": "Vulnerability Scanning: Essential Tools",
