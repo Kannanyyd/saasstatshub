@@ -27,10 +27,26 @@ function matchesSource(source, pathname) {
   return new RegExp(pattern).test(pathname);
 }
 
+function isDynamicSource(source) {
+  return source.includes('*') || source.includes(':');
+}
+
 async function resolveRedirect(pathname) {
   const rules = parseRedirects(await readFile(redirectsPath, "utf8"));
   return rules.find(({ source }) => matchesSource(source, pathname));
 }
+
+test('keeps all static redirects before dynamic redirects', async () => {
+  const rules = parseRedirects(await readFile(redirectsPath, 'utf8'));
+  const firstDynamicIndex = rules.findIndex(({ source }) => isDynamicSource(source));
+
+  assert.notEqual(firstDynamicIndex, -1, 'expected at least one dynamic redirect');
+  assert.equal(
+    rules.slice(firstDynamicIndex + 1).find(({ source }) => !isDynamicSource(source)),
+    undefined,
+    'Cloudflare requires static redirects to appear before dynamic redirects',
+  );
+});
 
 const recoveryCases = [
   {

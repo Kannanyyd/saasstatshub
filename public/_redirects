@@ -86,10 +86,8 @@
 /marketing/project-management-statistics-2026/ /categories/project-management/ 301
 /marketing/project-management-statistics-2026 /categories/project-management/ 301
 /analytics/google-analytics-alternatives-2026/ /analytics/google-analytics-alternatives/ 301
-/analytics/google-analytics-alternatives-2026/* /analytics/google-analytics-alternatives/ 301
 /analytics/google-analytics-alternatives-2026 /analytics/google-analytics-alternatives/ 301
 /ecommerce/shopify-alternatives-2026/ /ecommerce/shopify-alternatives/ 301
-/ecommerce/shopify-alternatives-2026/* /ecommerce/shopify-alternatives/ 301
 /ecommerce/shopify-alternatives-2026 /ecommerce/shopify-alternatives/ 301
 /performance-management-statistics-2026/ /categories/hr/ 301
 /performance-management-statistics-2026 /categories/hr/ 301
@@ -110,8 +108,6 @@
 /ecommerce/fintech-statistics-2026/ /ecommerce/fintech-saas-statistics-2026/ 301
 /ecommerce/fintech-statistics-2026 /ecommerce/fintech-saas-statistics-2026/ 301
 
-/category/:slug/ /categories/:slug/ 301
-/category/:slug /categories/:slug/ 301
 /1password-vs-bitwarden/ /security/1password-vs-bitwarden/ 301
 /1password-vs-bitwarden /security/1password-vs-bitwarden/ 301
 /abm-statistics-2026/ /marketing/abm-statistics-2026/ 301
@@ -1356,3 +1352,9 @@
 /zoom-vs-microsoft-teams /communication/zoom-vs-microsoft-teams/ 301
 /zoom-vs-webex/ /communication/zoom-vs-webex/ 301
 /zoom-vs-webex /communication/zoom-vs-webex/ 301
+
+# Dynamic redirects must remain after every static redirect.
+/analytics/google-analytics-alternatives-2026/* /analytics/google-analytics-alternatives/ 301
+/ecommerce/shopify-alternatives-2026/* /ecommerce/shopify-alternatives/ 301
+/category/:slug/ /categories/:slug/ 301
+/category/:slug /categories/:slug/ 301

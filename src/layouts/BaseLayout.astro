@@ -3,6 +3,7 @@ import { CATEGORIES } from '../lib/constants';
 import SearchModal from '../components/SearchModal.astro';
 import CookieConsent from '../components/CookieConsent.astro';
 import Icon from '../components/Icon.astro';
+import { createPageTitle } from '../lib/page-title';
 
 interface Props {
   title: string;
@@ -23,12 +24,7 @@ const {
 } = Astro.props;
 
 const siteName = 'SaaSStatsHub';
-const brandedTitle = `${title} | ${siteName}`;
-const fullTitle = title === 'Home'
-  ? `${siteName} - SaaS Research, Statistics and Guides`
-  : brandedTitle.length <= 65
-    ? brandedTitle
-    : title;
+const fullTitle = createPageTitle(title, siteName);
 
 // Resolve absolute URLs for social card metadata.
 const pageUrl = canonicalURL || new URL(Astro.url.pathname, Astro.site).href;
