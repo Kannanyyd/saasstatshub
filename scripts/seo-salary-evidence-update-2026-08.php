@@ -77,7 +77,7 @@ $content = <<<'HTML'
 <p>Compare base salary, target variable pay, quota, territory, ramp terms, crediting rules, and attainment for the same role and segment. A higher OTE is less informative when the underlying quota or payout rules are unclear.</p>
 
 <h2>Related Research</h2>
-<p>Continue with our <a href="/crm/saas-sales-statistics-2026/">SaaS sales statistics</a>, <a href="/crm/sales-automation-statistics-2026/">sales automation statistics</a>, and <a href="/crm/crm-software-statistics-2026/">CRM software statistics</a>.</p>
+<p>Continue with our <a href="/crm/crm-software-statistics-2026/">CRM software statistics</a>, <a href="/crm/what-is-sales-automation/">sales automation guide</a>, and <a href="/crm/small-business-crm-statistics-2026/">small business CRM statistics</a>.</p>
 HTML;
 
 $quick_overview = [

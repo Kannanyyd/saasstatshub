@@ -60,6 +60,10 @@ Actions completed:
 - Limited generated search titles to 65 characters while leaving visible article headings unchanged.
 - Resubmitted `sitemap-index.xml` and `sitemap-0.xml` in Bing Webmaster Tools on August 8.
 - Submitted all 1,625 canonical sitemap URLs through IndexNow; the API returned HTTP 200 and Bing reported 1.6K URLs received in the current four-hour window.
-- Started Bing Site Scan `Production technical scan 2026-08-08` with the maximum available 1,000-page quota. The scan was still processing when this record was updated.
+- Completed Bing Site Scan `Production technical scan 2026-08-08`: 1,000 pages scanned, 6 errors, and 0 warnings. All six errors were HTTP 4xx findings.
+- Traced five article 404s to retired WordPress posts that were absent from GraphQL, the research catalog, and the sitemap while legacy links still referenced them.
+- Added direct 301 recovery routes to the closest live canonical research pages and updated the internal-link rules, pricing calculator source, and publication scripts that produced the stale links.
+- Added recovery coverage for an additional retired employee-benefits URL found during the same investigation.
+- Added `Disallow: /cdn-cgi/` to `robots.txt` for the sixth finding, Cloudflare's managed email-protection endpoint, following Cloudflare's crawler guidance.
 
-Recheck the sitemap discovery count, Site Scan findings, search impressions, and AI citations after Bing finishes processing. Do not resubmit the same full URL set daily; use IndexNow for material changes and new canonical pages.
+Recheck the sitemap discovery count, Site Scan findings, search impressions, and AI citations after Bing processes the fixes. Do not resubmit the same full URL set daily; use IndexNow for material changes and new canonical pages.

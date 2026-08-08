@@ -65,6 +65,30 @@ const recoveryCases = [
     source: "/hr/hr-software-statistics-2026",
     destination: "/hr/hr-hcm-statistics-2026/",
   },
+  {
+    source: "/analytics/saas-industry-statistics-2026",
+    destination: "/analytics/saas-market-size-statistics-2026/",
+  },
+  {
+    source: "/analytics/startup-statistics-2026",
+    destination: "/analytics/saas-funding-statistics-2026/",
+  },
+  {
+    source: "/hr/compensation-and-benefits-statistics-2026",
+    destination: "/hr/hr-hcm-statistics-2026/",
+  },
+  {
+    source: "/hr/employee-benefits-statistics-2026",
+    destination: "/hr/employee-benefits-administration/",
+  },
+  {
+    source: "/crm/saas-sales-statistics-2026",
+    destination: "/crm/crm-software-statistics-2026/",
+  },
+  {
+    source: "/crm/sales-automation-statistics-2026",
+    destination: "/crm/what-is-sales-automation/",
+  },
 ];
 
 for (const { source, destination } of recoveryCases) {

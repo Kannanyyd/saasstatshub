@@ -51,8 +51,8 @@ const LINK_RULES: LinkRule[] = [
   // ===== SaaS Core Metrics (Priority 1) =====
   {
     pattern: /\bSaaS (?:industry|market|sector)\b/i,
-    href: '/analytics/saas-industry-statistics-2026/',
-    title: 'SaaS industry statistics',
+    href: '/analytics/saas-market-size-statistics-2026/',
+    title: 'SaaS market size statistics',
     priority: 1,
   },
   {
@@ -378,15 +378,15 @@ const LINK_RULES: LinkRule[] = [
   },
   {
     pattern: /\bemployee benefits\b/i,
-    href: '/hr/employee-benefits-statistics-2026/',
-    title: 'Employee benefits statistics',
+    href: '/hr/employee-benefits-administration/',
+    title: 'Employee benefits administration guide',
     priority: 2,
     restrictToSlugs: ['hr'],
   },
   {
     pattern: /\bcompensation\b/i,
-    href: '/hr/compensation-and-benefits-statistics-2026/',
-    title: 'Compensation & benefits statistics',
+    href: '/hr/hr-hcm-statistics-2026/',
+    title: 'HR and HCM statistics',
     priority: 2,
     restrictToSlugs: ['salary', 'hr'],
   },
@@ -593,8 +593,8 @@ const LINK_RULES: LinkRule[] = [
   },
   {
     pattern: /\bstartup\b/i,
-    href: '/analytics/startup-statistics-2026/',
-    title: 'Startup statistics',
+    href: '/analytics/saas-funding-statistics-2026/',
+    title: 'SaaS funding statistics',
     priority: 3,
     restrictToSlugs: ['saas', 'state-of-saas', 'salary'],
   },

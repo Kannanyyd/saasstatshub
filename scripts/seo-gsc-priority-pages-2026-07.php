@@ -166,7 +166,7 @@ HTML,
 <p>This report prioritizes named reports and direct links. It does not combine incompatible estimates into a single market-size claim. Vendor and platform reports are identified as such because their samples may not represent the full market. Forecasts are labeled as forecasts, and older sources are used only when their date remains relevant to the topic. Links were reviewed during the July 2026 editorial update.</p>
 
 <h2>Related Research</h2>
-<p>Explore <a href="/analytics/saas-market-size-statistics-2026/">SaaS market-size statistics</a>, <a href="/analytics/saas-industry-statistics-2026/">SaaS industry statistics</a>, <a href="/analytics/saas-funding-statistics-2026/">SaaS funding statistics</a>, and the <a href="/saas-pricing-calculator/">SaaS pricing calculator</a>.</p>
+<p>Explore <a href="/analytics/saas-market-size-statistics-2026/">SaaS market-size statistics</a>, <a href="/analytics/state-of-saas-2026-annual-report/">the State of SaaS report</a>, <a href="/analytics/saas-funding-statistics-2026/">SaaS funding statistics</a>, and the <a href="/saas-pricing-calculator/">SaaS pricing calculator</a>.</p>
 HTML,
     ],
 ];
