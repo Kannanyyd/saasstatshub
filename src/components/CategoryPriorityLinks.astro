@@ -1,0 +1,28 @@
+---
+import Icon from './Icon.astro';
+import type { SearchOpportunityLink } from '../lib/search-opportunities';
+
+interface Props {
+  links: SearchOpportunityLink[];
+}
+
+const { links } = Astro.props;
+---
+
+{links.length > 0 && (
+  <nav class="mb-8 border-y border-border py-5" aria-label="Featured category research">
+    <div class="flex flex-col gap-3 lg:flex-row lg:items-center lg:gap-6">
+      <span class="shrink-0 text-xs font-bold uppercase tracking-widest text-text-muted">Featured research</span>
+      <ul class="flex flex-wrap gap-x-6 gap-y-3">
+        {links.map((link) => (
+          <li>
+            <a href={link.href} class="group inline-flex items-center gap-1.5 text-sm font-semibold text-text hover:text-primary transition-colors">
+              {link.label}
+              <Icon name="chevron-right" aria-hidden="true" class="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </nav>
+)}

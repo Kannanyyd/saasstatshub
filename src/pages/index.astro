@@ -11,6 +11,7 @@ import '../styles/global.css';
 import { getHomePageData, getSiteConfig, getPostsBySlugs, type HomePageData, type ArticleCard } from '../lib/wp-api';
 import { mockHomePageData } from '../data/mock-data';
 import type { LatestArticlesSection as LatestArticlesSectionType } from '../lib/site-config';
+import { HOMEPAGE_SEARCH_OPPORTUNITY_SLUGS } from '../lib/search-opportunities';
 
 // 1) Posts/categories from WP (or mock fallback)
 let data: HomePageData;
@@ -48,6 +49,18 @@ const latestSectionsResolved = await Promise.all(
 );
 const latestById = new Map(latestSectionsResolved);
 
+const featuredResearchSection: LatestArticlesSectionType = {
+  id: 'search-opportunities',
+  type: 'latest-articles',
+  enabled: true,
+  eyebrow: 'Reader favorites',
+  heading: 'Featured Research',
+  mode: 'manual-pinned',
+  count: HOMEPAGE_SEARCH_OPPORTUNITY_SLUGS.length,
+  pinnedSlugs: [...HOMEPAGE_SEARCH_OPPORTUNITY_SLUGS],
+};
+const featuredResearch = await getPostsBySlugs([...HOMEPAGE_SEARCH_OPPORTUNITY_SLUGS]);
+
 // Track whether the previous rendered section was the hero, so HotStats can overlap.
 const enabledSections = siteConfig.homepageSections.filter((s) => s.enabled);
 ---
@@ -68,7 +81,12 @@ const enabledSections = siteConfig.homepageSections.filter((s) => s.enabled);
       return <LatestArticlesSection section={section} articles={articles} />;
     }
     if (section.type === 'browse-categories') {
-      return <BrowseCategoriesSection section={section} categories={categories} />;
+      return (
+        <>
+          <LatestArticlesSection section={featuredResearchSection} articles={featuredResearch} />
+          <BrowseCategoriesSection section={section} categories={categories} />
+        </>
+      );
     }
     if (section.type === 'newsletter-cta') {
       return (
