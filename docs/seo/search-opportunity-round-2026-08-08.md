@@ -41,3 +41,25 @@ URL: `https://saasstatshub.com/hr/saas-sales-rep-salary/`
 - Compare impressions for the six homepage-priority pages after 14 days.
 - Do not request indexing for large batches of generic pages; use GSC URL inspection only for a small set of materially revised canonical URLs.
 - The next non-technical growth priority is earning relevant external citations. GSC currently reports no external links, and code changes alone cannot solve that authority gap.
+
+## Bing technical follow-up
+
+Baseline observed in Bing Webmaster Tools on August 8, 2026:
+
+- Search performance over three months: 9 clicks, 82 impressions, 10.98% CTR.
+- Site Explorer: 707 indexed URLs, 38 warnings, and 371 excluded URLs.
+- AI Performance: 572 citations across 16 sampled pages.
+- Backlinks: 2 referring domains and 2 referring pages.
+- Bing's sitemap report was stale at 20 discovered URLs even though the live sitemap contains 1,625 canonical URLs.
+
+Actions completed:
+
+- Reordered all four dynamic Cloudflare redirect rules after the 1,348 static rules, as required by the Pages redirect parser.
+- Added a regression test that prevents future static rules from being placed after dynamic rules.
+- Verified production 301 responses for legacy routes sampled near the beginning, middle, and end of `_redirects`.
+- Limited generated search titles to 65 characters while leaving visible article headings unchanged.
+- Resubmitted `sitemap-index.xml` and `sitemap-0.xml` in Bing Webmaster Tools on August 8.
+- Submitted all 1,625 canonical sitemap URLs through IndexNow; the API returned HTTP 200 and Bing reported 1.6K URLs received in the current four-hour window.
+- Started Bing Site Scan `Production technical scan 2026-08-08` with the maximum available 1,000-page quota. The scan was still processing when this record was updated.
+
+Recheck the sitemap discovery count, Site Scan findings, search impressions, and AI citations after Bing finishes processing. Do not resubmit the same full URL set daily; use IndexNow for material changes and new canonical pages.
