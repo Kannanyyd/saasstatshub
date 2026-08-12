@@ -29,4 +29,23 @@ test('category opportunities use canonical article routes and stay category-spec
     CATEGORY_SEARCH_OPPORTUNITIES.hr[0].href,
     '/hr/saas-sales-rep-salary/',
   );
+  assert.equal(
+    CATEGORY_SEARCH_OPPORTUNITIES.hr[0].label,
+    'How Much Do SaaS Sales Reps Make in 2026?',
+  );
+  assert.deepEqual(
+    CATEGORY_SEARCH_OPPORTUNITIES.crm.map(({ href }) => href),
+    [
+      '/crm/zoho-vs-freshsales-vs-close/',
+      '/crm/crm-software-statistics-2026/',
+    ],
+  );
+  assert.equal(
+    CATEGORY_SEARCH_OPPORTUNITIES.ecommerce[0].label,
+    'E-commerce Statistics 2026: Market and Buyer Data',
+  );
+  assert.equal(
+    CATEGORY_SEARCH_OPPORTUNITIES.security[0].label,
+    'Cybersecurity Statistics 2026: Breaches and Ransomware',
+  );
 });
