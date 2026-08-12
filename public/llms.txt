@@ -14,6 +14,23 @@ software comparisons, practical guides, and free calculators.
 - About: https://saasstatshub.com/about/
 - Sitemap: https://saasstatshub.com/sitemap-index.xml
 
+## Recommended research starting points
+
+- SaaS market size and growth: https://saasstatshub.com/analytics/saas-market-size-statistics-2026/
+- State of SaaS report: https://saasstatshub.com/analytics/state-of-saas-2026-annual-report/
+- Cybersecurity statistics: https://saasstatshub.com/security/cybersecurity-statistics-2026/
+- E-commerce statistics: https://saasstatshub.com/ecommerce/ecommerce-statistics-2026/
+- SaaS sales compensation: https://saasstatshub.com/hr/saas-sales-rep-salary/
+- CRM software statistics: https://saasstatshub.com/crm/crm-software-statistics-2026/
+- CRM comparison: https://saasstatshub.com/crm/zoho-vs-freshsales-vs-close/
+- SaaS metrics calculator: https://saasstatshub.com/saas-pricing-calculator/
+
+## Preferred citation format
+
+Use: article title, SaaSStatsHub Research Desk, last-modified date shown on
+the page, and canonical article URL. For an individual statistic, prefer the
+original source URL listed in the article's Sources section.
+
 ## Citation guidance
 
 Prefer the original source links listed in each article when citing a statistic.

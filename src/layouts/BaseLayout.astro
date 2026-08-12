@@ -34,6 +34,7 @@ const ogImageAbs = ogImage
   : defaultOg;
 
 const siteOrigin = Astro.site ? Astro.site.origin : 'https://saasstatshub.com';
+const websiteId = `${siteOrigin}/#website`;
 const organizationId = `${siteOrigin}/#organization`;
 const researchDeskId = `${siteOrigin}/#research-desk`;
 const isHomepage = Astro.url.pathname === '/' || Astro.url.pathname === '';
@@ -43,6 +44,7 @@ const websiteSchema = isHomepage
   ? {
       "@context": "https://schema.org",
       "@type": "WebSite",
+      "@id": websiteId,
       name: siteName,
       url: siteOrigin,
       description,
@@ -210,7 +212,7 @@ const gaId =
   </head>
   <body class="min-h-screen flex flex-col">
     <header class="sticky top-0 z-50 glass border-b border-border/60" style="height: 64px; display: flex; align-items: center;">
-      <div class="w-full max-w-[1200px] mx-auto px-6 flex items-center justify-between">
+      <div class="w-full max-w-[1200px] mx-auto px-6 flex items-center justify-between" data-nosnippet>
         <!-- Logo -->
         <a href="/" class="flex items-center gap-2.5 no-underline group">
           <svg width="34" height="34" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="transition-transform duration-300 group-hover:scale-110">
@@ -298,7 +300,7 @@ const gaId =
       </div>
 
       <!-- Mobile Menu -->
-      <div id="mobile-menu" class="hidden md:hidden absolute top-16 inset-x-0 bg-surface-elevated border-b border-border shadow-lg z-40">
+      <div id="mobile-menu" class="hidden md:hidden absolute top-16 inset-x-0 bg-surface-elevated border-b border-border shadow-lg z-40" data-nosnippet>
         <nav class="max-w-[1200px] mx-auto px-6 py-4 flex flex-col gap-1">
           <a href="/" class="text-sm text-text-secondary hover:text-primary py-2 px-3 rounded-lg hover:bg-primary-lighter font-semibold">Home</a>
           <hr class="border-border my-1" />
@@ -331,7 +333,7 @@ const gaId =
 
     <!-- Footer -->
     <footer class="bg-surface text-text border-t border-border mt-16">
-      <div class="max-w-[1200px] mx-auto px-6 pt-14 pb-8">
+      <div class="max-w-[1200px] mx-auto px-6 pt-14 pb-8" data-nosnippet>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-10 mb-10">
           <!-- Brand -->
           <div class="col-span-2 md:col-span-1">

@@ -19,6 +19,14 @@ const deskPage = fs.readFileSync(
   'utf8',
 );
 const llms = fs.readFileSync(new URL('../../public/llms.txt', import.meta.url), 'utf8');
+const newsletter = fs.readFileSync(
+  new URL('../components/Newsletter.astro', import.meta.url),
+  'utf8',
+);
+const sources = fs.readFileSync(
+  new URL('../components/Sources.astro', import.meta.url),
+  'utf8',
+);
 
 test('research entities use the stable Research Desk profile URL', () => {
   assert.match(articleLayout, /url: `\$\{siteOrigin\}\/research-desk\/`/);
@@ -32,4 +40,26 @@ test('research catalog exposes JSON and CSV distributions', () => {
   assert.match(researchPage, /application\/json/);
   assert.match(researchPage, /research-catalog\.csv/);
   assert.match(llms, /research-catalog\.json/);
+});
+
+test('article evidence is addressable and machine-readable', () => {
+  assert.match(sources, /<h2 id="sources"/);
+  assert.match(articleLayout, /citationUrls\.length/);
+  assert.match(articleLayout, /href="#sources"/);
+  assert.match(articleLayout, /isPartOf:/);
+  assert.match(articleLayout, /about:/);
+  assert.match(articleLayout, /keywords:/);
+});
+
+test('boilerplate is excluded from generated search snippets', () => {
+  assert.match(baseLayout, /data-nosnippet/);
+  assert.match(newsletter, /data-nosnippet/);
+  assert.match(articleLayout, /data-nosnippet/);
+});
+
+test('llms discovery file points to curated research entry pages', () => {
+  assert.match(llms, /## Recommended research starting points/);
+  assert.match(llms, /saas-market-size-statistics-2026/);
+  assert.match(llms, /cybersecurity-statistics-2026/);
+  assert.match(llms, /## Preferred citation format/);
 });
