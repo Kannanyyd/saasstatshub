@@ -1,0 +1,281 @@
+{
+  "schema_version": "1.0",
+  "name": "SaaSStatsHub Sales Research Catalog",
+  "url": "https://saasstatshub.com/categories/sales/",
+  "publisher": {
+    "name": "SaaSStatsHub Research Desk",
+    "url": "https://saasstatshub.com/research-desk/"
+  },
+  "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+  "catalog_modified": "2026-07-11T22:45:17",
+  "category": "Sales",
+  "category_slug": "sales",
+  "category_article_count": 53,
+  "articles": [
+    {
+      "title": "Apollo vs Lusha: Which Is Better in 2026?",
+      "url": "https://saasstatshub.com/sales/apollo-vs-lusha/",
+      "last_modified": "2026-07-11T22:09:47"
+    },
+    {
+      "title": "Best AI Sales Assistants in 2026",
+      "url": "https://saasstatshub.com/sales/best-ai-sales-assistants/",
+      "last_modified": "2026-07-11T22:09:34"
+    },
+    {
+      "title": "Best Cold Outreach in 2026",
+      "url": "https://saasstatshub.com/sales/best-cold-outreach-tools/",
+      "last_modified": "2026-07-11T22:09:23"
+    },
+    {
+      "title": "Best Free Sales Tools in 2026",
+      "url": "https://saasstatshub.com/sales/free-sales-tools-2026/",
+      "last_modified": "2026-07-11T21:58:05"
+    },
+    {
+      "title": "Best Revenue Intelligence in 2026",
+      "url": "https://saasstatshub.com/sales/best-revenue-intelligence-platforms/",
+      "last_modified": "2026-07-11T22:08:39"
+    },
+    {
+      "title": "Best Sales Analytics in 2026",
+      "url": "https://saasstatshub.com/sales/best-sales-analytics-tools/",
+      "last_modified": "2026-07-11T22:08:36"
+    },
+    {
+      "title": "Best Sales Enablement in 2026",
+      "url": "https://saasstatshub.com/sales/best-sales-enablement-tools/",
+      "last_modified": "2026-07-11T22:08:34"
+    },
+    {
+      "title": "Best Sales Intelligence in 2026",
+      "url": "https://saasstatshub.com/sales/best-sales-intelligence-tools/",
+      "last_modified": "2026-07-11T22:08:33"
+    },
+    {
+      "title": "Clay vs Clearbit: Which Is Better in 2026?",
+      "url": "https://saasstatshub.com/sales/clay-vs-clearbit/",
+      "last_modified": "2026-07-11T22:45:17"
+    },
+    {
+      "title": "Cold Calling Best Practices",
+      "url": "https://saasstatshub.com/sales/cold-calling-best-practices/",
+      "last_modified": "2026-07-11T22:00:51"
+    },
+    {
+      "title": "Cold Calling Scripts: Templates and Tips",
+      "url": "https://saasstatshub.com/sales/cold-calling-scripts/",
+      "last_modified": "2026-07-11T22:00:50"
+    },
+    {
+      "title": "Gong vs Chorus: Which Is Better in 2026?",
+      "url": "https://saasstatshub.com/sales/gong-vs-chorus/",
+      "last_modified": "2026-07-11T22:45:05"
+    },
+    {
+      "title": "How to Automate Lead Scoring in 2026: A Complete Guide",
+      "url": "https://saasstatshub.com/sales/how-to-automate-lead-scoring/",
+      "last_modified": "2026-07-11T22:07:58"
+    },
+    {
+      "title": "How to Build Recurring Revenue Model in 2026: A Complete Guide",
+      "url": "https://saasstatshub.com/sales/how-to-build-recurring-revenue-model/",
+      "last_modified": "2026-07-11T22:07:47"
+    },
+    {
+      "title": "How to Create Sales Playbook in 2026: A Complete Guide",
+      "url": "https://saasstatshub.com/sales/how-to-create-sales-playbook/",
+      "last_modified": "2026-07-11T22:07:32"
+    },
+    {
+      "title": "How to Design Sales Compensation in 2026: A Complete Guide",
+      "url": "https://saasstatshub.com/sales/how-to-design-sales-compensation/",
+      "last_modified": "2026-07-11T22:07:31"
+    },
+    {
+      "title": "How to Implement Sales Enablement in 2026: A Complete Guide",
+      "url": "https://saasstatshub.com/sales/how-to-implement-sales-enablement/",
+      "last_modified": "2026-07-11T22:07:07"
+    },
+    {
+      "title": "How to Implement Sales Intelligence in 2026: A Complete Guide",
+      "url": "https://saasstatshub.com/sales/how-to-implement-sales-intelligence/",
+      "last_modified": "2026-07-11T22:07:06"
+    },
+    {
+      "title": "How to Write Cold Outreach Email in 2026: A Complete Guide",
+      "url": "https://saasstatshub.com/sales/how-to-write-cold-outreach-email/",
+      "last_modified": "2026-07-11T22:06:41"
+    },
+    {
+      "title": "Lead Scoring Explained",
+      "url": "https://saasstatshub.com/sales/lead-scoring-explained/",
+      "last_modified": "2026-07-11T21:56:46"
+    },
+    {
+      "title": "Outreach vs Salesloft: Which Is Better in 2026?",
+      "url": "https://saasstatshub.com/sales/outreach-vs-salesloft/",
+      "last_modified": "2026-07-11T22:44:49"
+    },
+    {
+      "title": "Sales Coaching: Complete Guide",
+      "url": "https://saasstatshub.com/sales/sales-coaching-guide/",
+      "last_modified": "2026-07-11T21:54:49"
+    },
+    {
+      "title": "Sales Commission: Calculator and Guide",
+      "url": "https://saasstatshub.com/sales/sales-commission-calculator/",
+      "last_modified": "2026-07-11T21:54:48"
+    },
+    {
+      "title": "Sales Demos: Best Practices Guide",
+      "url": "https://saasstatshub.com/sales/sales-demo-best-practices/",
+      "last_modified": "2026-07-11T21:54:47"
+    },
+    {
+      "title": "Sales Forecasting: Methods and Best Practices",
+      "url": "https://saasstatshub.com/sales/sales-forecasting-methods/",
+      "last_modified": "2026-07-11T21:54:43"
+    },
+    {
+      "title": "Sales Pipeline Management Guide",
+      "url": "https://saasstatshub.com/sales/sales-pipeline-management-guide/",
+      "last_modified": "2026-07-11T21:54:42"
+    },
+    {
+      "title": "Sales Pipeline: Management Guide",
+      "url": "https://saasstatshub.com/sales/sales-pipeline-management/",
+      "last_modified": "2026-07-11T21:54:40"
+    },
+    {
+      "title": "Sales Scripts: Templates That Convert",
+      "url": "https://saasstatshub.com/sales/sales-script-templates/",
+      "last_modified": "2026-07-11T21:54:35"
+    },
+    {
+      "title": "Sales Team Structure: Building for Success",
+      "url": "https://saasstatshub.com/sales/sales-team-structure/",
+      "last_modified": "2026-07-11T21:54:34"
+    },
+    {
+      "title": "Sales Territory: Planning Guide",
+      "url": "https://saasstatshub.com/sales/sales-territory-planning/",
+      "last_modified": "2026-07-11T21:54:32"
+    },
+    {
+      "title": "Social Selling Strategies",
+      "url": "https://saasstatshub.com/sales/social-selling-strategies/",
+      "last_modified": "2026-07-11T21:54:11"
+    },
+    {
+      "title": "The Ultimate Guide to Sales Technology in 2026",
+      "url": "https://saasstatshub.com/sales/sales-technology-guide/",
+      "last_modified": "2026-07-11T21:50:20"
+    },
+    {
+      "title": "What Is Account Management?",
+      "url": "https://saasstatshub.com/sales/what-is-account-management/",
+      "last_modified": "2026-07-11T21:50:14"
+    },
+    {
+      "title": "What Is Conversation Intelligence?",
+      "url": "https://saasstatshub.com/sales/what-is-conversation-intelligence/",
+      "last_modified": "2026-07-11T21:48:32"
+    },
+    {
+      "title": "What Is Partner Sales?",
+      "url": "https://saasstatshub.com/sales/what-is-partner-sales/",
+      "last_modified": "2026-07-11T21:43:51"
+    },
+    {
+      "title": "What Is Proposal Software?",
+      "url": "https://saasstatshub.com/sales/what-is-proposal-software/",
+      "last_modified": "2026-07-11T21:42:57"
+    },
+    {
+      "title": "What Is Revenue Operations?",
+      "url": "https://saasstatshub.com/sales/what-is-revenue-operations/",
+      "last_modified": "2026-07-11T21:42:25"
+    },
+    {
+      "title": "What Is Sales Automation and How Does It Work?",
+      "url": "https://saasstatshub.com/sales/what-is-sales-automation-and-how-does-it-work/",
+      "last_modified": "2026-07-11T21:53:01"
+    },
+    {
+      "title": "What Is Sales Coaching?",
+      "url": "https://saasstatshub.com/sales/what-is-sales-coaching/",
+      "last_modified": "2026-07-11T21:42:18"
+    },
+    {
+      "title": "What Is Sales Compensation?",
+      "url": "https://saasstatshub.com/sales/what-is-sales-compensation/",
+      "last_modified": "2026-07-11T21:42:16"
+    },
+    {
+      "title": "What Is Sales Content Management?",
+      "url": "https://saasstatshub.com/sales/what-is-sales-content-management/",
+      "last_modified": "2026-07-11T21:42:15"
+    },
+    {
+      "title": "What Is Sales CRM?",
+      "url": "https://saasstatshub.com/sales/what-is-sales-crm/",
+      "last_modified": "2026-07-11T21:42:14"
+    },
+    {
+      "title": "What Is Sales Development?",
+      "url": "https://saasstatshub.com/sales/what-is-sales-development/",
+      "last_modified": "2026-07-11T21:42:12"
+    },
+    {
+      "title": "What Is Sales Enablement?",
+      "url": "https://saasstatshub.com/sales/what-is-sales-enablement/",
+      "last_modified": "2026-07-11T21:42:10"
+    },
+    {
+      "title": "What Is Sales Engagement?",
+      "url": "https://saasstatshub.com/sales/what-is-sales-engagement/",
+      "last_modified": "2026-07-11T21:42:09"
+    },
+    {
+      "title": "What Is Sales Forecasting (Advanced)?",
+      "url": "https://saasstatshub.com/sales/what-is-sales-forecasting-advanced/",
+      "last_modified": "2026-07-11T21:42:08"
+    },
+    {
+      "title": "What Is Sales Intelligence?",
+      "url": "https://saasstatshub.com/sales/what-is-sales-intelligence/",
+      "last_modified": "2026-07-11T21:42:05"
+    },
+    {
+      "title": "What Is Sales Methodology?",
+      "url": "https://saasstatshub.com/sales/what-is-sales-methodology/",
+      "last_modified": "2026-07-11T21:42:04"
+    },
+    {
+      "title": "What Is Sales Operations?",
+      "url": "https://saasstatshub.com/sales/what-is-sales-operations/",
+      "last_modified": "2026-07-11T21:42:04"
+    },
+    {
+      "title": "What Is Sales Pipeline Analytics?",
+      "url": "https://saasstatshub.com/sales/what-is-sales-pipeline-analytics/",
+      "last_modified": "2026-07-11T21:42:03"
+    },
+    {
+      "title": "What Is Sales Territory Management?",
+      "url": "https://saasstatshub.com/sales/what-is-sales-territory-management/",
+      "last_modified": "2026-07-11T21:42:01"
+    },
+    {
+      "title": "What Is Sales Training?",
+      "url": "https://saasstatshub.com/sales/what-is-sales-training/",
+      "last_modified": "2026-07-11T21:41:59"
+    },
+    {
+      "title": "What Is Win/Loss Analysis?",
+      "url": "https://saasstatshub.com/sales/what-is-win-loss-analysis/",
+      "last_modified": "2026-07-11T21:40:35"
+    }
+  ]
+}

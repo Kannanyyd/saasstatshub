@@ -9,6 +9,7 @@ import Newsletter from '../components/Newsletter.astro';
 import CoverImage from '../components/CoverImage.astro';
 import RelatedArticles from '../components/RelatedArticles.astro';
 import FaqSection from '../components/FaqSection.astro';
+import CiteThisPage from '../components/CiteThisPage.astro';
 import { metaFor } from '../lib/constants';
 import { buildDatasetSchema } from '../lib/dataset-schema';
 import { buildFaqPageSchema } from '../lib/faq-schema';
@@ -348,6 +349,8 @@ if (hasAffiliateLinks) {
 
         <!-- Sources -->
         {sources.length > 0 && <Sources sources={sources} />}
+
+        <CiteThisPage title={title} url={canonicalURL} dateModified={dateModified || datePublished} />
 
         <!-- Phase 2.2: FAQ accordion (between Sources and Related Articles) -->
         {faqItems.length > 0 && <FaqSection items={faqItems} />}

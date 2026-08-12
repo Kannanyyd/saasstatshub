@@ -1,0 +1,246 @@
+{
+  "schema_version": "1.0",
+  "name": "SaaSStatsHub Logistics Research Catalog",
+  "url": "https://saasstatshub.com/categories/logistics/",
+  "publisher": {
+    "name": "SaaSStatsHub Research Desk",
+    "url": "https://saasstatshub.com/research-desk/"
+  },
+  "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+  "catalog_modified": "2026-07-11T22:43:57",
+  "category": "Logistics",
+  "category_slug": "logistics",
+  "category_article_count": 46,
+  "articles": [
+    {
+      "title": "3PL Selection: How to Choose",
+      "url": "https://saasstatshub.com/logistics/3pl-selection-guide/",
+      "last_modified": "2026-07-11T22:02:16"
+    },
+    {
+      "title": "Best Fleet Management in 2026",
+      "url": "https://saasstatshub.com/logistics/best-fleet-management-software/",
+      "last_modified": "2026-07-11T22:05:24"
+    },
+    {
+      "title": "Best Free Logistics Software in 2026",
+      "url": "https://saasstatshub.com/logistics/free-logistics-software-2026/",
+      "last_modified": "2026-07-11T21:58:10"
+    },
+    {
+      "title": "Best Logistics in 2026",
+      "url": "https://saasstatshub.com/logistics/best-logistics-software/",
+      "last_modified": "2026-07-11T22:05:07"
+    },
+    {
+      "title": "Best Route Optimization in 2026",
+      "url": "https://saasstatshub.com/logistics/best-route-optimization-tools/",
+      "last_modified": "2026-07-11T22:04:46"
+    },
+    {
+      "title": "Best Supply Chain Management in 2026",
+      "url": "https://saasstatshub.com/logistics/best-supply-chain-management-tools/",
+      "last_modified": "2026-07-11T22:04:43"
+    },
+    {
+      "title": "Best Warehouse Management in 2026",
+      "url": "https://saasstatshub.com/logistics/best-warehouse-management-systems/",
+      "last_modified": "2026-07-11T22:04:35"
+    },
+    {
+      "title": "Flexport vs Freightos: Which Is Better in 2026?",
+      "url": "https://saasstatshub.com/logistics/flexport-vs-freightos/",
+      "last_modified": "2026-07-11T22:43:57"
+    },
+    {
+      "title": "Freight Management Software Comparison",
+      "url": "https://saasstatshub.com/logistics/freight-management-software-comparison/",
+      "last_modified": "2026-07-11T21:58:01"
+    },
+    {
+      "title": "Freight Management: Complete Guide",
+      "url": "https://saasstatshub.com/logistics/freight-management-guide/",
+      "last_modified": "2026-07-11T21:58:02"
+    },
+    {
+      "title": "How to Choose Logistics Software in 2026: A Complete Guide",
+      "url": "https://saasstatshub.com/logistics/how-to-choose-logistics-software/",
+      "last_modified": "2026-07-11T22:03:46"
+    },
+    {
+      "title": "How to Implement Route Optimization in 2026: A Complete Guide",
+      "url": "https://saasstatshub.com/logistics/how-to-implement-route-optimization/",
+      "last_modified": "2026-07-11T22:03:19"
+    },
+    {
+      "title": "How to Implement Warehouse Management in 2026: A Complete Guide",
+      "url": "https://saasstatshub.com/logistics/how-to-implement-warehouse-management/",
+      "last_modified": "2026-07-11T22:03:15"
+    },
+    {
+      "title": "How to Optimize Last Mile Delivery in 2026: A Complete Guide",
+      "url": "https://saasstatshub.com/logistics/how-to-optimize-last-mile-delivery/",
+      "last_modified": "2026-07-11T22:03:11"
+    },
+    {
+      "title": "How to Set Up Fleet Management in 2026: A Complete Guide",
+      "url": "https://saasstatshub.com/logistics/how-to-set-up-fleet-management/",
+      "last_modified": "2026-07-11T22:03:05"
+    },
+    {
+      "title": "Inventory Management: Complete Guide",
+      "url": "https://saasstatshub.com/logistics/inventory-management-guide/",
+      "last_modified": "2026-07-11T21:57:04"
+    },
+    {
+      "title": "Last Mile Delivery Optimization",
+      "url": "https://saasstatshub.com/logistics/last-mile-delivery-optimization/",
+      "last_modified": "2026-07-11T21:56:49"
+    },
+    {
+      "title": "Logistics Cost: Reduction Strategies",
+      "url": "https://saasstatshub.com/logistics/logistics-cost-reduction/",
+      "last_modified": "2026-07-11T21:56:35"
+    },
+    {
+      "title": "Logistics KPIs: Essential Metrics",
+      "url": "https://saasstatshub.com/logistics/logistics-kpis/",
+      "last_modified": "2026-07-11T21:56:34"
+    },
+    {
+      "title": "Logiwa vs ShipHero: Which Is Better in 2026?",
+      "url": "https://saasstatshub.com/logistics/logiwa-vs-shiphero/",
+      "last_modified": "2026-07-11T22:43:40"
+    },
+    {
+      "title": "Reverse Logistics: Management Guide",
+      "url": "https://saasstatshub.com/logistics/reverse-logistics-guide/",
+      "last_modified": "2026-07-11T21:54:54"
+    },
+    {
+      "title": "Route4Me vs OptimoRoute: Which Is Better in 2026?",
+      "url": "https://saasstatshub.com/logistics/route4me-vs-optimo-route/",
+      "last_modified": "2026-07-11T22:43:26"
+    },
+    {
+      "title": "ShipHero vs ShipBob: Which Is Better in 2026?",
+      "url": "https://saasstatshub.com/logistics/shiphero-vs-shipbob/",
+      "last_modified": "2026-07-11T22:43:23"
+    },
+    {
+      "title": "Shipping Automation: Implementation Guide",
+      "url": "https://saasstatshub.com/logistics/shipping-automation/",
+      "last_modified": "2026-07-11T21:54:17"
+    },
+    {
+      "title": "ShipStation vs Easyship: Which Is Better in 2026?",
+      "url": "https://saasstatshub.com/logistics/shipstation-vs-easyship/",
+      "last_modified": "2026-07-11T22:43:21"
+    },
+    {
+      "title": "Supply Chain Optimization: Strategies",
+      "url": "https://saasstatshub.com/logistics/supply-chain-optimization/",
+      "last_modified": "2026-07-11T21:53:59"
+    },
+    {
+      "title": "Supply Chain Visibility Tools",
+      "url": "https://saasstatshub.com/logistics/supply-chain-visibility-tools/",
+      "last_modified": "2026-07-11T21:53:58"
+    },
+    {
+      "title": "The Ultimate Guide to Logistics Technology in 2026",
+      "url": "https://saasstatshub.com/logistics/logistics-technology-guide/",
+      "last_modified": "2026-07-11T21:50:26"
+    },
+    {
+      "title": "Warehouse Layout: Design Guide",
+      "url": "https://saasstatshub.com/logistics/warehouse-layout-design/",
+      "last_modified": "2026-07-11T21:53:26"
+    },
+    {
+      "title": "Warehouse Management System Guide",
+      "url": "https://saasstatshub.com/logistics/warehouse-management-system-guide/",
+      "last_modified": "2026-07-11T21:53:24"
+    },
+    {
+      "title": "What Is Cold Chain Management?",
+      "url": "https://saasstatshub.com/logistics/what-is-cold-chain-management/",
+      "last_modified": "2026-07-11T21:49:06"
+    },
+    {
+      "title": "What Is Cross-Docking?",
+      "url": "https://saasstatshub.com/logistics/what-is-cross-docking/",
+      "last_modified": "2026-07-11T21:48:22"
+    },
+    {
+      "title": "What Is Demand Planning?",
+      "url": "https://saasstatshub.com/logistics/what-is-demand-planning/",
+      "last_modified": "2026-07-11T21:47:37"
+    },
+    {
+      "title": "What Is Fleet Management?",
+      "url": "https://saasstatshub.com/logistics/what-is-fleet-management/",
+      "last_modified": "2026-07-11T21:46:20"
+    },
+    {
+      "title": "What Is Freight Management?",
+      "url": "https://saasstatshub.com/logistics/what-is-freight-management/",
+      "last_modified": "2026-07-11T21:46:18"
+    },
+    {
+      "title": "What Is Inventory Optimization?",
+      "url": "https://saasstatshub.com/logistics/what-is-inventory-optimization/",
+      "last_modified": "2026-07-11T21:45:28"
+    },
+    {
+      "title": "What Is Last Mile Delivery?",
+      "url": "https://saasstatshub.com/logistics/what-is-last-mile-delivery/",
+      "last_modified": "2026-07-11T21:45:11"
+    },
+    {
+      "title": "What Is Logistics Software and How Does It Work?",
+      "url": "https://saasstatshub.com/logistics/what-is-logistics-software-and-how-does-it-work/",
+      "last_modified": "2026-07-11T21:53:06"
+    },
+    {
+      "title": "What Is Order Management?",
+      "url": "https://saasstatshub.com/logistics/what-is-order-management/",
+      "last_modified": "2026-07-11T21:43:55"
+    },
+    {
+      "title": "What Is Procurement Software?",
+      "url": "https://saasstatshub.com/logistics/what-is-procurement-software/",
+      "last_modified": "2026-07-11T21:43:23"
+    },
+    {
+      "title": "What Is Reverse Logistics?",
+      "url": "https://saasstatshub.com/logistics/what-is-reverse-logistics/",
+      "last_modified": "2026-07-11T21:42:24"
+    },
+    {
+      "title": "What Is Route Optimization?",
+      "url": "https://saasstatshub.com/logistics/what-is-route-optimization/",
+      "last_modified": "2026-07-11T21:42:21"
+    },
+    {
+      "title": "What Is Supply Chain Analytics?",
+      "url": "https://saasstatshub.com/logistics/what-is-supply-chain-analytics/",
+      "last_modified": "2026-07-11T21:41:26"
+    },
+    {
+      "title": "What Is Supply Chain Management?",
+      "url": "https://saasstatshub.com/logistics/what-is-supply-chain-management/",
+      "last_modified": "2026-07-11T21:41:25"
+    },
+    {
+      "title": "What Is Supply Chain Visibility?",
+      "url": "https://saasstatshub.com/logistics/what-is-supply-chain-visibility/",
+      "last_modified": "2026-07-11T21:41:23"
+    },
+    {
+      "title": "What Is Warehouse Management System?",
+      "url": "https://saasstatshub.com/logistics/what-is-warehouse-management-system/",
+      "last_modified": "2026-07-11T21:40:42"
+    }
+  ]
+}

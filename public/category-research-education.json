@@ -1,0 +1,296 @@
+{
+  "schema_version": "1.0",
+  "name": "SaaSStatsHub Education Research Catalog",
+  "url": "https://saasstatshub.com/categories/education/",
+  "publisher": {
+    "name": "SaaSStatsHub Research Desk",
+    "url": "https://saasstatshub.com/research-desk/"
+  },
+  "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+  "catalog_modified": "2026-07-11T22:44:16",
+  "category": "Education",
+  "category_slug": "education",
+  "category_article_count": 56,
+  "articles": [
+    {
+      "title": "Adaptive Learning Technology Explained",
+      "url": "https://saasstatshub.com/education/adaptive-learning-technology-explained/",
+      "last_modified": "2026-07-11T22:02:11"
+    },
+    {
+      "title": "Assessment Tools: Best for Teachers",
+      "url": "https://saasstatshub.com/education/assessment-tools-for-teachers/",
+      "last_modified": "2026-07-11T22:01:36"
+    },
+    {
+      "title": "Best Corporate Training in 2026",
+      "url": "https://saasstatshub.com/education/best-corporate-training-platforms/",
+      "last_modified": "2026-07-11T22:05:44"
+    },
+    {
+      "title": "Best eLearning Software in 2026",
+      "url": "https://saasstatshub.com/education/best-elearning-software/",
+      "last_modified": "2026-07-11T22:05:29"
+    },
+    {
+      "title": "Best Free LMS Options in 2026",
+      "url": "https://saasstatshub.com/education/free-lms-options-2026/",
+      "last_modified": "2026-07-11T21:58:11"
+    },
+    {
+      "title": "Best LMS Platforms in 2026",
+      "url": "https://saasstatshub.com/education/best-lms-platforms/",
+      "last_modified": "2026-07-11T22:05:08"
+    },
+    {
+      "title": "Best Online Course Platforms in 2026",
+      "url": "https://saasstatshub.com/education/best-online-course-platforms/",
+      "last_modified": "2026-07-11T22:04:57"
+    },
+    {
+      "title": "Best Quiz and Assessment in 2026",
+      "url": "https://saasstatshub.com/education/best-quiz-assessment-tools/",
+      "last_modified": "2026-07-11T22:04:54"
+    },
+    {
+      "title": "Best Student Information Systems in 2026",
+      "url": "https://saasstatshub.com/education/best-student-information-systems/",
+      "last_modified": "2026-07-11T22:04:45"
+    },
+    {
+      "title": "Best Virtual Classroom in 2026",
+      "url": "https://saasstatshub.com/education/best-virtual-classroom-software/",
+      "last_modified": "2026-07-11T22:04:39"
+    },
+    {
+      "title": "Blackboard vs Canvas: Which Is Better in 2026?",
+      "url": "https://saasstatshub.com/education/blackboard-vs-canvas/",
+      "last_modified": "2026-07-11T22:44:16"
+    },
+    {
+      "title": "Blended Learning: Implementation Guide",
+      "url": "https://saasstatshub.com/education/blended-learning-guide/",
+      "last_modified": "2026-07-11T22:01:14"
+    },
+    {
+      "title": "Canvas vs Moodle: Which Is Better in 2026?",
+      "url": "https://saasstatshub.com/education/canvas-vs-moodle/",
+      "last_modified": "2026-07-11T22:44:14"
+    },
+    {
+      "title": "Corporate Training: Measuring ROI",
+      "url": "https://saasstatshub.com/education/corporate-training-roi/",
+      "last_modified": "2026-07-11T22:00:21"
+    },
+    {
+      "title": "E-Learning Content: Development Guide",
+      "url": "https://saasstatshub.com/education/elearning-content-development/",
+      "last_modified": "2026-07-11T21:58:59"
+    },
+    {
+      "title": "EdTech Trends: What to Watch",
+      "url": "https://saasstatshub.com/education/educational-technology-trends/",
+      "last_modified": "2026-07-11T21:59:00"
+    },
+    {
+      "title": "How to Build Online Course in 2026: A Complete Guide",
+      "url": "https://saasstatshub.com/education/how-to-build-online-course/",
+      "last_modified": "2026-07-11T22:03:58"
+    },
+    {
+      "title": "How to Choose LMS in 2026: A Complete Guide",
+      "url": "https://saasstatshub.com/education/how-to-choose-lms-platform/",
+      "last_modified": "2026-07-11T22:03:47"
+    },
+    {
+      "title": "How to Create Interactive Quizzes in 2026: A Complete Guide",
+      "url": "https://saasstatshub.com/education/how-to-create-interactive-quizzes/",
+      "last_modified": "2026-07-11T22:03:41"
+    },
+    {
+      "title": "How to Design Microlearning in 2026: A Complete Guide",
+      "url": "https://saasstatshub.com/education/how-to-design-microlearning/",
+      "last_modified": "2026-07-11T22:03:39"
+    },
+    {
+      "title": "How to Implement Corporate Training in 2026: A Complete Guide",
+      "url": "https://saasstatshub.com/education/how-to-implement-corporate-training/",
+      "last_modified": "2026-07-11T22:03:31"
+    },
+    {
+      "title": "How to Set Up Student Information System in 2026: A Complete Guide",
+      "url": "https://saasstatshub.com/education/how-to-set-up-student-information-system/",
+      "last_modified": "2026-07-11T22:02:59"
+    },
+    {
+      "title": "Kajabi vs Teachable: Which Is Better in 2026?",
+      "url": "https://saasstatshub.com/education/kajabi-vs-teachable/",
+      "last_modified": "2026-07-11T22:43:48"
+    },
+    {
+      "title": "Learning Design: Best Practices Guide",
+      "url": "https://saasstatshub.com/education/learning-design-guide/",
+      "last_modified": "2026-07-11T21:56:44"
+    },
+    {
+      "title": "LearnWorlds vs Thinkific: Which Is Better in 2026?",
+      "url": "https://saasstatshub.com/education/learnworlds-vs-thinkific/",
+      "last_modified": "2026-07-11T22:43:44"
+    },
+    {
+      "title": "LMS for Corporate Training",
+      "url": "https://saasstatshub.com/education/lms-for-corporate-training/",
+      "last_modified": "2026-07-11T21:56:37"
+    },
+    {
+      "title": "Online Course Creation: Complete Guide",
+      "url": "https://saasstatshub.com/education/online-course-creation-guide/",
+      "last_modified": "2026-07-11T21:55:53"
+    },
+    {
+      "title": "Online Learning Platforms Comparison",
+      "url": "https://saasstatshub.com/education/online-learning-platforms-comparison/",
+      "last_modified": "2026-07-11T21:55:52"
+    },
+    {
+      "title": "Student Engagement Tools Guide",
+      "url": "https://saasstatshub.com/education/student-engagement-tools-guide/",
+      "last_modified": "2026-07-11T21:54:06"
+    },
+    {
+      "title": "Student Engagement: Essential Tools",
+      "url": "https://saasstatshub.com/education/student-engagement-tools/",
+      "last_modified": "2026-07-11T21:54:05"
+    },
+    {
+      "title": "TalentLMS vs iSpring: Which Is Better in 2026?",
+      "url": "https://saasstatshub.com/education/talentlms-vs-ispring/",
+      "last_modified": "2026-07-11T22:43:17"
+    },
+    {
+      "title": "The Ultimate Guide to Education Technology in 2026",
+      "url": "https://saasstatshub.com/education/education-technology-guide/",
+      "last_modified": "2026-07-11T21:50:34"
+    },
+    {
+      "title": "Thinkific vs Teachable: Which Is Better in 2026?",
+      "url": "https://saasstatshub.com/education/thinkific-vs-teachable/",
+      "last_modified": "2026-07-11T22:43:15"
+    },
+    {
+      "title": "Udemy vs Coursera: Which Is Better in 2026?",
+      "url": "https://saasstatshub.com/education/udemy-vs-coursera/",
+      "last_modified": "2026-07-11T22:43:12"
+    },
+    {
+      "title": "Virtual Classroom: Setup Guide",
+      "url": "https://saasstatshub.com/education/virtual-classroom-setup/",
+      "last_modified": "2026-07-11T21:53:37"
+    },
+    {
+      "title": "What Is a Learning Management System (LMS)?",
+      "url": "https://saasstatshub.com/education/what-is-a-learning-management-system-lms/",
+      "last_modified": "2026-07-11T21:53:21"
+    },
+    {
+      "title": "What Is Academic Research Tools?",
+      "url": "https://saasstatshub.com/education/what-is-academic-research-tools/",
+      "last_modified": "2026-07-11T21:50:16"
+    },
+    {
+      "title": "What Is Adaptive Learning?",
+      "url": "https://saasstatshub.com/education/what-is-adaptive-learning/",
+      "last_modified": "2026-07-11T21:50:07"
+    },
+    {
+      "title": "What Is Assessment Software?",
+      "url": "https://saasstatshub.com/education/what-is-assessment-software/",
+      "last_modified": "2026-07-11T21:49:46"
+    },
+    {
+      "title": "What Is Campus Management?",
+      "url": "https://saasstatshub.com/education/what-is-campus-management/",
+      "last_modified": "2026-07-11T21:49:30"
+    },
+    {
+      "title": "What Is Curriculum Management?",
+      "url": "https://saasstatshub.com/education/what-is-curriculum-management/",
+      "last_modified": "2026-07-11T21:48:20"
+    },
+    {
+      "title": "What Is EdTech?",
+      "url": "https://saasstatshub.com/education/what-is-edtech/",
+      "last_modified": "2026-07-11T21:47:00"
+    },
+    {
+      "title": "What Is Education Analytics?",
+      "url": "https://saasstatshub.com/education/what-is-education-analytics/",
+      "last_modified": "2026-07-11T21:46:59"
+    },
+    {
+      "title": "What Is Education Content?",
+      "url": "https://saasstatshub.com/education/what-is-education-content/",
+      "last_modified": "2026-07-11T21:46:58"
+    },
+    {
+      "title": "What Is Education LMS?",
+      "url": "https://saasstatshub.com/education/what-is-education-lms/",
+      "last_modified": "2026-07-11T21:46:57"
+    },
+    {
+      "title": "What Is Enrollment Management?",
+      "url": "https://saasstatshub.com/education/what-is-enrollment-management/",
+      "last_modified": "2026-07-11T21:46:39"
+    },
+    {
+      "title": "What Is Higher Ed CRM?",
+      "url": "https://saasstatshub.com/education/what-is-higher-ed-crm/",
+      "last_modified": "2026-07-11T21:45:53"
+    },
+    {
+      "title": "What Is K-12 Administration?",
+      "url": "https://saasstatshub.com/education/what-is-k-12-administration/",
+      "last_modified": "2026-07-11T21:45:21"
+    },
+    {
+      "title": "What Is Online Course Platform?",
+      "url": "https://saasstatshub.com/education/what-is-online-course-platform/",
+      "last_modified": "2026-07-11T21:43:57"
+    },
+    {
+      "title": "What Is Parent Communication?",
+      "url": "https://saasstatshub.com/education/what-is-parent-communication/",
+      "last_modified": "2026-07-11T21:43:52"
+    },
+    {
+      "title": "What Is Plagiarism Detection?",
+      "url": "https://saasstatshub.com/education/what-is-plagiarism-detection/",
+      "last_modified": "2026-07-11T21:43:30"
+    },
+    {
+      "title": "What Is Special Education Software?",
+      "url": "https://saasstatshub.com/education/what-is-special-education-software/",
+      "last_modified": "2026-07-11T21:41:39"
+    },
+    {
+      "title": "What Is Student Engagement?",
+      "url": "https://saasstatshub.com/education/what-is-student-engagement/",
+      "last_modified": "2026-07-11T21:41:34"
+    },
+    {
+      "title": "What Is Student Information System?",
+      "url": "https://saasstatshub.com/education/what-is-student-information-system/",
+      "last_modified": "2026-07-11T21:41:33"
+    },
+    {
+      "title": "What Is Teacher PD?",
+      "url": "https://saasstatshub.com/education/what-is-teacher-pd/",
+      "last_modified": "2026-07-11T21:41:15"
+    },
+    {
+      "title": "What Is Virtual Classroom?",
+      "url": "https://saasstatshub.com/education/what-is-virtual-classroom/",
+      "last_modified": "2026-07-11T21:40:54"
+    }
+  ]
+}

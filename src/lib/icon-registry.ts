@@ -40,6 +40,8 @@ import {
   ChevronDown,
   ChevronRight,
   ExternalLink,
+  Copy,
+  Quote,
 
   // Hot Stat replacements (Req 4.11) — replace s1–s8 emoji
   TrendingUp,
@@ -91,6 +93,8 @@ export const ICON_REGISTRY: Readonly<Record<string, IconBody>> = {
   'chevron-down': ChevronDown as unknown as IconBody,
   'chevron-right': ChevronRight as unknown as IconBody,
   'external-link': ExternalLink as unknown as IconBody,
+  copy: Copy as unknown as IconBody,
+  quote: Quote as unknown as IconBody,
 
   // Hot Stat replacements
   'trending-up': TrendingUp as unknown as IconBody,

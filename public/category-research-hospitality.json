@@ -1,0 +1,241 @@
+{
+  "schema_version": "1.0",
+  "name": "SaaSStatsHub Hospitality Research Catalog",
+  "url": "https://saasstatshub.com/categories/hospitality/",
+  "publisher": {
+    "name": "SaaSStatsHub Research Desk",
+    "url": "https://saasstatshub.com/research-desk/"
+  },
+  "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+  "catalog_modified": "2026-07-11T22:44:10",
+  "category": "Hospitality",
+  "category_slug": "hospitality",
+  "category_article_count": 45,
+  "articles": [
+    {
+      "title": "Best Event Management in 2026",
+      "url": "https://saasstatshub.com/hospitality/best-event-management-software/",
+      "last_modified": "2026-07-11T22:05:27"
+    },
+    {
+      "title": "Best Free Hotel Software in 2026",
+      "url": "https://saasstatshub.com/hospitality/free-hotel-software-2026/",
+      "last_modified": "2026-07-11T21:58:16"
+    },
+    {
+      "title": "Best Hospitality CRM in 2026",
+      "url": "https://saasstatshub.com/hospitality/best-hospitality-crm/",
+      "last_modified": "2026-07-11T22:05:17"
+    },
+    {
+      "title": "Best Hotel Management in 2026",
+      "url": "https://saasstatshub.com/hospitality/best-hotel-management-software/",
+      "last_modified": "2026-07-11T22:05:16"
+    },
+    {
+      "title": "Best Online Booking in 2026",
+      "url": "https://saasstatshub.com/hospitality/best-online-booking-platforms/",
+      "last_modified": "2026-07-11T22:04:59"
+    },
+    {
+      "title": "Best Restaurant POS in 2026",
+      "url": "https://saasstatshub.com/hospitality/best-restaurant-pos-systems/",
+      "last_modified": "2026-07-11T22:04:47"
+    },
+    {
+      "title": "Cloudbeds vs Little Hotelier: Which Is Better in 2026?",
+      "url": "https://saasstatshub.com/hospitality/cloudbeds-vs-little-hotelier/",
+      "last_modified": "2026-07-11T22:44:10"
+    },
+    {
+      "title": "Event Venue: Management Guide",
+      "url": "https://saasstatshub.com/hospitality/event-venue-management/",
+      "last_modified": "2026-07-11T21:58:46"
+    },
+    {
+      "title": "Guest Experience: Essential Tools",
+      "url": "https://saasstatshub.com/hospitality/guest-experience-tools/",
+      "last_modified": "2026-07-11T21:57:55"
+    },
+    {
+      "title": "Hospitality Marketing: Effective Strategies",
+      "url": "https://saasstatshub.com/hospitality/hospitality-marketing/",
+      "last_modified": "2026-07-11T21:57:45"
+    },
+    {
+      "title": "Hospitality Staffing: Best Practices",
+      "url": "https://saasstatshub.com/hospitality/hospitality-staffing/",
+      "last_modified": "2026-07-11T21:57:43"
+    },
+    {
+      "title": "Hospitality Technology Trends",
+      "url": "https://saasstatshub.com/hospitality/hospitality-technology-trends/",
+      "last_modified": "2026-07-11T21:57:42"
+    },
+    {
+      "title": "Hotel Channel Management: Guide",
+      "url": "https://saasstatshub.com/hospitality/hotel-channel-management/",
+      "last_modified": "2026-07-11T21:57:41"
+    },
+    {
+      "title": "Hotel Revenue Management Strategies",
+      "url": "https://saasstatshub.com/hospitality/hotel-revenue-management-strategies/",
+      "last_modified": "2026-07-11T21:57:40"
+    },
+    {
+      "title": "Hotel Technology: Trends to Watch",
+      "url": "https://saasstatshub.com/hospitality/hotel-technology-trends/",
+      "last_modified": "2026-07-11T21:57:37"
+    },
+    {
+      "title": "How to Automate Event Management in 2026: A Complete Guide",
+      "url": "https://saasstatshub.com/hospitality/how-to-automate-event-management/",
+      "last_modified": "2026-07-11T22:04:04"
+    },
+    {
+      "title": "How to Choose Hotel Management Software in 2026: A Complete Guide",
+      "url": "https://saasstatshub.com/hospitality/how-to-choose-hotel-management-software/",
+      "last_modified": "2026-07-11T22:03:50"
+    },
+    {
+      "title": "How to Implement Hospitality CRM in 2026: A Complete Guide",
+      "url": "https://saasstatshub.com/hospitality/how-to-implement-hospitality-crm/",
+      "last_modified": "2026-07-11T22:03:26"
+    },
+    {
+      "title": "How to Implement Restaurant POS in 2026: A Complete Guide",
+      "url": "https://saasstatshub.com/hospitality/how-to-implement-restaurant-pos/",
+      "last_modified": "2026-07-11T22:03:20"
+    },
+    {
+      "title": "How to Set Up Online Booking in 2026: A Complete Guide",
+      "url": "https://saasstatshub.com/hospitality/how-to-set-up-online-booking/",
+      "last_modified": "2026-07-11T22:03:01"
+    },
+    {
+      "title": "Lightspeed vs TouchBistro: Which Is Better in 2026?",
+      "url": "https://saasstatshub.com/hospitality/lightspeed-vs-touchbistro/",
+      "last_modified": "2026-07-11T22:43:42"
+    },
+    {
+      "title": "Online Booking System Guide",
+      "url": "https://saasstatshub.com/hospitality/online-booking-system-guide/",
+      "last_modified": "2026-07-11T21:55:54"
+    },
+    {
+      "title": "Oracle OPERA vs Cloudbeds: Which Is Better in 2026?",
+      "url": "https://saasstatshub.com/hospitality/opera-vs-cloudbeds/",
+      "last_modified": "2026-07-11T22:43:36"
+    },
+    {
+      "title": "Restaurant Inventory: Management Guide",
+      "url": "https://saasstatshub.com/hospitality/restaurant-inventory-management/",
+      "last_modified": "2026-07-11T21:54:59"
+    },
+    {
+      "title": "Restaurant Management: Complete Guide",
+      "url": "https://saasstatshub.com/hospitality/restaurant-management-guide/",
+      "last_modified": "2026-07-11T21:54:58"
+    },
+    {
+      "title": "Restaurant POS Systems Comparison",
+      "url": "https://saasstatshub.com/hospitality/restaurant-pos-systems-comparison/",
+      "last_modified": "2026-07-11T21:54:57"
+    },
+    {
+      "title": "Rezdy vs Peek Pro: Which Is Better in 2026?",
+      "url": "https://saasstatshub.com/hospitality/rezdy-vs-peek-pro/",
+      "last_modified": "2026-07-11T22:43:28"
+    },
+    {
+      "title": "The Ultimate Guide to Hospitality Technology in 2026",
+      "url": "https://saasstatshub.com/hospitality/hospitality-technology-guide/",
+      "last_modified": "2026-07-11T21:50:30"
+    },
+    {
+      "title": "Toast vs Square for Restaurants: Which Is Better in 2026?",
+      "url": "https://saasstatshub.com/hospitality/toast-vs-square-restaurants/",
+      "last_modified": "2026-07-11T22:43:13"
+    },
+    {
+      "title": "What Is Catering Management?",
+      "url": "https://saasstatshub.com/hospitality/what-is-catering-management/",
+      "last_modified": "2026-07-11T21:49:25"
+    },
+    {
+      "title": "What Is Channel Manager?",
+      "url": "https://saasstatshub.com/hospitality/what-is-channel-manager/",
+      "last_modified": "2026-07-11T21:49:19"
+    },
+    {
+      "title": "What Is Event Management (Hospitality)?",
+      "url": "https://saasstatshub.com/hospitality/what-is-event-management-hospitality/",
+      "last_modified": "2026-07-11T21:46:36"
+    },
+    {
+      "title": "What Is Guest Experience?",
+      "url": "https://saasstatshub.com/hospitality/what-is-guest-experience/",
+      "last_modified": "2026-07-11T21:46:05"
+    },
+    {
+      "title": "What Is Guest Messaging?",
+      "url": "https://saasstatshub.com/hospitality/what-is-guest-messaging/",
+      "last_modified": "2026-07-11T21:46:03"
+    },
+    {
+      "title": "What Is Hotel Analytics?",
+      "url": "https://saasstatshub.com/hospitality/what-is-hotel-analytics/",
+      "last_modified": "2026-07-11T21:45:52"
+    },
+    {
+      "title": "What Is Hotel Management Software?",
+      "url": "https://saasstatshub.com/hospitality/what-is-hotel-management-software/",
+      "last_modified": "2026-07-11T21:53:08"
+    },
+    {
+      "title": "What Is Hotel PMS?",
+      "url": "https://saasstatshub.com/hospitality/what-is-hotel-pms/",
+      "last_modified": "2026-07-11T21:45:51"
+    },
+    {
+      "title": "What Is Housekeeping Management?",
+      "url": "https://saasstatshub.com/hospitality/what-is-housekeeping-management/",
+      "last_modified": "2026-07-11T21:45:50"
+    },
+    {
+      "title": "What Is Loyalty Program?",
+      "url": "https://saasstatshub.com/hospitality/what-is-loyalty-program/",
+      "last_modified": "2026-07-11T21:44:47"
+    },
+    {
+      "title": "What Is Online Reputation?",
+      "url": "https://saasstatshub.com/hospitality/what-is-online-reputation/",
+      "last_modified": "2026-07-11T21:43:56"
+    },
+    {
+      "title": "What Is Property Maintenance?",
+      "url": "https://saasstatshub.com/hospitality/what-is-property-maintenance/",
+      "last_modified": "2026-07-11T21:43:01"
+    },
+    {
+      "title": "What Is Restaurant POS?",
+      "url": "https://saasstatshub.com/hospitality/what-is-restaurant-pos/",
+      "last_modified": "2026-07-11T21:42:32"
+    },
+    {
+      "title": "What Is Revenue Management (Hospitality)?",
+      "url": "https://saasstatshub.com/hospitality/what-is-revenue-management-hospitality/",
+      "last_modified": "2026-07-11T21:42:28"
+    },
+    {
+      "title": "What Is Spa Management?",
+      "url": "https://saasstatshub.com/hospitality/what-is-spa-management/",
+      "last_modified": "2026-07-11T21:41:41"
+    },
+    {
+      "title": "What Is Vacation Rental?",
+      "url": "https://saasstatshub.com/hospitality/what-is-vacation-rental/",
+      "last_modified": "2026-07-11T21:41:00"
+    }
+  ]
+}

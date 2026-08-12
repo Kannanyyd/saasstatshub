@@ -1,0 +1,486 @@
+{
+  "schema_version": "1.0",
+  "name": "SaaSStatsHub HR & Payroll Research Catalog",
+  "url": "https://saasstatshub.com/categories/hr/",
+  "publisher": {
+    "name": "SaaSStatsHub Research Desk",
+    "url": "https://saasstatshub.com/research-desk/"
+  },
+  "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+  "catalog_modified": "2026-08-08T09:49:40",
+  "category": "HR & Payroll",
+  "category_slug": "hr",
+  "category_article_count": 94,
+  "articles": [
+    {
+      "title": "3 Best ADP Alternatives for 2026",
+      "url": "https://saasstatshub.com/hr/adp-alternatives/",
+      "last_modified": "2026-07-11T22:43:06"
+    },
+    {
+      "title": "3 Best Gusto Alternatives for 2026",
+      "url": "https://saasstatshub.com/hr/gusto-alternatives/",
+      "last_modified": "2026-07-11T22:42:54"
+    },
+    {
+      "title": "3 Best Paychex Alternatives for 2026",
+      "url": "https://saasstatshub.com/hr/paychex-alternatives/",
+      "last_modified": "2026-07-11T21:39:39"
+    },
+    {
+      "title": "3 Best Rippling Alternatives for 2026",
+      "url": "https://saasstatshub.com/hr/rippling-alternatives/",
+      "last_modified": "2026-07-11T21:39:34"
+    },
+    {
+      "title": "3 Best Workday Alternatives for 2026",
+      "url": "https://saasstatshub.com/hr/workday-alternatives/",
+      "last_modified": "2026-07-11T21:39:16"
+    },
+    {
+      "title": "4 Best BambooHR Alternatives for 2026",
+      "url": "https://saasstatshub.com/hr/bamboohr-alternatives/",
+      "last_modified": "2026-07-11T22:43:03"
+    },
+    {
+      "title": "ADP vs Paychex: Which Is Better in 2026?",
+      "url": "https://saasstatshub.com/hr/adp-vs-paychex/",
+      "last_modified": "2026-07-11T22:46:11"
+    },
+    {
+      "title": "ADP vs Paylocity: Which Is Better in 2026?",
+      "url": "https://saasstatshub.com/hr/adp-vs-paylocity/",
+      "last_modified": "2026-07-11T22:45:29"
+    },
+    {
+      "title": "BambooHR vs Gusto: Which Is Better in 2026?",
+      "url": "https://saasstatshub.com/hr/bamboohr-vs-gusto/",
+      "last_modified": "2026-07-11T22:46:10"
+    },
+    {
+      "title": "BambooHR vs Workday: Which HR Platform Is Better in 2026?",
+      "url": "https://saasstatshub.com/hr/bamboohr-vs-workday/",
+      "last_modified": "2026-07-11T22:13:28"
+    },
+    {
+      "title": "BambooHR vs Zenefits: Which Is Better in 2026?",
+      "url": "https://saasstatshub.com/hr/bamboohr-vs-zenefits/",
+      "last_modified": "2026-07-11T22:45:27"
+    },
+    {
+      "title": "Best ATS for Enterprise in 2026",
+      "url": "https://saasstatshub.com/hr/best-ats-for-enterprise/",
+      "last_modified": "2026-07-11T21:52:30"
+    },
+    {
+      "title": "Best ATS for Startups in 2026",
+      "url": "https://saasstatshub.com/hr/best-ats-for-startups/",
+      "last_modified": "2026-07-11T21:52:30"
+    },
+    {
+      "title": "Best Employee Engagement in 2026",
+      "url": "https://saasstatshub.com/hr/best-employee-engagement-software/",
+      "last_modified": "2026-07-11T22:09:03"
+    },
+    {
+      "title": "Best Employee Engagement Tools in 2026",
+      "url": "https://saasstatshub.com/hr/best-employee-engagement-tools/",
+      "last_modified": "2026-07-11T21:51:45"
+    },
+    {
+      "title": "Best Employee Onboarding Software in 2026",
+      "url": "https://saasstatshub.com/hr/best-employee-onboarding-software/",
+      "last_modified": "2026-07-11T22:13:11"
+    },
+    {
+      "title": "Best Employee Recognition in 2026",
+      "url": "https://saasstatshub.com/hr/best-employee-recognition-software/",
+      "last_modified": "2026-07-11T22:09:02"
+    },
+    {
+      "title": "Best Free HR Software in 2026",
+      "url": "https://saasstatshub.com/hr/free-hr-software-2026/",
+      "last_modified": "2026-07-11T21:58:15"
+    },
+    {
+      "title": "Best Global Payroll in 2026",
+      "url": "https://saasstatshub.com/hr/best-global-payroll-platforms/",
+      "last_modified": "2026-07-11T22:08:56"
+    },
+    {
+      "title": "Best HR Software for Enterprise in 2026",
+      "url": "https://saasstatshub.com/hr/best-hr-software-for-enterprise/",
+      "last_modified": "2026-07-11T21:51:38"
+    },
+    {
+      "title": "Best HR Software for Healthcare in 2026",
+      "url": "https://saasstatshub.com/hr/best-hr-software-for-healthcare/",
+      "last_modified": "2026-07-11T21:51:36"
+    },
+    {
+      "title": "Best HR Software for Remote Teams in 2026",
+      "url": "https://saasstatshub.com/hr/best-hr-software-for-remote-teams/",
+      "last_modified": "2026-07-11T21:51:35"
+    },
+    {
+      "title": "Best HR Software for Small Business 2026",
+      "url": "https://saasstatshub.com/hr/best-hr-software-small-business/",
+      "last_modified": "2026-07-17T22:33:08"
+    },
+    {
+      "title": "Best HR Software for Small Business 2026: HRIS Guide",
+      "url": "https://saasstatshub.com/hr/best-hr-software-for-small-business-2026/",
+      "last_modified": "2026-07-11T22:01:24"
+    },
+    {
+      "title": "Best HR Software in 2026",
+      "url": "https://saasstatshub.com/hr/best-hr-software/",
+      "last_modified": "2026-07-11T22:13:06"
+    },
+    {
+      "title": "Best HRIS in 2026",
+      "url": "https://saasstatshub.com/hr/best-hris-systems/",
+      "last_modified": "2026-07-11T22:08:55"
+    },
+    {
+      "title": "Best Payroll Software for Small Business in 2026",
+      "url": "https://saasstatshub.com/hr/best-payroll-software-for-small-business/",
+      "last_modified": "2026-07-11T21:51:13"
+    },
+    {
+      "title": "Best Payroll Software in 2026",
+      "url": "https://saasstatshub.com/hr/best-payroll-software/",
+      "last_modified": "2026-07-11T22:13:01"
+    },
+    {
+      "title": "Best Performance Management Software in 2026",
+      "url": "https://saasstatshub.com/hr/best-performance-management-software/",
+      "last_modified": "2026-07-11T22:12:59"
+    },
+    {
+      "title": "Best Performance Management Tools in 2026",
+      "url": "https://saasstatshub.com/hr/best-performance-management-tools/",
+      "last_modified": "2026-07-11T21:51:12"
+    },
+    {
+      "title": "Best Recruiting Tools in 2026",
+      "url": "https://saasstatshub.com/hr/best-recruiting-tools/",
+      "last_modified": "2026-07-11T21:50:56"
+    },
+    {
+      "title": "Best Recruitment CRM in 2026",
+      "url": "https://saasstatshub.com/hr/best-recruitment-crm/",
+      "last_modified": "2026-07-11T22:08:41"
+    },
+    {
+      "title": "Deel vs Remote: Which Is Better in 2026?",
+      "url": "https://saasstatshub.com/hr/deel-vs-remote/",
+      "last_modified": "2026-07-11T22:45:09"
+    },
+    {
+      "title": "DEI Tools: Building an Inclusive Workplace",
+      "url": "https://saasstatshub.com/hr/dei-tools-for-workplace/",
+      "last_modified": "2026-07-11T21:59:43"
+    },
+    {
+      "title": "Employee Benefits: Administration Guide",
+      "url": "https://saasstatshub.com/hr/employee-benefits-administration/",
+      "last_modified": "2026-07-11T21:58:55"
+    },
+    {
+      "title": "Employee Engagement Statistics 2026: Gallup, Workplace AI and Retention Signals",
+      "url": "https://saasstatshub.com/hr/employee-engagement-statistics-2026/",
+      "last_modified": "2026-07-11T22:14:45"
+    },
+    {
+      "title": "Employee Onboarding Best Practices",
+      "url": "https://saasstatshub.com/hr/employee-onboarding-best-practices/",
+      "last_modified": "2026-07-11T21:58:52"
+    },
+    {
+      "title": "Employee Onboarding Checklist: Complete Guide",
+      "url": "https://saasstatshub.com/hr/employee-onboarding-checklist/",
+      "last_modified": "2026-07-11T21:58:51"
+    },
+    {
+      "title": "Gusto vs ADP: Which Payroll Platform Is Better in 2026?",
+      "url": "https://saasstatshub.com/hr/gusto-vs-adp/",
+      "last_modified": "2026-07-11T22:12:46"
+    },
+    {
+      "title": "Gusto vs OnPay: Which Is Better in 2026?",
+      "url": "https://saasstatshub.com/hr/gusto-vs-onpay/",
+      "last_modified": "2026-07-11T22:45:02"
+    },
+    {
+      "title": "Gusto vs Rippling: Which Is Better in 2026?",
+      "url": "https://saasstatshub.com/hr/gusto-vs-rippling/",
+      "last_modified": "2026-07-11T22:46:01"
+    },
+    {
+      "title": "How Payroll Software Works",
+      "url": "https://saasstatshub.com/hr/how-payroll-software-works/",
+      "last_modified": "2026-07-11T21:57:30"
+    },
+    {
+      "title": "How to Build Employee Recognition Program in 2026: A Complete Guide",
+      "url": "https://saasstatshub.com/hr/how-to-build-employee-recognition-program/",
+      "last_modified": "2026-07-11T22:07:51"
+    },
+    {
+      "title": "How to Build Hiring Pipeline in 2026: A Complete Guide",
+      "url": "https://saasstatshub.com/hr/how-to-build-hiring-pipeline/",
+      "last_modified": "2026-07-11T22:07:50"
+    },
+    {
+      "title": "How to Choose an LMS in 2026: Selection Guide",
+      "url": "https://saasstatshub.com/hr/how-to-choose-lms/",
+      "last_modified": "2026-07-11T22:07:38"
+    },
+    {
+      "title": "How to Choose HR Software in 2026",
+      "url": "https://saasstatshub.com/hr/how-to-choose-hr-software/",
+      "last_modified": "2026-07-11T22:12:32"
+    },
+    {
+      "title": "How to Choose Payroll Software in 2026",
+      "url": "https://saasstatshub.com/hr/how-to-choose-payroll-software/",
+      "last_modified": "2026-07-11T22:12:30"
+    },
+    {
+      "title": "How to Implement Employee Engagement in 2026: A Complete Guide",
+      "url": "https://saasstatshub.com/hr/how-to-implement-employee-engagement-program/",
+      "last_modified": "2026-07-11T22:07:18"
+    },
+    {
+      "title": "How to Implement People Analytics in 2026: A Complete Guide",
+      "url": "https://saasstatshub.com/hr/how-to-implement-people-analytics/",
+      "last_modified": "2026-07-11T22:07:13"
+    },
+    {
+      "title": "How to Set Up Global Payroll in 2026: A Complete Guide",
+      "url": "https://saasstatshub.com/hr/how-to-set-up-global-payroll/",
+      "last_modified": "2026-07-11T22:06:50"
+    },
+    {
+      "title": "HR & HCM Statistics 2026: Workforce, Spending & Adoption Data",
+      "url": "https://saasstatshub.com/hr/hr-hcm-statistics-2026/",
+      "last_modified": "2026-07-17T22:33:01"
+    },
+    {
+      "title": "HR Analytics: Getting Started Guide",
+      "url": "https://saasstatshub.com/hr/hr-analytics-guide/",
+      "last_modified": "2026-07-11T21:57:23"
+    },
+    {
+      "title": "HR Compliance Guide: What You Need to Know",
+      "url": "https://saasstatshub.com/hr/hr-compliance-guide-2026/",
+      "last_modified": "2026-07-11T21:57:20"
+    },
+    {
+      "title": "Most In-Demand SaaS Jobs 2026",
+      "url": "https://saasstatshub.com/hr/most-in-demand-saas-jobs/",
+      "last_modified": "2026-07-11T22:13:36"
+    },
+    {
+      "title": "Payroll Statistics 2026: Paychex Scale, Payroll Services and HR Context",
+      "url": "https://saasstatshub.com/hr/payroll-statistics-2026/",
+      "last_modified": "2026-07-11T22:14:41"
+    },
+    {
+      "title": "Payroll Tax Calculator: How to Use",
+      "url": "https://saasstatshub.com/hr/payroll-tax-calculator/",
+      "last_modified": "2026-07-11T21:55:44"
+    },
+    {
+      "title": "Performance Review Templates Guide",
+      "url": "https://saasstatshub.com/hr/performance-review-templates-guide/",
+      "last_modified": "2026-07-11T21:55:41"
+    },
+    {
+      "title": "Performance Review: Template and Best Practices",
+      "url": "https://saasstatshub.com/hr/performance-review-template/",
+      "last_modified": "2026-07-11T21:55:43"
+    },
+    {
+      "title": "Recruitment ATS: Solutions Compared",
+      "url": "https://saasstatshub.com/hr/recruitment-ats-comparison/",
+      "last_modified": "2026-07-11T21:55:10"
+    },
+    {
+      "title": "Remote Work Policy: Template and Guide",
+      "url": "https://saasstatshub.com/hr/remote-work-policy-template/",
+      "last_modified": "2026-07-11T21:55:02"
+    },
+    {
+      "title": "Rippling vs Gusto vs BambooHR 2026",
+      "url": "https://saasstatshub.com/hr/rippling-vs-gusto-vs-bamboohr/",
+      "last_modified": "2026-07-11T22:13:59"
+    },
+    {
+      "title": "SaaS Founder Salary 2026: How Much to Pay Yourself by Stage",
+      "url": "https://saasstatshub.com/hr/saas-founder-salary/",
+      "last_modified": "2026-07-11T22:13:37"
+    },
+    {
+      "title": "SaaS Product Manager Salary 2026",
+      "url": "https://saasstatshub.com/hr/saas-product-manager-salary/",
+      "last_modified": "2026-07-11T22:13:39"
+    },
+    {
+      "title": "SaaS Sales Rep Salary 2026: Base Pay, OTE and Commission",
+      "url": "https://saasstatshub.com/hr/saas-sales-rep-salary/",
+      "last_modified": "2026-08-08T09:49:40"
+    },
+    {
+      "title": "SaaS Software Engineer Salary 2026",
+      "url": "https://saasstatshub.com/hr/saas-software-engineer-salary/",
+      "last_modified": "2026-07-11T22:13:38"
+    },
+    {
+      "title": "Talent Acquisition Statistics 2026: LinkedIn Recruiting Data and Workflow Signals",
+      "url": "https://saasstatshub.com/hr/talent-acquisition-statistics-2026/",
+      "last_modified": "2026-07-11T22:14:36"
+    },
+    {
+      "title": "The Ultimate Guide to HR Technology in 2026",
+      "url": "https://saasstatshub.com/hr/hr-technology-guide/",
+      "last_modified": "2026-07-11T21:50:29"
+    },
+    {
+      "title": "What Is Applicant Tracking System?",
+      "url": "https://saasstatshub.com/hr/what-is-applicant-tracking-system/",
+      "last_modified": "2026-07-11T21:49:48"
+    },
+    {
+      "title": "What Is Benefits Administration?",
+      "url": "https://saasstatshub.com/hr/what-is-benefits-administration/",
+      "last_modified": "2026-07-11T21:49:42"
+    },
+    {
+      "title": "What Is Compensation Management?",
+      "url": "https://saasstatshub.com/hr/what-is-compensation-management/",
+      "last_modified": "2026-07-11T21:49:00"
+    },
+    {
+      "title": "What Is Diversity and Inclusion?",
+      "url": "https://saasstatshub.com/hr/what-is-diversity-and-inclusion/",
+      "last_modified": "2026-07-11T21:47:31"
+    },
+    {
+      "title": "What Is Employee Engagement?",
+      "url": "https://saasstatshub.com/hr/what-is-employee-engagement/",
+      "last_modified": "2026-07-11T21:46:46"
+    },
+    {
+      "title": "What Is Employee Handbook?",
+      "url": "https://saasstatshub.com/hr/what-is-employee-handbook/",
+      "last_modified": "2026-07-11T21:46:45"
+    },
+    {
+      "title": "What Is Employee Onboarding?",
+      "url": "https://saasstatshub.com/hr/what-is-employee-onboarding/",
+      "last_modified": "2026-07-11T21:46:44"
+    },
+    {
+      "title": "What Is Employee Self-Service?",
+      "url": "https://saasstatshub.com/hr/what-is-employee-self-service/",
+      "last_modified": "2026-07-11T21:46:43"
+    },
+    {
+      "title": "What Is Employee Wellness?",
+      "url": "https://saasstatshub.com/hr/what-is-employee-wellness/",
+      "last_modified": "2026-07-11T21:46:42"
+    },
+    {
+      "title": "What Is HR Analytics?",
+      "url": "https://saasstatshub.com/hr/what-is-hr-analytics/",
+      "last_modified": "2026-07-11T21:45:48"
+    },
+    {
+      "title": "What Is HR Compliance?",
+      "url": "https://saasstatshub.com/hr/what-is-hr-compliance/",
+      "last_modified": "2026-07-11T21:45:47"
+    },
+    {
+      "title": "What Is HR Service Delivery?",
+      "url": "https://saasstatshub.com/hr/what-is-hr-service-delivery/",
+      "last_modified": "2026-07-11T21:45:46"
+    },
+    {
+      "title": "What Is HR Software?",
+      "url": "https://saasstatshub.com/hr/what-is-hr-software/",
+      "last_modified": "2026-07-11T21:45:44"
+    },
+    {
+      "title": "What Is HR Technology?",
+      "url": "https://saasstatshub.com/hr/what-is-hr-technology/",
+      "last_modified": "2026-07-11T21:45:43"
+    },
+    {
+      "title": "What Is HRIS and Why Do You Need One?",
+      "url": "https://saasstatshub.com/hr/what-is-hris-and-why-do-you-need-one/",
+      "last_modified": "2026-07-11T21:53:06"
+    },
+    {
+      "title": "What Is LMS?",
+      "url": "https://saasstatshub.com/hr/what-is-lms/",
+      "last_modified": "2026-07-11T21:44:50"
+    },
+    {
+      "title": "What Is Offboarding?",
+      "url": "https://saasstatshub.com/hr/what-is-offboarding/",
+      "last_modified": "2026-07-11T21:44:02"
+    },
+    {
+      "title": "What Is Payroll Software?",
+      "url": "https://saasstatshub.com/hr/what-is-payroll-software/",
+      "last_modified": "2026-07-11T21:43:42"
+    },
+    {
+      "title": "What Is People Analytics?",
+      "url": "https://saasstatshub.com/hr/what-is-people-analytics/",
+      "last_modified": "2026-07-11T21:43:39"
+    },
+    {
+      "title": "What Is Performance Management?",
+      "url": "https://saasstatshub.com/hr/what-is-performance-management/",
+      "last_modified": "2026-07-11T21:43:38"
+    },
+    {
+      "title": "What Is Recruitment Marketing?",
+      "url": "https://saasstatshub.com/hr/what-is-recruitment-marketing/",
+      "last_modified": "2026-07-11T21:42:39"
+    },
+    {
+      "title": "What Is Remote Work Policy?",
+      "url": "https://saasstatshub.com/hr/what-is-remote-work-policy/",
+      "last_modified": "2026-07-11T21:42:34"
+    },
+    {
+      "title": "What Is Succession Planning?",
+      "url": "https://saasstatshub.com/hr/what-is-succession-planning/",
+      "last_modified": "2026-07-11T21:41:27"
+    },
+    {
+      "title": "What Is Talent Acquisition?",
+      "url": "https://saasstatshub.com/hr/what-is-talent-acquisition/",
+      "last_modified": "2026-07-11T21:41:19"
+    },
+    {
+      "title": "What Is Time Tracking?",
+      "url": "https://saasstatshub.com/hr/what-is-time-tracking/",
+      "last_modified": "2026-07-11T21:41:08"
+    },
+    {
+      "title": "What Is Workforce Planning?",
+      "url": "https://saasstatshub.com/hr/what-is-workforce-planning/",
+      "last_modified": "2026-07-11T21:40:32"
+    },
+    {
+      "title": "Workday vs SAP SuccessFactors: Which Is Better in 2026?",
+      "url": "https://saasstatshub.com/hr/workday-vs-successfactors/",
+      "last_modified": "2026-07-11T22:44:24"
+    }
+  ]
+}

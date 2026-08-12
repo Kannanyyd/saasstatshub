@@ -1,0 +1,216 @@
+{
+  "schema_version": "1.0",
+  "name": "SaaSStatsHub E-Signature Research Catalog",
+  "url": "https://saasstatshub.com/categories/e-signature/",
+  "publisher": {
+    "name": "SaaSStatsHub Research Desk",
+    "url": "https://saasstatshub.com/research-desk/"
+  },
+  "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+  "catalog_modified": "2026-07-11T22:44:20",
+  "category": "E-Signature",
+  "category_slug": "e-signature",
+  "category_article_count": 40,
+  "articles": [
+    {
+      "title": "Adobe Sign vs DocuSign: Which Is Better in 2026?",
+      "url": "https://saasstatshub.com/e-signature/adobe-sign-vs-docusign-business/",
+      "last_modified": "2026-07-11T22:44:20"
+    },
+    {
+      "title": "Best Digital Signature in 2026",
+      "url": "https://saasstatshub.com/e-signature/best-digital-signature-tools/",
+      "last_modified": "2026-07-11T22:05:39"
+    },
+    {
+      "title": "Best E-Signature for Enterprise in 2026",
+      "url": "https://saasstatshub.com/e-signature/best-e-signature-for-enterprise/",
+      "last_modified": "2026-07-11T22:05:35"
+    },
+    {
+      "title": "Best E-Signature for Small Business in 2026",
+      "url": "https://saasstatshub.com/e-signature/best-e-signature-for-small-business/",
+      "last_modified": "2026-07-11T22:05:34"
+    },
+    {
+      "title": "Best E-Signature in 2026",
+      "url": "https://saasstatshub.com/e-signature/best-e-signature-software/",
+      "last_modified": "2026-07-11T22:05:33"
+    },
+    {
+      "title": "Best E-Signature Tools 2026",
+      "url": "https://saasstatshub.com/e-signature/best-e-signature-tools-2026/",
+      "last_modified": "2026-07-11T22:01:26"
+    },
+    {
+      "title": "Best Free E-Signature in 2026",
+      "url": "https://saasstatshub.com/e-signature/best-free-e-signature-tools/",
+      "last_modified": "2026-07-11T22:05:23"
+    },
+    {
+      "title": "Best Free E-Signature Tools in 2026",
+      "url": "https://saasstatshub.com/e-signature/free-e-signature-tools-2026/",
+      "last_modified": "2026-07-11T21:58:22"
+    },
+    {
+      "title": "Bulk E-Signature: Solutions Compared",
+      "url": "https://saasstatshub.com/e-signature/bulk-e-signature-solutions/",
+      "last_modified": "2026-07-11T22:01:07"
+    },
+    {
+      "title": "Digital Signature vs E-Signature",
+      "url": "https://saasstatshub.com/e-signature/digital-signature-vs-e-signature/",
+      "last_modified": "2026-07-11T21:59:36"
+    },
+    {
+      "title": "DocuSign vs PandaDoc: Which Is Better in 2026?",
+      "url": "https://saasstatshub.com/e-signature/docusign-vs-pandadoc/",
+      "last_modified": "2026-07-11T22:44:02"
+    },
+    {
+      "title": "DocuSign vs Ropesoft: Which Is Better in 2026?",
+      "url": "https://saasstatshub.com/e-signature/docusign-vs-ropesoft/",
+      "last_modified": "2026-07-11T22:44:01"
+    },
+    {
+      "title": "E-Signature API: Integration Guide",
+      "url": "https://saasstatshub.com/e-signature/e-signature-api-guide/",
+      "last_modified": "2026-07-11T21:59:29"
+    },
+    {
+      "title": "E-Signature Compliance Guide",
+      "url": "https://saasstatshub.com/e-signature/e-signature-compliance-guide/",
+      "last_modified": "2026-07-11T21:59:27"
+    },
+    {
+      "title": "E-Signature Compliance: What You Need to Know",
+      "url": "https://saasstatshub.com/e-signature/e-signature-compliance/",
+      "last_modified": "2026-07-11T21:59:26"
+    },
+    {
+      "title": "E-Signature for HR: Use Cases and Benefits",
+      "url": "https://saasstatshub.com/e-signature/e-signature-for-hr/",
+      "last_modified": "2026-07-11T21:59:25"
+    },
+    {
+      "title": "E-Signature for Real Estate",
+      "url": "https://saasstatshub.com/e-signature/e-signature-for-real-estate/",
+      "last_modified": "2026-07-11T21:59:23"
+    },
+    {
+      "title": "E-Signature Integrations: Connecting Systems",
+      "url": "https://saasstatshub.com/e-signature/e-signature-integrations/",
+      "last_modified": "2026-07-11T21:59:22"
+    },
+    {
+      "title": "E-Signature Legal Validity: Complete Guide",
+      "url": "https://saasstatshub.com/e-signature/e-signature-legal-validity/",
+      "last_modified": "2026-07-11T21:59:18"
+    },
+    {
+      "title": "E-Signature Security: Best Practices",
+      "url": "https://saasstatshub.com/e-signature/e-signature-security-guide/",
+      "last_modified": "2026-07-11T21:59:17"
+    },
+    {
+      "title": "E-Signature vs Wet Signature: Comparison",
+      "url": "https://saasstatshub.com/e-signature/e-signature-vs-wet-signature/",
+      "last_modified": "2026-07-11T21:59:16"
+    },
+    {
+      "title": "HelloSign vs SignNow: Which Is Better in 2026?",
+      "url": "https://saasstatshub.com/e-signature/hellosign-vs-signnow/",
+      "last_modified": "2026-07-11T22:43:52"
+    },
+    {
+      "title": "How to Automate Document Signing in 2026: A Complete Guide",
+      "url": "https://saasstatshub.com/e-signature/how-to-automate-document-signing/",
+      "last_modified": "2026-07-11T22:04:05"
+    },
+    {
+      "title": "How to Choose E-Signature Tool in 2026: A Complete Guide",
+      "url": "https://saasstatshub.com/e-signature/how-to-choose-e-signature-tool/",
+      "last_modified": "2026-07-11T22:03:52"
+    },
+    {
+      "title": "How to Ensure E-Signature Compliance in 2026: A Complete Guide",
+      "url": "https://saasstatshub.com/e-signature/how-to-ensure-e-signature-compliance/",
+      "last_modified": "2026-07-11T22:03:37"
+    },
+    {
+      "title": "How to Implement E-Signature in 2026: A Complete Guide",
+      "url": "https://saasstatshub.com/e-signature/how-to-implement-e-signature/",
+      "last_modified": "2026-07-11T22:03:29"
+    },
+    {
+      "title": "How to Integrate E-Signature with CRM in 2026: A Complete Guide",
+      "url": "https://saasstatshub.com/e-signature/how-to-integrate-esignature-crm/",
+      "last_modified": "2026-07-11T22:03:14"
+    },
+    {
+      "title": "SignNow vs PandaDoc: Which Is Better in 2026?",
+      "url": "https://saasstatshub.com/e-signature/signnow-vs-pandadoc/",
+      "last_modified": "2026-07-11T22:43:20"
+    },
+    {
+      "title": "The Ultimate Guide to E-Signature Software in 2026",
+      "url": "https://saasstatshub.com/e-signature/e-signature-guide/",
+      "last_modified": "2026-07-11T21:50:36"
+    },
+    {
+      "title": "What Is an E-Signature and Is It Legally Binding?",
+      "url": "https://saasstatshub.com/e-signature/what-is-an-e-signature-and-is-it-legally-binding/",
+      "last_modified": "2026-07-11T21:53:19"
+    },
+    {
+      "title": "What Is CLM?",
+      "url": "https://saasstatshub.com/e-signature/what-is-clm/",
+      "last_modified": "2026-07-11T21:49:11"
+    },
+    {
+      "title": "What Is Digital Signature?",
+      "url": "https://saasstatshub.com/e-signature/what-is-digital-signature/",
+      "last_modified": "2026-07-11T21:47:33"
+    },
+    {
+      "title": "What Is Document Generation?",
+      "url": "https://saasstatshub.com/e-signature/what-is-document-generation/",
+      "last_modified": "2026-07-11T21:47:27"
+    },
+    {
+      "title": "What Is Document Workflow?",
+      "url": "https://saasstatshub.com/e-signature/what-is-document-workflow/",
+      "last_modified": "2026-07-11T21:47:26"
+    },
+    {
+      "title": "What Is E-Sign Compliance?",
+      "url": "https://saasstatshub.com/e-signature/what-is-e-sign-compliance/",
+      "last_modified": "2026-07-11T21:47:07"
+    },
+    {
+      "title": "What Is E-Signature Software?",
+      "url": "https://saasstatshub.com/e-signature/what-is-e-signature-software/",
+      "last_modified": "2026-07-11T21:47:06"
+    },
+    {
+      "title": "What Is Electronic Notarization?",
+      "url": "https://saasstatshub.com/e-signature/what-is-electronic-notarization/",
+      "last_modified": "2026-07-11T21:46:54"
+    },
+    {
+      "title": "What Is Form Builder?",
+      "url": "https://saasstatshub.com/e-signature/what-is-form-builder/",
+      "last_modified": "2026-07-11T21:46:19"
+    },
+    {
+      "title": "What Is Identity Verification?",
+      "url": "https://saasstatshub.com/e-signature/what-is-identity-verification/",
+      "last_modified": "2026-07-11T21:45:39"
+    },
+    {
+      "title": "What Is Seal Management?",
+      "url": "https://saasstatshub.com/e-signature/what-is-seal-management/",
+      "last_modified": "2026-07-11T21:41:57"
+    }
+  ]
+}

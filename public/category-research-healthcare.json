@@ -1,0 +1,296 @@
+{
+  "schema_version": "1.0",
+  "name": "SaaSStatsHub Healthcare Research Catalog",
+  "url": "https://saasstatshub.com/categories/healthcare/",
+  "publisher": {
+    "name": "SaaSStatsHub Research Desk",
+    "url": "https://saasstatshub.com/research-desk/"
+  },
+  "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+  "catalog_modified": "2026-07-11T22:44:13",
+  "category": "Healthcare",
+  "category_slug": "healthcare",
+  "category_article_count": 56,
+  "articles": [
+    {
+      "title": "Best EHR Systems in 2026",
+      "url": "https://saasstatshub.com/healthcare/best-ehr-systems/",
+      "last_modified": "2026-07-11T22:05:30"
+    },
+    {
+      "title": "Best Free EHR Options in 2026",
+      "url": "https://saasstatshub.com/healthcare/free-ehr-options-2026/",
+      "last_modified": "2026-07-11T21:58:21"
+    },
+    {
+      "title": "Best Healthcare CRM in 2026",
+      "url": "https://saasstatshub.com/healthcare/best-healthcare-crm/",
+      "last_modified": "2026-07-11T22:05:20"
+    },
+    {
+      "title": "Best Medical Billing in 2026",
+      "url": "https://saasstatshub.com/healthcare/best-medical-billing-software/",
+      "last_modified": "2026-07-11T22:05:06"
+    },
+    {
+      "title": "Best Medical Practice Management in 2026",
+      "url": "https://saasstatshub.com/healthcare/best-medical-practice-management-software/",
+      "last_modified": "2026-07-11T22:05:04"
+    },
+    {
+      "title": "Best Patient Scheduling in 2026",
+      "url": "https://saasstatshub.com/healthcare/best-patient-scheduling-software/",
+      "last_modified": "2026-07-11T22:04:56"
+    },
+    {
+      "title": "Best Remote Patient Monitoring in 2026",
+      "url": "https://saasstatshub.com/healthcare/best-remote-patient-monitoring-tools/",
+      "last_modified": "2026-07-11T22:04:48"
+    },
+    {
+      "title": "Best Telemedicine in 2026",
+      "url": "https://saasstatshub.com/healthcare/best-telemedicine-platforms/",
+      "last_modified": "2026-07-11T22:04:42"
+    },
+    {
+      "title": "ChiroTouch vs eClinicalWorks: Which Is Better in 2026?",
+      "url": "https://saasstatshub.com/healthcare/chirotouch-vs-eclinicalworks/",
+      "last_modified": "2026-07-11T22:44:13"
+    },
+    {
+      "title": "Clinical Workflow: Automation Guide",
+      "url": "https://saasstatshub.com/healthcare/clinical-workflow-automation/",
+      "last_modified": "2026-07-11T22:00:57"
+    },
+    {
+      "title": "DrChrono vs athenahealth: Which Is Better in 2026?",
+      "url": "https://saasstatshub.com/healthcare/drchrono-vs-athenahealth/",
+      "last_modified": "2026-07-11T22:43:59"
+    },
+    {
+      "title": "Epic vs athenahealth: Which Is Better in 2026?",
+      "url": "https://saasstatshub.com/healthcare/epic-vs-athenahealth/",
+      "last_modified": "2026-07-11T22:43:58"
+    },
+    {
+      "title": "Epic vs Cerner: Which Is Better in 2026?",
+      "url": "https://saasstatshub.com/healthcare/epic-vs-cerner/",
+      "last_modified": "2026-07-11T22:04:13"
+    },
+    {
+      "title": "Healthcare Compliance: Checklist and Guide",
+      "url": "https://saasstatshub.com/healthcare/healthcare-compliance-checklist/",
+      "last_modified": "2026-07-11T21:57:52"
+    },
+    {
+      "title": "Healthcare Data Security Guide",
+      "url": "https://saasstatshub.com/healthcare/healthcare-data-security-guide/",
+      "last_modified": "2026-07-11T21:57:51"
+    },
+    {
+      "title": "Healthcare Data Security: Best Practices",
+      "url": "https://saasstatshub.com/healthcare/healthcare-data-security/",
+      "last_modified": "2026-07-11T21:57:50"
+    },
+    {
+      "title": "Healthcare Interoperability: Implementation Guide",
+      "url": "https://saasstatshub.com/healthcare/healthcare-interoperability/",
+      "last_modified": "2026-07-11T21:57:48"
+    },
+    {
+      "title": "HIPAA Compliance Software Guide",
+      "url": "https://saasstatshub.com/healthcare/hipaa-compliance-software-guide/",
+      "last_modified": "2026-07-11T21:57:46"
+    },
+    {
+      "title": "How to Choose EHR in 2026: A Complete Guide",
+      "url": "https://saasstatshub.com/healthcare/how-to-choose-ehr/",
+      "last_modified": "2026-07-11T22:03:51"
+    },
+    {
+      "title": "How to Choose Medical Billing Software in 2026: A Complete Guide",
+      "url": "https://saasstatshub.com/healthcare/how-to-choose-medical-billing-software/",
+      "last_modified": "2026-07-11T22:03:45"
+    },
+    {
+      "title": "How to Ensure HIPAA Compliance in 2026: A Complete Guide",
+      "url": "https://saasstatshub.com/healthcare/how-to-ensure-hipaa-compliance/",
+      "last_modified": "2026-07-11T22:03:36"
+    },
+    {
+      "title": "How to Implement Remote Patient Monitoring in 2026: A Complete Guide",
+      "url": "https://saasstatshub.com/healthcare/how-to-implement-remote-patient-monitoring/",
+      "last_modified": "2026-07-11T22:03:21"
+    },
+    {
+      "title": "How to Implement Telemedicine in 2026: A Complete Guide",
+      "url": "https://saasstatshub.com/healthcare/how-to-implement-telemedicine/",
+      "last_modified": "2026-07-11T22:03:17"
+    },
+    {
+      "title": "How to Set Up Patient Scheduling in 2026: A Complete Guide",
+      "url": "https://saasstatshub.com/healthcare/how-to-set-up-patient-scheduling/",
+      "last_modified": "2026-07-11T22:03:00"
+    },
+    {
+      "title": "Kareo vs AdvancedMD: Which Is Better in 2026?",
+      "url": "https://saasstatshub.com/healthcare/kareo-vs-advancedmd/",
+      "last_modified": "2026-07-11T22:43:47"
+    },
+    {
+      "title": "Medical Coding: Getting Started Guide",
+      "url": "https://saasstatshub.com/healthcare/medical-coding-guide/",
+      "last_modified": "2026-07-11T21:56:16"
+    },
+    {
+      "title": "Medical Practice: Optimization Guide",
+      "url": "https://saasstatshub.com/healthcare/medical-practice-optimization/",
+      "last_modified": "2026-07-11T21:56:15"
+    },
+    {
+      "title": "Patient Engagement: Strategies That Work",
+      "url": "https://saasstatshub.com/healthcare/patient-engagement-strategies/",
+      "last_modified": "2026-07-11T21:55:51"
+    },
+    {
+      "title": "Patient Portal Benefits",
+      "url": "https://saasstatshub.com/healthcare/patient-portal-benefits/",
+      "last_modified": "2026-07-11T21:55:49"
+    },
+    {
+      "title": "Patient Portal: Implementation Guide",
+      "url": "https://saasstatshub.com/healthcare/patient-portal-guide/",
+      "last_modified": "2026-07-11T21:55:48"
+    },
+    {
+      "title": "SimplePractice vs TherapyNotes: Which Is Better in 2026?",
+      "url": "https://saasstatshub.com/healthcare/simplepractice-vs-therapynotes/",
+      "last_modified": "2026-07-11T22:43:18"
+    },
+    {
+      "title": "Telehealth Implementation: Complete Guide",
+      "url": "https://saasstatshub.com/healthcare/telehealth-implementation-guide/",
+      "last_modified": "2026-07-11T21:53:45"
+    },
+    {
+      "title": "Telemedicine Implementation Guide",
+      "url": "https://saasstatshub.com/healthcare/telemedicine-implementation-guide/",
+      "last_modified": "2026-07-11T21:53:44"
+    },
+    {
+      "title": "The Ultimate Guide to Healthcare Technology in 2026",
+      "url": "https://saasstatshub.com/healthcare/healthcare-technology-guide/",
+      "last_modified": "2026-07-11T21:50:31"
+    },
+    {
+      "title": "Therapy Notes vs SimplePractice: Which Is Better in 2026?",
+      "url": "https://saasstatshub.com/healthcare/therapy-notes-vs-simplepractice/",
+      "last_modified": "2026-07-11T22:43:16"
+    },
+    {
+      "title": "What Is Clinical Decision Support?",
+      "url": "https://saasstatshub.com/healthcare/what-is-clinical-decision-support/",
+      "last_modified": "2026-07-11T21:49:13"
+    },
+    {
+      "title": "What Is Clinical Trial Management?",
+      "url": "https://saasstatshub.com/healthcare/what-is-clinical-trial-management/",
+      "last_modified": "2026-07-11T21:49:12"
+    },
+    {
+      "title": "What Is EHR and How Does It Differ from EMR?",
+      "url": "https://saasstatshub.com/healthcare/what-is-ehr-and-how-does-it-differ-from-emr/",
+      "last_modified": "2026-07-11T21:53:12"
+    },
+    {
+      "title": "What Is EHR?",
+      "url": "https://saasstatshub.com/healthcare/what-is-ehr/",
+      "last_modified": "2026-07-11T21:46:55"
+    },
+    {
+      "title": "What Is Health Information Exchange?",
+      "url": "https://saasstatshub.com/healthcare/what-is-health-information-exchange/",
+      "last_modified": "2026-07-11T21:46:03"
+    },
+    {
+      "title": "What Is Healthcare AI?",
+      "url": "https://saasstatshub.com/healthcare/what-is-healthcare-ai/",
+      "last_modified": "2026-07-11T21:46:01"
+    },
+    {
+      "title": "What Is Healthcare Analytics?",
+      "url": "https://saasstatshub.com/healthcare/what-is-healthcare-analytics/",
+      "last_modified": "2026-07-11T21:46:00"
+    },
+    {
+      "title": "What Is Healthcare Compliance?",
+      "url": "https://saasstatshub.com/healthcare/what-is-healthcare-compliance/",
+      "last_modified": "2026-07-11T21:45:59"
+    },
+    {
+      "title": "What Is Healthcare CRM?",
+      "url": "https://saasstatshub.com/healthcare/what-is-healthcare-crm/",
+      "last_modified": "2026-07-11T21:45:57"
+    },
+    {
+      "title": "What Is Healthcare Interoperability?",
+      "url": "https://saasstatshub.com/healthcare/what-is-healthcare-interoperability/",
+      "last_modified": "2026-07-11T21:45:56"
+    },
+    {
+      "title": "What Is Medical Billing?",
+      "url": "https://saasstatshub.com/healthcare/what-is-medical-billing/",
+      "last_modified": "2026-07-11T21:44:31"
+    },
+    {
+      "title": "What Is Medical Device Management?",
+      "url": "https://saasstatshub.com/healthcare/what-is-medical-device-management/",
+      "last_modified": "2026-07-11T21:44:29"
+    },
+    {
+      "title": "What Is Medical Imaging?",
+      "url": "https://saasstatshub.com/healthcare/what-is-medical-imaging/",
+      "last_modified": "2026-07-11T21:44:28"
+    },
+    {
+      "title": "What Is Medical Practice Management?",
+      "url": "https://saasstatshub.com/healthcare/what-is-medical-practice-management/",
+      "last_modified": "2026-07-11T21:44:27"
+    },
+    {
+      "title": "What Is Mental Health Software?",
+      "url": "https://saasstatshub.com/healthcare/what-is-mental-health-software/",
+      "last_modified": "2026-07-11T21:44:23"
+    },
+    {
+      "title": "What Is Patient Engagement?",
+      "url": "https://saasstatshub.com/healthcare/what-is-patient-engagement/",
+      "last_modified": "2026-07-11T21:43:50"
+    },
+    {
+      "title": "What Is Patient Scheduling?",
+      "url": "https://saasstatshub.com/healthcare/what-is-patient-scheduling/",
+      "last_modified": "2026-07-11T21:43:48"
+    },
+    {
+      "title": "What Is Pharmacy Management?",
+      "url": "https://saasstatshub.com/healthcare/what-is-pharmacy-management/",
+      "last_modified": "2026-07-11T21:43:36"
+    },
+    {
+      "title": "What Is Remote Patient Monitoring?",
+      "url": "https://saasstatshub.com/healthcare/what-is-remote-patient-monitoring/",
+      "last_modified": "2026-07-11T21:42:36"
+    },
+    {
+      "title": "What Is Revenue Cycle Management?",
+      "url": "https://saasstatshub.com/healthcare/what-is-revenue-cycle-management/",
+      "last_modified": "2026-07-11T21:42:29"
+    },
+    {
+      "title": "What Is Telemedicine?",
+      "url": "https://saasstatshub.com/healthcare/what-is-telemedicine/",
+      "last_modified": "2026-07-11T21:41:13"
+    }
+  ]
+}

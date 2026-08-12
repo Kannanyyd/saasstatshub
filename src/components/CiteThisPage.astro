@@ -1,0 +1,71 @@
+---
+import Icon from './Icon.astro';
+
+interface Props {
+  title: string;
+  url: string;
+  dateModified?: string;
+}
+
+const { title, url, dateModified = '' } = Astro.props;
+const parsedYear = dateModified ? new Date(dateModified).getUTCFullYear() : NaN;
+const year = Number.isFinite(parsedYear) ? parsedYear : new Date().getUTCFullYear();
+const escapedBibTitle = title.replaceAll('{', '\\{').replaceAll('}', '\\}');
+const citationKey = `saasstatshub-${year}-${title}`
+  .toLowerCase()
+  .replace(/[^a-z0-9]+/g, '-')
+  .replace(/^-|-$/g, '')
+  .slice(0, 64);
+const citations = {
+  plain: `SaaSStatsHub Research Desk. "${title}." SaaSStatsHub, ${year}. ${url}`,
+  markdown: `[${title}](${url}) - SaaSStatsHub Research Desk, ${year}.`,
+  bibtex: `@online{${citationKey},\n  author = {{SaaSStatsHub Research Desk}},\n  title = {${escapedBibTitle}},\n  year = {${year}},\n  url = {${url}}\n}`,
+};
+---
+
+<aside class="mt-8 border border-border rounded-lg bg-bg-alt/40" aria-labelledby="cite-this-page-title" data-cite-block>
+  <details>
+    <summary class="flex items-center justify-between gap-3 px-5 py-4 cursor-pointer select-none">
+      <span id="cite-this-page-title" class="font-bold text-text">Cite this page</span>
+      <Icon name="quote" aria-hidden="true" class="w-4 h-4 text-primary" />
+    </summary>
+    <div class="border-t border-border px-5 py-4 space-y-3">
+      {Object.entries(citations).map(([format, citation]) => (
+        <div class="grid gap-2 sm:grid-cols-[92px_1fr_auto] sm:items-start">
+          <span class="text-xs uppercase tracking-wider text-text-muted font-mono pt-2">{format}</span>
+          <code class="block min-w-0 overflow-x-auto rounded-md bg-bg px-3 py-2 text-xs text-text-secondary whitespace-pre-wrap break-words">{citation}</code>
+          <button
+            type="button"
+            class="inline-flex h-9 items-center justify-center gap-2 rounded-md border border-border-strong px-3 text-sm font-semibold text-text-secondary hover:border-primary hover:text-primary transition-colors"
+            data-copy-citation
+            data-citation-format={format}
+            data-citation-text={citation}
+            aria-label={`Copy ${format} citation`}
+          >
+            <Icon name="copy" aria-hidden="true" class="w-4 h-4" />
+            <span data-copy-label>Copy</span>
+          </button>
+        </div>
+      ))}
+      <p class="min-h-5 text-xs text-text-muted" role="status" aria-live="polite" data-copy-status></p>
+    </div>
+  </details>
+</aside>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-cite-block]').forEach((block) => {
+    const status = block.querySelector<HTMLElement>('[data-copy-status]');
+    block.querySelectorAll<HTMLButtonElement>('[data-copy-citation]').forEach((button) => {
+      button.addEventListener('click', async () => {
+        const citation = button.dataset.citationText || '';
+        const format = button.dataset.citationFormat || 'citation';
+        try {
+          await navigator.clipboard.writeText(citation);
+          if (status) status.textContent = `${format} citation copied.`;
+        } catch {
+          if (status) status.textContent = 'Copy failed. Select the citation text manually.';
+        }
+      });
+    });
+  });
+</script>

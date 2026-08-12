@@ -1,0 +1,471 @@
+{
+  "schema_version": "1.0",
+  "name": "SaaSStatsHub Analytics Research Catalog",
+  "url": "https://saasstatshub.com/categories/analytics/",
+  "publisher": {
+    "name": "SaaSStatsHub Research Desk",
+    "url": "https://saasstatshub.com/research-desk/"
+  },
+  "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+  "catalog_modified": "2026-08-01T00:02:02",
+  "category": "Analytics",
+  "category_slug": "analytics",
+  "category_article_count": 91,
+  "articles": [
+    {
+      "title": "3 Best Mixpanel Alternatives for 2026",
+      "url": "https://saasstatshub.com/analytics/mixpanel-alternatives/",
+      "last_modified": "2026-07-11T21:39:49"
+    },
+    {
+      "title": "3 Best Power BI Alternatives for 2026",
+      "url": "https://saasstatshub.com/analytics/power-bi-alternatives/",
+      "last_modified": "2026-07-11T22:42:42"
+    },
+    {
+      "title": "4 Best Google Analytics Alternatives for 2026",
+      "url": "https://saasstatshub.com/analytics/google-analytics-alternatives/",
+      "last_modified": "2026-07-11T21:40:04"
+    },
+    {
+      "title": "4 Best Tableau Alternatives for 2026",
+      "url": "https://saasstatshub.com/analytics/tableau-alternatives/",
+      "last_modified": "2026-07-11T21:39:25"
+    },
+    {
+      "title": "7 B2B SaaS Market Trends for 2026: State of SaaS",
+      "url": "https://saasstatshub.com/analytics/state-of-saas-2026-annual-report/",
+      "last_modified": "2026-07-30T23:18:25"
+    },
+    {
+      "title": "AI SaaS Statistics 2026: Spending and Adoption",
+      "url": "https://saasstatshub.com/analytics/ai-saas-statistics-2026/",
+      "last_modified": "2026-07-30T23:18:15"
+    },
+    {
+      "title": "Amplitude vs Mixpanel: Which Product Analytics Platform Is Better in 2026?",
+      "url": "https://saasstatshub.com/analytics/amplitude-vs-mixpanel/",
+      "last_modified": "2026-07-11T22:13:30"
+    },
+    {
+      "title": "Analytics for Small Business: Getting Started",
+      "url": "https://saasstatshub.com/analytics/analytics-for-small-business/",
+      "last_modified": "2026-07-11T22:01:39"
+    },
+    {
+      "title": "Artificial Intelligence Statistics 2026: Global Market Size, Enterprise Adoption, and Spending Trends",
+      "url": "https://saasstatshub.com/analytics/artificial-intelligence-statistics-2026/",
+      "last_modified": "2026-07-11T22:14:13"
+    },
+    {
+      "title": "Best AI Tools for Data Analysis in 2026",
+      "url": "https://saasstatshub.com/analytics/best-ai-tools-for-data-analysis/",
+      "last_modified": "2026-07-11T21:52:42"
+    },
+    {
+      "title": "Best Analytics Tools in 2026",
+      "url": "https://saasstatshub.com/analytics/best-analytics-tools/",
+      "last_modified": "2026-07-11T22:13:25"
+    },
+    {
+      "title": "Best BI Tools in 2026",
+      "url": "https://saasstatshub.com/analytics/best-bi-software-2026/",
+      "last_modified": "2026-07-11T22:13:24"
+    },
+    {
+      "title": "Best Business Intelligence Tools 2026",
+      "url": "https://saasstatshub.com/analytics/best-bi-tools/",
+      "last_modified": "2026-07-17T22:33:07"
+    },
+    {
+      "title": "Best CDP in 2026",
+      "url": "https://saasstatshub.com/analytics/best-customer-data-platforms/",
+      "last_modified": "2026-07-11T22:13:16"
+    },
+    {
+      "title": "Best Customer Data Platform in 2026",
+      "url": "https://saasstatshub.com/analytics/best-customer-data-platform-tools/",
+      "last_modified": "2026-07-11T22:09:14"
+    },
+    {
+      "title": "Best Data Catalog in 2026",
+      "url": "https://saasstatshub.com/analytics/best-data-catalog-tools/",
+      "last_modified": "2026-07-11T22:09:13"
+    },
+    {
+      "title": "Best Data Integration in 2026",
+      "url": "https://saasstatshub.com/analytics/best-data-integration-tools/",
+      "last_modified": "2026-07-11T22:09:11"
+    },
+    {
+      "title": "Best Data Mesh in 2026",
+      "url": "https://saasstatshub.com/analytics/best-data-mesh-platforms/",
+      "last_modified": "2026-07-11T22:09:10"
+    },
+    {
+      "title": "Best Data Visualization Tools in 2026",
+      "url": "https://saasstatshub.com/analytics/best-data-visualization-tools/",
+      "last_modified": "2026-07-11T22:13:14"
+    },
+    {
+      "title": "Best Free Analytics Tools in 2026",
+      "url": "https://saasstatshub.com/analytics/free-analytics-tools-2026/",
+      "last_modified": "2026-07-11T21:58:29"
+    },
+    {
+      "title": "Best Low Code in 2026",
+      "url": "https://saasstatshub.com/analytics/best-low-code-platforms/",
+      "last_modified": "2026-07-11T22:08:48"
+    },
+    {
+      "title": "Best No Code Platforms in 2026",
+      "url": "https://saasstatshub.com/analytics/best-no-code-platforms/",
+      "last_modified": "2026-07-11T22:11:11"
+    },
+    {
+      "title": "Best SaaS Analytics in 2026",
+      "url": "https://saasstatshub.com/analytics/best-saas-analytics-tools/",
+      "last_modified": "2026-07-11T22:08:37"
+    },
+    {
+      "title": "BI Tools for Startups: Best Options",
+      "url": "https://saasstatshub.com/analytics/bi-tools-for-startups/",
+      "last_modified": "2026-07-11T22:01:18"
+    },
+    {
+      "title": "BI vs Analytics: What’s the Difference?",
+      "url": "https://saasstatshub.com/analytics/bi-vs-analytics-whats-the-difference/",
+      "last_modified": "2026-07-11T22:01:17"
+    },
+    {
+      "title": "Big Data Statistics 2026: Analytics Market Size, Data Volume Growth, and Enterprise Spending",
+      "url": "https://saasstatshub.com/analytics/big-data-statistics-2026/",
+      "last_modified": "2026-07-11T22:14:12"
+    },
+    {
+      "title": "Business Intelligence Statistics 2026: Platform Data and Source Limits",
+      "url": "https://saasstatshub.com/analytics/business-intelligence-statistics-2026/",
+      "last_modified": "2026-07-11T22:14:52"
+    },
+    {
+      "title": "Cloud Computing Statistics 2026: Infrastructure Spending and Market Share",
+      "url": "https://saasstatshub.com/analytics/cloud-computing-statistics-2026/",
+      "last_modified": "2026-07-11T22:18:28"
+    },
+    {
+      "title": "Data Visualization Tools Comparison",
+      "url": "https://saasstatshub.com/analytics/data-visualization-tools-comparison/",
+      "last_modified": "2026-07-11T21:59:46"
+    },
+    {
+      "title": "Data Warehousing: Implementation Guide",
+      "url": "https://saasstatshub.com/analytics/data-warehousing-guide/",
+      "last_modified": "2026-07-11T21:59:44"
+    },
+    {
+      "title": "Datadog vs Splunk: Which Monitoring Platform Is Better in 2026?",
+      "url": "https://saasstatshub.com/analytics/datadog-vs-splunk/",
+      "last_modified": "2026-07-11T22:12:47"
+    },
+    {
+      "title": "How to Automate Business Processes in 2026: A Complete Guide",
+      "url": "https://saasstatshub.com/analytics/how-to-automate-business-processes/",
+      "last_modified": "2026-07-11T22:10:56"
+    },
+    {
+      "title": "How to Build a Data Dashboard in 2026",
+      "url": "https://saasstatshub.com/analytics/how-to-build-data-dashboard/",
+      "last_modified": "2026-07-11T22:12:43"
+    },
+    {
+      "title": "How to Build Data Catalog in 2026: A Complete Guide",
+      "url": "https://saasstatshub.com/analytics/how-to-build-data-catalog/",
+      "last_modified": "2026-07-11T22:07:54"
+    },
+    {
+      "title": "How to Build Data Pipeline in 2026: A Complete Guide",
+      "url": "https://saasstatshub.com/analytics/how-to-build-data-pipeline/",
+      "last_modified": "2026-07-11T22:07:52"
+    },
+    {
+      "title": "How to Build No Code App in 2026: A Complete Guide",
+      "url": "https://saasstatshub.com/analytics/how-to-build-no-code-app/",
+      "last_modified": "2026-07-11T22:10:52"
+    },
+    {
+      "title": "How to Calculate LTV and CAC in 2026",
+      "url": "https://saasstatshub.com/analytics/how-to-calculate-ltv-cac/",
+      "last_modified": "2026-07-11T22:12:39"
+    },
+    {
+      "title": "How to Choose a BI Tool in 2026",
+      "url": "https://saasstatshub.com/analytics/how-to-choose-bi-tool/",
+      "last_modified": "2026-07-11T22:12:37"
+    },
+    {
+      "title": "How to Choose CDP in 2026: A Complete Guide",
+      "url": "https://saasstatshub.com/analytics/how-to-choose-customer-data-platform/",
+      "last_modified": "2026-07-11T22:07:40"
+    },
+    {
+      "title": "How to Choose Low Code Platform in 2026: A Complete Guide",
+      "url": "https://saasstatshub.com/analytics/how-to-choose-low-code-platform/",
+      "last_modified": "2026-07-11T22:07:37"
+    },
+    {
+      "title": "How to Evaluate a SaaS Vendor in 2026",
+      "url": "https://saasstatshub.com/analytics/how-to-evaluate-saas-vendor/",
+      "last_modified": "2026-07-11T22:12:24"
+    },
+    {
+      "title": "How to Implement Data Warehouse in 2026: A Complete Guide",
+      "url": "https://saasstatshub.com/analytics/how-to-implement-data-warehouse/",
+      "last_modified": "2026-07-11T22:07:21"
+    },
+    {
+      "title": "How to Implement Real-Time Analytics in 2026: A Complete Guide",
+      "url": "https://saasstatshub.com/analytics/how-to-implement-real-time-analytics/",
+      "last_modified": "2026-07-11T22:07:12"
+    },
+    {
+      "title": "How to Reduce Churn in 2026: Proven Strategies",
+      "url": "https://saasstatshub.com/analytics/how-to-reduce-churn/",
+      "last_modified": "2026-07-11T22:12:14"
+    },
+    {
+      "title": "How to Scale a SaaS Business in 2026",
+      "url": "https://saasstatshub.com/analytics/how-to-scale-saas/",
+      "last_modified": "2026-07-11T22:12:11"
+    },
+    {
+      "title": "KPI Dashboard Design Guide",
+      "url": "https://saasstatshub.com/analytics/kpi-dashboard-design-guide/",
+      "last_modified": "2026-07-11T21:56:54"
+    },
+    {
+      "title": "KPI Dashboard: Template and Guide",
+      "url": "https://saasstatshub.com/analytics/kpi-dashboard-template/",
+      "last_modified": "2026-07-11T21:56:52"
+    },
+    {
+      "title": "Marketing Analytics: Platforms Compared",
+      "url": "https://saasstatshub.com/analytics/marketing-analytics-platforms/",
+      "last_modified": "2026-07-11T21:56:31"
+    },
+    {
+      "title": "Mixpanel vs Amplitude vs Google Analytics 2026",
+      "url": "https://saasstatshub.com/analytics/mixpanel-vs-amplitude-vs-google-analytics/",
+      "last_modified": "2026-07-17T22:33:05"
+    },
+    {
+      "title": "Mixpanel vs Amplitude: Which Is Better in 2026?",
+      "url": "https://saasstatshub.com/analytics/mixpanel-vs-amplitude/",
+      "last_modified": "2026-07-11T22:44:52"
+    },
+    {
+      "title": "Product Analytics: Essential Tools",
+      "url": "https://saasstatshub.com/analytics/product-analytics-tools/",
+      "last_modified": "2026-07-11T21:55:39"
+    },
+    {
+      "title": "Real-Time Analytics: Tools and Use Cases",
+      "url": "https://saasstatshub.com/analytics/real-time-analytics-tools/",
+      "last_modified": "2026-07-11T21:55:12"
+    },
+    {
+      "title": "SaaS Buying Guide: How to Evaluate and Purchase Software in 2026",
+      "url": "https://saasstatshub.com/analytics/saas-buying-guide/",
+      "last_modified": "2026-07-11T22:11:57"
+    },
+    {
+      "title": "SaaS Churn Rate Statistics 2026: Retention, NRR & GRR Benchmarks",
+      "url": "https://saasstatshub.com/analytics/saas-churn-rate-statistics-2026/",
+      "last_modified": "2026-07-11T22:15:03"
+    },
+    {
+      "title": "SaaS Funding Statistics 2026: Venture Capital Sources and Disclosure Limits",
+      "url": "https://saasstatshub.com/analytics/saas-funding-statistics-2026/",
+      "last_modified": "2026-07-11T22:15:02"
+    },
+    {
+      "title": "SaaS Market Size 2026: Spending and Growth Data",
+      "url": "https://saasstatshub.com/analytics/saas-market-size-statistics-2026/",
+      "last_modified": "2026-08-01T00:02:02"
+    },
+    {
+      "title": "SaaS Onboarding Statistics 2026: Adoption, Retention and Measurement Data",
+      "url": "https://saasstatshub.com/analytics/saas-onboarding-statistics-2026/",
+      "last_modified": "2026-07-11T22:15:01"
+    },
+    {
+      "title": "SaaS vs On-Premise Statistics 2026: Cloud Adoption, Spend and Workload Trends",
+      "url": "https://saasstatshub.com/analytics/saas-vs-on-premise-statistics-2026/",
+      "last_modified": "2026-07-11T22:14:58"
+    },
+    {
+      "title": "Segment vs Rudderstack: Which Is Better in 2026?",
+      "url": "https://saasstatshub.com/analytics/segment-vs-rudderstack/",
+      "last_modified": "2026-07-11T22:44:39"
+    },
+    {
+      "title": "Snowflake vs Databricks: Which Is Better in 2026?",
+      "url": "https://saasstatshub.com/analytics/snowflake-vs-databricks/",
+      "last_modified": "2026-07-11T22:44:34"
+    },
+    {
+      "title": "State of SaaS 2027: Annual Industry Report",
+      "url": "https://saasstatshub.com/analytics/state-of-saas-2027-annual-report/",
+      "last_modified": "2026-07-11T21:50:19"
+    },
+    {
+      "title": "Tableau vs Looker: Which Is Better in 2026?",
+      "url": "https://saasstatshub.com/analytics/tableau-vs-looker/",
+      "last_modified": "2026-07-11T22:44:31"
+    },
+    {
+      "title": "Tableau vs Power BI: Which Is Better in 2026?",
+      "url": "https://saasstatshub.com/analytics/tableau-vs-power-bi/",
+      "last_modified": "2026-07-11T22:45:41"
+    },
+    {
+      "title": "The Complete SaaS Glossary: 200+ Terms",
+      "url": "https://saasstatshub.com/analytics/complete-saas-glossary/",
+      "last_modified": "2026-07-11T22:13:35"
+    },
+    {
+      "title": "The Ultimate Guide to Data Analytics Software in 2026",
+      "url": "https://saasstatshub.com/analytics/data-analytics-guide/",
+      "last_modified": "2026-07-11T21:50:39"
+    },
+    {
+      "title": "What Is A/B Testing?",
+      "url": "https://saasstatshub.com/analytics/what-is-a-b-testing/",
+      "last_modified": "2026-07-11T21:50:17"
+    },
+    {
+      "title": "What Is Business Analytics?",
+      "url": "https://saasstatshub.com/analytics/what-is-business-analytics/",
+      "last_modified": "2026-07-11T21:49:34"
+    },
+    {
+      "title": "What Is Business Intelligence (BI) and How Does It Work?",
+      "url": "https://saasstatshub.com/analytics/what-is-business-intelligence-bi-and-how-does-it-work/",
+      "last_modified": "2026-07-11T21:53:17"
+    },
+    {
+      "title": "What Is Business Intelligence?",
+      "url": "https://saasstatshub.com/analytics/what-is-business-intelligence/",
+      "last_modified": "2026-07-11T21:49:33"
+    },
+    {
+      "title": "What Is Cohort Analysis?",
+      "url": "https://saasstatshub.com/analytics/what-is-cohort-analysis/",
+      "last_modified": "2026-07-11T21:49:06"
+    },
+    {
+      "title": "What Is Customer Analytics?",
+      "url": "https://saasstatshub.com/analytics/what-is-customer-analytics/",
+      "last_modified": "2026-07-11T21:48:17"
+    },
+    {
+      "title": "What Is Dashboard?",
+      "url": "https://saasstatshub.com/analytics/what-is-dashboard/",
+      "last_modified": "2026-07-11T21:47:59"
+    },
+    {
+      "title": "What Is Data Analytics?",
+      "url": "https://saasstatshub.com/analytics/what-is-data-analytics/",
+      "last_modified": "2026-07-11T21:47:58"
+    },
+    {
+      "title": "What Is Data Ethics?",
+      "url": "https://saasstatshub.com/analytics/what-is-data-ethics/",
+      "last_modified": "2026-07-11T21:47:54"
+    },
+    {
+      "title": "What Is Data Governance?",
+      "url": "https://saasstatshub.com/analytics/what-is-data-governance/",
+      "last_modified": "2026-07-11T21:47:53"
+    },
+    {
+      "title": "What Is Data Lake?",
+      "url": "https://saasstatshub.com/analytics/what-is-data-lake/",
+      "last_modified": "2026-07-11T21:47:52"
+    },
+    {
+      "title": "What Is Data Literacy?",
+      "url": "https://saasstatshub.com/analytics/what-is-data-literacy/",
+      "last_modified": "2026-07-11T21:47:50"
+    },
+    {
+      "title": "What Is Data Migration?",
+      "url": "https://saasstatshub.com/analytics/what-is-data-migration/",
+      "last_modified": "2026-07-11T21:47:48"
+    },
+    {
+      "title": "What Is Data Pipeline?",
+      "url": "https://saasstatshub.com/analytics/what-is-data-pipeline/",
+      "last_modified": "2026-07-11T21:47:46"
+    },
+    {
+      "title": "What Is Data Quality?",
+      "url": "https://saasstatshub.com/analytics/what-is-data-quality/",
+      "last_modified": "2026-07-11T21:47:45"
+    },
+    {
+      "title": "What Is Data Storytelling?",
+      "url": "https://saasstatshub.com/analytics/what-is-data-storytelling/",
+      "last_modified": "2026-07-11T21:47:44"
+    },
+    {
+      "title": "What Is Data Visualization?",
+      "url": "https://saasstatshub.com/analytics/what-is-data-visualization/",
+      "last_modified": "2026-07-11T21:47:43"
+    },
+    {
+      "title": "What Is Data Warehouse?",
+      "url": "https://saasstatshub.com/analytics/what-is-data-warehouse/",
+      "last_modified": "2026-07-11T21:47:41"
+    },
+    {
+      "title": "What Is Data-Driven Decision Making?",
+      "url": "https://saasstatshub.com/analytics/what-is-data-driven-decision-making/",
+      "last_modified": "2026-07-11T21:47:57"
+    },
+    {
+      "title": "What Is Embedded Analytics?",
+      "url": "https://saasstatshub.com/analytics/what-is-embedded-analytics/",
+      "last_modified": "2026-07-11T21:46:48"
+    },
+    {
+      "title": "What Is KPI?",
+      "url": "https://saasstatshub.com/analytics/what-is-kpi/",
+      "last_modified": "2026-07-11T21:45:16"
+    },
+    {
+      "title": "What Is Predictive Analytics?",
+      "url": "https://saasstatshub.com/analytics/what-is-predictive-analytics/",
+      "last_modified": "2026-07-11T21:43:27"
+    },
+    {
+      "title": "What Is Product Analytics?",
+      "url": "https://saasstatshub.com/analytics/what-is-product-analytics/",
+      "last_modified": "2026-07-11T21:43:21"
+    },
+    {
+      "title": "What Is Real-Time Analytics?",
+      "url": "https://saasstatshub.com/analytics/what-is-real-time-analytics/",
+      "last_modified": "2026-07-11T21:42:40"
+    },
+    {
+      "title": "What Is Sales Analytics?",
+      "url": "https://saasstatshub.com/analytics/what-is-sales-analytics/",
+      "last_modified": "2026-07-11T21:42:19"
+    },
+    {
+      "title": "What Is Web Analytics?",
+      "url": "https://saasstatshub.com/analytics/what-is-web-analytics/",
+      "last_modified": "2026-07-11T21:40:38"
+    }
+  ]
+}

@@ -4,11 +4,13 @@ import ArticleCard from '../../components/ArticleCard.astro';
 import CoverImage from '../../components/CoverImage.astro';
 import Icon from '../../components/Icon.astro';
 import CategoryPriorityLinks from '../../components/CategoryPriorityLinks.astro';
+import CiteThisPage from '../../components/CiteThisPage.astro';
 import '../../styles/global.css';
 import { getAllCategories, getCategoryPageData, type CategoryPageData, type Category } from '../../lib/wp-api';
 import { mockCategoryData, mockHomePageData } from '../../data/mock-data';
 import { metaFor, CATEGORIES } from '../../lib/constants';
 import { CATEGORY_SEARCH_OPPORTUNITIES } from '../../lib/search-opportunities';
+import { getCategoryResearchProfile } from '../../lib/category-research';
 
 export async function getStaticPaths() {
   // Fetch the canonical category list once; pass it to each page as props
@@ -53,6 +55,10 @@ try {
 const { category, articles } = data;
 const meta = metaFor(category.name, category.slug);
 const priorityLinks = CATEGORY_SEARCH_OPPORTUNITIES[category.slug] || [];
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
+const researchProfile = getCategoryResearchProfile(category.slug, category.name);
+const categoryJsonPath = `/category-research-${category.slug}.json`;
+const categoryCsvPath = `/category-research-${category.slug}.csv`;
 
 // Breadcrumb schema
 const breadcrumbSchema = {
@@ -63,10 +69,44 @@ const breadcrumbSchema = {
     { "@type": "ListItem", position: 2, name: category.name },
   ],
 };
+const datasetSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Dataset',
+  '@id': `${canonicalURL}#dataset`,
+  name: `${category.name} Research Catalog`,
+  description: researchProfile.summary,
+  url: canonicalURL,
+  creator: {
+    '@type': 'Organization',
+    '@id': new URL('/#research-desk', Astro.site).href,
+    name: 'SaaSStatsHub Research Desk',
+    url: new URL('/research-desk/', Astro.site).href,
+  },
+  license: 'https://creativecommons.org/licenses/by-nc/4.0/',
+  keywords: researchProfile.coverage,
+  includedInDataCatalog: {
+    '@type': 'DataCatalog',
+    name: 'SaaSStatsHub Public Research Catalog',
+    url: new URL('/research-data/', Astro.site).href,
+  },
+  distribution: [
+    {
+      '@type': 'DataDownload',
+      encodingFormat: 'application/json',
+      contentUrl: new URL(categoryJsonPath, Astro.site).href,
+    },
+    {
+      '@type': 'DataDownload',
+      encodingFormat: 'text/csv',
+      contentUrl: new URL(categoryCsvPath, Astro.site).href,
+    },
+  ],
+};
 ---
 
-<BaseLayout title={`${category.name} Statistics`} description={category.description || `Latest ${category.name} statistics, market data, and trends.`} canonicalURL={new URL(Astro.url.pathname, Astro.site).href}>
+<BaseLayout title={`${category.name} Statistics`} description={category.description || `Latest ${category.name} statistics, market data, and trends.`} canonicalURL={canonicalURL}>
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
+  <script type="application/ld+json" set:html={JSON.stringify(datasetSchema)} />
 
   <!-- Category Hero -->
   <section class="relative overflow-hidden" style={`background: linear-gradient(135deg, ${meta.color}10 0%, ${meta.colorEnd}08 100%);`}>
@@ -99,6 +139,32 @@ const breadcrumbSchema = {
 
   <div class="max-w-[1200px] mx-auto px-6 py-8">
     <CategoryPriorityLinks links={priorityLinks} />
+    <section class="mb-8 border-y border-border py-6" aria-labelledby="research-coverage-title">
+      <div class="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-start">
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-wider text-primary mb-2">Research overview</p>
+          <h2 id="research-coverage-title" class="text-xl font-bold mb-3">{category.name} research coverage</h2>
+          <p class="max-w-3xl text-text-secondary leading-relaxed">{researchProfile.summary}</p>
+          <ul class="mt-4 grid gap-2 sm:grid-cols-3">
+            {researchProfile.coverage.map((topic) => (
+              <li class="flex items-start gap-2 text-sm text-text-secondary">
+                <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden="true"></span>
+                {topic}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="flex flex-wrap gap-2" data-nosnippet>
+          <a href={categoryJsonPath} download class="inline-flex items-center gap-2 rounded-md border border-border-strong px-3 py-2 text-sm font-semibold text-text-secondary hover:border-primary hover:text-primary transition-colors">
+            Download JSON
+          </a>
+          <a href={categoryCsvPath} download class="inline-flex items-center gap-2 rounded-md border border-border-strong px-3 py-2 text-sm font-semibold text-text-secondary hover:border-primary hover:text-primary transition-colors">
+            Download CSV
+          </a>
+        </div>
+      </div>
+      <CiteThisPage title={`${category.name} Research Catalog`} url={canonicalURL} />
+    </section>
     <div class="flex gap-8">
       <!-- Article List -->
       <div class="flex-1 min-w-0">

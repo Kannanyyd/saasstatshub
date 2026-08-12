@@ -1,0 +1,286 @@
+{
+  "schema_version": "1.0",
+  "name": "SaaSStatsHub Legal Tech Research Catalog",
+  "url": "https://saasstatshub.com/categories/legal/",
+  "publisher": {
+    "name": "SaaSStatsHub Research Desk",
+    "url": "https://saasstatshub.com/research-desk/"
+  },
+  "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+  "catalog_modified": "2026-07-11T22:44:11",
+  "category": "Legal Tech",
+  "category_slug": "legal",
+  "category_article_count": 54,
+  "articles": [
+    {
+      "title": "Best Compliance Management in 2026",
+      "url": "https://saasstatshub.com/legal/best-compliance-management-software/",
+      "last_modified": "2026-07-11T22:05:49"
+    },
+    {
+      "title": "Best Contract Management in 2026",
+      "url": "https://saasstatshub.com/legal/best-contract-management-software/",
+      "last_modified": "2026-07-11T22:05:45"
+    },
+    {
+      "title": "Best Document Automation in 2026",
+      "url": "https://saasstatshub.com/legal/best-document-automation-software/",
+      "last_modified": "2026-07-11T22:05:38"
+    },
+    {
+      "title": "Best E-Signature Tools in 2026: Signing Platforms",
+      "url": "https://saasstatshub.com/legal/best-e-signature-tools/",
+      "last_modified": "2026-07-11T22:05:31"
+    },
+    {
+      "title": "Best Free Legal Templates in 2026",
+      "url": "https://saasstatshub.com/legal/free-legal-templates-2026/",
+      "last_modified": "2026-07-11T21:58:13"
+    },
+    {
+      "title": "Best Legal AI in 2026",
+      "url": "https://saasstatshub.com/legal/best-legal-ai-tools/",
+      "last_modified": "2026-07-11T22:05:13"
+    },
+    {
+      "title": "Best Legal Billing in 2026",
+      "url": "https://saasstatshub.com/legal/best-legal-billing-software/",
+      "last_modified": "2026-07-11T22:05:12"
+    },
+    {
+      "title": "Best Legal Practice Management in 2026",
+      "url": "https://saasstatshub.com/legal/best-legal-practice-management-software/",
+      "last_modified": "2026-07-11T22:05:11"
+    },
+    {
+      "title": "Clio vs MyCase: Which Is Better in 2026?",
+      "url": "https://saasstatshub.com/legal/clio-vs-mycase/",
+      "last_modified": "2026-07-11T22:44:11"
+    },
+    {
+      "title": "Compliance Management Guide",
+      "url": "https://saasstatshub.com/legal/compliance-management-guide/",
+      "last_modified": "2026-07-11T22:00:42"
+    },
+    {
+      "title": "Contract Negotiation: Complete Guide",
+      "url": "https://saasstatshub.com/legal/contract-negotiation-guide/",
+      "last_modified": "2026-07-11T22:00:23"
+    },
+    {
+      "title": "DocuSign vs Adobe Sign: Which Is Better in 2026?",
+      "url": "https://saasstatshub.com/legal/docusign-vs-adobe-sign/",
+      "last_modified": "2026-07-11T22:44:05"
+    },
+    {
+      "title": "DocuSign vs HelloSign: Which Is Better in 2026?",
+      "url": "https://saasstatshub.com/legal/docusign-vs-hellosign/",
+      "last_modified": "2026-07-11T22:44:03"
+    },
+    {
+      "title": "E-Signature Legal Guide: What You Need to Know",
+      "url": "https://saasstatshub.com/legal/e-signature-legal-guide/",
+      "last_modified": "2026-07-11T21:59:21"
+    },
+    {
+      "title": "E-Signature Legal Requirements",
+      "url": "https://saasstatshub.com/legal/e-signature-legal-requirements/",
+      "last_modified": "2026-07-11T21:59:20"
+    },
+    {
+      "title": "How to Automate Legal Billing in 2026: A Complete Guide",
+      "url": "https://saasstatshub.com/legal/how-to-automate-legal-billing/",
+      "last_modified": "2026-07-11T22:04:02"
+    },
+    {
+      "title": "How to Choose Contract Management Software in 2026: A Complete Guide",
+      "url": "https://saasstatshub.com/legal/how-to-choose-contract-management-software/",
+      "last_modified": "2026-07-11T22:03:54"
+    },
+    {
+      "title": "How to Implement E-Signature in Legal in 2026: A Complete Guide",
+      "url": "https://saasstatshub.com/legal/how-to-implement-esignature-legal/",
+      "last_modified": "2026-07-11T22:03:27"
+    },
+    {
+      "title": "How to Implement Legal AI in 2026: A Complete Guide",
+      "url": "https://saasstatshub.com/legal/how-to-implement-legal-ai/",
+      "last_modified": "2026-07-11T22:03:25"
+    },
+    {
+      "title": "How to Select Compliance Software in 2026: A Complete Guide",
+      "url": "https://saasstatshub.com/legal/how-to-select-compliance-software/",
+      "last_modified": "2026-07-11T22:03:10"
+    },
+    {
+      "title": "How to Set Up Legal Operations in 2026: A Complete Guide",
+      "url": "https://saasstatshub.com/legal/how-to-set-up-legal-operations/",
+      "last_modified": "2026-07-11T22:03:03"
+    },
+    {
+      "title": "Intellectual Property: Protection Guide",
+      "url": "https://saasstatshub.com/legal/intellectual-property-guide/",
+      "last_modified": "2026-07-11T21:57:08"
+    },
+    {
+      "title": "Ironclad vs Juro: Which Is Better in 2026?",
+      "url": "https://saasstatshub.com/legal/ironclad-vs-juro/",
+      "last_modified": "2026-07-11T22:43:50"
+    },
+    {
+      "title": "Law Firm Technology: Implementation Guide",
+      "url": "https://saasstatshub.com/legal/law-firm-technology-guide/",
+      "last_modified": "2026-07-11T21:56:48"
+    },
+    {
+      "title": "Legal AI Use Cases",
+      "url": "https://saasstatshub.com/legal/legal-ai-use-cases/",
+      "last_modified": "2026-07-11T21:56:43"
+    },
+    {
+      "title": "Legal Billing: Best Practices Guide",
+      "url": "https://saasstatshub.com/legal/legal-billing-guide/",
+      "last_modified": "2026-07-11T21:56:42"
+    },
+    {
+      "title": "Legal Compliance: Checklist and Guide",
+      "url": "https://saasstatshub.com/legal/legal-compliance-checklist/",
+      "last_modified": "2026-07-11T21:56:40"
+    },
+    {
+      "title": "Legal Tech for Startups",
+      "url": "https://saasstatshub.com/legal/legal-tech-for-startups/",
+      "last_modified": "2026-07-11T21:56:39"
+    },
+    {
+      "title": "NetDocuments vs iManage: Which Is Better in 2026?",
+      "url": "https://saasstatshub.com/legal/netdocuments-vs-icontact/",
+      "last_modified": "2026-07-11T22:43:37"
+    },
+    {
+      "title": "PandaDoc vs DocuSign: Which Is Better in 2026?",
+      "url": "https://saasstatshub.com/legal/pandadoc-vs-docusign/",
+      "last_modified": "2026-07-11T22:43:34"
+    },
+    {
+      "title": "PracticePanther vs Clio: Which Is Better in 2026?",
+      "url": "https://saasstatshub.com/legal/practice-panther-vs-clio/",
+      "last_modified": "2026-07-11T22:43:32"
+    },
+    {
+      "title": "Regulatory Compliance: Frameworks Guide",
+      "url": "https://saasstatshub.com/legal/regulatory-compliance-frameworks/",
+      "last_modified": "2026-07-11T21:55:06"
+    },
+    {
+      "title": "The Ultimate Guide to Legal Technology in 2026",
+      "url": "https://saasstatshub.com/legal/legal-technology-guide/",
+      "last_modified": "2026-07-11T21:50:27"
+    },
+    {
+      "title": "What Is Case Management?",
+      "url": "https://saasstatshub.com/legal/what-is-case-management/",
+      "last_modified": "2026-07-11T21:49:27"
+    },
+    {
+      "title": "What Is Compliance Management?",
+      "url": "https://saasstatshub.com/legal/what-is-compliance-management/",
+      "last_modified": "2026-07-11T21:48:58"
+    },
+    {
+      "title": "What Is Contract Management Software?",
+      "url": "https://saasstatshub.com/legal/what-is-contract-management-software/",
+      "last_modified": "2026-07-11T21:53:14"
+    },
+    {
+      "title": "What Is Contract Management?",
+      "url": "https://saasstatshub.com/legal/what-is-contract-management/",
+      "last_modified": "2026-07-11T21:48:33"
+    },
+    {
+      "title": "What Is E-Discovery?",
+      "url": "https://saasstatshub.com/legal/what-is-e-discovery/",
+      "last_modified": "2026-07-11T21:47:08"
+    },
+    {
+      "title": "What Is IP Management?",
+      "url": "https://saasstatshub.com/legal/what-is-ip-management/",
+      "last_modified": "2026-07-11T21:45:24"
+    },
+    {
+      "title": "What Is Legal Analytics?",
+      "url": "https://saasstatshub.com/legal/what-is-legal-analytics/",
+      "last_modified": "2026-07-11T21:45:06"
+    },
+    {
+      "title": "What Is Legal Billing?",
+      "url": "https://saasstatshub.com/legal/what-is-legal-billing/",
+      "last_modified": "2026-07-11T21:45:04"
+    },
+    {
+      "title": "What Is Legal Compliance?",
+      "url": "https://saasstatshub.com/legal/what-is-legal-compliance/",
+      "last_modified": "2026-07-11T21:45:03"
+    },
+    {
+      "title": "What Is Legal Document Management?",
+      "url": "https://saasstatshub.com/legal/what-is-legal-document-management/",
+      "last_modified": "2026-07-11T21:45:02"
+    },
+    {
+      "title": "What Is Legal Entity Management?",
+      "url": "https://saasstatshub.com/legal/what-is-legal-entity-management/",
+      "last_modified": "2026-07-11T21:45:00"
+    },
+    {
+      "title": "What Is Legal Hold?",
+      "url": "https://saasstatshub.com/legal/what-is-legal-hold/",
+      "last_modified": "2026-07-11T21:44:59"
+    },
+    {
+      "title": "What Is Legal Research?",
+      "url": "https://saasstatshub.com/legal/what-is-legal-research/",
+      "last_modified": "2026-07-11T21:44:58"
+    },
+    {
+      "title": "What Is Legal Spend Management?",
+      "url": "https://saasstatshub.com/legal/what-is-legal-spend-management/",
+      "last_modified": "2026-07-11T21:44:57"
+    },
+    {
+      "title": "What Is Legal Tech?",
+      "url": "https://saasstatshub.com/legal/what-is-legal-tech/",
+      "last_modified": "2026-07-11T21:44:55"
+    },
+    {
+      "title": "What Is Legal Workflow Automation?",
+      "url": "https://saasstatshub.com/legal/what-is-legal-workflow-automation/",
+      "last_modified": "2026-07-11T21:44:54"
+    },
+    {
+      "title": "What Is Litigation Support?",
+      "url": "https://saasstatshub.com/legal/what-is-litigation-support/",
+      "last_modified": "2026-07-11T21:44:53"
+    },
+    {
+      "title": "What Is Outside Counsel Management?",
+      "url": "https://saasstatshub.com/legal/what-is-outside-counsel-management/",
+      "last_modified": "2026-07-11T21:43:54"
+    },
+    {
+      "title": "What Is Privacy Management?",
+      "url": "https://saasstatshub.com/legal/what-is-privacy-management/",
+      "last_modified": "2026-07-11T21:43:24"
+    },
+    {
+      "title": "What Is Regulatory Tracking?",
+      "url": "https://saasstatshub.com/legal/what-is-regulatory-tracking/",
+      "last_modified": "2026-07-11T21:42:37"
+    },
+    {
+      "title": "What Is Trademark Management?",
+      "url": "https://saasstatshub.com/legal/what-is-trademark-management/",
+      "last_modified": "2026-07-11T21:41:06"
+    }
+  ]
+}

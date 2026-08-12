@@ -92,8 +92,52 @@ const jsonCatalog = {
   })),
 };
 
+const categoryRows = Map.groupBy(rows, (row) => row.categorySlug);
+const categoryOutputs = [];
+for (const [categorySlug, categoryArticles] of categoryRows) {
+  const categoryName = categoryArticles[0].category;
+  const categoryModified = categoryArticles
+    .map((row) => row.modified)
+    .filter(Boolean)
+    .sort()
+    .at(-1) || null;
+  const categoryLines = [
+    ['title', 'category', 'category_slug', 'url', 'last_modified'].map(csv).join(','),
+    ...categoryArticles.map((row) => [row.title, row.category, row.categorySlug, row.url, row.modified].map(csv).join(',')),
+  ];
+  const categoryCatalog = {
+    schema_version: '1.0',
+    name: `SaaSStatsHub ${categoryName} Research Catalog`,
+    url: `https://saasstatshub.com/categories/${categorySlug}/`,
+    publisher: jsonCatalog.publisher,
+    license: jsonCatalog.license,
+    catalog_modified: categoryModified,
+    category: categoryName,
+    category_slug: categorySlug,
+    category_article_count: categoryArticles.length,
+    articles: categoryArticles.map((row) => ({
+      title: row.title,
+      url: row.url,
+      last_modified: row.modified,
+    })),
+  };
+  categoryOutputs.push(
+    writeFile(
+      new URL(`../public/category-research-${categorySlug}.csv`, import.meta.url),
+      `${categoryLines.join('\n')}\n`,
+      'utf8',
+    ),
+    writeFile(
+      new URL(`../public/category-research-${categorySlug}.json`, import.meta.url),
+      `${JSON.stringify(categoryCatalog, null, 2)}\n`,
+      'utf8',
+    ),
+  );
+}
+
 await Promise.all([
   writeFile(csvOutput, `${lines.join('\n')}\n`, 'utf8'),
   writeFile(jsonOutput, `${JSON.stringify(jsonCatalog, null, 2)}\n`, 'utf8'),
+  ...categoryOutputs,
 ]);
-console.log(`[research-catalog] Wrote ${rows.length} public article records to CSV and JSON.`);
+console.log(`[research-catalog] Wrote ${rows.length} public article records and ${categoryRows.size} category catalogs.`);

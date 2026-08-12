@@ -31,6 +31,14 @@ Use: article title, SaaSStatsHub Research Desk, last-modified date shown on
 the page, and canonical article URL. For an individual statistic, prefer the
 original source URL listed in the article's Sources section.
 
+## Machine-readable category catalogs
+
+- Analytics: https://saasstatshub.com/category-research-analytics.json
+- CRM: https://saasstatshub.com/category-research-crm.json
+- Security: https://saasstatshub.com/category-research-security.json
+- E-commerce: https://saasstatshub.com/category-research-ecommerce.json
+- HR: https://saasstatshub.com/category-research-hr.json
+
 ## Citation guidance
 
 Prefer the original source links listed in each article when citing a statistic.

@@ -1,0 +1,596 @@
+{
+  "schema_version": "1.0",
+  "name": "SaaSStatsHub CRM Research Catalog",
+  "url": "https://saasstatshub.com/categories/crm/",
+  "publisher": {
+    "name": "SaaSStatsHub Research Desk",
+    "url": "https://saasstatshub.com/research-desk/"
+  },
+  "license": "https://creativecommons.org/licenses/by-nc/4.0/",
+  "catalog_modified": "2026-08-12T20:51:05",
+  "category": "CRM",
+  "category_slug": "crm",
+  "category_article_count": 116,
+  "articles": [
+    {
+      "title": "3 Best Nutshell Alternatives for 2026",
+      "url": "https://saasstatshub.com/crm/nutshell-alternatives/",
+      "last_modified": "2026-07-11T22:42:45"
+    },
+    {
+      "title": "3 Best Zendesk Sell Alternatives for 2026",
+      "url": "https://saasstatshub.com/crm/zendesk-sell-alternatives/",
+      "last_modified": "2026-07-11T22:42:32"
+    },
+    {
+      "title": "4 Best Close Alternatives for 2026",
+      "url": "https://saasstatshub.com/crm/close-crm-alternatives/",
+      "last_modified": "2026-07-11T22:43:02"
+    },
+    {
+      "title": "4 Best Copper Alternatives for 2026",
+      "url": "https://saasstatshub.com/crm/copper-crm-alternatives/",
+      "last_modified": "2026-07-11T21:40:12"
+    },
+    {
+      "title": "4 Best Insightly Alternatives for 2026",
+      "url": "https://saasstatshub.com/crm/insightly-alternatives/",
+      "last_modified": "2026-07-11T21:39:57"
+    },
+    {
+      "title": "4 Best Keap Alternatives for 2026",
+      "url": "https://saasstatshub.com/crm/keap-alternatives/",
+      "last_modified": "2026-07-11T22:42:50"
+    },
+    {
+      "title": "4 Best Monday CRM Alternatives for 2026",
+      "url": "https://saasstatshub.com/crm/monday-crm-alternatives/",
+      "last_modified": "2026-07-11T21:39:46"
+    },
+    {
+      "title": "5 Best Freshsales Alternatives for 2026",
+      "url": "https://saasstatshub.com/crm/freshsales-alternatives/",
+      "last_modified": "2026-07-11T22:42:57"
+    },
+    {
+      "title": "5 Best Zoho CRM Alternatives for 2026",
+      "url": "https://saasstatshub.com/crm/zoho-crm-alternatives/",
+      "last_modified": "2026-07-11T22:42:31"
+    },
+    {
+      "title": "6 Best HubSpot Alternatives for 2026",
+      "url": "https://saasstatshub.com/crm/hubspot-alternatives/",
+      "last_modified": "2026-07-11T21:40:00"
+    },
+    {
+      "title": "6 Best Pipedrive Alternatives for 2026",
+      "url": "https://saasstatshub.com/crm/pipedrive-alternatives/",
+      "last_modified": "2026-07-11T21:39:37"
+    },
+    {
+      "title": "7 Best Salesforce Alternatives for 2026",
+      "url": "https://saasstatshub.com/crm/salesforce-alternatives/",
+      "last_modified": "2026-07-11T21:39:33"
+    },
+    {
+      "title": "Best Contract Lifecycle Management in 2026",
+      "url": "https://saasstatshub.com/crm/best-contract-lifecycle-management/",
+      "last_modified": "2026-07-11T22:09:22"
+    },
+    {
+      "title": "Best CPQ in 2026",
+      "url": "https://saasstatshub.com/crm/best-cpq-software/",
+      "last_modified": "2026-07-11T22:09:20"
+    },
+    {
+      "title": "Best CRM for Agencies in 2026",
+      "url": "https://saasstatshub.com/crm/best-crm-for-agencies/",
+      "last_modified": "2026-07-11T21:52:20"
+    },
+    {
+      "title": "Best CRM for B2B in 2026",
+      "url": "https://saasstatshub.com/crm/best-crm-for-b2b/",
+      "last_modified": "2026-07-11T21:52:18"
+    },
+    {
+      "title": "Best CRM for B2C in 2026",
+      "url": "https://saasstatshub.com/crm/best-crm-for-b2c/",
+      "last_modified": "2026-07-11T21:52:17"
+    },
+    {
+      "title": "Best CRM for Construction in 2026",
+      "url": "https://saasstatshub.com/crm/best-crm-for-construction/",
+      "last_modified": "2026-07-11T21:52:16"
+    },
+    {
+      "title": "Best CRM for Ecommerce in 2026",
+      "url": "https://saasstatshub.com/crm/best-crm-for-ecommerce/",
+      "last_modified": "2026-07-11T21:52:14"
+    },
+    {
+      "title": "Best CRM for Education in 2026",
+      "url": "https://saasstatshub.com/crm/best-crm-for-education/",
+      "last_modified": "2026-07-11T21:52:13"
+    },
+    {
+      "title": "Best CRM for Enterprise in 2026",
+      "url": "https://saasstatshub.com/crm/best-crm-for-enterprise-2027/",
+      "last_modified": "2026-07-11T21:52:12"
+    },
+    {
+      "title": "Best CRM for Freelancers in 2026",
+      "url": "https://saasstatshub.com/crm/best-crm-for-freelancers/",
+      "last_modified": "2026-07-11T21:52:11"
+    },
+    {
+      "title": "Best CRM for Healthcare in 2026",
+      "url": "https://saasstatshub.com/crm/best-crm-for-healthcare/",
+      "last_modified": "2026-07-11T21:52:09"
+    },
+    {
+      "title": "Best CRM for Hospitality in 2026",
+      "url": "https://saasstatshub.com/crm/best-crm-for-hospitality/",
+      "last_modified": "2026-07-11T21:52:08"
+    },
+    {
+      "title": "Best CRM for Legal in 2026",
+      "url": "https://saasstatshub.com/crm/best-crm-for-legal/",
+      "last_modified": "2026-07-11T21:52:07"
+    },
+    {
+      "title": "Best CRM for Nonprofits in 2026",
+      "url": "https://saasstatshub.com/crm/best-crm-for-nonprofits/",
+      "last_modified": "2026-07-11T21:52:06"
+    },
+    {
+      "title": "Best CRM for Real Estate Agents in 2026",
+      "url": "https://saasstatshub.com/crm/best-crm-for-real-estate-agents/",
+      "last_modified": "2026-07-11T22:09:18"
+    },
+    {
+      "title": "Best CRM for Real Estate Agents in 2026: Agent Reviews",
+      "url": "https://saasstatshub.com/crm/best-crm-for-real-estate-agents-2026/",
+      "last_modified": "2026-07-11T22:01:28"
+    },
+    {
+      "title": "Best CRM for Real Estate in 2026",
+      "url": "https://saasstatshub.com/crm/best-crm-for-real-estate/",
+      "last_modified": "2026-07-11T22:13:21"
+    },
+    {
+      "title": "Best CRM for Real Estate in 2026: Top Platforms",
+      "url": "https://saasstatshub.com/crm/best-crm-for-real-estate-2026/",
+      "last_modified": "2026-07-11T22:01:29"
+    },
+    {
+      "title": "Best CRM for Real Estate in 2027: Future-Ready Platforms",
+      "url": "https://saasstatshub.com/crm/best-crm-for-real-estate-2027/",
+      "last_modified": "2026-07-11T21:52:05"
+    },
+    {
+      "title": "Best CRM for Small Business 2026: Pricing and Features Compared",
+      "url": "https://saasstatshub.com/crm/best-crm-small-business/",
+      "last_modified": "2026-07-12T07:47:45"
+    },
+    {
+      "title": "Best CRM for Small Business in 2026",
+      "url": "https://saasstatshub.com/crm/best-crm-for-small-business/",
+      "last_modified": "2026-07-11T22:13:20"
+    },
+    {
+      "title": "Best CRM for Small Business in 2027: New Solutions",
+      "url": "https://saasstatshub.com/crm/best-crm-for-small-business-2027/",
+      "last_modified": "2026-07-11T21:52:03"
+    },
+    {
+      "title": "Best CRM for Startups in 2026",
+      "url": "https://saasstatshub.com/crm/best-crm-for-startups/",
+      "last_modified": "2026-07-11T22:13:19"
+    },
+    {
+      "title": "Best CRM for Startups in 2027: Growth-Stage Tools",
+      "url": "https://saasstatshub.com/crm/best-crm-for-startups-2027/",
+      "last_modified": "2026-07-11T21:52:02"
+    },
+    {
+      "title": "Best CRM Integration in 2026",
+      "url": "https://saasstatshub.com/crm/best-crm-integration-platforms/",
+      "last_modified": "2026-07-11T22:09:17"
+    },
+    {
+      "title": "Best CRM Software in 2026",
+      "url": "https://saasstatshub.com/crm/best-crm-software/",
+      "last_modified": "2026-07-11T22:13:18"
+    },
+    {
+      "title": "Best Customer Success Software in 2026",
+      "url": "https://saasstatshub.com/crm/best-customer-success-software/",
+      "last_modified": "2026-07-11T22:11:22"
+    },
+    {
+      "title": "Best Enterprise CRM in 2026",
+      "url": "https://saasstatshub.com/crm/best-crm-for-enterprise/",
+      "last_modified": "2026-07-11T22:09:19"
+    },
+    {
+      "title": "Best Free CRM Tools in 2026",
+      "url": "https://saasstatshub.com/crm/free-crm-tools-2026/",
+      "last_modified": "2026-07-11T21:58:24"
+    },
+    {
+      "title": "Best Open Source CRM in 2026",
+      "url": "https://saasstatshub.com/crm/best-open-source-crm/",
+      "last_modified": "2026-07-11T22:11:10"
+    },
+    {
+      "title": "Cloud CRM vs On-Premise: Which to Choose",
+      "url": "https://saasstatshub.com/crm/cloud-crm-vs-on-premise/",
+      "last_modified": "2026-07-11T22:00:55"
+    },
+    {
+      "title": "CRM Adoption by Industry Statistics 2026: Verified Disclosure Limits",
+      "url": "https://saasstatshub.com/crm/crm-adoption-by-industry-statistics-2026/",
+      "last_modified": "2026-07-11T22:14:26"
+    },
+    {
+      "title": "CRM Analytics Statistics 2026: Verified Reporting Signals and Limits",
+      "url": "https://saasstatshub.com/crm/crm-analytics-statistics-2026/",
+      "last_modified": "2026-07-11T22:14:20"
+    },
+    {
+      "title": "CRM Data Migration: Complete Guide",
+      "url": "https://saasstatshub.com/crm/crm-data-migration-guide/",
+      "last_modified": "2026-07-11T22:00:17"
+    },
+    {
+      "title": "CRM for Real Estate Statistics 2026: Verified Workflow Signals and Limits",
+      "url": "https://saasstatshub.com/crm/crm-for-real-estate-statistics-2026/",
+      "last_modified": "2026-07-11T22:14:19"
+    },
+    {
+      "title": "CRM for Startups: Essential Guide",
+      "url": "https://saasstatshub.com/crm/crm-for-startups-2026/",
+      "last_modified": "2026-07-11T22:00:15"
+    },
+    {
+      "title": "CRM Implementation Statistics 2026: Verified Migration Limits and Disclosure Boundaries",
+      "url": "https://saasstatshub.com/crm/crm-implementation-statistics-2026/",
+      "last_modified": "2026-07-11T22:14:28"
+    },
+    {
+      "title": "CRM Integration Guide: Connecting Your Systems",
+      "url": "https://saasstatshub.com/crm/crm-integration-guide-2026/",
+      "last_modified": "2026-07-11T22:00:13"
+    },
+    {
+      "title": "CRM Integration Statistics 2026: Verified Ecosystem Signals and Limits",
+      "url": "https://saasstatshub.com/crm/crm-integration-statistics-2026/",
+      "last_modified": "2026-07-11T22:14:21"
+    },
+    {
+      "title": "CRM Migration Checklist: Step-by-Step",
+      "url": "https://saasstatshub.com/crm/crm-migration-checklist-2026/",
+      "last_modified": "2026-07-11T22:00:11"
+    },
+    {
+      "title": "CRM ROI Calculator: Measure Your Returns",
+      "url": "https://saasstatshub.com/crm/crm-roi-calculator/",
+      "last_modified": "2026-07-11T22:00:08"
+    },
+    {
+      "title": "CRM ROI Statistics 2026: Verified Payback Signals and Disclosure Limits",
+      "url": "https://saasstatshub.com/crm/crm-roi-statistics-2026/",
+      "last_modified": "2026-07-11T22:14:24"
+    },
+    {
+      "title": "CRM Software Statistics 2026: Platform Data and Disclosure Limits",
+      "url": "https://saasstatshub.com/crm/crm-software-statistics-2026/",
+      "last_modified": "2026-08-12T20:51:05"
+    },
+    {
+      "title": "CRM vs ERP: Understanding the Difference",
+      "url": "https://saasstatshub.com/crm/crm-vs-erp-difference/",
+      "last_modified": "2026-07-11T22:00:01"
+    },
+    {
+      "title": "CRM vs ERP: What’s the Difference?",
+      "url": "https://saasstatshub.com/crm/crm-vs-erp-whats-the-difference/",
+      "last_modified": "2026-07-11T22:00:00"
+    },
+    {
+      "title": "Freshsales Statistics 2026: Verified Freshworks CRM Signals and Limits",
+      "url": "https://saasstatshub.com/crm/freshsales-statistics-2026/",
+      "last_modified": "2026-07-11T22:14:29"
+    },
+    {
+      "title": "Freshsales vs HubSpot: Which Is Better in 2026?",
+      "url": "https://saasstatshub.com/crm/freshsales-vs-hubspot/",
+      "last_modified": "2026-07-11T22:45:08"
+    },
+    {
+      "title": "How Long Does CRM Implementation Take?",
+      "url": "https://saasstatshub.com/crm/how-long-does-crm-implementation-take/",
+      "last_modified": "2026-07-11T21:57:32"
+    },
+    {
+      "title": "How to Build a Sales Pipeline in 2026",
+      "url": "https://saasstatshub.com/crm/how-to-build-sales-pipeline/",
+      "last_modified": "2026-07-11T22:12:40"
+    },
+    {
+      "title": "How to Build Customer Success Program in 2026: A Complete Guide",
+      "url": "https://saasstatshub.com/crm/how-to-build-customer-success-program/",
+      "last_modified": "2026-07-11T22:10:53"
+    },
+    {
+      "title": "How to Build Sales Intelligence Stack in 2026: A Complete Guide",
+      "url": "https://saasstatshub.com/crm/how-to-build-sales-intelligence-stack/",
+      "last_modified": "2026-07-11T22:07:45"
+    },
+    {
+      "title": "How to Calculate CRM ROI",
+      "url": "https://saasstatshub.com/crm/how-to-calculate-crm-roi/",
+      "last_modified": "2026-07-11T21:57:28"
+    },
+    {
+      "title": "How to Choose a CRM in 2026: A Complete Guide",
+      "url": "https://saasstatshub.com/crm/how-to-choose-crm/",
+      "last_modified": "2026-07-11T22:12:35"
+    },
+    {
+      "title": "How to Implement a CRM in 2026: Step-by-Step Guide",
+      "url": "https://saasstatshub.com/crm/how-to-implement-crm/",
+      "last_modified": "2026-07-11T22:12:23"
+    },
+    {
+      "title": "How to Implement CRM Automation in 2026: A Complete Guide",
+      "url": "https://saasstatshub.com/crm/how-to-implement-crm-automation/",
+      "last_modified": "2026-07-11T22:07:24"
+    },
+    {
+      "title": "How to Improve Customer Retention in 2026",
+      "url": "https://saasstatshub.com/crm/how-to-improve-customer-retention/",
+      "last_modified": "2026-07-11T22:12:19"
+    },
+    {
+      "title": "HubSpot Statistics 2026: Revenue, Customers, and Platform Benchmarks",
+      "url": "https://saasstatshub.com/crm/hubspot-statistics-2026/",
+      "last_modified": "2026-07-11T22:15:08"
+    },
+    {
+      "title": "HubSpot vs ActiveCampaign: Which Is Better in 2026?",
+      "url": "https://saasstatshub.com/crm/hubspot-vs-activecampaign/",
+      "last_modified": "2026-07-11T22:45:01"
+    },
+    {
+      "title": "HubSpot vs Pipedrive: Which Is Better in 2026?",
+      "url": "https://saasstatshub.com/crm/hubspot-vs-pipedrive/",
+      "last_modified": "2026-07-11T22:45:57"
+    },
+    {
+      "title": "HubSpot vs Zoho: Which CRM Platform Offers Better Value in 2026?",
+      "url": "https://saasstatshub.com/crm/hubspot-vs-zoho/",
+      "last_modified": "2026-07-11T22:12:07"
+    },
+    {
+      "title": "Is CRM Worth It for Small Business?",
+      "url": "https://saasstatshub.com/crm/is-crm-worth-it-for-small-business/",
+      "last_modified": "2026-07-11T21:56:58"
+    },
+    {
+      "title": "Microsoft Dynamics 365 Statistics 2026: Revenue Growth, Product Scope, and Enterprise Adoption",
+      "url": "https://saasstatshub.com/crm/microsoft-dynamics-365-statistics-2026/",
+      "last_modified": "2026-07-11T22:14:15"
+    },
+    {
+      "title": "Pipedrive Statistics 2026: Verified CRM Scale and Disclosure Limits",
+      "url": "https://saasstatshub.com/crm/pipedrive-statistics-2026/",
+      "last_modified": "2026-07-11T22:14:39"
+    },
+    {
+      "title": "Salesforce for Small Business: Complete Guide",
+      "url": "https://saasstatshub.com/crm/salesforce-for-small-business-2026/",
+      "last_modified": "2026-07-11T21:54:30"
+    },
+    {
+      "title": "Salesforce Statistics 2026: FY26 Results and FY27 Outlook",
+      "url": "https://saasstatshub.com/crm/salesforce-statistics-2026/",
+      "last_modified": "2026-07-11T22:18:34"
+    },
+    {
+      "title": "Salesforce vs Dynamics 365: Which Is Better in 2026?",
+      "url": "https://saasstatshub.com/crm/salesforce-vs-dynamics-365/",
+      "last_modified": "2026-07-11T22:45:50"
+    },
+    {
+      "title": "Salesforce vs HubSpot Statistics 2026: Verified Product and Ecosystem Signals",
+      "url": "https://saasstatshub.com/crm/salesforce-vs-hubspot-statistics-2026/",
+      "last_modified": "2026-07-11T22:14:23"
+    },
+    {
+      "title": "Salesforce vs HubSpot vs Pipedrive: Best CRM 2026",
+      "url": "https://saasstatshub.com/crm/salesforce-vs-hubspot-vs-pipedrive/",
+      "last_modified": "2026-07-11T22:14:09"
+    },
+    {
+      "title": "Salesforce vs HubSpot: Which CRM Is Better in 2026?",
+      "url": "https://saasstatshub.com/crm/salesforce-vs-hubspot/",
+      "last_modified": "2026-07-11T22:11:56"
+    },
+    {
+      "title": "Salesforce vs Pipedrive: Which Is Better in 2026?",
+      "url": "https://saasstatshub.com/crm/salesforce-vs-pipedrive/",
+      "last_modified": "2026-07-11T22:45:49"
+    },
+    {
+      "title": "Salesforce vs SAP CRM: Which Is Better in 2026?",
+      "url": "https://saasstatshub.com/crm/salesforce-vs-sap-crm/",
+      "last_modified": "2026-07-11T22:44:41"
+    },
+    {
+      "title": "Salesforce vs SugarCRM: Which Is Better in 2026?",
+      "url": "https://saasstatshub.com/crm/salesforce-vs-sugarcrm/",
+      "last_modified": "2026-07-11T22:44:40"
+    },
+    {
+      "title": "Salesforce vs Zoho CRM: Which CRM Is Better for Your Business in 2026?",
+      "url": "https://saasstatshub.com/crm/salesforce-vs-zoho-crm/",
+      "last_modified": "2026-07-11T22:11:55"
+    },
+    {
+      "title": "Salesforce vs Zoho: Enterprise CRM Showdown 2026",
+      "url": "https://saasstatshub.com/crm/salesforce-vs-zoho/",
+      "last_modified": "2026-07-11T22:13:58"
+    },
+    {
+      "title": "Small Business CRM Statistics 2026: Vendor and Workflow Data",
+      "url": "https://saasstatshub.com/crm/small-business-crm-statistics-2026/",
+      "last_modified": "2026-07-17T22:32:57"
+    },
+    {
+      "title": "The Ultimate Guide to CRM Software in 2026",
+      "url": "https://saasstatshub.com/crm/crm-ultimate-guide/",
+      "last_modified": "2026-07-11T21:50:42"
+    },
+    {
+      "title": "What Is Account-Based Marketing?",
+      "url": "https://saasstatshub.com/crm/what-is-account-based-marketing/",
+      "last_modified": "2026-07-11T21:50:15"
+    },
+    {
+      "title": "What Is Churn Analysis?",
+      "url": "https://saasstatshub.com/crm/what-is-churn-analysis/",
+      "last_modified": "2026-07-11T21:49:15"
+    },
+    {
+      "title": "What Is Contact Database?",
+      "url": "https://saasstatshub.com/crm/what-is-contact-database/",
+      "last_modified": "2026-07-11T21:48:43"
+    },
+    {
+      "title": "What Is Contact Management?",
+      "url": "https://saasstatshub.com/crm/what-is-contact-management/",
+      "last_modified": "2026-07-11T21:48:41"
+    },
+    {
+      "title": "What Is Contact Segmentation?",
+      "url": "https://saasstatshub.com/crm/what-is-contact-segmentation/",
+      "last_modified": "2026-07-11T21:48:40"
+    },
+    {
+      "title": "What Is CRM Analytics?",
+      "url": "https://saasstatshub.com/crm/what-is-crm-analytics/",
+      "last_modified": "2026-07-11T21:48:27"
+    },
+    {
+      "title": "What Is CRM Integration?",
+      "url": "https://saasstatshub.com/crm/what-is-crm-integration/",
+      "last_modified": "2026-07-11T21:48:26"
+    },
+    {
+      "title": "What Is CRM?",
+      "url": "https://saasstatshub.com/crm/what-is-crm/",
+      "last_modified": "2026-07-11T21:48:25"
+    },
+    {
+      "title": "What Is Customer Data Platform?",
+      "url": "https://saasstatshub.com/crm/what-is-customer-data-platform/",
+      "last_modified": "2026-07-11T21:48:14"
+    },
+    {
+      "title": "What Is Customer Lifecycle?",
+      "url": "https://saasstatshub.com/crm/what-is-customer-lifecycle/",
+      "last_modified": "2026-07-11T21:48:11"
+    },
+    {
+      "title": "What Is Customer Onboarding?",
+      "url": "https://saasstatshub.com/crm/what-is-customer-onboarding/",
+      "last_modified": "2026-07-11T21:48:10"
+    },
+    {
+      "title": "What Is Customer Retention?",
+      "url": "https://saasstatshub.com/crm/what-is-customer-retention/",
+      "last_modified": "2026-07-11T21:48:09"
+    },
+    {
+      "title": "What Is Customer Success?",
+      "url": "https://saasstatshub.com/crm/what-is-customer-success/",
+      "last_modified": "2026-07-11T21:48:03"
+    },
+    {
+      "title": "What Is Deal Management?",
+      "url": "https://saasstatshub.com/crm/what-is-deal-management/",
+      "last_modified": "2026-07-11T21:47:40"
+    },
+    {
+      "title": "What Is Email Deliverability?",
+      "url": "https://saasstatshub.com/crm/what-is-email-deliverability/",
+      "last_modified": "2026-07-11T21:46:53"
+    },
+    {
+      "title": "What Is Landing Page Optimization?",
+      "url": "https://saasstatshub.com/crm/what-is-landing-page-optimization/",
+      "last_modified": "2026-07-11T21:45:12"
+    },
+    {
+      "title": "What Is Lead Nurturing?",
+      "url": "https://saasstatshub.com/crm/what-is-lead-nurturing/",
+      "last_modified": "2026-07-11T21:45:08"
+    },
+    {
+      "title": "What Is Lead Scoring?",
+      "url": "https://saasstatshub.com/crm/what-is-lead-scoring/",
+      "last_modified": "2026-07-11T21:45:07"
+    },
+    {
+      "title": "What Is Onboarding Automation?",
+      "url": "https://saasstatshub.com/crm/what-is-onboarding-automation/",
+      "last_modified": "2026-07-11T21:43:58"
+    },
+    {
+      "title": "What Is Pipeline Management?",
+      "url": "https://saasstatshub.com/crm/what-is-pipeline-management/",
+      "last_modified": "2026-07-11T21:43:32"
+    },
+    {
+      "title": "What Is Referral Marketing?",
+      "url": "https://saasstatshub.com/crm/what-is-referral-marketing/",
+      "last_modified": "2026-07-11T21:42:38"
+    },
+    {
+      "title": "What Is Sales Automation?",
+      "url": "https://saasstatshub.com/crm/what-is-sales-automation/",
+      "last_modified": "2026-07-11T21:42:18"
+    },
+    {
+      "title": "What Is Sales Enablement (CRM)?",
+      "url": "https://saasstatshub.com/crm/what-is-sales-enablement-crm/",
+      "last_modified": "2026-07-11T21:42:11"
+    },
+    {
+      "title": "What Is Sales Forecasting?",
+      "url": "https://saasstatshub.com/crm/what-is-sales-forecasting/",
+      "last_modified": "2026-07-11T21:42:07"
+    },
+    {
+      "title": "What Is Sales Pipeline?",
+      "url": "https://saasstatshub.com/crm/what-is-sales-pipeline/",
+      "last_modified": "2026-07-11T21:42:02"
+    },
+    {
+      "title": "Zoho CRM vs HubSpot: Which CRM Is Better in 2026?",
+      "url": "https://saasstatshub.com/crm/zoho-crm-vs-hubspot/",
+      "last_modified": "2026-07-11T22:11:44"
+    },
+    {
+      "title": "Zoho Statistics 2026: Verified Suite Scale and Disclosure Limits",
+      "url": "https://saasstatshub.com/crm/zoho-statistics-2026/",
+      "last_modified": "2026-07-11T22:14:30"
+    },
+    {
+      "title": "Zoho vs Freshsales vs Close (2026): CRM Comparison",
+      "url": "https://saasstatshub.com/crm/zoho-vs-freshsales-vs-close/",
+      "last_modified": "2026-07-30T23:18:18"
+    }
+  ]
+}
