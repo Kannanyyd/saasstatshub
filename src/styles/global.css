@@ -885,6 +885,17 @@ body {
   border-radius: var(--radius-md);
   overflow: hidden;
 }
+/* Wide CMS tables (e.g. multi-column comparisons) have a min-content width
+   above phone viewports; without containment they widen the whole page
+   (measured: documentElement.scrollWidth 502px at a 390px viewport). Let the
+   table itself scroll horizontally below md instead; desktop rendering is
+   unchanged. Scoped to the table element — no page-wide overflow-x hiding. */
+@media (max-width: 767px) {
+  .article-body table {
+    display: block;
+    overflow-x: auto;
+  }
+}
 .article-body table th,
 .article-body table td {
   padding: 12px 16px;
