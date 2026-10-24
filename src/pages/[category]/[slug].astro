@@ -12,6 +12,7 @@ import { resolveCategoryNeighbors, resolveRelatedTiles } from '../../lib/related
 import { mockArticleDetail } from '../../data/mock-data';
 import { CATEGORIES } from '../../lib/constants';
 import { withDropCap } from '../../lib/dropcap';
+import { needsTakeawaysAnchor } from '../../lib/takeaways-anchor';
 import { injectInternalLinks } from '../../lib/internal-links';
 import { isIndexExcluded } from '../../lib/index-exclusions';
 
@@ -117,6 +118,9 @@ function normalizeOverviewItems(items: ArticleDetail['quickOverview']) {
 const overviewItems = normalizeOverviewItems(article.quickOverview);
 
 const takeaways = article.keyTakeaways.map((item) => item.takeawayText);
+// TOC links to #key-takeaways whenever field takeaways exist; posts whose
+// takeaways live only in the ACF field have no in-content H2 to anchor to.
+const takeawaysAnchor = needsTakeawaysAnchor(article.content, takeaways.length);
 const sources = article.sources;
 const tocItems = buildTocItems(article.content, takeaways.length > 0, sources);
 
@@ -142,6 +146,7 @@ const relatedTiles = resolveRelatedTiles({
   categorySlug={article.category.slug}
   overviewItems={overviewItems}
   takeaways={takeaways}
+  takeawaysAnchor={takeawaysAnchor}
   sources={sources}
   tocItems={tocItems}
   ogImage={article.image}

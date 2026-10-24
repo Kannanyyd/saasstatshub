@@ -42,7 +42,7 @@ test('category opportunities use canonical article routes and stay category-spec
   );
   assert.equal(
     CATEGORY_SEARCH_OPPORTUNITIES.ecommerce[0].label,
-    'E-commerce Statistics 2026: Market and Buyer Data',
+    'E-commerce Statistics 2026: U.S. Sales and Mobile Trends',
   );
   assert.equal(
     CATEGORY_SEARCH_OPPORTUNITIES.security[0].label,

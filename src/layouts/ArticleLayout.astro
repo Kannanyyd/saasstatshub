@@ -43,6 +43,8 @@ interface Props {
   categorySlug: string;
   overviewItems?: OverviewItem[];
   takeaways?: string[];
+  /** Generate an #key-takeaways anchor target when takeaways come only from the ACF field. */
+  takeawaysAnchor?: boolean;
   sources?: Source[];
   tocItems?: TocItem[];
   ogImage?: string;
@@ -68,6 +70,7 @@ const {
   categorySlug,
   overviewItems = [],
   takeaways = [],
+  takeawaysAnchor = false,
   sources = [],
   tocItems = [],
   ogImage,
@@ -345,6 +348,7 @@ if (hasAffiliateLinks) {
         </div>
 
         <!-- Key Takeaways (full article) -->
+        {takeaways.length > 0 && takeawaysAnchor && <span id="key-takeaways"></span>}
         {takeaways.length > 0 && <KeyTakeaways items={takeaways} />}
 
         <!-- Sources -->

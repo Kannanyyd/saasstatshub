@@ -22,7 +22,7 @@ export const CATEGORY_SEARCH_OPPORTUNITIES: Record<string, SearchOpportunityLink
     { label: 'CRM Software Statistics 2026: Platform Data', href: '/crm/crm-software-statistics-2026/' },
   ],
   ecommerce: [
-    { label: 'E-commerce Statistics 2026: Market and Buyer Data', href: '/ecommerce/ecommerce-statistics-2026/' },
+    { label: 'E-commerce Statistics 2026: U.S. Sales and Mobile Trends', href: '/ecommerce/ecommerce-statistics-2026/' },
   ],
   security: [
     { label: 'Cybersecurity Statistics 2026: Breaches and Ransomware', href: '/security/cybersecurity-statistics-2026/' },

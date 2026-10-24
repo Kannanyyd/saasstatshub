@@ -11,6 +11,7 @@ import { mockCategoryData, mockHomePageData } from '../../data/mock-data';
 import { metaFor, CATEGORIES } from '../../lib/constants';
 import { CATEGORY_SEARCH_OPPORTUNITIES } from '../../lib/search-opportunities';
 import { getCategoryResearchProfile } from '../../lib/category-research';
+import { categorySeoFor } from '../../lib/category-seo';
 
 export async function getStaticPaths() {
   // Fetch the canonical category list once; pass it to each page as props
@@ -54,6 +55,7 @@ try {
 
 const { category, articles } = data;
 const meta = metaFor(category.name, category.slug);
+const seo = categorySeoFor(category.slug, { name: category.name, description: category.description });
 const priorityLinks = CATEGORY_SEARCH_OPPORTUNITIES[category.slug] || [];
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
 const researchProfile = getCategoryResearchProfile(category.slug, category.name);
@@ -104,7 +106,7 @@ const datasetSchema = {
 };
 ---
 
-<BaseLayout title={`${category.name} Statistics`} description={category.description || `Latest ${category.name} statistics, market data, and trends.`} canonicalURL={canonicalURL}>
+<BaseLayout title={seo.title} description={seo.description} canonicalURL={canonicalURL}>
   <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
   <script type="application/ld+json" set:html={JSON.stringify(datasetSchema)} />
 
@@ -125,8 +127,8 @@ const datasetSchema = {
           {meta.emoji}
         </div>
         <div>
-          <h1 class="font-display-lg text-3xl md:text-4xl font-extrabold">{category.name} Statistics</h1>
-          <p class="text-text-secondary mt-1">{category.description}</p>
+          <h1 class="font-display-lg text-3xl md:text-4xl font-extrabold">{seo.h1}</h1>
+          <p class="text-text-secondary mt-1">{seo.description}</p>
         </div>
       </div>
       <div class="flex items-center gap-3 text-sm text-text-muted mt-2">
