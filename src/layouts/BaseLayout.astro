@@ -576,10 +576,14 @@ const gaId =
       // ===== Typewriter (data-typewriter) =====
       const typewriterEls = document.querySelectorAll<HTMLElement>('[data-typewriter]');
       typewriterEls.forEach((el) => {
+        // Trust remediation 2026-10-24: the hardcoded fallback previously
+        // resurrected unverifiable claims ("Always cited. Always current.",
+        // "$232B market...") whenever the CMS returned empty/missing taglines.
+        // The neutral fallback now matches the neutral site-config defaults.
         const fallback = [
-          'Always cited. Always current.',
-          'Power your decisions with data.',
-          '$232B market. 30,000+ companies. 1 source.',
+          'Explore sourced statistics, platform comparisons, and research guides.',
+          'Numbers scoped by period, geography, and source.',
+          'Forecasts are labeled as forecasts — not facts.',
         ];
         let phrases: string[] = fallback;
         if (el.dataset.phrases) {

@@ -6,7 +6,7 @@
 import { mergeSiteConfig, defaultSiteConfig, type SiteConfig } from './site-config';
 import { activePosts, isConsolidatedSlug } from './consolidations';
 
-const WP_API_URL = import.meta.env.WP_API_URL || 'https://cms.saasstatshub.com/index.php?graphql';
+const WP_API_URL = import.meta.env?.WP_API_URL || 'https://cms.saasstatshub.com/index.php?graphql';
 
 interface GraphQLResponse<T> {
   data: T;
@@ -830,6 +830,12 @@ interface RawAcfHomeSection {
     source: string;
     gradient?: string;
     enabled?: boolean;
+    // Declared ahead of backend registration (trust remediation 2026-10-24).
+    // The shipped SITE_CONFIG_QUERY must NOT select these until the matching
+    // ACF sub-fields are registered on the backend (review doc §3.2);
+    // transformSiteConfig passes them through when a phase-2 response carries them.
+    sourceUrl?: string;
+    period?: string;
   }>;
   // latest-articles
   mode?: 'auto-latest' | 'manual-pinned' | 'category';
@@ -857,7 +863,8 @@ function acfTypeToSectionType(typename: string): string | null {
   return null;
 }
 
-function transformSiteConfig(raw: any): SiteConfig {
+/** Exported for the site-config contract tests (src/lib/site-config-contract.test.mjs). */
+export function transformSiteConfig(raw: any): SiteConfig {
   const wpSections = raw?.siteConfig?.homepageSections;
   if (!Array.isArray(wpSections) || wpSections.length === 0) {
     return defaultSiteConfig;
@@ -902,6 +909,12 @@ function transformSiteConfig(raw: any): SiteConfig {
             source: c.source,
             gradient: c.gradient,
             enabled: c.enabled !== false,
+            // Additive optional fields (trust remediation 2026-10-24). These are
+            // only present once the matching ACF fields are registered on the
+            // backend (proposed, not yet applied); absent fields pass through
+            // as undefined and the card renders without a link/period.
+            sourceUrl: c.sourceUrl,
+            period: c.period,
           })),
         });
         break;

@@ -3,7 +3,6 @@ import type { HotStatsSection } from '../../lib/site-config';
 import { gradientFor } from '../../lib/site-config';
 import Icon from '../Icon.astro';
 import Sparkline from '../Sparkline.astro';
-import { SPARKLINE_DEFAULTS } from '../../data/sparkline-defaults';
 
 interface Props {
   section: HotStatsSection;
@@ -14,24 +13,31 @@ interface Props {
 const { section, overlapHero = false } = Astro.props;
 
 const cards = (section.cards || [])
-  .filter((c) => c.enabled !== false)
+  .filter((c) => c.enabled !== false && (c.number || c.label))
   .slice(0, section.maxCards || 8);
+
+// Trust remediation 2026-10-24: with zero enabled cards the section renders
+// nothing at all (no empty grid, no leftover spacing from the overlap rule).
+if (cards.length === 0) {
+  return;
+}
 
 const overlapClass = overlapHero ? '-mt-14 md:-mt-20 z-10' : 'mt-12 md:mt-16';
 
-/**
- * Resolve a card's sparkline series via the Phase 1 fallback chain
- * (Reqs 2.4 / 2.10 / 2.11):
- *   1. WP-supplied `sparklineData` if present and valid
- *   2. Hardcoded default for the card's `id` (s1..s8)
- *   3. Sparkline.astro itself falls back to a decorative curve from `trend`
+/*
+ * Trust remediation 2026-10-24: a sparkline renders ONLY for a card with a
+ * real time series supplied from the CMS (`sparklineData`). The previous
+ * fallback chain (hardcoded defaults keyed by card id, then a decorative
+ * curve from `trend`) drew fake uptrends next to single-point figures -
+ * those defaults were illustrative numbers, not time-series data, and are
+ * no longer used here (src/data/sparkline-defaults.ts is now unreferenced).
+ * Cards without a real series render no curve and no trend arrow.
  */
 function resolveSeries(card: typeof cards[number]): number[] | undefined {
   if (Array.isArray(card.sparklineData) && card.sparklineData.length >= 8) {
     return card.sparklineData;
   }
-  const def = SPARKLINE_DEFAULTS[card.id];
-  return def ? [...def] : undefined;
+  return undefined;
 }
 ---
 
@@ -57,6 +63,7 @@ function resolveSeries(card: typeof cards[number]): number[] | undefined {
             </div>
             <div class="stat-number" data-count-up>{stat.number}</div>
             <div class="stat-label">{stat.label}</div>
+            {series && (
             <div class="stat-spark">
               <Sparkline
                 series={series}
@@ -65,7 +72,17 @@ function resolveSeries(card: typeof cards[number]): number[] | undefined {
                 height={28}
               />
             </div>
-            <div class="stat-source">{stat.source}</div>
+            )}
+            <div class="stat-source">
+              {stat.sourceUrl ? (
+                <a href={stat.sourceUrl} target="_blank" rel="noopener noreferrer">
+                  {stat.source}
+                </a>
+              ) : (
+                stat.source
+              )}
+              {stat.period && <span class="opacity-80"> · {stat.period}</span>}
+            </div>
           </div>
         );
       })}

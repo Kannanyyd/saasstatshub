@@ -47,7 +47,7 @@ const { section } = Astro.props;
         </button>
       </form>
       <p class="newsletter-message text-xs mt-3 min-h-[1rem]" role="status" aria-live="polite"></p>
-      <p class="text-xs text-text-muted mt-1">{section.socialProof}</p>
+      {section.socialProof && <p class="text-xs text-text-muted mt-1">{section.socialProof}</p>}
     </div>
   </div>
 </section>

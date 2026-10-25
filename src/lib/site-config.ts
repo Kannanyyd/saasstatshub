@@ -43,7 +43,7 @@ export interface BaseSection {
 
 export interface HeroSection extends BaseSection {
   type: 'hero';
-  /** First line of H1 (e.g. "The #1 Source for") */
+  /** First line of H1 (e.g. "Independent") */
   headlineLine1: string;
   /** Gradient highlight text (e.g. "SaaS Statistics") */
   headlineHighlight: string;
@@ -51,7 +51,7 @@ export interface HeroSection extends BaseSection {
   headlineLine2: string;
   /** Tagline above search box (typewriter rotates these) */
   taglinePhrases: string[];
-  /** Top badge text (e.g. "TRUSTED BY 50,000+ ANALYSTS") */
+  /** Top badge text (e.g. "Sourced statistics · Named references") */
   trustBadge: string;
   /** Search placeholder */
   searchPlaceholder: string;
@@ -73,7 +73,7 @@ export interface HotStat {
    * Unknown values fail the build (Req 4.14).
    */
   iconName?: string;
-  number: string;          // raw label, e.g. "$232B" / "14.2%" / "30,000+"
+  number: string;          // raw label, e.g. "$299.1B" / "88%" — must match a primary source
   label: string;           // descriptor
   source: string;          // source name, e.g. "Gartner"
   /** CSS gradient string. If empty, falls back to a palette by index. */
@@ -92,6 +92,19 @@ export interface HotStat {
    * curve from `trend`. 8–16 finite numbers per Req 2.3.
    */
   sparklineData?: number[];
+  /**
+   * Optional additive field (trust remediation 2026-10-24): direct URL of the
+   * primary source for this card's figure. When present, the card renders its
+   * `source` name as a link; when absent, `source` renders as plain text and
+   * the card carries no link. Additive only — existing CMS data is unaffected.
+   */
+  sourceUrl?: string;
+  /**
+   * Optional additive field (trust remediation 2026-10-24): short period/scope
+   * note shown next to the source (e.g. "FY2024 report", "Q2 2026"). Empty =
+   * not shown. Never invent a period to fill this in.
+   */
+  period?: string;
 }
 
 export interface HotStatsSection extends BaseSection {
@@ -131,7 +144,7 @@ export interface NewsletterCtaSection extends BaseSection {
   description: string;
   emailPlaceholder: string;
   buttonLabel: string;
-  socialProof: string;     // "Join 12,000+ SaaS professionals"
+  socialProof: string;     // subscriber-count claims are not published; usually empty
 }
 
 export type HomeSection =
@@ -175,15 +188,15 @@ export const defaultSiteConfig: SiteConfig = {
       id: 'hero',
       type: 'hero',
       enabled: true,
-      headlineLine1: 'The #1 Source for',
+      headlineLine1: 'Independent',
       headlineHighlight: 'SaaS Statistics',
       headlineLine2: '& Market Data',
-      trustBadge: 'Trusted by 50,000+ analysts',
+      trustBadge: 'Sourced statistics · Named references',
       searchPlaceholder: 'Search SaaS statistics, trends, data...',
       taglinePhrases: [
-        'Always cited. Always current.',
-        'Power your decisions with data.',
-        '$232B market. 30,000+ companies. 1 source.',
+        'Explore sourced statistics, platform comparisons, and research guides.',
+        'Numbers scoped by period, geography, and source.',
+        'Forecasts are labeled as forecasts — not facts.',
       ],
       pillCount: 6,
     },
@@ -192,15 +205,22 @@ export const defaultSiteConfig: SiteConfig = {
       type: 'hot-stats',
       enabled: true,
       maxCards: 8,
+      // Trust remediation 2026-10-24: all decorative default cards are disabled.
+      // None of the previous figures ($232B/14.2%/30,000+/78%/94%/68%/$188B/12,400)
+      // could be verified against an accessible primary source from the named
+      // organizations, and the card model had no source-URL field. Cards may be
+      // re-enabled per-card (CMS `enabled`) once each has a primary source plus
+      // the additive `sourceUrl`/`period` fields filled in. The section collapses
+      // when no cards are enabled (see HotStatsSection.astro).
       cards: [
-        { id: 's1', icon: '📊', iconName: 'trending-up', trend: 'up', number: '$232B',   label: 'Global SaaS Market (2026)', source: 'Gartner',    enabled: true },
-        { id: 's2', icon: '📈', iconName: 'bar-chart-3', trend: 'up', number: '14.2%',   label: 'CAGR 2024–2030',             source: 'Statista',   enabled: true },
-        { id: 's3', icon: '🏢', iconName: 'building-2',  trend: 'up', number: '30,000+', label: 'SaaS Companies Worldwide',   source: 'Crunchbase', enabled: true },
-        { id: 's4', icon: '🚀', iconName: 'rocket',      trend: 'up', number: '78%',     label: 'Enterprise Adoption Rate',   source: 'McKinsey',   enabled: true },
-        { id: 's5', icon: '☁️', iconName: 'cloud',       trend: 'up', number: '94%',     label: 'Cloud Adoption (Enterprise)',source: 'Flexera',    enabled: true },
-        { id: 's6', icon: '📱', iconName: 'smartphone',  trend: 'up', number: '68%',     label: 'Mobile SaaS Usage',          source: 'Okta',       enabled: true },
-        { id: 's7', icon: '🔐', iconName: 'lock',        trend: 'up', number: '$188B',   label: 'Cybersecurity Spend',        source: 'Gartner',    enabled: true },
-        { id: 's8', icon: '🤖', iconName: 'bot',         trend: 'up', number: '12,400',  label: 'AI-powered SaaS Tools',      source: 'G2',         enabled: true },
+        { id: 's1', icon: '📊', iconName: 'trending-up', trend: 'flat', number: '', label: '', source: '', enabled: false },
+        { id: 's2', icon: '📈', iconName: 'bar-chart-3', trend: 'flat', number: '', label: '', source: '', enabled: false },
+        { id: 's3', icon: '🏢', iconName: 'building-2',  trend: 'flat', number: '', label: '', source: '', enabled: false },
+        { id: 's4', icon: '🚀', iconName: 'rocket',      trend: 'flat', number: '', label: '', source: '', enabled: false },
+        { id: 's5', icon: '☁️', iconName: 'cloud',       trend: 'flat', number: '', label: '', source: '', enabled: false },
+        { id: 's6', icon: '📱', iconName: 'smartphone',  trend: 'flat', number: '', label: '', source: '', enabled: false },
+        { id: 's7', icon: '🔐', iconName: 'lock',        trend: 'flat', number: '', label: '', source: '', enabled: false },
+        { id: 's8', icon: '🤖', iconName: 'bot',         trend: 'flat', number: '', label: '', source: '', enabled: false },
       ],
     },
     {
@@ -225,12 +245,14 @@ export const defaultSiteConfig: SiteConfig = {
       id: 'newsletter-cta',
       type: 'newsletter-cta',
       enabled: true,
-      pillText: '📧 Free Weekly Digest',
+      pillText: '📧 SaaS research updates',
       heading: 'Stay Ahead of the Curve',
-      description: 'Get the latest SaaS statistics & insights delivered to your inbox every week. No spam, unsubscribe anytime.',
+      description: 'Get sourced SaaS statistics and research updates by email. No spam, unsubscribe anytime.',
       emailPlaceholder: 'you@company.com',
       buttonLabel: 'Subscribe',
-      socialProof: 'Join 12,000+ SaaS professionals',
+      // No frequency promise and no subscriber-count social proof: the sending
+      // schedule is not committed yet, and no subscriber total is published.
+      socialProof: '',
     },
   ],
 };
