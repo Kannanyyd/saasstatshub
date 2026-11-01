@@ -13,6 +13,7 @@ import { mockArticleDetail } from '../../data/mock-data';
 import { CATEGORIES } from '../../lib/constants';
 import { withDropCap } from '../../lib/dropcap';
 import { needsTakeawaysAnchor } from '../../lib/takeaways-anchor';
+import { buildArticleAnchors } from '../../lib/heading-anchor';
 import { injectInternalLinks } from '../../lib/internal-links';
 import { isIndexExcluded } from '../../lib/index-exclusions';
 
@@ -27,31 +28,6 @@ function decodeHtmlEntities(str: string): string {
     .replace(/&apos;/g, "'");
 }
 
-function buildTocItems(html: string, hasTakeaways: boolean, sourceList: Array<any>): Array<{ id: string; text: string }> {
-  const items: Array<{ id: string; text: string }> = [];
-  // Match all <h2> tags — with or without id attribute
-  const regex = /<h2(?:\s+[^>]*)?>([^<]*)<\/h2>/g;
-  let match;
-  while ((match = regex.exec(html)) !== null) {
-    const text = decodeHtmlEntities(match[1].trim());
-    if (!text) continue;
-    // Extract existing id if present, otherwise generate a slug
-    const idMatch = match[0].match(/id="([^"]*)"/);
-    const id = idMatch ? idMatch[1] : text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-    items.push({ id, text });
-  }
-  if (hasTakeaways) items.push({ id: 'key-takeaways', text: 'Key Takeaways' });
-  if (sourceList.length > 0) items.push({ id: 'sources', text: 'Sources' });
-  return items;
-}
-
-/** Inject id attributes into <h2> tags that don't have one, so TOC anchor links work. */
-function injectH2Ids(html: string): string {
-  return html.replace(/<h2(?![^>]*\bid=)([^>]*)>([^<]*)<\/h2>/g, (_match, attrs, text) => {
-    const id = text.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-    return `<h2 id="${id}"${attrs}>${text}</h2>`;
-  });
-}
 
 export async function getStaticPaths() {
   let slugs: Awaited<ReturnType<typeof getAllArticleSlugs>>;
@@ -122,7 +98,7 @@ const takeaways = article.keyTakeaways.map((item) => item.takeawayText);
 // takeaways live only in the ACF field have no in-content H2 to anchor to.
 const takeawaysAnchor = needsTakeawaysAnchor(article.content, takeaways.length);
 const sources = article.sources;
-const tocItems = buildTocItems(article.content, takeaways.length > 0, sources);
+const { html: contentWithIds, tocItems } = buildArticleAnchors(article.content, takeaways.length > 0, sources.length);
 
 // Phase 2.1: resolve Related Articles tiles
 // Cross-cat pool is module-level memoized in wp-api.ts so this fires
@@ -156,5 +132,5 @@ const relatedTiles = resolveRelatedTiles({
   faqItems={article.faqItems}
   noindex={isIndexExcluded(category!, slug!)}
 >
-  <Fragment set:html={withDropCap(injectInternalLinks(injectH2Ids(article.content), slug!))} />
+  <Fragment set:html={withDropCap(injectInternalLinks(contentWithIds, slug!))} />
 </ArticleLayout>
