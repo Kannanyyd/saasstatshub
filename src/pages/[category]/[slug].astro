@@ -33,8 +33,10 @@ export async function getStaticPaths() {
   let slugs: Awaited<ReturnType<typeof getAllArticleSlugs>>;
   try {
     slugs = await getAllArticleSlugs();
-  } catch {
-    // Mock fallback so dev/preview always renders one article.
+  } catch (err) {
+    // Mock fallback ONLY for local dev (`astro dev`); production builds must
+    // fail so a CMS outage can never publish a single-page demo site.
+    if (!import.meta.env?.DEV) throw err;
     slugs = [{
       id: mockArticleDetail.id,
       title: mockArticleDetail.title,
@@ -78,7 +80,10 @@ const { categoryNeighbors = [] } = Astro.props as { categoryNeighbors?: ArticleC
 let article: ArticleDetail;
 try {
   article = await getArticleData(slug!);
-} catch {
+} catch (err) {
+  // Mock fallback ONLY for local dev; production builds fail on article
+  // data errors instead of silently rendering demo content.
+  if (!import.meta.env?.DEV) throw err;
   article = mockArticleDetail;
 }
 

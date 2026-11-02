@@ -13,12 +13,19 @@ import { mockHomePageData } from '../data/mock-data';
 import type { LatestArticlesSection as LatestArticlesSectionType } from '../lib/site-config';
 import { HOMEPAGE_SEARCH_OPPORTUNITY_SLUGS } from '../lib/search-opportunities';
 
-// 1) Posts/categories from WP (or mock fallback)
+// 1) Posts/categories from WP. Mock only for local dev; production degrades
+// to EMPTY sections (never demo content) while the approved siteConfig
+// fallback below still renders the neutral homepage.
 let data: HomePageData;
 try {
   data = await getHomePageData();
-} catch {
-  data = mockHomePageData;
+} catch (err) {
+  if (import.meta.env?.DEV) {
+    data = mockHomePageData;
+  } else {
+    console.error('[index] homepage posts/categories unavailable, degrading to empty sections:', err instanceof Error ? err.message : err);
+    data = { categories: [], latestArticles: [] };
+  }
 }
 const { categories, latestArticles } = data;
 

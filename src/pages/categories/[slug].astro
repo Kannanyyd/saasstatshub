@@ -19,7 +19,8 @@ export async function getStaticPaths() {
   let allCats: Category[];
   try {
     allCats = await getAllCategories();
-  } catch {
+  } catch (err) {
+    if (!import.meta.env?.DEV) throw err;
     allCats = mockHomePageData.categories;
   }
 
@@ -44,7 +45,8 @@ const { allCats } = Astro.props as PageProps;
 let data: CategoryPageData;
 try {
   data = await getCategoryPageData(slug!);
-} catch {
+} catch (err) {
+  if (!import.meta.env?.DEV) throw err;
   data = mockCategoryData[slug!] || {
     category: mockHomePageData.categories.find((c) => c.slug === slug) || { id: '0', name: slug!, slug: slug!, count: 0, description: '' },
     articles: [],

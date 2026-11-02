@@ -10,8 +10,14 @@ import { CATEGORIES } from '../../lib/constants';
 let wpCategories: Category[];
 try {
   wpCategories = await getAllCategories();
-} catch {
-  wpCategories = mockHomePageData.categories;
+} catch (err) {
+  // Degrade to the canonical constants (zero WP counts) — never demo data.
+  if (import.meta.env?.DEV) {
+    wpCategories = mockHomePageData.categories;
+  } else {
+    console.error('[categories] WP categories unavailable, degrading to constants:', err instanceof Error ? err.message : err);
+    wpCategories = CATEGORIES.map((c) => ({ id: '0', name: c.name, slug: c.slug, count: 0, description: c.description || '' }));
+  }
 }
 
 // Merge WP counts with the canonical metadata in constants.ts so each card

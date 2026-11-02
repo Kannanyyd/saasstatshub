@@ -17,13 +17,14 @@
   "scripts": {
     "dev": "astro dev",
     "prebuild": "node scripts/copy-fonts.mjs && node scripts/generate-research-catalog.mjs",
-    "build": "astro build && pagefind --site dist",
+    "build": "astro build && pagefind --site dist && node scripts/artifact-guard.mjs",
     "audit:links": "node scripts/audit-internal-links.mjs",
     "seo:audit-index-value": "node scripts/audit-index-value.mjs",
     "seo:audit-priority": "node scripts/audit-search-priority-pages.mjs",
     "seo:indexnow": "node scripts/submit-indexnow.mjs",
     "preview": "astro preview",
     "astro": "astro",
+    "test:build-failsafe": "node scripts/build-failsafe.mjs",
     "test:phase1": "node --test --experimental-strip-types \"src/lib/sparkline.test.mjs\" \"src/lib/dropcap.test.mjs\" \"src/lib/related.test.mjs\" \"src/lib/dataset-schema.test.mjs\" \"src/lib/faq-schema.test.mjs\" \"src/lib/search-redirects.test.mjs\" \"src/lib/page-title.test.mjs\" \"src/lib/article-schema.test.mjs\" \"src/lib/research-geo.test.mjs\" \"src/lib/consolidations.test.mjs\" \"src/lib/index-exclusions.test.mjs\" \"src/lib/search-opportunities.test.mjs\" \"src/lib/category-seo.test.mjs\" \"src/lib/takeaways-anchor.test.mjs\" \"src/lib/site-config-contract.test.mjs\" \"src/lib/heading-anchor.test.mjs\""
   },
   "dependencies": {

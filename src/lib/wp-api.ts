@@ -49,11 +49,28 @@ async function fetchGraphQL<T>(query: string, variables?: Record<string, unknown
         throw new Error(`WP GraphQL request failed: ${response.status} ${response.statusText}`);
       }
 
-      const json: GraphQLResponse<T> = await response.json();
-
+      const contentType = response.headers.get('content-type')?.split(';')[0].trim().toLowerCase();
+      if (contentType !== 'application/json' && contentType !== 'application/graphql-response+json') {
+        throw new Error('[wp-api] non-GraphQL response: expected JSON content-type');
+      }
+      let json: GraphQLResponse<T>;
+      try {
+        json = await response.json();
+      } catch {
+        throw new Error('[wp-api] invalid GraphQL JSON');
+      }
+      if (!json || typeof json !== 'object' || Array.isArray(json)) {
+        throw new Error('[wp-api] invalid GraphQL data: expected response object');
+      }
+      if (json.errors !== undefined && !Array.isArray(json.errors)) {
+        throw new Error('[wp-api] invalid GraphQL errors field');
+      }
       if (json.errors && json.errors.length > 0) {
         console.error('GraphQL Errors:', JSON.stringify(json.errors, null, 2));
         throw new Error(`GraphQL Error: ${json.errors[0].message}`);
+      }
+      if (!json.data || typeof json.data !== 'object' || Array.isArray(json.data)) {
+        throw new Error('[wp-api] invalid GraphQL data: expected data object');
       }
 
       return json.data;
@@ -554,8 +571,36 @@ export async function getHomePageData(): Promise<HomePageData> {
   };
 }
 
+function readPostConnection(raw: any, context: string, seenCursors: Set<string>): { nodes: any[]; nextCursor: string | null } {
+  if (!raw || typeof raw !== 'object' || Array.isArray(raw)) {
+    throw new Error(`[wp-api] ${context}: connection must be an object`);
+  }
+  if (!Array.isArray(raw.nodes)) {
+    throw new Error(`[wp-api] ${context}: nodes must be an array`);
+  }
+  const info = raw.pageInfo;
+  if (!info || typeof info !== 'object' || Array.isArray(info)) {
+    throw new Error(`[wp-api] ${context}: pageInfo must be an object`);
+  }
+  if (typeof info.hasNextPage !== 'boolean') {
+    throw new Error(`[wp-api] ${context}: hasNextPage must be boolean`);
+  }
+  if (info.hasNextPage === false) return { nodes: raw.nodes, nextCursor: null };
+  const next = info.endCursor;
+  if (typeof next !== 'string' || next.trim().length === 0 || next !== next.trim()) {
+    throw new Error(`[wp-api] ${context}: endCursor must be a non-blank string`);
+  }
+  // Cursors are opaque: advancement means a new token, not lexical ordering.
+  if (seenCursors.has(next)) {
+    throw new Error(`[wp-api] ${context}: endCursor did not advance`);
+  }
+  seenCursors.add(next);
+  return { nodes: raw.nodes, nextCursor: next };
+}
+
 export async function getCategoryPageData(slug: string): Promise<CategoryPageData> {
   const articles: ArticleCard[] = [];
+  const seenCursors = new Set<string>();
   let cursor: string | null = null;
   let cat: any = null;
 
@@ -566,11 +611,12 @@ export async function getCategoryPageData(slug: string): Promise<CategoryPageDat
     if (cursor) variables.after = cursor;
     const data = await fetchGraphQL<any>(CATEGORY_PAGE_QUERY, variables);
     cat = data.category;
-    if (!cat?.posts) break;
-    articles.push(...activePosts(cat.posts.nodes).map(transformArticleCard));
-    if (!cat.posts.pageInfo?.hasNextPage) break;
-    cursor = cat.posts.pageInfo.endCursor || null;
-    if (!cursor) break;
+    if (!cat) throw new Error(`Category not found: ${slug}`);
+    const page = readPostConnection(cat.posts, `category ${slug}`, seenCursors);
+    articles.push(...activePosts(page.nodes).map(transformArticleCard));
+    if (page.nextCursor === null) break;
+    if (pageNumber === 49) throw new Error(`[wp-api] category pagination exceeded hard cap: ${slug}`);
+    cursor = page.nextCursor;
   }
 
   if (!cat) throw new Error(`Category not found: ${slug}`);
@@ -585,6 +631,12 @@ export async function getCategoryPageData(slug: string): Promise<CategoryPageDat
 export async function getArticleData(slug: string): Promise<ArticleDetail> {
   const data = await fetchGraphQL<any>(ARTICLE_PAGE_QUERY, { slug });
   const post = data.post;
+  // Invalid article data must fail the build (route-level DEV fallback handles
+  // local dev); empty body would otherwise render an incomplete article.
+  if (!post) throw new Error(`[wp-api] article not found: ${slug}`);
+  if (typeof post.content !== 'string' || post.content.trim().length === 0) {
+    throw new Error(`[wp-api] article body must be a non-blank string: ${slug}`);
+  }
 
   // Collect related articles from same category
   const relatedArticles: ArticleCard[] = [];
@@ -654,6 +706,7 @@ export interface ArticleRoute extends ArticleCard {
 
 export async function getAllArticleSlugs(): Promise<ArticleRoute[]> {
   const all: ArticleRoute[] = [];
+  const seenCursors = new Set<string>();
   let cursor: string | null = null;
   // Hard cap to avoid infinite loop on misconfigured backends.
   const HARD_CAP = 50;
@@ -661,8 +714,7 @@ export async function getAllArticleSlugs(): Promise<ArticleRoute[]> {
     const variables: Record<string, unknown> = { first: 100 };
     if (cursor) variables.after = cursor;
     const data = await fetchGraphQL<any>(ALL_SLUGS_QUERY, variables);
-    const page = data.posts;
-    if (!page) break;
+    const page = readPostConnection(data.posts, 'article list', seenCursors);
     for (const post of page.nodes) {
       if (isConsolidatedSlug(post.slug)) continue;
       const card = transformArticleCard(post);
@@ -672,9 +724,12 @@ export async function getAllArticleSlugs(): Promise<ArticleRoute[]> {
         modified: post.modified,
       });
     }
-    if (!page.pageInfo?.hasNextPage) break;
-    cursor = page.pageInfo.endCursor || null;
-    if (!cursor) break;
+    if (page.nextCursor === null) break;
+    if (i === HARD_CAP - 1) throw new Error('[wp-api] article list pagination exceeded hard cap (50 pages x 100)');
+    cursor = page.nextCursor;
+  }
+  if (all.length === 0 && !import.meta.env?.DEV) {
+    throw new Error('[wp-api] article list empty — refusing non-dev build (CMS returned 0 posts)');
   }
   return all;
 }
