@@ -10,7 +10,7 @@ import ToolsCalloutSection from '../components/sections/ToolsCalloutSection.astr
 import '../styles/global.css';
 import { getHomePageData, getSiteConfig, getPostsBySlugs, type HomePageData, type ArticleCard } from '../lib/wp-api';
 import { mockHomePageData } from '../data/mock-data';
-import type { LatestArticlesSection as LatestArticlesSectionType } from '../lib/site-config';
+import { HOMEPAGE_RECOMMENDATIONS, type LatestArticlesSection as LatestArticlesSectionType } from '../lib/site-config';
 import { HOMEPAGE_SEARCH_OPPORTUNITY_SLUGS } from '../lib/search-opportunities';
 
 // 1) Posts/categories from WP. Mock only for local dev; production degrades
@@ -31,6 +31,30 @@ const { categories, latestArticles } = data;
 
 // 2) Site/CMS config (homepage layout). Falls back to defaults if WP not wired up.
 const siteConfig = await getSiteConfig();
+const enabledSections = siteConfig.homepageSections.filter((s) => s.enabled);
+const recommendationSlot = enabledSections.find((s) => s.type === 'latest-articles');
+const recommendedSection: LatestArticlesSectionType = {
+  id: 'homepage-recommendations',
+  type: 'latest-articles',
+  enabled: true,
+  eyebrow: 'Recommended',
+  heading: 'Recommended Guides',
+  mode: 'manual-pinned',
+  count: HOMEPAGE_RECOMMENDATIONS.length,
+  pinnedSlugs: HOMEPAGE_RECOMMENDATIONS.map(({ slug }) => slug),
+};
+const recommendationBySlug = new Map<string, (typeof HOMEPAGE_RECOMMENDATIONS)[number]>(
+  HOMEPAGE_RECOMMENDATIONS.map((entry) => [entry.slug, entry]),
+);
+const recommendedArticles = recommendationSlot
+  ? (await getPostsBySlugs(recommendedSection.pinnedSlugs ?? [], { throwOnError: true }).catch((cause) => {
+      throw new Error('[index] Homepage recommendations query failed', { cause });
+    })).flatMap((article) => {
+      const entry = recommendationBySlug.get(article.slug);
+      if (!entry || article.databaseId !== entry.post_id) return [];
+      return [{ ...article, title: entry.card_title, excerpt: entry.card_excerpt }];
+    })
+  : [];
 
 // 3) Resolve articles for each LatestArticles section based on its mode
 async function resolveLatestArticles(section: LatestArticlesSectionType): Promise<ArticleCard[]> {
@@ -50,8 +74,8 @@ async function resolveLatestArticles(section: LatestArticlesSectionType): Promis
 
 // Pre-resolve all latest-articles sections in parallel.
 const latestSectionsResolved = await Promise.all(
-  siteConfig.homepageSections
-    .filter((s) => s.type === 'latest-articles' && s.enabled)
+  enabledSections
+    .filter((s) => s.type === 'latest-articles' && s !== recommendationSlot)
     .map(async (s) => [s.id, await resolveLatestArticles(s as LatestArticlesSectionType)] as const)
 );
 const latestById = new Map(latestSectionsResolved);
@@ -67,9 +91,6 @@ const featuredResearchSection: LatestArticlesSectionType = {
   pinnedSlugs: [...HOMEPAGE_SEARCH_OPPORTUNITY_SLUGS],
 };
 const featuredResearch = await getPostsBySlugs([...HOMEPAGE_SEARCH_OPPORTUNITY_SLUGS]);
-
-// Track whether the previous rendered section was the hero, so HotStats can overlap.
-const enabledSections = siteConfig.homepageSections.filter((s) => s.enabled);
 ---
 
 <BaseLayout title="Home" description="Independent SaaS research, source-backed statistics, software comparisons, practical guides, and free calculators across major business software categories.">
@@ -84,6 +105,9 @@ const enabledSections = siteConfig.homepageSections.filter((s) => s.enabled);
       return <HotStatsSection section={section} overlapHero={overlapHero} />;
     }
     if (section.type === 'latest-articles') {
+      if (section === recommendationSlot) {
+        return <LatestArticlesSection section={recommendedSection} articles={recommendedArticles} />;
+      }
       const articles = latestById.get(section.id) || [];
       return <LatestArticlesSection section={section} articles={articles} />;
     }

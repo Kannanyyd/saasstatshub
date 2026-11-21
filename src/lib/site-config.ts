@@ -116,6 +116,45 @@ export interface HotStatsSection extends BaseSection {
 
 export type LatestArticlesMode = 'auto-latest' | 'manual-pinned' | 'category';
 
+export const HOMEPAGE_RECOMMENDATIONS = [
+  {
+    post_id: 6407,
+    slug: 'crm-entry-level-pricing-5-person-team',
+    card_title: 'CRM Entry-Level Pricing for a 5-Person Team: HubSpot, Salesforce, and Pipedrive',
+    card_excerpt: 'Entry per-seat prices for HubSpot Starter, Salesforce Starter Suite, and Pipedrive Lite for a 5-seat team, checked 2026-10-24 on official US pages, with billing terms, seat rules, and what is not claimed.',
+  },
+  {
+    post_id: 812,
+    slug: 'best-crm-for-small-business',
+    card_title: 'How to Choose a Small-Business CRM',
+    card_excerpt: 'Use a five-step checklist and a trial scorecard to compare must-have features, seat costs, and data export before you commit.',
+  },
+  {
+    post_id: 1940,
+    slug: 'free-crm-tools-2026',
+    card_title: 'Three Free CRM Plans and Their Limits',
+    card_excerpt: 'Compare HubSpot, Salesforce, and Zoho on free user limits, included features, and the conditions that trigger an upgrade.',
+  },
+  {
+    post_id: 2900,
+    slug: '1password-alternatives',
+    card_title: '1Password Alternatives: What to Check Before Switching',
+    card_excerpt: 'Compare migration routes and check what happens to vault items, access permissions, and recovery roles before switching.',
+  },
+  {
+    post_id: 2901,
+    slug: 'activecampaign-alternatives',
+    card_title: 'ActiveCampaign Alternatives by Marketing Workflow',
+    card_excerpt: 'Compare five alternatives by workflow and billing unit, then check consent, contact exports, and automation rebuilds separately.',
+  },
+  {
+    post_id: 1983,
+    slug: 'how-to-calculate-crm-roi',
+    card_title: 'How to Build a CRM ROI Model',
+    card_excerpt: 'Use your own costs and gains to estimate cash return and economic value. Follow a worked example and download the reference CSV.',
+  },
+] as const;
+
 export interface LatestArticlesSection extends BaseSection {
   type: 'latest-articles';
   /** auto-latest: just take latest by date.

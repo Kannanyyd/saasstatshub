@@ -105,6 +105,7 @@ export interface Category {
 
 export interface ArticleCard {
   id: string;
+  databaseId?: number;
   title: string;
   slug: string;
   excerpt: string;
@@ -267,6 +268,7 @@ function resolvePrimaryCategory(raw: any): { name: string; slug: string } {
 function transformArticleCard(raw: any): ArticleCard {
   return {
     id: raw.id,
+    databaseId: raw.databaseId,
     title: raw.title,
     slug: raw.slug,
     excerpt: cleanExcerpt(raw.excerpt),
@@ -1027,6 +1029,7 @@ query PostsBySlugs($slugs: [String]!) {
   posts(first: 30, where: { status: PUBLISH, nameIn: $slugs }) {
     nodes {
       id
+      databaseId
       title
       slug
       excerpt
@@ -1055,18 +1058,24 @@ query PostsBySlugs($slugs: [String]!) {
  * Fetch a list of posts by slug, preserving the order of the input array.
  * Used by `LatestArticlesSection` mode === 'manual-pinned'.
  */
-export async function getPostsBySlugs(slugs: string[]): Promise<ArticleCard[]> {
+export async function getPostsBySlugs(
+  slugs: string[],
+  { throwOnError = false }: { throwOnError?: boolean } = {},
+): Promise<ArticleCard[]> {
   const activeSlugs = slugs.filter((slug) => !isConsolidatedSlug(slug));
   if (activeSlugs.length === 0) return [];
   try {
     const data = await fetchGraphQL<any>(POSTS_BY_SLUGS_QUERY, { slugs: activeSlugs });
+    const nodes = data.posts?.nodes;
+    if (!Array.isArray(nodes)) throw new Error('[wp-api] PostsBySlugs: expected a nodes array');
     const bySlug = new Map<string, ArticleCard>();
-    for (const node of data.posts.nodes) {
+    for (const node of nodes) {
       bySlug.set(node.slug, transformArticleCard(node));
     }
     // Preserve editor-defined order; drop slugs that didn't resolve.
     return activeSlugs.map((s) => bySlug.get(s)).filter((x): x is ArticleCard => !!x);
-  } catch {
+  } catch (error) {
+    if (throwOnError) throw error;
     return [];
   }
 }
